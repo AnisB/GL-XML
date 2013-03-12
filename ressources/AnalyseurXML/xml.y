@@ -46,19 +46,28 @@ declaration
  ;
 
 element
- : ouvre vide_ou_contenu  
+ : ouvre attributs_opt vide_ou_contenu  
  ;
+
+attributs_opt
+ : atttributs_opt NOM EGAL VALEUR
+ | /*vide*/
+ ;
+
 ouvre
  : OBALISE
  | OBALISEEN
  ;
+
 vide_ou_contenu
  : SLASH SUP
  | ferme_contenu_et_fin SUP 
  ;
+
 ferme_contenu_et_fin
  : SUP contenu_opt FBALISE
  ;
+
 contenu_opt 
  : contenu_opt DONNEES
  | contenu_opt misc 

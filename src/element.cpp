@@ -1,23 +1,29 @@
 #include "element.h"
 
+
 Element::Element(string aType, std::list<Content*> aContent)
 {
-	//TO_DO
+	mType=aType;
+	mContent
 }
 Element::Element(string aType)
 {
-	//TO_DO
+	mType=aType;
 }
 
 Element::~Element()
 {
-	//TO_DO
+	mContent->clear();
 }
-	void setContents(std::list<Content*> * aContent);
-	void addContent(Content & aContent);
 
-protected:
-	std:string type;
-	std::list<Content*> * theContent;
+void Element::setContents(std::list<Content*> * aContent)
+{
+	mContent=aContent;
+}
+
+void Element::addContent(Content * aContent);
+{
+	mContent->push_back(aContent);
+}
 
 };

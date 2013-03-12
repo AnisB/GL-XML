@@ -57,7 +57,7 @@ element
  ;
 
 attributs_opt
- : atttributs_opt NOM EGAL VALEUR
+ : attributs_opt NOM EGAL VALEUR
  | /*vide*/
  ;
 

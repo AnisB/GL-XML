@@ -26,21 +26,28 @@ int yylex(void);
 %%
 
 document
- : declarations element misc_seq_opt 
+ : declarations feuilles_style_opt element misc_seq_opt 
  ;
+
 misc_seq_opt
  : misc_seq_opt misc
  | /*vide*/
  ;
+
 misc
  : COMMENT
  ;
 
 declarations
- : declarations declaration
+ : declaration
  | /*vide*/
  ;
  
+feuilles_style_opt
+ : feuilles_style_opt element
+ | /*vide*/
+ ;
+
 declaration
  : DOCTYPE NOM NOM VALEUR SUP
  ;

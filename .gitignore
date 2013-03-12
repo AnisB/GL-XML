@@ -1,5 +1,6 @@
 *.o
 analyseXML
+analyseDTD
 *.yy.c
 *.output
 *.tab.*

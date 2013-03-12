@@ -26,7 +26,60 @@ main: dtd_list_opt
 
 dtd_list_opt
 : dtd_list_opt ATTLIST NOM att_definition_opt SUP
+| dtd_list_opt ELEMENT NOM content SUP
 | /* vide */
+;
+
+content
+: EMPTY
+| ANY
+| mixed
+| children
+;
+
+mixed
+: OUVREPAR PCDATA pipes_opt FERMEPAR AST
+| OUVREPAR PCDATA FERMEPAR
+;
+
+pipes_opt
+: pipes_opt BARRE NOM
+| /*vide*/
+;
+
+children
+: choice cardinalite_opt
+| seq cardinalite_opt
+;
+
+cardinalite_opt
+: PTINT
+| AST
+| PLUS
+| /*vide*/
+;
+
+cp
+: NOM cardinalite_opt
+| children
+;
+
+choice
+: OUVREPAR cp choices FERMEPAR
+;
+
+choices
+: choices BARRE cp
+| BARRE cp
+;
+
+seq
+: OUVREPAR cp seqs_opt FERMEPAR
+;
+
+seqs_opt
+: seqs_opt VIRGULE cp
+| /*vide*/
 ;
 
 att_definition_opt

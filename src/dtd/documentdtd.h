@@ -56,13 +56,21 @@
 	// ----------------------- Standard services ------------------------------
 
 	public:
-	/**
-	* Definition de la classe
-	* @param *nom parametre* *description parametre*
-	*/
+
 	DocumentDtd(string aName, string aValue);
 	~DocumentDtd();
-	
+
+	/**
+	* Remplacer la liste de declaration par une nouvelle liste de declarations
+	* @param *aDeclarations  nouvelle liste de declarations
+	*/
+	void setDeclarations(list<Declaration>* aDeclarations);
+
+	/**
+	* Remplacer la liste d'attributs par une nouvelle liste d'attributs
+	* @param *aAttributes  nouvelle liste d'attributs
+	*/
+	void setAttributes(list<Attribut>* aAttributes);
 	
 	// ------------------------- Protected Datas ------------------------------
 
@@ -75,7 +83,7 @@
 
   protected:
 	list<Declaration>* declarations;
-	list<Attribut>* attributs;
+	list<Attribut>* attributes;
 	string name;
 	string value;	
 

@@ -17,75 +17,82 @@
 #pragma once
 
 /**
-* @file documentdtd
+* @file XMLDocument
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module documentdtd.cpp
+* Header file for module XMLDocument.cpp
 *
 */
 
-#if defined(documentdtd_RECURSES)
-#error Recursive header files inclusion detected in documentdtd.h
-#else // defined(documentdtd_RECURSES)
+#if defined(XMLDocument_RECURSES)
+#error Recursive header files inclusion detected in XMLDocument.h
+#else // defined(XMLDocument_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define documentdtd_RECURSES
+#define XMLDocument_RECURSES
 
-#if !defined documentdtd_H
+#if !defined XMLDocument_H
 /** Prevents repeated inclusion of headers. */
-#define documentdtd_H
+#define XMLDocument_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-
+#include <iostream>
+#include <iostream>
+#include "element.h"
+#include "xmlattribute.h"
+#include "misc.h"
 //////////////////////////////////////////////////////////////////////////////
 
-{
 
   /////////////////////////////////////////////////////////////////////////////
-  // class Content
+  // class XMLDocument
   /**
-* Description of class documentdtd <p>
+* Description of class XMLDocument <p>
 */
 
 
-	class DocumentDtd
+	class XMLDocument
 	{
 	// ----------------------- Standard services ------------------------------
 
 	public:
-
-	DocumentDtd(string aName, string aValue);
-	~DocumentDtd();
-
 	/**
-	* Remplacer la liste de declaration par une nouvelle liste de declarations
-	* @param *aDeclarations  nouvelle liste de declarations
+	* Definition de la méthode
+	* @param *nom parametre* *description parametre*
 	*/
-	void setDeclarations(list<Declaration>* aDeclarations);
-
-	/**
-	* Remplacer la liste d'attributs par une nouvelle liste d'attributs
-	* @param *aAttributes  nouvelle liste d'attributs
-	*/
-	void setAttributes(list<Attribut>* aAttributes);
+	XMLDocument(std::string aname, std::string aname2, std::string avalue);
 	
+
+	/**
+	* Definition de la méthode
+	* @param *nom parametre* *description parametre*
+	*/
+	~XMLDocument();
+	// ----------------------- Other services ------------------------------
+
+	public:
+	/**
+	* Definition de la méthode
+	* @param *nom parametre* *description parametre*
+	*/
+
 	// ------------------------- Protected Datas ------------------------------
-
   protected:
-  // ------------------------- Private Datas --------------------------------
-
-  private:
+	Element * mRoot;
+	std::list<Element>* mStyleSheet;
+	std::list<XMLAttribute>* mAttributes;
+	Misc * comments;
+	std::string mName;
+	std::string mName2;
+	std::string mValue;	
 
     //--------------------------- Protected attributes---------------------------
 
   protected:
-	list<Declaration>* declarations;
-	list<DTDAttribute>* attributes;
-	string name;
-	string value;	
+};
 
 // 
 ///////////////////////////////////////////////////////////////////////////////

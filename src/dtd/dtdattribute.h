@@ -27,15 +27,15 @@
 *
 */
 
-#if defined(DGtalNode_RECURSES)
-#error Recursive header files inclusion detected in DGtalNode.h
+#if defined(DTDAttribute_RECURSES)
+#error Recursive header files inclusion detected in dtdattribute.h
 #else // defined(DGtalNode_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define DGtalNode_RECURSES
+#define DTDAttribute_RECURSES
 
-#if !defined dtdattribut
+#if !defined DTDAttribute
 /** Prevents repeated inclusion of headers. */
-#define dtdattribut
+#define DTDAttribute
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
@@ -47,12 +47,12 @@
 #include "uniqueelement.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// class Attribut
+// class DTDAttribute
 /**
 * Cette classe contient les attributs
 */
 
-class Attribut
+class DTDAttribute
 {
 public:
 	DTDAttribute(UniqueElement* element, std::list<CData*>* datas);
@@ -94,4 +94,5 @@ protected:
 // 
 ///////////////////////////////////////////////////////////////////////////////
 
+#endif
 #endif

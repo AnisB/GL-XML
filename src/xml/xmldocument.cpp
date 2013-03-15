@@ -1,3 +1,4 @@
+
 /**
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -15,19 +16,19 @@
  **/
 
 /**
- * @file XMLAttribute.cpp
+ * file XMLDocument.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
- * @date date
+ * date 
  *
- * Source file for module XMLAttribute.
+ * Source file for module XMLDocument
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "xmlattribute.h"
+#include "XMLDocument.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -42,18 +43,21 @@
 /**
  * Constructor
  */
-XMLAttribute::XMLAttribute(std::string aname, std::string avalue)
+XMLDocument::XMLDocument(std::string aName, std::string aName2, std::string aValue)
 {
-	mName = aname;
-	mValue = avalue;
+	mName = aName;
+	mName2 = aName2;
+	mValue = aValue;
 }
 
 /**
  * Destructor.
  */
-XMLAttribute::~XMLAttribute( )
+
+
+
+XMLDocument::~XMLDocument()
 {
-  //Nothing to do
 }
 
 ///////////////////////////////////////////////////////////////////////////////

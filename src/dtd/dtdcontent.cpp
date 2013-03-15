@@ -15,19 +15,19 @@
  **/
 
 /**
- * @file XMLAttribute.cpp
+ * @file dtdcontent.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * @date date
  *
- * Source file for module XMLAttribute.
+ * Source file for module DTDContent
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "xmlattribute.h"
+ #include "dtdcontent.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -42,16 +42,14 @@
 /**
  * Constructor
  */
-XMLAttribute::XMLAttribute(std::string aname, std::string avalue)
+DTDContent::DTDContent ( )
 {
-	mName = aname;
-	mValue = avalue;
 }
 
 /**
  * Destructor.
  */
-XMLAttribute::~XMLAttribute( )
+DTDContent::~DTDContent( )
 {
   //Nothing to do
 }

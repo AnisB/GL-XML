@@ -17,25 +17,25 @@
 #pragma once
 
 /**
-* @file documentdtd
+* @file dtdcontent.h
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module documentdtd.cpp
+* Header file for module DTDContent.cpp
 *
 */
 
-#if defined(documentdtd_RECURSES)
-#error Recursive header files inclusion detected in documentdtd.h
-#else // defined(documentdtd_RECURSES)
+#if defined(DTDContent_RECURSES)
+#error Recursive header files inclusion detected in dtdcontent.h
+#else // defined(DTDContent_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define documentdtd_RECURSES
+#define DTDContentent_RECURSES
 
-#if !defined documentdtd_H
+#if !defined DTDContent_H
 /** Prevents repeated inclusion of headers. */
-#define documentdtd_H
+#define DTDContent_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
@@ -45,33 +45,22 @@
 {
 
   /////////////////////////////////////////////////////////////////////////////
-  // class Content
+  // class DTDContent
   /**
-* Description of class documentdtd <p>
+* Description of class DTDContent <p>
 */
 
 
-	class DocumentDtd
+	class DTDContent
 	{
 	// ----------------------- Standard services ------------------------------
 
 	public:
-
-	DocumentDtd(string aName, string aValue);
-	~DocumentDtd();
-
 	/**
-	* Remplacer la liste de declaration par une nouvelle liste de declarations
-	* @param *aDeclarations  nouvelle liste de declarations
+	* Definition de la classe
+	* @param *nom parametre* *description parametre*
 	*/
-	void setDeclarations(list<Declaration>* aDeclarations);
 
-	/**
-	* Remplacer la liste d'attributs par une nouvelle liste d'attributs
-	* @param *aAttributes  nouvelle liste d'attributs
-	*/
-	void setAttributes(list<Attribut>* aAttributes);
-	
 	// ------------------------- Protected Datas ------------------------------
 
   protected:
@@ -82,10 +71,7 @@
     //--------------------------- Protected attributes---------------------------
 
   protected:
-	list<Declaration>* declarations;
-	list<DTDAttribute>* attributes;
-	string name;
-	string value;	
+
 
 // 
 ///////////////////////////////////////////////////////////////////////////////

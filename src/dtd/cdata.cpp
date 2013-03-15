@@ -45,7 +45,7 @@ using namespace std;
 /**
 * Constructor
 */
-CData::CData(std::string* content) : DTDContent(), m_content(content)
+CData::CData(std::string content) : DTDContent(), m_content(content)
 {
 }
 
@@ -61,14 +61,14 @@ CData::~CData()
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline setContent
-void CData::setContent(string* content)
+void CData::setContent(string content)
 {
 	m_content = content;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline getContent
-string* CData::getContent()
+string CData::getContent()
 {
 	return m_content;
 }

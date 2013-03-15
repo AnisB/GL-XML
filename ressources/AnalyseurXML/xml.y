@@ -9,7 +9,7 @@ using namespace std;
 
 // ces trois fonctions devront changer de nom dans le cas où l'otion -p est utilisée
 int yywrap(void);
-void yyerror(char *msg);
+void yyerror(string** nom_dtd, char *msg);
 int yylex(void);
 
 %}
@@ -22,6 +22,9 @@ int yylex(void);
 %token EGAL SLASH SUP SUPSPECIAL DOCTYPE
 %token <s> ENCODING VALEUR DONNEES COMMENT NOM ENNOM
 %token <en> OBALISEEN OBALISE OBALISESPECIALE FBALISE FBALISEEN
+
+
+%parse-param{ string** nom_dtd }
 
 %%
 
@@ -39,7 +42,7 @@ misc
  ;
 
 declarations
- : declaration
+	: declaration
  | /*vide*/
  ;
  
@@ -49,7 +52,7 @@ feuilles_style_opt
  ;
 
 declaration
- : DOCTYPE NOM NOM VALEUR SUP
+	: DOCTYPE NOM NOM VALEUR SUP {*nom_dtd = new string($4);}
  ;
 
 element
@@ -87,12 +90,12 @@ contenu_opt
 int main(int argc, char **argv)
 {
   int err;
-
+  string *result;
   yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
 
-  err = yyparse();
+  err = yyparse(&result);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
-  	else  printf("Parse ended with success\n", err);
+  else  printf("Parse ended with success. DTD : %s\n", result->data());
   return 0;
 }
 int yywrap(void)
@@ -100,7 +103,7 @@ int yywrap(void)
   return 1;
 }
 
-void yyerror(char *msg)
+void yyerror(string** nom, char *msg)
 {
   fprintf(stderr, "%s\n", msg);
 }

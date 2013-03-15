@@ -27,15 +27,15 @@
 *
 */
 
-#if defined(DGtalNode_RECURSES)
-#error Recursive header files inclusion detected in DGtalNode.h
-#else // defined(DGtalNode_RECURSES)
+#if defined(CData_RECURSES)
+#error Recursive header files inclusion detected in cdata.h
+#else // defined(CData_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define DGtalNode_RECURSES
+#define CData_RECURSES
 
-#if !defined cdata
+#if !defined CData
 /** Prevents repeated inclusion of headers. */
-#define cdata
+#define CData
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
@@ -50,29 +50,30 @@
 class CData : public DTDContent
 {
 public:
-	CData(std::string* content);
+	CData(std::string content);
 	virtual ~CData();
 	
 	/**
 	* remplacer le contenu du CData
 	* @param content le contenu
 	*/
-	void setContent(std::string* content);
+	void setContent(std::string content);
 
 	/**
 	* recuperer le contenu de CData
 	* @return le contenu
 	*/
-	std::string* getContent();
+	std::string getContent();
 
 	
 
 protected:
-	std::string* m_content;
+	std::string m_content;
 };
 
 // 
 ///////////////////////////////////////////////////////////////////////////////
 
 
+#endif
 #endif

@@ -15,7 +15,7 @@ link_directories (${PROJECT_BINARY_DIR})
 
 #------TESTS subdirectories ------
 add_subdirectory(xmlsample)
-#add_subdirectory(dtdsample)
+add_subdirectory(dtdsample)
 #add_subdirectory(<yourdirectory>)
 
 

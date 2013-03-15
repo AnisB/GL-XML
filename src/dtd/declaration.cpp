@@ -43,9 +43,9 @@
 /**
  * Constructor
  */
-Declaration::Declaration (Map _mapContent)
+Declaration::Declaration (Map aMapContent)
 {
-	mapContent = _mapContent;
+	mapContent = aMapContent;
 }
 
 /**

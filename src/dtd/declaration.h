@@ -60,7 +60,7 @@
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	Declaration(Map _mapContent);
+	Declaration(Map aMapContent);
 	~Declaration();
 	
 	

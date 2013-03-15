@@ -61,7 +61,7 @@ void DocumentDtd::setDeclarations(list<Declaration>* aDeclarations)
 	declarations = aDeclarations;
 }
 
-void DocumentDtd::setAttributes(list<Attribut>* aAttributes)
+void DocumentDtd::setAttributes(list<DTDAttribute>* aAttributes)
 {
 	attributes = aAttributes;
 }

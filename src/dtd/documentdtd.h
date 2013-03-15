@@ -83,7 +83,7 @@
 
   protected:
 	list<Declaration>* declarations;
-	list<Attribut>* attributes;
+	list<DTDAttribute>* attributes;
 	string name;
 	string value;	
 

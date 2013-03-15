@@ -12,8 +12,9 @@ set(Boost_FOUND FALSE)
 FIND_PACKAGE(Boost 1.42.0 REQUIRED COMPONENTS program_options system)
 if ( Boost_FOUND )
   message(STATUS "Boost and boost components found.")
-  include_directories( ${Boost_INCLUDE_DIRS} )
-  SET(DGtalLibDependencies ${DGtalLibDependencies} 
+  SET(IncDir ${IncDir} ${Boost_INCLUDE_DIRS})
+  include_directories( ${Boost_INCLUDE_DIRS})
+  SET(Libs ${Libs} 
      ${Boost_LIBRAIRIES}  
      ${Boost_PROGRAM_OPTIONS_LIBRARY}
      ${Boost_SYSTEM_LIBRARY})

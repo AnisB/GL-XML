@@ -7,5 +7,4 @@ file(
 
 
 add_executable(xmlsample xmlsample.cpp ${Source_File})
-message(STATUS ${Source_File})
 target_link_libraries (xmlsample)

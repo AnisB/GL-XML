@@ -5,12 +5,12 @@ using namespace std;
 #include <cstdio>
 #include <cstdlib>
 #include "commun.h"
-#include "yy.tab.h"
+#include "xml.tab.h"
 
 // ces trois fonctions devront changer de nom dans le cas où l'otion -p est utilisée
-int yywrap(void);
-void yyerror(string** nom_dtd, char *msg);
-int yylex(void);
+int xmlwrap(void);
+void xmlerror(string** nom_dtd, char *msg);
+int xmllex(void);
 
 %}
 
@@ -93,17 +93,17 @@ int main(int argc, char **argv)
   string *result;
   yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
 
-  err = yyparse(&result);
+  err = xmlparse(&result);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
   else  printf("Parse ended with success. DTD : %s\n", result->data());
   return 0;
 }
-int yywrap(void)
+int xmlwrap(void)
 {
   return 1;
 }
 
-void yyerror(string** nom, char *msg)
+void xmlerror(string** nom, char *msg)
 {
   fprintf(stderr, "%s\n", msg);
 }

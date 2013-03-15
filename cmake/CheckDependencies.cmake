@@ -18,6 +18,6 @@ if ( Boost_FOUND )
      ${Boost_LIBRAIRIES}  
      ${Boost_PROGRAM_OPTIONS_LIBRARY}
      ${Boost_SYSTEM_LIBRARY})
-   SET(DGtalLibInc ${Boost_INCLUDE_DIRS})
+   SET(XmlProcesserLib ${Boost_INCLUDE_DIRS})
 endif( Boost_FOUND )
 

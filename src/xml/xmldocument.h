@@ -17,43 +17,44 @@
 #pragma once
 
 /**
-* @file Element
+* @file XMLDocument
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module Element.cpp
+* Header file for module XMLDocument.cpp
 *
 */
 
-#if defined(Element_RECURSES)
-#error Recursive header files inclusion detected in Element.h
-#else // defined(Element_RECURSES)
+#if defined(XMLDocument_RECURSES)
+#error Recursive header files inclusion detected in XMLDocument.h
+#else // defined(XMLDocument_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define Element_RECURSES
+#define XMLDocument_RECURSES
 
-#if !defined Element_H
+#if !defined XMLDocument_H
 /** Prevents repeated inclusion of headers. */
-#define Element_H
+#define XMLDocument_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 #include <iostream>
-#include "xmlcontent.h"
-#include <list>
 #include <iostream>
+#include "element.h"
+#include "xmlattribute.h"
+#include "misc.h"
 //////////////////////////////////////////////////////////////////////////////
 
 
   /////////////////////////////////////////////////////////////////////////////
-  // class Element
+  // class XMLDocument
   /**
-* Description of class Element <p>
+* Description of class XMLDocument <p>
 */
 
 
-	class Element
+	class XMLDocument
 	{
 	// ----------------------- Standard services ------------------------------
 
@@ -62,17 +63,16 @@
 	* Definition de la méthode
 	* @param *nom parametre* *description parametre*
 	*/
-	Element(std::string aType, std::list<XMLContent*>  * aXMLContent);
-	Element(std::string aType);
+	XMLDocument(std::string aname, std::string aname2, std::string avalue);
+	
 
 	/**
-	* Destructor
+	* Definition de la méthode
+	* @param *nom parametre* *description parametre*
 	*/
-	virtual ~Element();
-
+	~XMLDocument();
 	// ----------------------- Other services ------------------------------
-	void setContents(std::list<XMLContent*> * aXMLContent);
-	void addContent(XMLContent * aXMLContent);
+
 	public:
 	/**
 	* Definition de la méthode
@@ -81,13 +81,17 @@
 
 	// ------------------------- Protected Datas ------------------------------
   protected:
-	std::list<XMLContent*> * mContent;
-
+	Element * mRoot;
+	std::list<Element>* mStyleSheet;
+	std::list<XMLAttribute>* mAttributes;
+	Misc * comments;
+	std::string mName;
+	std::string mName2;
+	std::string mValue;	
 
     //--------------------------- Protected attributes---------------------------
 
   protected:
-  		std::string mType;
 };
 
 // 

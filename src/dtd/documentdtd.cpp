@@ -56,6 +56,16 @@ DocumentDtd::~DocumentDtd( )
   //Nothing to do
 }
 
+void DocumentDtd::setDeclarations(list<Declaration>* aDeclarations)
+{
+	declarations = aDeclarations;
+}
+
+void DocumentDtd::setAttributes(list<Attribut>* aAttributes)
+{
+	attributes = aAttributes;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

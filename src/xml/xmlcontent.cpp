@@ -15,20 +15,19 @@
  **/
 
 /**
- * @file PCData.cpp
+ * @file XMLContent.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
- * @date date
+ * @date 15/03/2013
  *
- * Source file for module PCData
+ * Header file for module XMLContent.cpp
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "pcdata.h"
-#include <iostream>
+ #include "xmlcontent.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,40 +42,16 @@
 /**
  * Constructor
  */
-PCData::PCData(std::string value)
+XMLContent::XMLContent ( )
 {
-	mValue=value;
-}
-
-/**
- * Constructor
- */
-PCData::PCData(char * value)
-{
-	mValue= std::string(value);
 }
 
 /**
  * Destructor.
  */
-PCData::~PCData( )
+XMLContent::~XMLContent( )
 {
   //Nothing to do
-}
-
-void PCData::setValue(std::string value)
-{
-	mValue=value;
-}
-
-std::string PCData::getValue()
-{
-	return mValue;
-}
-
-void PCData::printAsXml()
-{
-	std::cout<<mValue<<std::endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -86,6 +61,6 @@ void PCData::printAsXml()
 // Implementation of inline functimyCameraons //
 
 
+
 // //
 ///////////////////////////////////////////////////////////////////////////////
-

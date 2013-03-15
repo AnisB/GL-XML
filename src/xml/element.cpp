@@ -1,12 +1,12 @@
 #include "element.h"
 
 
-Element::Element(string aType, std::list<Content*> aContent)
+Element::Element(std::string aType, std::list<XMLContent*> * aXMLContent)
 {
 	mType=aType;
-	mContent
+	mContent=aXMLContent;
 }
-Element::Element(string aType)
+Element::Element(std::string aType)
 {
 	mType=aType;
 }
@@ -16,14 +16,12 @@ Element::~Element()
 	mContent->clear();
 }
 
-void Element::setContents(std::list<Content*> * aContent)
+void Element::setContents(std::list<XMLContent*> * aContent)
 {
 	mContent=aContent;
 }
 
-void Element::addContent(Content * aContent);
+void Element::addContent(XMLContent * aXMLContent)
 {
-	mContent->push_back(aContent);
+	mContent->push_back(aXMLContent);
 }
-
-};

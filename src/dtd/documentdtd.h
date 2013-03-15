@@ -39,54 +39,45 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-
 //////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <list>
 
+#include "declaration.h"
+#include "dtdattribute.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// class DocumentDtd
+
+
+class DocumentDtd
 {
+// ----------------------- Standard services ------------------------------
 
-  /////////////////////////////////////////////////////////////////////////////
-  // class Content
-  /**
-* Description of class documentdtd <p>
-*/
+public:
 
-
-	class DocumentDtd
-	{
-	// ----------------------- Standard services ------------------------------
-
-	public:
-
-	DocumentDtd(string aName, string aValue);
+	DocumentDtd(std::string aName, std::string aValue);
 	~DocumentDtd();
-
+	
 	/**
 	* Remplacer la liste de declaration par une nouvelle liste de declarations
 	* @param *aDeclarations  nouvelle liste de declarations
 	*/
-	void setDeclarations(list<Declaration>* aDeclarations);
-
+	void setDeclarations(std::list<Declaration>* aDeclarations);
+	
 	/**
 	* Remplacer la liste d'attributs par une nouvelle liste d'attributs
 	* @param *aAttributes  nouvelle liste d'attributs
 	*/
-	void setAttributes(list<Attribut>* aAttributes);
-	
-	// ------------------------- Protected Datas ------------------------------
+	void setAttributes(std::list<DTDAttribute>* aAttributes);
 
-  protected:
-  // ------------------------- Private Datas --------------------------------
 
-  private:
-
-    //--------------------------- Protected attributes---------------------------
-
-  protected:
-	list<Declaration>* declarations;
-	list<DTDAttribute>* attributes;
-	string name;
-	string value;	
-
+protected:
+	std::list<Declaration>* declarations;
+	std::list<DTDAttribute>* attributes;
+	std::string name;
+	std::string value;	
+};
 // 
 ///////////////////////////////////////////////////////////////////////////////
 

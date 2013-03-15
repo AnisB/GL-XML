@@ -39,42 +39,25 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-
 //////////////////////////////////////////////////////////////////////////////
+#include "dtdcontent.h"
 
+/////////////////////////////////////////////////////////////////////////////
+// class UniqueElement
+
+class UniqueElement : public DTDContent
 {
+// ----------------------- Standard services ------------------------------
 
-  /////////////////////////////////////////////////////////////////////////////
-  // class UniqueElement
-  /**
-* Description of class UniqueElement <p>
-*/
+public:
+	UniqueElement();
+	virtual ~UniqueElement();
 
-
-	class UniqueElement : public Content
-	{
-	// ----------------------- Standard services ------------------------------
-
-	public:
-	/**
-	* Definition de la classe
-	* @param *nom parametre* *description parametre*
-	*/
-
-	// ------------------------- Protected Datas ------------------------------
-
-  protected:
-  // ------------------------- Private Datas --------------------------------
-
-  private:
-
-    //--------------------------- Protected attributes---------------------------
-
-  protected:
-
+};
 
 // 
 ///////////////////////////////////////////////////////////////////////////////
 
 
+#endif
 #endif

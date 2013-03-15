@@ -33,15 +33,15 @@
 /** Prevents recursive inclusion of headers. */
 #define CData_RECURSES
 
-#if !defined CData
+#if !defined CData_H
 /** Prevents repeated inclusion of headers. */
-#define CData
+#define CData_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 //////////////////////////////////////////////////////////////////////////////
 
-#include <string>
+#include <iostream>
 
 #include "dtdcontent.h"
 

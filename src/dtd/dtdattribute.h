@@ -33,9 +33,9 @@
 /** Prevents recursive inclusion of headers. */
 #define DTDAttribute_RECURSES
 
-#if !defined DTDAttribute
+#if !defined DTDAttribute_H
 /** Prevents repeated inclusion of headers. */
-#define DTDAttribute
+#define DTDAttribute_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions

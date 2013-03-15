@@ -42,14 +42,14 @@
 /**
  * Constructor
  */
-DTDContent::DTDContent ( )
+DTDContent::DTDContent ()
 {
 }
 
 /**
  * Destructor.
  */
-DTDContent::~DTDContent( )
+DTDContent::~DTDContent()
 {
   //Nothing to do
 }

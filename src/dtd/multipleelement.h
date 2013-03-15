@@ -39,42 +39,26 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-
 //////////////////////////////////////////////////////////////////////////////
 
+#include "dtdcontent.h"
+
+
+/////////////////////////////////////////////////////////////////////////////
+// class MultipleElement
+
+
+class MultipleElement : public DTDContent
 {
-
-  /////////////////////////////////////////////////////////////////////////////
-  // class MultipleElement
-  /**
-* Description of class MultipleElement <p>
-*/
-
-
-	class MultipleElement : public Content
-	{
-	// ----------------------- Standard services ------------------------------
-
-	public:
-	/**
-	* Definition de la classe
-	* @param *nom parametre* *description parametre*
-	*/
-
-	// ------------------------- Protected Datas ------------------------------
-
-  protected:
-  // ------------------------- Private Datas --------------------------------
-
-  private:
-
-    //--------------------------- Protected attributes---------------------------
-
-  protected:
-
+// ----------------------- Standard services ------------------------------
+public:
+	MultipleElement();
+	virtual ~MultipleElement();
+};
 
 // 
 ///////////////////////////////////////////////////////////////////////////////
 
 
+#endif
 #endif

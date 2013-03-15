@@ -39,43 +39,27 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-
 //////////////////////////////////////////////////////////////////////////////
+#include <map>
 
+#include "dtdcontent.h"
+/////////////////////////////////////////////////////////////////////////////
+// class Declaration
+class Declaration
 {
+// ----------------------- Standard services ------------------------------
 
-  /////////////////////////////////////////////////////////////////////////////
-  // class Declaration
-  /**
-* Description of class Declaration<p>
-*/
-
-
-	class Declaration
-	{
-	// ----------------------- Standard services ------------------------------
-
-	public:
+public:
 	/**
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	Declaration(Map aMapContent);
+	Declaration(std::map<int, DTDContent> aMapContent);
 	~Declaration();
-	
-	
-	// ------------------------- Protected Datas ------------------------------
 
   protected:
-  // ------------------------- Private Datas --------------------------------
-
-  private:
-
-    //--------------------------- Protected attributes---------------------------
-
-  protected:
-	Map mapContent;
-
+	std::map<int, DTDContent> mapContent;
+};
 // 
 ///////////////////////////////////////////////////////////////////////////////
 

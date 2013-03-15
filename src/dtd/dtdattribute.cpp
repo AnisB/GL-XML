@@ -79,9 +79,9 @@ void DTDAttribute::setData(std::list<CData*>* datas)
 bool DTDAttribute::addData(CData* data)
 {
 	bool isNotNull=false;
-	if(m_datas!=null)
+	if(m_datas)
 	{
-		m_datas.push_back(datas);
+		m_datas->push_back(data);
 		isNotNull = true;
 	}
 	return isNotNull;

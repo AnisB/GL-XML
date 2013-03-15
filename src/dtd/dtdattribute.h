@@ -23,7 +23,7 @@
 *
 * @date 15/03/2013
 *
-* Header file for module attribut.cpp
+* Header file for module dtdattribute.cpp
 *
 */
 
@@ -33,9 +33,9 @@
 /** Prevents recursive inclusion of headers. */
 #define DGtalNode_RECURSES
 
-#if !defined attribut
+#if !defined dtdattribut
 /** Prevents repeated inclusion of headers. */
-#define attribut
+#define dtdattribut
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
@@ -55,8 +55,8 @@
 class Attribut
 {
 public:
-	Attribut(UniqueElement* element, std::list<CData*>* datas);
-	virtual ~Attribut();
+	DTDAttribute(UniqueElement* element, std::list<CData*>* datas);
+	virtual ~DTDAttribute();
 
 	/**
 	* remplacer l'élément de l'attribut

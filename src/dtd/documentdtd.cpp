@@ -15,7 +15,7 @@
  **/
 
 /**
- * @file Content.cpp
+ * @file documentdtd.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * @date date
@@ -42,10 +42,10 @@
 /**
  * Constructor
  */
-DocumentDtd::DocumentDtd (string _name, string _value)
+DocumentDtd::DocumentDtd (string aName, string aValue)
 {
-	name = _name;
-	value = _value;
+	name = aName;
+	value = aValue;
 }
 
 /**

@@ -31,7 +31,7 @@
 #error Recursive header files inclusion detected in documentdtd.h
 #else // defined(documentdtd_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define Content_RECURSES
+#define documentdtd_RECURSES
 
 #if !defined documentdtd_H
 /** Prevents repeated inclusion of headers. */
@@ -60,7 +60,7 @@
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	DocumentDtd(string _name, string _value);
+	DocumentDtd(string aName, string aValue);
 	~DocumentDtd();
 	
 	

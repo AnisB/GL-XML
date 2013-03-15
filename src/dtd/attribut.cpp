@@ -1,11 +1,13 @@
+#include <list>
+
 #include "attribut.h"
+#include "uniqueelement.h"
+#include "cdata.h"
 
 using namespace std;
 
-Attribut::Attribut(UniqueElement* element, list<CData*>* datas)
+Attribut::Attribut(UniqueElement* element, list<CData*>* datas) : m_element(element), m_datas(datas)
 {
-	m_element = element;
-	m_datas = datas;
 }
 
 Attribut::~Attribut()

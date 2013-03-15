@@ -17,91 +17,67 @@
 #pragma once
 
 /**
-* @file PCData
+* @file declaration
 * @author Anis Benyoub
-* INSTITUTION INSA Lyon
+* INSTITUTION
 *
 * @date date
 *
-* Header file for module PCData.cpp
+* Header file for module documentdtd.cpp
 *
 */
 
-#if defined(PCData_RECURSES)
-#error Recursive header files inclusion detected in PCData.h
-#else // defined(PCData_RECURSES)
+#if defined(declaration_RECURSES)
+#error Recursive header files inclusion detected in declaration.h
+#else // defined(declaration_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define PCData_RECURSES
+#define declaration_RECURSES
 
-#if !defined PCData_H
+#if !defined declaration_H
 /** Prevents repeated inclusion of headers. */
-#define PCData_H
+#define declaration_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include "xmlcontent.h"
-#include <list>
-#include <iostream>
+
 //////////////////////////////////////////////////////////////////////////////
 
+{
+
   /////////////////////////////////////////////////////////////////////////////
-  // class PCData
+  // class Declaration
   /**
-* Description of class PCData <p>
+* Description of class Declaration<p>
 */
 
 
-	class PCData : public XMLContent
+	class Declaration
 	{
 	// ----------------------- Standard services ------------------------------
 
 	public:
 	/**
-	* Constructor
-	* @param aValue string object 
-	*/
-	PCData(std::string aValue);
-
-
-	/**
-	* Constructor
-	* @param aValue string object 
-	*/
-	PCData(char * aValue);
-
-
-	/**
-	* Destructor
+	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	virtual ~PCData();
+	Declaration(Map aMapContent);
+	~Declaration();
+	
+	
+	// ------------------------- Protected Datas ------------------------------
 
+  protected:
+  // ------------------------- Private Datas --------------------------------
 
-	// ------------------------- Other services ------------------------------
-	/**
-	* Definition setValue
-	* @param aValue nouvelle valeur du pcdata
-	*/
-	void setValue(std::string value);
-
-	/**
-	* Definition de getVlaue
-	*/
-	std::string getValue();
-
-	/**
-	* Affiche sur la sortie standard le noeud
-	*/
-	void printAsXml();
+  private:
 
     //--------------------------- Protected attributes---------------------------
-	protected:
-		std::string mValue;
 
-	// 
-	///////////////////////////////////////////////////////////////////////////////
+  protected:
+	Map mapContent;
 
-	}; // Fin de classe
+// 
+///////////////////////////////////////////////////////////////////////////////
 
-	#endif
+
 #endif

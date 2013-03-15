@@ -1,16 +1,16 @@
 
-#include "content.h"
+#include "xmlcontent.h"
 #include <list>
-class Element : public Content
+#include <iostream>
+class Element : public XMLContent
 {
 public:
-	Element(string aType, std::list<Content*> aContent);
-	Element(string aType);
+	Element(std::string aType, std::list<XMLContent*>  * aXMLContent);
+	Element(std::string aType);
 	virtual ~Element();
-	void setContents(std::list<Content*> * aContent);
-	void addContent(Content & aContent);
-
+	void setContents(std::list<XMLContent*> * aXMLContent);
+	void addContent(XMLContent * aXMLContent);
 protected:
 	std::string mType;
-	std::list<Content*> * mContent;
+	std::list<XMLContent*> * mContent;
 };

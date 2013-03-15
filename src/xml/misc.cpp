@@ -1,11 +1,11 @@
 #include "misc.h"
 
 
-Misc::Misc(string _comment)
+Misc::Misc(std::string aComment)
 {
-	name = _comment;
+	mValue = aComment;
 }
 
-Attribut::~Attribut()
+Misc::~Misc()
 {
 } 

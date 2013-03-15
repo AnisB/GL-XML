@@ -15,20 +15,19 @@
  **/
 
 /**
- * @file PCData.cpp
+ * @file documentdtd.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * @date date
  *
- * Source file for module PCData
+ * Source file for module documentdtd
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "pcdata.h"
-#include <iostream>
+ #include "documentdtd.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,40 +42,28 @@
 /**
  * Constructor
  */
-PCData::PCData(std::string value)
+DocumentDtd::DocumentDtd (string aName, string aValue)
 {
-	mValue=value;
-}
-
-/**
- * Constructor
- */
-PCData::PCData(char * value)
-{
-	mValue= std::string(value);
+	name = aName;
+	value = aValue;
 }
 
 /**
  * Destructor.
  */
-PCData::~PCData( )
+DocumentDtd::~DocumentDtd( )
 {
   //Nothing to do
 }
 
-void PCData::setValue(std::string value)
+void DocumentDtd::setDeclarations(list<Declaration>* aDeclarations)
 {
-	mValue=value;
+	declarations = aDeclarations;
 }
 
-std::string PCData::getValue()
+void DocumentDtd::setAttributes(list<DTDAttribute>* aAttributes)
 {
-	return mValue;
-}
-
-void PCData::printAsXml()
-{
-	std::cout<<mValue<<std::endl;
+	attributes = aAttributes;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -86,6 +73,6 @@ void PCData::printAsXml()
 // Implementation of inline functimyCameraons //
 
 
+
 // //
 ///////////////////////////////////////////////////////////////////////////////
-

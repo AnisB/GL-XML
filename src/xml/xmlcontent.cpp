@@ -15,19 +15,19 @@
  **/
 
 /**
- * @file Content.cpp
+ * @file XMLContent.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * @date 15/03/2013
  *
- * Header file for module Content.cpp
+ * Header file for module XMLContent.cpp
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
- #include "content.h"
+ #include "xmlcontent.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -42,14 +42,14 @@
 /**
  * Constructor
  */
-Content::Content ( )
+XMLContent::XMLContent ( )
 {
 }
 
 /**
  * Destructor.
  */
-Content::~Content( )
+XMLContent::~XMLContent( )
 {
   //Nothing to do
 }

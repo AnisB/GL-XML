@@ -1,14 +1,13 @@
 #ifndef MISC_H
 #define MISC_H
 #include <iostream>
-using namespace std;
-
+#include <list>
 class Misc {
-	string comment;
-	list<Misc> *miscs;	
+	std::string mValue;
+	std::list<Misc> *miscs;	
 
   public:
-	Misc(string _comment);
+	Misc(std::string acomment);
 	~Misc();
   };
 #endif

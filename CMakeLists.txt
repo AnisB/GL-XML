@@ -23,7 +23,12 @@ SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # -----------------------------------------------------------------------------
 INCLUDE(${CMAKE_MODULE_PATH}/CheckDependencies.cmake)
 
+set(IncDir "${PROJECT_SOURCE_DIR}/src; ${IncDir}; ")
+include_directories( ${IncDir})
+
+
 #------------------------------------------------------------------------------
 # Add subdirectories
 #------------------------------------------------------------------------------
+add_subdirectory(src)
 add_subdirectory(test)

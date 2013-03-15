@@ -17,91 +17,78 @@
 #pragma once
 
 /**
-* @file PCData
+* @file documentdtd
 * @author Anis Benyoub
-* INSTITUTION INSA Lyon
+* INSTITUTION
 *
 * @date date
 *
-* Header file for module PCData.cpp
+* Header file for module documentdtd.cpp
 *
 */
 
-#if defined(PCData_RECURSES)
-#error Recursive header files inclusion detected in PCData.h
-#else // defined(PCData_RECURSES)
+#if defined(documentdtd_RECURSES)
+#error Recursive header files inclusion detected in documentdtd.h
+#else // defined(documentdtd_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define PCData_RECURSES
+#define documentdtd_RECURSES
 
-#if !defined PCData_H
+#if !defined documentdtd_H
 /** Prevents repeated inclusion of headers. */
-#define PCData_H
+#define documentdtd_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include "xmlcontent.h"
-#include <list>
-#include <iostream>
+
 //////////////////////////////////////////////////////////////////////////////
 
+{
+
   /////////////////////////////////////////////////////////////////////////////
-  // class PCData
+  // class Content
   /**
-* Description of class PCData <p>
+* Description of class documentdtd <p>
 */
 
 
-	class PCData : public XMLContent
+	class DocumentDtd
 	{
 	// ----------------------- Standard services ------------------------------
 
 	public:
-	/**
-	* Constructor
-	* @param aValue string object 
-	*/
-	PCData(std::string aValue);
 
+	DocumentDtd(string aName, string aValue);
+	~DocumentDtd();
 
 	/**
-	* Constructor
-	* @param aValue string object 
+	* Remplacer la liste de declaration par une nouvelle liste de declarations
+	* @param *aDeclarations  nouvelle liste de declarations
 	*/
-	PCData(char * aValue);
-
+	void setDeclarations(list<Declaration>* aDeclarations);
 
 	/**
-	* Destructor
-	* @param *nom parametre* *description parametre*
+	* Remplacer la liste d'attributs par une nouvelle liste d'attributs
+	* @param *aAttributes  nouvelle liste d'attributs
 	*/
-	virtual ~PCData();
+	void setAttributes(list<Attribut>* aAttributes);
+	
+	// ------------------------- Protected Datas ------------------------------
 
+  protected:
+  // ------------------------- Private Datas --------------------------------
 
-	// ------------------------- Other services ------------------------------
-	/**
-	* Definition setValue
-	* @param aValue nouvelle valeur du pcdata
-	*/
-	void setValue(std::string value);
-
-	/**
-	* Definition de getVlaue
-	*/
-	std::string getValue();
-
-	/**
-	* Affiche sur la sortie standard le noeud
-	*/
-	void printAsXml();
+  private:
 
     //--------------------------- Protected attributes---------------------------
-	protected:
-		std::string mValue;
 
-	// 
-	///////////////////////////////////////////////////////////////////////////////
+  protected:
+	list<Declaration>* declarations;
+	list<DTDAttribute>* attributes;
+	string name;
+	string value;	
 
-	}; // Fin de classe
+// 
+///////////////////////////////////////////////////////////////////////////////
 
-	#endif
+
 #endif

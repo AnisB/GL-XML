@@ -1,3 +1,4 @@
+ 
 /**
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -15,20 +16,19 @@
  **/
 
 /**
- * @file PCData.cpp
+ * @file Content.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * @date date
  *
- * Source file for module PCData
+ * Source file for module declaration
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "pcdata.h"
-#include <iostream>
+ #include "declaration.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,40 +43,17 @@
 /**
  * Constructor
  */
-PCData::PCData(std::string value)
+Declaration::Declaration (Map aMapContent)
 {
-	mValue=value;
-}
-
-/**
- * Constructor
- */
-PCData::PCData(char * value)
-{
-	mValue= std::string(value);
+	mapContent = aMapContent;
 }
 
 /**
  * Destructor.
  */
-PCData::~PCData( )
+Declaration::~Declaration( )
 {
   //Nothing to do
-}
-
-void PCData::setValue(std::string value)
-{
-	mValue=value;
-}
-
-std::string PCData::getValue()
-{
-	return mValue;
-}
-
-void PCData::printAsXml()
-{
-	std::cout<<mValue<<std::endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -86,6 +63,6 @@ void PCData::printAsXml()
 // Implementation of inline functimyCameraons //
 
 
+
 // //
 ///////////////////////////////////////////////////////////////////////////////
-

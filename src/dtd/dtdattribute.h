@@ -17,13 +17,13 @@
 #pragma once
 
 /**
-* @file cdata.h
+* @file attribut.h
 * @author Florent Weillaert
 * H4214
 *
 * @date 15/03/2013
 *
-* Header file for module cdata.cpp
+* Header file for module attribut.cpp
 *
 */
 
@@ -33,40 +33,65 @@
 /** Prevents recursive inclusion of headers. */
 #define DGtalNode_RECURSES
 
-#if !defined cdata
+#if !defined attribut
 /** Prevents repeated inclusion of headers. */
-#define cdata
+#define attribut
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 //////////////////////////////////////////////////////////////////////////////
 
-#include <string>
+#include <list>
 
-#include "dtdcontent.h"
+#include "cdata.h"
+#include "uniqueelement.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// class CData
-class CData : public DTDContent
+// class Attribut
+/**
+* Cette classe contient les attributs
+*/
+
+class Attribut
 {
 public:
-	CData(std::string* content);
-	virtual ~CData();
-	
-	/**
-	* remplacer le contenu du CData
-	* @param content le contenu
-	*/
-	void setContent(std::string* content);
+	Attribut(UniqueElement* element, std::list<CData*>* datas);
+	virtual ~Attribut();
 
 	/**
-	* recuperer le contenu de CData
-	* @return le contenu
+	* remplacer l'élément de l'attribut
+	* @param element le nouvel élément
 	*/
-	std::string* getContent();
-
+	void setElement(UniqueElement* element);
+	/**
+	* remplacer la liste de données par une nouvelle liste
+	* @param datas les nouvelles données
+	*/
+	void setData(std::list<CData*>* datas);
+	/**
+	* ajouter une donnée à la liste de données de l'attribut
+	* @param data la donnée à ajouter
+	* @return true si la donnée à bien été ajoutée et false sinon
+	*/
+	bool addData(CData* data);
 	
+	/**
+	* Récupérer les données contenues dans cet attribut
+	* @return datas les données de l'attribut
+	*/
+	std::list<CData*> * getData();
+	/**
+	* Récupérer l'élément que contient l'attribut considéré
+	* @return l'élément de l'attribut
+	*/
+	UniqueElement * getElement();
 
 protected:
-	std::string* m_content;
+	std::list<CData*>* m_datas;
+	UniqueElement* m_element;
 };
+
+// 
+///////////////////////////////////////////////////////////////////////////////
+
+#endif

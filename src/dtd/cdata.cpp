@@ -1,10 +1,10 @@
 #include <string>
 
-#include cdata.h"
+#include "cdata.h"
 
 using namespace std;
 
-CData::CData(std::string* content) : Content(), m_content(content)
+CData::CData(std::string* content) : DTDContent(), m_content(content)
 {
 }
 

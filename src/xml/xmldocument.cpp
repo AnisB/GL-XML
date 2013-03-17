@@ -45,21 +45,52 @@
  */
 XMLDocument::XMLDocument(std::string aName, std::string aName2, std::string aValue)
 {
-	mName = aName;
+	mName1 = aName;
 	mName2 = aName2;
 	mValue = aValue;
 }
 
+
+/**
+* Constructor
+*/
+XMLDocument::XMLDocument( Declaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
+{
+	mName1 = aDec->mName1;
+	mName2 = aDec->mName2;
+	mValue = aDec->mValue;
+	mMiscList = alist;
+	mRoot=root;
+	mStyleSheet=stylesheet;
+}
+
+	
 /**
  * Destructor.
  */
-
-
-
 XMLDocument::~XMLDocument()
 {
 }
 
+/**
+* Displays the node as an xml node
+*/
+void XMLDocument::displayAsXMLFormat()
+{
+	std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
+	std::cout<<"<!DOCTYPE "<<mName1<<" "<<mName2<<" \""<<mValue<<"\" >";
+	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)
+	{
+		(*it)->printXML();
+	}
+
+	for(std::list<Element*>::iterator it=mStyleSheet->begin();it!=mStyleSheet->end();it++)
+	{
+		(*it)->printXML();
+	}
+
+	mRoot->printXML();
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

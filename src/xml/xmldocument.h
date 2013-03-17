@@ -46,7 +46,12 @@
 #include "misc.h"
 //////////////////////////////////////////////////////////////////////////////
 
-
+typedef struct TDeclaration
+{
+	std::string mName1;
+	std::string mName2;
+	std::string mValue;
+} Declaration;
   /////////////////////////////////////////////////////////////////////////////
   // class XMLDocument
   /**
@@ -60,10 +65,14 @@
 
 	public:
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Constructor
 	*/
 	XMLDocument(std::string aname, std::string aname2, std::string avalue);
+	
+	/**
+	* Constructor
+	*/
+	XMLDocument( Declaration * aDec, std::list<Element*>  * stylesheet, Element* root, std::list<Misc*> * alist);
 	
 
 	/**
@@ -75,17 +84,17 @@
 
 	public:
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Displays the node as an xml node
 	*/
+	void displayAsXMLFormat();
 
 	// ------------------------- Protected Datas ------------------------------
   protected:
 	Element * mRoot;
-	std::list<Element>* mStyleSheet;
-	std::list<XMLAttribute>* mAttributes;
-	Misc * comments;
-	std::string mName;
+	std::list<Element*>* mStyleSheet;
+	std::list<XMLAttribute*>* mAttributes;
+	std::list<Misc*> * mMiscList;
+	std::string mName1;
 	std::string mName2;
 	std::string mValue;	
 

@@ -41,6 +41,7 @@
 // Inclusions
 #include <iostream>
 #include <list>
+#include "xmlcontent.h"
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -51,7 +52,7 @@
 */
 
 
-	class Misc
+	class Misc :public  XMLContent
 	{
 	// ----------------------- Standard services ------------------------------
 
@@ -68,6 +69,9 @@
 	~Misc();
 	// ----------------------- Other services ------------------------------
 
+	void printXML();
+
+
 	public:
 	/**
 	* Definition de la méthode
@@ -81,7 +85,5 @@
 
 // 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 #endif
 #endif

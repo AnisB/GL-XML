@@ -1,12 +1,16 @@
 #ifndef COMMUN_H
 #define COMMUN_H
 
-using namespace std;
 #include <list>
 #include <utility>
 #include <string>
+#include <xml/misc.h>
+#include <xml/xmldocument.h>
+#include <xml/element.h>
+#include <xml/xmlattribute.h>
 
-typedef pair<string,string> ElementName;
+
+typedef std::pair<std::string,std::string> ElementName;
 
 #ifdef DEBUG
 #define debug(x) (x)

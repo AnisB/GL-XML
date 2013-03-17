@@ -62,6 +62,8 @@
 	XMLAttribute(std::string aname, std::string avalue);
 	~XMLAttribute();
 
+	void printXML();
+
   protected:
 	// ------------------------- Protected Datas ------------------------------
 	std::string mName;

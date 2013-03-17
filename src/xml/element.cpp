@@ -28,6 +28,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //Includes
 #include "element.h"
+
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -42,14 +43,12 @@
 /**
  * Constructor
  */
-Element::Element(std::string aType, std::list<XMLContent*> * aXMLContent)
+Element::Element(std::string aType1,std::string aType2, std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>* aXMLContent)
 {
-	mType=aType;
+	mType1=aType1;
+	mType2=aType2;
 	mContent=aXMLContent;
-}
-Element::Element(std::string aType)
-{
-	mType=aType;
+	mAttList=anAttList;
 }
 
 /**
@@ -72,6 +71,25 @@ void Element::setContents(std::list<XMLContent*> * aContent)
 void Element::addContent(XMLContent * aXMLContent)
 {
 	mContent->push_back(aXMLContent);
+}
+
+void Element::printXML()
+{
+	std::cout<<"<"<<mType1<<" "<<mType2;
+	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+	{
+		(*it)->printXML();
+	}
+	std::cout<<">";
+	
+	for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
+	{
+		std::cout<<"lol"<<std::endl;
+		(*it)->printXML();
+	}
+
+	std::cout<<"</"<<mType2<<">"<<std::endl;
+
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline functimyCameraons //

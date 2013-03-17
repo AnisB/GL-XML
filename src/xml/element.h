@@ -39,10 +39,9 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include <iostream>
 #include "xmlcontent.h"
 #include <list>
-#include <iostream>
+#include "xmlattribute.h"
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -53,17 +52,16 @@
 */
 
 
-	class Element
-	{
+class Element : public XMLContent
+{
 	// ----------------------- Standard services ------------------------------
 
-	public:
+public:
 	/**
 	* Definition de la méthode
 	* @param *nom parametre* *description parametre*
 	*/
-	Element(std::string aType, std::list<XMLContent*>  * aXMLContent);
-	Element(std::string aType);
+	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>  * aXMLContent);
 
 	/**
 	* Destructor
@@ -73,21 +71,24 @@
 	// ----------------------- Other services ------------------------------
 	void setContents(std::list<XMLContent*> * aXMLContent);
 	void addContent(XMLContent * aXMLContent);
-	public:
+	void printXML();
+public:
 	/**
 	* Definition de la méthode
 	* @param *nom parametre* *description parametre*
 	*/
 
 	// ------------------------- Protected Datas ------------------------------
-  protected:
+protected:
 	std::list<XMLContent*> * mContent;
+	std::list<XMLAttribute*> * mAttList;
 
 
     //--------------------------- Protected attributes---------------------------
 
-  protected:
-  		std::string mType;
+protected:
+	std::string mType1;
+	std::string mType2;
 };
 
 // 

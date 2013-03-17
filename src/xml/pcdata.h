@@ -92,7 +92,7 @@
 	/**
 	* Affiche sur la sortie standard le noeud
 	*/
-	void printAsXml();
+	void printXML();
 
     //--------------------------- Protected attributes---------------------------
 	protected:

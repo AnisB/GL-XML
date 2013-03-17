@@ -65,6 +65,9 @@
  	* Destructor
 	*/
 	virtual ~XMLContent();
+
+
+	virtual void printXML();
 	// ----------------------- Other services ------------------------------
 
 	public:

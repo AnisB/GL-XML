@@ -57,6 +57,11 @@ Misc::~Misc( )
   //Nothing to do
 }
 
+
+void Misc::printXML()
+{
+	std::cout<< mValue<<std::endl;
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

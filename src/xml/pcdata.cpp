@@ -74,7 +74,7 @@ std::string PCData::getValue()
 	return mValue;
 }
 
-void PCData::printAsXml()
+void PCData::printXML()
 {
 	std::cout<<mValue<<std::endl;
 }

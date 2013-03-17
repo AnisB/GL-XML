@@ -54,6 +54,11 @@ XMLContent::~XMLContent( )
   //Nothing to do
 }
 
+
+void XMLContent::printXML()
+{
+	std::cout<<"Error"<<std::endl;
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

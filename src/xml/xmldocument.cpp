@@ -39,17 +39,17 @@
 // ----------------------- Standard services ------------------------------
 
 
-
+using namespace std;
 /**
 * Constructor
 */
 XMLDocument::XMLDocument( Header * aHead, Declaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
 {
-	mName = aHead->mName;
-	mAttributes = aHead->mAttList;
-	mName1 = aDec->mName1;
-	mName2 = aDec->mName2;
-	mValue = aDec->mValue;
+	mHeader = new Header();
+	mHeader->copy(aHead);
+	mDec = new Declaration();
+	mDec->copy(aDec);
+	cout<<mHeader->mName<<" "<<mHeader->mExists<<endl;
 	mMiscList = alist;
 	mRoot=root;
 	mStyleSheet=stylesheet;
@@ -69,7 +69,9 @@ XMLDocument::~XMLDocument()
 void XMLDocument::displayAsXMLFormat()
 {
 	//std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
-	std::cout<<"<!DOCTYPE "<<mName1<<" "<<mName2<<" \""<<mValue<<"\" >";
+
+	mHeader->printXML();
+	mDec->printXML();
 	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)
 	{
 		(*it)->printXML();

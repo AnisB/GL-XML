@@ -51,8 +51,8 @@ document
  ;
 
 header_opt
- : OBALISESPECIALE NOM attributs_opt SUPSPECIAL {$$=new Header(); $$->mName=NOM; $$->mAttList=$3;}
- | /*vide*/ {$$ =new Header();$$->mName=""; $$->mAttList=new std::list<XMLAttribute*>;}
+ : OBALISESPECIALE NOM attributs_opt SUPSPECIAL {$$=new Header(); $$->mName=NOM; $$->mAttList=$3;$$->mExists=true;}
+ | /*vide*/ {$$ =new Header();$$->mName=""; $$->mAttList=new std::list<XMLAttribute*>;$$->mExists=false;}
  ;
 
 misc_seq_opt
@@ -65,8 +65,8 @@ misc
  ;
 
 declarations
-  : declaration {$$=$1}
- | /*vide*/ {$$= new Declaration();}
+  : declaration {$$=$1;$$->mExists=true;}
+ | /*vide*/ {$$= new Declaration();$$->mExists=false;}
  ;
  
 feuilles_style_opt
@@ -99,6 +99,7 @@ vide_ou_contenu
 
 ferme_contenu_et_fin
  : SUP contenu_opt FBALISE {$$=$2;}
+ | SUP contenu_opt FBALISEEN {$$=$2;}
  ;
 
 contenu_opt 
@@ -112,6 +113,11 @@ nom
 : NOM {$$=$1}
 | ENNOM {$$=$1}
 ;
+
+nom
+: NOM {$$=$1}
+| ENNOM {$$=$1}
+;
 %%
 
 int main(int argc, char **argv)
@@ -119,7 +125,7 @@ int main(int argc, char **argv)
   int err;
   string *result;
   XMLDocument * dc;
-  yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
+  //yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
 
   err=xmlparse(&result,&dc);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);

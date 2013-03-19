@@ -51,12 +51,46 @@ typedef struct TDeclaration
 	std::string mName1;
 	std::string mName2;
 	std::string mValue;
+	bool mExists;
+
+	void printXML()
+	{
+		if (mExists)
+		{
+			std::cout<<"<!DOCTYPE "<<mName1<<" "<<mName2<<" \""<<mValue<<"\" >";
+
+		}
+	}
+
+	void copy(struct TDeclaration * aDec)
+	{
+		this->mName1 = aDec->mName1;
+		this->mName2 =aDec->mName2;
+		this->mValue =aDec->mValue;
+		this->mValue=aDec->mExists;
+	}	
 } Declaration;
 
 typedef struct THeader
 {
 	std::string mName;
 	std::list<XMLAttribute*> * mAttList;
+	bool mExists;
+
+	void printXML()
+	{
+		if (mExists)
+		{
+	        std::cout<<"<?xml"; 
+	        std::cout<<">";
+		}
+	}
+	void copy(struct THeader * aHeader)
+	{
+		this->mName = aHeader->mName;
+		this->mAttList =aHeader->mAttList;
+		this->mExists=aHeader->mExists;
+	}
 } Header;
   /////////////////////////////////////////////////////////////////////////////
   // class XMLDocument
@@ -96,9 +130,8 @@ typedef struct THeader
 	std::list<Element*>* mStyleSheet;
 	std::list<XMLAttribute*>* mAttributes;
 	std::list<Misc*> * mMiscList;
-	std::string mName1;
-	std::string mName2;
-	std::string mValue;	
+	Declaration * mDec;
+	Header * mHeader;
 
     //--------------------------- Protected attributes---------------------------
 

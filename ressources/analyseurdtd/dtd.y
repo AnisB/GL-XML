@@ -39,13 +39,14 @@ content
 ;
 
 mixed
-: OUVREPAR PCDATA pipes_opt FERMEPAR AST
+: OUVREPAR PCDATA pipes FERMEPAR AST
+| OUVREPAR PCDATA FERMEPAR AST
 | OUVREPAR PCDATA FERMEPAR
 ;
 
-pipes_opt
-: pipes_opt BARRE NOM
-| /*vide*/
+pipes
+: pipes BARRE NOM
+| BARRE NOM
 ;
 
 children

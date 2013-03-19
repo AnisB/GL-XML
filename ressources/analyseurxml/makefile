@@ -1,6 +1,6 @@
 
 INC=-I../../src/
-SRC= ../../src/xml/misc.cpp ../../src/xml/xmldocument.cpp ../../src/xml/xmlcontent.cpp ../../src/xml/xmlattribute.cpp ../../src/xml/element.cpp
+SRC= ../../src/xml/misc.cpp ../../src/xml/xmldocument.cpp ../../src/xml/xmlcontent.cpp ../../src/xml/xmlattribute.cpp ../../src/xml/element.cpp ../../src/xml/pcdata.cpp
 all: analyseXML
 analyseXML: *.l *.y makefile
 	flex -Pxml xml.l

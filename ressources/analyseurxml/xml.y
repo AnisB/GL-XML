@@ -65,7 +65,7 @@ misc
 
 declarations
   : declaration {$$=$1}
- | /*vide*/ {$$= NULL}
+ | /*vide*/ {$$= new Declaration();}
  ;
  
 feuilles_style_opt

@@ -28,8 +28,7 @@ int xmllex(void);
 }
 
 %token EGAL SLASH SUP SUPSPECIAL DOCTYPE
-%token <s> ENCODING VALEUR COMMENT NOM ENNOM
-%token <cnt> DONNEES
+%token <s> ENCODING VALEUR COMMENT NOM ENNOM DONNEES
 %token <en> OBALISEEN OBALISE OBALISESPECIALE FBALISE FBALISEEN
 %type <elt> element
 %type <msc> misc 
@@ -100,7 +99,7 @@ ferme_contenu_et_fin
  ;
 
 contenu_opt 
- : contenu_opt DONNEES {$$=$1;$$->push_back($2);}
+ : contenu_opt DONNEES {$$=$1;$$->push_back(new PCData($2));}
  | contenu_opt misc {$$=$1;$$->push_back($2);}
  | contenu_opt element {$$=$1;$$->push_back($2);}
  | /*vide*/  {$$= new std::list<XMLContent*>;}        
@@ -117,7 +116,6 @@ int main(int argc, char **argv)
 
   err=xmlparse(&result,&dc);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
-  printf("Finish parsing");
   dc->displayAsXMLFormat();
   return 0;
 }

@@ -8,7 +8,7 @@
 #include <xml/xmldocument.h>
 #include <xml/element.h>
 #include <xml/xmlattribute.h>
-
+#include <xml/pcdata.h>
 
 typedef std::pair<std::string,std::string> ElementName;
 

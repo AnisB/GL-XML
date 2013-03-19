@@ -45,6 +45,7 @@
 
 #include "cdata.h"
 #include "uniqueelement.h"
+#include "mothercontent.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // class DTDAttribute
@@ -52,7 +53,7 @@
 * Cette classe contient les attributs
 */
 
-class DTDAttribute
+class DTDAttribute : public MotherContent
 {
 public:
 	DTDAttribute(UniqueElement* element, std::list<CData*>* datas);

@@ -15,19 +15,19 @@
  **/
 
 /**
- * @file UniqueElement.cpp
+ * @file mothercontent.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * @date date
  *
- * Header file for module UniqueElement.cpp
+ * Source file for module MotherContent
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
- #include "uniqueelement.h"
+ #include "mothercontent.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -42,26 +42,16 @@
 /**
  * Constructor
  */
-UniqueElement::UniqueElement (std::string content) : DTDContent(), m_content(content)
+MotherContent::MotherContent ()
 {
 }
 
 /**
  * Destructor.
  */
-UniqueElement::~UniqueElement( )
+MotherContent::~MotherContent()
 {
   //Nothing to do
-}
-
-void UniqueElement::setContent(std::string content)
-{
-	m_content=content;
-}
-
-std::string UniqueElement::getContent()
-{
-	return m_content;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -45,7 +45,7 @@
 /**
  * Constructor
  */
-Declaration::Declaration (std::map<int, DTDContent>  aMapContent)
+Declaration::Declaration (std::map<int, DTDContent>  aMapContent) : MotherContent()
 {
 	mapContent = aMapContent;
 }

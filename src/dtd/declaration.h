@@ -43,9 +43,11 @@
 #include <map>
 
 #include "dtdcontent.h"
+#include "mothercontent.h"
+
 /////////////////////////////////////////////////////////////////////////////
 // class Declaration
-class Declaration
+class Declaration : public MotherContent
 {
 // ----------------------- Standard services ------------------------------
 

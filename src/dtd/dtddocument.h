@@ -17,25 +17,25 @@
 #pragma once
 
 /**
-* @file documentdtd
+* @file dtddocument
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module documentdtd.cpp
+* Header file for module dtddocument.cpp
 *
 */
 
-#if defined(documentdtd_RECURSES)
-#error Recursive header files inclusion detected in documentdtd.h
-#else // defined(documentdtd_RECURSES)
+#if defined(dtddocument_RECURSES)
+#error Recursive header files inclusion detected in dtddocument.h
+#else // defined(dtddocument_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define documentdtd_RECURSES
+#define dtddocument_RECURSES
 
-#if !defined documentdtd_H
+#if !defined dtddocument_H
 /** Prevents repeated inclusion of headers. */
-#define documentdtd_H
+#define dtddocument_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
@@ -47,17 +47,17 @@
 #include "dtdattribute.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// class DocumentDtd
+// class DTDDocument
 
 
-class DocumentDtd
+class DTDDocument
 {
 // ----------------------- Standard services ------------------------------
 
 public:
 
-	DocumentDtd(std::list<MotherContent*>* listContent);
-	~DocumentDtd();
+	DTDDocument(std::list<MotherContent*>* listContent);
+	~DTDDocument();
 	
 
 

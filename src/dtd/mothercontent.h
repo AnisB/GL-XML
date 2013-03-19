@@ -54,6 +54,7 @@ public:
 // ----------------------- Standard services ------------------------------
 	MotherContent();
 	virtual ~MotherContent();
+	virtual void printDTD();
 };
 
 // 

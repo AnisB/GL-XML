@@ -58,6 +58,11 @@ Declaration::~Declaration( )
   //Nothing to do
 }
 
+void Declaration::printDTD()
+{
+	//iterateur sur map et toute la merde à compléter TT
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

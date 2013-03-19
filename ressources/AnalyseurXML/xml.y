@@ -45,7 +45,12 @@ int xmllex(void);
 %%
 
 document
- : declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($1,$2,$3,$4); delete $1;}
+ : header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($2,$3,$4,$5); delete $2;}
+ ;
+
+header_opt
+ : OBALISESPECIALE NOM attributs_opt SUPSPECIAL
+ | /*vide*/
  ;
 
 misc_seq_opt

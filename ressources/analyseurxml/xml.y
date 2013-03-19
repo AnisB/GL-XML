@@ -34,6 +34,7 @@ int xmllex(void);
 %type <elt> element
 %type <msc> misc 
 %type <en> ouvre
+%type <s> nom
 %type <lstmsc> misc_seq_opt
 %type <dec> declaration declarations
 %type <latt> attributs_opt
@@ -82,7 +83,7 @@ element
  ;
 
 attributs_opt
- : attributs_opt NOM EGAL VALEUR {$$=$1;$$->push_back(new XMLAttribute($2,$4))}
+ : attributs_opt nom EGAL VALEUR {$$=$1;$$->push_back(new XMLAttribute($2,$4))}
  | /*vide*/ {$$= new std::list<XMLAttribute*>}
  ;
 
@@ -107,6 +108,10 @@ contenu_opt
  | /*vide*/  {$$= new std::list<XMLContent*>;}        
  ;
 
+nom
+: NOM {$$=$1}
+| ENNOM {$$=$1}
+;
 %%
 
 int main(int argc, char **argv)
@@ -114,7 +119,7 @@ int main(int argc, char **argv)
   int err;
   string *result;
   XMLDocument * dc;
-  //yydebug = 0; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
+  yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
 
   err=xmlparse(&result,&dc);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);

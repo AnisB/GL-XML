@@ -15,12 +15,12 @@
 **/
 
 /**
-* @file cdata.cpp
+* @file pcdata.cpp
 * @author Florent Weillaert
 *
 * @date 15/03/2013
 *
-* source file for module CData
+* source file for module PCData
 *
 */
  
@@ -31,7 +31,7 @@
  
 #include <string>
 
-#include "cdata.h"
+#include "pcdata.h"
 
 using namespace std;
 
@@ -45,14 +45,14 @@ using namespace std;
 /**
 * Constructor
 */
-CData::CData(std::string content) : m_content(content)
+PCData::PCData(std::string content) : DTDContent(), m_content(content)
 {
 }
 
 /**
 * Destructor.
 */
-CData::~CData()
+PCData::~PCData()
 {
 }
 
@@ -61,14 +61,14 @@ CData::~CData()
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline setContent
-void CData::setContent(string content)
+void PCData::setContent(string content)
 {
 	m_content = content;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline getContent
-string CData::getContent()
+string PCData::getContent()
 {
 	return m_content;
 }

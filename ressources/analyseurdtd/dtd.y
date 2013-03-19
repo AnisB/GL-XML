@@ -21,7 +21,8 @@ int dtdlex(void);
 
 %%
 
-main: dtd_list_opt
+document: dtd_list_opt
+
 ;
 
 dtd_list_opt

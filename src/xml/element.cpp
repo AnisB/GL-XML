@@ -75,7 +75,15 @@ void Element::addContent(XMLContent * aXMLContent)
 
 void Element::printXML()
 {
-	std::cout<<"<"<<mType1<<" "<<mType2;
+	if (mType1!="")
+	{
+		std::cout<<"<"<<mType1<<":"<<mType2;
+	}
+	else
+	{
+		std::cout<<"<"<<mType2;
+
+	}
 	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
 	{
 		(*it)->printXML();
@@ -86,8 +94,15 @@ void Element::printXML()
 	{
 		(*it)->printXML();
 	}
-
+	if (mType1!="")
+	{
+	std::cout<<"</"<<mType1<<":"<<mType2<<">"<<std::endl;
+	}
+	else
+	{
 	std::cout<<"</"<<mType2<<">"<<std::endl;
+
+	}
 
 }
 ///////////////////////////////////////////////////////////////////////////////

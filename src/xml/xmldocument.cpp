@@ -49,7 +49,6 @@ XMLDocument::XMLDocument( Header * aHead, Declaration * aDec, std::list<Element*
 	mHeader->copy(aHead);
 	mDec = new Declaration();
 	mDec->copy(aDec);
-	cout<<mHeader->mName<<" "<<mHeader->mExists<<endl;
 	mMiscList = alist;
 	mRoot=root;
 	mStyleSheet=stylesheet;

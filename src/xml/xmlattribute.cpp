@@ -59,7 +59,7 @@ XMLAttribute::~XMLAttribute( )
 
 void XMLAttribute::printXML()
 {
-	std::cout<<" "<<mName<<" \""<<mValue<<"\""<<std::endl;
+	std::cout<<" "<<mName<<"=\""<<mValue<<"\"";
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

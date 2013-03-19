@@ -67,7 +67,7 @@ typedef struct TDeclaration
 		this->mName1 = aDec->mName1;
 		this->mName2 =aDec->mName2;
 		this->mValue =aDec->mValue;
-		this->mValue=aDec->mExists;
+		this->mExists=aDec->mExists;
 	}	
 } Declaration;
 
@@ -82,7 +82,11 @@ typedef struct THeader
 		if (mExists)
 		{
 	        std::cout<<"<?xml"; 
-	        std::cout<<">";
+	        for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+	        {
+	        	(*it)->printXML();
+	        }
+	        std::cout<<">"<<std::endl;
 		}
 	}
 	void copy(struct THeader * aHeader)

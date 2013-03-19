@@ -13,7 +13,7 @@ int dtdlex(void);
 %}
 
 %union { 
-   char *s; 
+   char *s;
 }
 
 %token ELEMENT ATTLIST SUP OUVREPAR FERMEPAR VIRGULE BARRE FIXED EMPTY ANY PCDATA AST PTINT PLUS CDATA
@@ -21,14 +21,14 @@ int dtdlex(void);
 
 %%
 
-document: dtd_list_opt
+document: dtd_list_opt {$$ = new DTDDocument($1);}
 
 ;
 
 dtd_list_opt
-: dtd_list_opt ATTLIST NOM att_definition_opt SUP
+: dtd_list_opt ATTLIST NOM att_definition_opt SUP {$1 }
 | dtd_list_opt ELEMENT NOM content SUP
-| /* vide */
+| /* vide */ {$$ = new std::list<DTDAttribute*>;}
 ;
 
 content
@@ -39,14 +39,13 @@ content
 ;
 
 mixed
-: OUVREPAR PCDATA pipes FERMEPAR AST
-| OUVREPAR PCDATA FERMEPAR AST
+: OUVREPAR PCDATA pipes_opt FERMEPAR AST
 | OUVREPAR PCDATA FERMEPAR
 ;
 
-pipes
-: pipes BARRE NOM
-| BARRE NOM
+pipes_opt
+: pipes_opt BARRE NOM
+| /*vide*/
 ;
 
 children

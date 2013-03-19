@@ -25,6 +25,7 @@ int xmllex(void);
    std::list<XMLContent*> *lcnt;
    XMLContent * cnt;
    std::list<XMLAttribute*> * latt;
+   Header * head;
 }
 
 %token EGAL SLASH SUP SUPSPECIAL DOCTYPE
@@ -38,18 +39,19 @@ int xmllex(void);
 %type <latt> attributs_opt
 %type <lelt> feuilles_style_opt
 %type <lcnt> contenu_opt vide_ou_contenu ferme_contenu_et_fin
+%type <head> header_opt
 
 %parse-param{ string** nom_dtd }
 %parse-param { XMLDocument** doc}
 %%
 
 document
- : header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($2,$3,$4,$5); delete $2;}
+ : header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($1,$2,$3,$4,$5); delete $2;}
  ;
 
 header_opt
- : OBALISESPECIALE NOM attributs_opt SUPSPECIAL
- | /*vide*/
+ : OBALISESPECIALE NOM attributs_opt SUPSPECIAL {$$=new Header(); $$->mName=NOM; $$->mAttList=$3;}
+ | /*vide*/ {$$ =new Header();$$->mName=""; $$->mAttList=new std::list<XMLAttribute*>;}
  ;
 
 misc_seq_opt

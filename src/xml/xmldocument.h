@@ -52,6 +52,12 @@ typedef struct TDeclaration
 	std::string mName2;
 	std::string mValue;
 } Declaration;
+
+typedef struct THeader
+{
+	std::string mName;
+	std::list<XMLAttribute*> * mAttList;
+} Header;
   /////////////////////////////////////////////////////////////////////////////
   // class XMLDocument
   /**
@@ -67,12 +73,7 @@ typedef struct TDeclaration
 	/**
 	* Constructor
 	*/
-	XMLDocument(std::string aname, std::string aname2, std::string avalue);
-	
-	/**
-	* Constructor
-	*/
-	XMLDocument( Declaration * aDec, std::list<Element*>  * stylesheet, Element* root, std::list<Misc*> * alist);
+	XMLDocument( Header * aHead, Declaration * aDec, std::list<Element*>  * stylesheet, Element* root, std::list<Misc*> * alist);
 	
 
 	/**
@@ -90,6 +91,7 @@ typedef struct TDeclaration
 
 	// ------------------------- Protected Datas ------------------------------
   protected:
+  	std::string mName;
 	Element * mRoot;
 	std::list<Element*>* mStyleSheet;
 	std::list<XMLAttribute*>* mAttributes;

@@ -41,21 +41,12 @@
 
 
 /**
- * Constructor
- */
-XMLDocument::XMLDocument(std::string aName, std::string aName2, std::string aValue)
-{
-	mName1 = aName;
-	mName2 = aName2;
-	mValue = aValue;
-}
-
-
-/**
 * Constructor
 */
-XMLDocument::XMLDocument( Declaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
+XMLDocument::XMLDocument( Header * aHead, Declaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
 {
+	mName = aHead->mName;
+	mAttributes = aHead->mAttList;
 	mName1 = aDec->mName1;
 	mName2 = aDec->mName2;
 	mValue = aDec->mValue;
@@ -77,7 +68,7 @@ XMLDocument::~XMLDocument()
 */
 void XMLDocument::displayAsXMLFormat()
 {
-	std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
+	//std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
 	std::cout<<"<!DOCTYPE "<<mName1<<" "<<mName2<<" \""<<mValue<<"\" >";
 	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)
 	{

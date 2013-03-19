@@ -17,25 +17,25 @@
 #pragma once
 
 /**
-* @file cdata.h
+* @file pcdata.h
 * @author Florent Weillaert
 * H4214
 *
 * @date 15/03/2013
 *
-* Header file for module cdata.cpp
+* Header file for module pcdata.cpp
 *
 */
 
-#if defined(CData_RECURSES)
-#error Recursive header files inclusion detected in cdata.h
-#else // defined(CData_RECURSES)
+#if defined(PCData_RECURSES)
+#error Recursive header files inclusion detected in pcdata.h
+#else // defined(PCData_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define CData_RECURSES
+#define PCData_RECURSES
 
-#if !defined CData_H
+#if !defined PCData_H
 /** Prevents repeated inclusion of headers. */
-#define CData_H
+#define PCData_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
@@ -44,21 +44,21 @@
 #include <iostream>
 
 /////////////////////////////////////////////////////////////////////////////
-// class CData
-class CData
+// class PCData
+class PCData : public DTDContent
 {
 public:
-	CData(std::string content);
-	virtual ~CData();
+	PCData(std::string content);
+	virtual ~PCData();
 	
 	/**
-	* remplacer le contenu du CData
+	* remplacer le contenu du PCData
 	* @param content le contenu
 	*/
 	void setContent(std::string content);
 
 	/**
-	* recuperer le contenu de CData
+	* recuperer le contenu de PCData
 	* @return le contenu
 	*/
 	std::string getContent();

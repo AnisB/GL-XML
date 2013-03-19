@@ -84,7 +84,7 @@ void Element::printXML()
 	
 	for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
 	{
-		std::cout<<"lol"<<std::endl;
+		std::cout<<"lol"<<mContent->size()<<std::endl;
 		(*it)->printXML();
 	}
 

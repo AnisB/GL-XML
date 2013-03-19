@@ -32,5 +32,5 @@ include_directories( ${IncDir})
 #------------------------------------------------------------------------------
 add_subdirectory(src)
 add_subdirectory(test)
-#add_subdirectory(ressources)
-add_subdirectory(program)
+add_subdirectory(ressources)
+#add_subdirectory(program)

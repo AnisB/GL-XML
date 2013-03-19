@@ -86,7 +86,7 @@ ouvre
  ;
 
 vide_ou_contenu 
- : SLASH SUP {$$=NULL;}
+ : SLASH SUP {$$=new std::list<XMLContent*>;}
  | ferme_contenu_et_fin SUP {$$=$1;} 
  ;
 
@@ -112,6 +112,7 @@ int main(int argc, char **argv)
 
   err=xmlparse(&result,&dc);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
+  printf("Finish parsing");
   dc->displayAsXMLFormat();
   return 0;
 }

@@ -87,6 +87,8 @@ public:
 	*/
 	UniqueElement * getElement();
 
+	void printDTD();
+
 protected:
 	std::list<CData*>* m_datas;
 	UniqueElement* m_element;

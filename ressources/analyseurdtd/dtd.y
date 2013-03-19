@@ -14,21 +14,39 @@ int dtdlex(void);
 
 %union { 
    char *s; 
+   std::list<MotherContent*>* lmc;
+   DTDDocument* ddtd;
+   
 }
 
 %token ELEMENT ATTLIST SUP OUVREPAR FERMEPAR VIRGULE BARRE FIXED EMPTY ANY PCDATA AST PTINT PLUS CDATA
 %token <s> NOM TOKENTYPE DECLARATION VALEUR
 
+%type <lmc> dtd_list_opt
+%type <ddtd> document
 %%
 
 document: dtd_list_opt
-
+{
+	$$=new DTDDocument($1);
+}
 ;
 
 dtd_list_opt
-: dtd_list_opt ATTLIST NOM att_definition_opt SUP
-| dtd_list_opt ELEMENT NOM content SUP
-| /* vide */
+: dtd_list_opt ATTLIST NOM att_definition_opt SUP 
+{
+	$$=$1;
+	$$->push_back(new DTDAttribute(new UniqueElement($3), $4));
+}
+| dtd_list_opt ELEMENT NOM content SUP 
+{
+	$$=$1;
+	$$->push_back(new Declaration($3, $4));
+}
+| /* vide */ 
+{
+	$$=new std::list<MotherContent*>;
+}
 ;
 
 content

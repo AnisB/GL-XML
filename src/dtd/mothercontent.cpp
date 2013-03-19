@@ -54,6 +54,10 @@ MotherContent::~MotherContent()
   //Nothing to do
 }
 
+void MotherContent::printDTD()
+{
+	//should not pass here
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

@@ -58,6 +58,7 @@ public:
 	*/
 	Declaration(std::map<int, DTDContent> aMapContent);
 	~Declaration();
+	printDTD();
 
   protected:
 	std::map<int, DTDContent> mapContent;

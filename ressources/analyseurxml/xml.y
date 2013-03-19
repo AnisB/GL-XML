@@ -31,6 +31,7 @@ int xmllex(void);
 %token EGAL SLASH SUP SUPSPECIAL DOCTYPE
 %token <s> ENCODING VALEUR COMMENT NOM ENNOM DONNEES
 %token <en> OBALISEEN OBALISE OBALISESPECIALE FBALISE FBALISEEN
+%type <s> nom
 %type <elt> element
 %type <msc> misc 
 %type <en> ouvre
@@ -54,6 +55,11 @@ header_opt
  | /*vide*/ {$$ =new Header();$$->mName=""; $$->mAttList=new std::list<XMLAttribute*>;}
  ;
 
+nom
+ : NOM {$$ = $1}
+ | ENNOM {$$ = $1}
+ ;
+ 
 misc_seq_opt
  : misc_seq_opt misc {$$=$1; $$->push_back($2);}
  | /*vide*/ {$$= new std::list<Misc*>;}
@@ -82,7 +88,7 @@ element
  ;
 
 attributs_opt
- : attributs_opt NOM EGAL VALEUR {$$=$1;$$->push_back(new XMLAttribute($2,$4))}
+ : attributs_opt nom EGAL VALEUR {$$=$1;$$->push_back(new XMLAttribute($2,$4))}
  | /*vide*/ {$$= new std::list<XMLAttribute*>}
  ;
 
@@ -97,8 +103,14 @@ vide_ou_contenu
  ;
 
 ferme_contenu_et_fin
- : SUP contenu_opt FBALISE {$$=$2;}
+ : SUP contenu_opt ferme {$$=$2;}
  ;
+
+ferme
+ : FBALISE
+ | FBALISEEN
+ ;
+
 
 contenu_opt 
  : contenu_opt DONNEES {$$=$1;$$->push_back(new PCData($2));}

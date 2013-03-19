@@ -29,7 +29,12 @@ int xmllex(void);
 %%
 
 document
- : declarations feuilles_style_opt element misc_seq_opt 
+ : header_opt declarations feuilles_style_opt element misc_seq_opt 
+ ;
+
+header_opt
+ : OBALISESPECIALE NOM attributs_opt SUPSPECIAL
+ | /*vide*/
  ;
 
 misc_seq_opt

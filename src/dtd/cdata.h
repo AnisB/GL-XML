@@ -47,7 +47,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 // class CData
-class CData : public DTDContent
+class CData
 {
 public:
 	CData(std::string content);

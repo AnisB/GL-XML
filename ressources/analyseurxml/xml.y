@@ -34,12 +34,11 @@ int xmllex(void);
 %type <s> nom
 %type <elt> element
 %type <msc> misc 
-%type <en> ouvre
 %type <lstmsc> misc_seq_opt
 %type <dec> declaration declarations
 %type <latt> attributs_opt
 %type <lelt> feuilles_style_opt
-%type <lcnt> contenu_opt vide_ou_contenu ferme_contenu_et_fin
+%type <lcnt> contenu_opt vide_ou_contenu vide_ou_contenu_en ferme_contenu_et_fin ferme_contenu_et_fin_en
 %type <head> header_opt
 
 %parse-param{ string** nom_dtd }
@@ -84,7 +83,8 @@ declaration
  ;
 
 element
- : ouvre attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3)}
+ : OBALISE attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3)}
+ | OBALISEEN attributs_opt vide_ou_contenu_en  {$$ = new Element($1->first,$1->second,$2,$3)}
  ;
 
 attributs_opt
@@ -92,25 +92,23 @@ attributs_opt
  | /*vide*/ {$$= new std::list<XMLAttribute*>}
  ;
 
-ouvre
- : OBALISE {$$ = $1;}
- | OBALISEEN {$$ = $1;}
- ;
-
 vide_ou_contenu 
  : SLASH SUP {$$=new std::list<XMLContent*>;}
  | ferme_contenu_et_fin SUP {$$=$1;} 
  ;
 
+vide_ou_contenu_en
+ : SLASH SUP {$$=new std::list<XMLContent*>;}
+ | ferme_contenu_et_fin_en SUP {$$=$1;} 
+ ;
+
 ferme_contenu_et_fin
- : SUP contenu_opt ferme {$$=$2;}
+ : SUP contenu_opt FBALISE {$$=$2;}
  ;
 
-ferme
- : FBALISE
- | FBALISEEN
+ferme_contenu_et_fin_en
+ : SUP contenu_opt FBALISEEN {$$=$2;}
  ;
-
 
 contenu_opt 
  : contenu_opt DONNEES {$$=$1;$$->push_back(new PCData($2));}

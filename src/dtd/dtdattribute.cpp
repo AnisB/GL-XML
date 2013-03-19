@@ -46,7 +46,7 @@ using namespace std;
 /**
 * Constructor
 */
-DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) : m_element(element), m_datas(datas)
+DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherContent(), m_element(element), m_datas(datas)
 {
 }
 

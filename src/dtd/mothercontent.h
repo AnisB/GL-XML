@@ -17,59 +17,43 @@
 #pragma once
 
 /**
-* @file UniqueElement
+* @file mothercontent.h
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module UniqueElement.cpp
+* Header file for module mothercontent.cpp
 *
 */
 
-#if defined(UniqueElement_RECURSES)
-#error Recursive header files inclusion detected in UniqueElement.h
-#else // defined(UniqueElement_RECURSES)
+#if defined(MotherContent_RECURSES)
+#error Recursive header files inclusion detected in mothercontent.h
+#else // defined(MotherContent_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define UniqueElement_RECURSES
+#define MotherContentent_RECURSES
 
-#if !defined UniqueElement_H
+#if !defined MotherContent_H
 /** Prevents repeated inclusion of headers. */
-#define UniqueElement_H
+#define MotherContent_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 //////////////////////////////////////////////////////////////////////////////
-#include "dtdcontent.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// class UniqueElement
+// class MotherContent
+/**
+* Description of class MotherContent
+*/
 
-class UniqueElement : public DTDContent
+
+class MotherContent
 {
-// ----------------------- Standard services ------------------------------
-
 public:
-	UniqueElement(std::string content);
-	virtual ~UniqueElement();
-	
-	/**
-	* remplacer le contenu du CData
-	* @param content le contenu
-	*/
-	void setContent(std::string content);
-
-	/**
-	* recuperer le contenu de CData
-	* @return le contenu
-	*/
-	std::string getContent();
-
-	
-
-protected:
-	std::string m_content;
-
+// ----------------------- Standard services ------------------------------
+	MotherContent();
+	virtual ~MotherContent();
 };
 
 // 

@@ -85,10 +85,11 @@ std::string PCData::getType()
 }
 
 
-std::list<Content*> PCData::getSonList(std::string name)
+std::list<XMLContent*> PCData::getSonList(std::string name)
 {
 	throw 3;
-	return NULL;
+	std::list<XMLContent*> emptyList;
+	return emptyList;
 }
 
 

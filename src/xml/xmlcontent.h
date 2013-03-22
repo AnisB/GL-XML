@@ -41,6 +41,7 @@
 // Inclusions
 #include <iostream>
 #include <string>
+#include <list>
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -70,7 +71,7 @@
 	virtual std::string getType();
 	virtual void printXML();
 
-	virtual std::list<Content*> getSonList(std::string name);
+	virtual std::list<XMLContent*> getSonList(std::string name);
 	// ----------------------- Other services ------------------------------
 
 	public:

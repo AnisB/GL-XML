@@ -97,7 +97,7 @@
 	
 	std::string getType();
 
-	virtual std::list<Content*>getSonList(std::string name);
+	virtual std::list<XMLContent*>getSonList(std::string name);
 
 
     //--------------------------- Protected attributes---------------------------

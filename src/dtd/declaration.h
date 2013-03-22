@@ -56,18 +56,18 @@ public:
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
+	enum Card{PTINT, AST, PLUS, NONE};
 	
-	Declaration(std::string name, std::list<std::pair<int, std::list<DTDContent> > > type);
+	Declaration(std::string name, std::list<std::pair<int, DTDContent> > type);
 	~Declaration();
 	void printDTD();
 
   protected:
-	std::list<std::pair<int, std::list<DTDContent> > > mType;
+	std::list<std::pair<int, DTDContent> > mType;
 	std::string mName;
 };
 // 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 #endif
 #endif

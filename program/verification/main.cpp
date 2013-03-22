@@ -7,7 +7,7 @@
 using namespace std;
 
 extern FILE * xmlin;
-int xmlparse(string **);
+int xmlparse(string **, XMLDocument**);
 extern FILE * dtdin;
 int dtdparse();
 

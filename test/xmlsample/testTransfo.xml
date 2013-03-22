@@ -13,15 +13,20 @@
     <section>
       <titre>Fonctions et structure d'un compilateur</titre>
       <p>Tout programme r&#233;dig&#233; dans un langage de programmation de haut niveau 
-	tel que Pascal ou C ne peut être ex&#233;cut&#233; par un ordinateur que s'il 
+	tel que Pascal ou C ne peut &#234;tre ex&#233;cut&#233; par un ordinateur que s'il 
 	est traduit en instructions ex&#233;cutables par l'ordinateur, g&#233;n&#233;ralement 
 	des instruction en langage machine. L'ordinateur qui doit ex&#233;cuter 
 	le programme ainsi traduit est appel&#233; machine cible.</p>
     </section>
     <section>
       <titre>R&#233;alisation d'un compilateur</titre>
+<<<<<<< HEAD
       <p>Comme l'&#233;criture d'un compilateur est une tâche fort complexe, 
 	le programmateur a tout int&#233;ret à travailler en utilisant un langage 
+=======
+      <p>Comme l'&#233;criture d'un compilateur est une t&#226;che fort complexe, 
+	le programmateur a tout int&#233;r&#234;t &#224; travailler en utilisant un langage 
+>>>>>>> fc911283731bfb65b40d55867201f15cfc1c8ae4
 	de programmation de haut niveau.</p>
     </section>
   </chapitre>

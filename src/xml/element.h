@@ -76,8 +76,15 @@ public:
 	std::string childToString();
 	std::string attributeToString();
 	std::string getType();
+<<<<<<< HEAD
 	virtual std::list<Content*> getSonList(std::string name);
 
+=======
+	inline std::list<XMLContent*> * getContent()
+	{
+		return mContent;
+	}
+>>>>>>> fc911283731bfb65b40d55867201f15cfc1c8ae4
 	
 public:
 	/**

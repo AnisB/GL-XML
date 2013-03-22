@@ -87,12 +87,18 @@ std::string PCData::getType()
 
 std::list<XMLContent*> PCData::getSonList(std::string name)
 {
-	throw 3;
 	std::list<XMLContent*> emptyList;
 	return emptyList;
 }
 
-
+ std::string PCData::getOpen()
+ {
+ 	return mValue;
+ }
+ std::string PCData::getClose()
+ {
+ 	return "";
+ }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

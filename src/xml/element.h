@@ -83,11 +83,16 @@ public:
 	std::string attributeToString();
 	std::string getType();
 	virtual std::list<XMLContent*> getSonList(std::string name);
+	virtual std::list<XMLContent*> getAllContent(std::string name);
 	inline std::list<XMLContent*> * getContent()
 	{
 		return mContent;
 	}
-	
+
+	std::string operator[](std::string aname);
+	virtual std::string getOpen();
+	virtual std::string getClose(); 
+
 public:
 	/**
 	* Definition de la méthode

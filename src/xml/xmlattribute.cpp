@@ -66,6 +66,11 @@ std::string XMLAttribute::getType()
 {
 	return mName;
 }
+
+std::string XMLAttribute::getValue()
+{
+	return mValue;
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

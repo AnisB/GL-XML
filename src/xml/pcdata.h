@@ -52,11 +52,11 @@
 */
 
 
-	class PCData : public XMLContent
-	{
+class PCData : public XMLContent
+{
 	// ----------------------- Standard services ------------------------------
 
-	public:
+public:
 	/**
 	* Constructor
 	* @param aValue string object 
@@ -98,11 +98,12 @@
 	std::string getType();
 
 	virtual std::list<XMLContent*>getSonList(std::string name);
-
+	virtual std::string getOpen();
+	virtual std::string getClose(); 
 
     //--------------------------- Protected attributes---------------------------
-	protected:
-		std::string mValue;
+protected:
+	std::string mValue;
 
 	// 
 	///////////////////////////////////////////////////////////////////////////////

@@ -62,6 +62,15 @@ void Misc::printXML()
 {
 	std::cout<< mValue<<std::endl;
 }
+
+ std::string Misc::getOpen()
+ {
+ 	return mValue;
+ }
+ std::string Misc::getClose()
+ {
+ 	return "";
+ }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

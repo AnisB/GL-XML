@@ -71,7 +71,8 @@
 
 	void printXML();
 
-
+	virtual std::string getOpen();
+	virtual std::string getClose(); 
 	public:
 	/**
 	* Definition de la méthode

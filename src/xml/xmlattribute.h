@@ -65,6 +65,7 @@
 
 	void printXML();
 	std::string getType();
+	std::string getValue();
 
   protected:
 	// ------------------------- Protected Datas ------------------------------

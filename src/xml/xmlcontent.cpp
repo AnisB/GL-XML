@@ -42,37 +42,44 @@
 /**
  * Constructor
  */
-XMLContent::XMLContent ( )
-{
-}
+ XMLContent::XMLContent ( )
+ {
+ }
 
 /**
  * Destructor.
  */
-XMLContent::~XMLContent( )
-{
+ XMLContent::~XMLContent( )
+ {
   //Nothing to do
-}
+ }
 
 
-void XMLContent::printXML()
-{
-	std::cout<<"Error"<<std::endl;
-}
+ void XMLContent::printXML()
+ {
+ 	std::cout<<"Error"<<std::endl;
+ }
 
-std::string XMLContent::getType()
-{
-	throw 1;
-	return "error";
-}
+ std::string XMLContent::getType()
+ {
+ 	return "error";
+ }
 
-std::list<XMLContent*> XMLContent::getSonList(std::string name)
-{
-	throw 2;
-	std::list<XMLContent*> emptyList;
-	return emptyList;
-}
+ std::list<XMLContent*> XMLContent::getSonList(std::string name)
+ {
+ 	std::list<XMLContent*> emptyList;
+ 	return emptyList;
+ }
 
+ std::list<XMLContent*> XMLContent::getAllContent(std::string name)
+ {
+ 	std::list<XMLContent*> emptyList;
+ 	return emptyList;
+ }
+ std::string XMLContent::getOpen()
+ {}
+ std::string XMLContent::getClose()
+ {}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

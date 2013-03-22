@@ -41,6 +41,7 @@
 // Inclusions
 #include "xmlcontent.h"
 #include <list>
+#include <string>
 #include "xmlattribute.h"
 //////////////////////////////////////////////////////////////////////////////
 
@@ -72,6 +73,10 @@ public:
 	void setContents(std::list<XMLContent*> * aXMLContent);
 	void addContent(XMLContent * aXMLContent);
 	void printXML();
+	std::string childToString();
+	std::string attributeToString();
+	std::string getType();
+	
 public:
 	/**
 	* Definition de la méthode
@@ -87,8 +92,8 @@ protected:
     //--------------------------- Protected attributes---------------------------
 
 protected:
-	std::string mType1;
-	std::string mType2;
+	std::string mType1;	//namespace
+	std::string mType2;	//actual type
 };
 
 // 

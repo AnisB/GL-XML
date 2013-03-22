@@ -105,6 +105,53 @@ void Element::printXML()
 	}
 
 }
+
+
+std::string Element::childToString()
+{
+	std::string result = "";
+	std::list<XMLContent*>::iterator it = mContent->begin();
+	if( it == mContent-> end() )
+	{
+		return result;
+	}
+	else
+	{
+		result += (*it)->getType();
+	
+		for( ; it != mContent->end(); it++ )
+		{
+			result += " " + (*it)->getType();
+		}
+	}
+	return result;
+}
+
+std::string Element::getType()
+{
+	return mType1 + ":" + mType2;
+}
+
+std::string Element::attributeToString()
+{
+	std::string result = "";
+	std::list<XMLAttribute*>::iterator it = mAttList->begin();
+	if( it == mAttList-> end() )
+	{
+		return result;
+	}
+	else
+	{
+		result += (*it)->getType();
+	
+		for( ; it != mAttList->end(); it++ )
+		{
+			result += " " + (*it)->getType();
+		}
+	}
+	return result;
+}
+	
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline functimyCameraons //
 

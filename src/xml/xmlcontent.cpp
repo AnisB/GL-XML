@@ -59,6 +59,11 @@ void XMLContent::printXML()
 {
 	std::cout<<"Error"<<std::endl;
 }
+
+std::string XMLContent::getType()
+{
+	return "error";
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

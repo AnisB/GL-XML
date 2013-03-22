@@ -61,6 +61,11 @@ void XMLAttribute::printXML()
 {
 	std::cout<<" "<<mName<<"=\""<<mValue<<"\"";
 }
+
+std::string XMLAttribute::getType()
+{
+	return mName;
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

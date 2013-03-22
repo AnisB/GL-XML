@@ -79,6 +79,11 @@ void PCData::printXML()
 	std::cout<<mValue;
 }
 
+std::string PCData::getType()
+{
+	return "PCDATA";
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

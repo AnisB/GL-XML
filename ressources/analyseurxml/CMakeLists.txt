@@ -1,4 +1,5 @@
-BISON_FLEX_BINARY (${PROJECT_SOURCE_DIR}/ressources/analyseurxml/ 
+BISON_FLEX_BINARY ( testxml
+${PROJECT_SOURCE_DIR}/ressources/analyseurxml/ 
   ${PROJECT_BINARY_DIR}/ressources/analyseurxml/ 
 ${PROJECT_SOURCE_DIR}/ressources/analyseurxml/xml.l 
 ${PROJECT_SOURCE_DIR}/ressources/analyseurxml/xml.y 

@@ -39,7 +39,8 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include<iostream>
+#include <iostream>
+#include <string>
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -66,7 +67,7 @@
 	*/
 	virtual ~XMLContent();
 
-
+	virtual std::string getType();
 	virtual void printXML();
 	// ----------------------- Other services ------------------------------
 

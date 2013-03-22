@@ -80,7 +80,7 @@ static char * separeNom(char *s)
 nl		(\r\n|\r|\n)
 esp		[ \t\r\n]+
 inf		{esp}?"<"
-sup		">"{nl}?
+sup		">"{nl}?{esp}?
 debutnom	[A-Za-z\200-\377_]
 caracnom	[A-Za-z\200-\377_0-9.-]
 esc		"&#"[0-9]+";"|"&#x"[0-9a-fA-F]+";"
@@ -94,7 +94,7 @@ chaine		\"([^"&]|{esc})*\"|\'([^'&]|{esc})*\'
 xmlversion   {esp}?"<?xml"
 doctype     {esp}?"<!DOCTYPE"{esp}
 infspecial {esp}?"<?"
-supspecial "?>"{nl}?
+supspecial "?>"{nl}?{esp}?
 
 /*
  * Le mode CONTENU est utilisé entre les balises ouvrantes et fermantes

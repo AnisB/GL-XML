@@ -21,3 +21,5 @@ if ( Boost_FOUND )
    SET(XmlProcesserLib ${Boost_INCLUDE_DIRS})
 endif( Boost_FOUND )
 
+find_package(BISON)
+find_package(FLEX)

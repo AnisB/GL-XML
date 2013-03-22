@@ -1,12 +1,12 @@
 %{
-
-using namespace std;
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
 #include "commun.h"
 #include "xml.tab.h"
 #include <list>
+using namespace std;
+
 // ces trois fonctions devront changer de nom dans le cas où l'otion -p est utilisée
 int xmlwrap(void);
 void xmlerror(string** nom_dtd, XMLDocument ** doc, char *msg);
@@ -83,13 +83,13 @@ declaration
  ;
 
 element
- : OBALISE attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3)}
- | OBALISEEN attributs_opt vide_ou_contenu_en  {$$ = new Element($1->first,$1->second,$2,$3)}
+ : OBALISE attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3);}
+ | OBALISEEN attributs_opt vide_ou_contenu_en  {$$ = new Element($1->first,$1->second,$2,$3);}
  ;
 
 attributs_opt
- : attributs_opt nom EGAL VALEUR {$$=$1;$$->push_back(new XMLAttribute($2,$4))}
- | /*vide*/ {$$= new std::list<XMLAttribute*>}
+ : attributs_opt nom EGAL VALEUR {$$=$1;$$->push_back(new XMLAttribute($2,$4));}
+ | /*vide*/ {$$= new std::list<XMLAttribute*>;}
  ;
 
 vide_ou_contenu 

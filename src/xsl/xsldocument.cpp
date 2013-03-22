@@ -35,6 +35,23 @@
 // IMPLEMENTATION of inline methods.
 ///////////////////////////////////////////////////////////////////////////////
 
+std::vector<std::string> split ( std::string &chaine, char c )
+{
+    int size = chaine.size();
+    int r = 0;
+    vector<std::string> v;
+    for (int i = 0; i < size; i++)
+    {
+	if (chaine[i] == c)
+	{
+	    v.push_back(chaine.substr(r, i - r));
+	    r = i + 1;
+	}
+    }
+    v.push_back(chaine.substr(r, size - r));
+    return v;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
 
@@ -68,6 +85,38 @@ std::string XSLDocument::process()
 	return "";
 }
 
+Content * XSLDocument::match(std::string match, Element * currentNode)
+{
+	if(match[0]=='/')
+	{
+		if(( match.size()>1) 
+		{
+			if (match[1]=='/')
+			{
+			    // We got a //
+			    std::list<Content*> listContent = mXml->getContent(type);
+
+			}
+			else
+			{
+			    // We got a / and some text after
+				std::vector<std::string> table = split(match,'/');
+			    Element * root = mXml->getRoot();
+
+			}
+		}
+		else
+		{
+			return mXml->getRoot();
+		}
+	}
+	else
+	{
+
+	}
+}
+
+
 
 /**
 * Returns the HTML file
@@ -75,6 +124,23 @@ std::string XSLDocument::process()
 std::string XSLDocument::getHTML()
 {
 	return "";
+}
+
+
+std::list<Content*> XSLDocument::getListContent(std::list<Content*> roots, std::string name )
+{
+	std::list<Content*> lisToReturn;
+
+	for(std::list<Content*>::iterator that=roots.begin();that!=roots.end();that++)
+	{
+		std::list<Content*> listSons =(*it)->getSonList(name);
+		for(std::list<Content*>::iterator it=listSons.begin();it!=listSons.end();it++)
+		{
+			lisToReturn.push_back(it);
+		}
+
+	}
+	return lisToReturn;
 }
 
 

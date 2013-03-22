@@ -84,6 +84,14 @@ std::string PCData::getType()
 	return "PCDATA";
 }
 
+
+std::list<Content*> PCData::getSonList(std::string name)
+{
+	throw 3;
+	return NULL;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

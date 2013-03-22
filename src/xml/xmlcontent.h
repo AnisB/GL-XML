@@ -69,6 +69,8 @@
 
 	virtual std::string getType();
 	virtual void printXML();
+
+	virtual std::list<Content*> getSonList(std::string name);
 	// ----------------------- Other services ------------------------------
 
 	public:

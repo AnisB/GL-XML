@@ -97,6 +97,9 @@
 	
 	std::string getType();
 
+	virtual std::list<Content*>getSonList(std::string name);
+
+
     //--------------------------- Protected attributes---------------------------
 	protected:
 		std::string mValue;

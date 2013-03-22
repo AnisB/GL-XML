@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="transformationhtml.xsl"?>
 <rapport>
   <titre>R&#233;aliser un compilateur</titre>
@@ -21,7 +21,7 @@
     <section>
       <titre>R&#233;alisation d'un compilateur</titre>
       <p>Comme l'&#233;criture d'un compilateur est une tâche fort complexe, 
-	le programmateur a tout int&#233;rêt à travailler en utilisant un langage 
+	le programmateur a tout int&#233;ret à travailler en utilisant un langage 
 	de programmation de haut niveau.</p>
     </section>
   </chapitre>

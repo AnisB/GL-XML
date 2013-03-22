@@ -129,8 +129,16 @@ std::string Element::childToString()
 
 std::string Element::getType()
 {
-	return mType1 + ":" + mType2;
+	if(mType1!="")
+	{
+		return mType1 + ":" + mType2;
+	}
+	else
+	{
+		return mType2;
+	}
 }
+
 
 std::string Element::attributeToString()
 {
@@ -152,6 +160,18 @@ std::string Element::attributeToString()
 	return result;
 }
 	
+std::list<Content*> Element::getSonList(std::string name)
+{
+	std::list<Content*> toReturn;
+	for(std::list<Content*> it=mContent_>begin() ; it != mContent->end(); it++ )
+	{
+		if( ((*it)->getType()=="Element") && ((*it)->getType()==name))
+		{
+			toReturn->push_back(*it);
+		}
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline functimyCameraons //
 

@@ -62,8 +62,17 @@ void XMLContent::printXML()
 
 std::string XMLContent::getType()
 {
+	throw 1;
 	return "error";
 }
+
+std::list<Content*> XMLContent::getSonList(std::string name)
+{
+	throw 2;
+	return NULL;
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

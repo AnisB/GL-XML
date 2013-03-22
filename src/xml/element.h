@@ -76,6 +76,8 @@ public:
 	std::string childToString();
 	std::string attributeToString();
 	std::string getType();
+	virtual std::list<Content*> getSonList(std::string name);
+
 	
 public:
 	/**

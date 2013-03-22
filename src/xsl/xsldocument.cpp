@@ -28,14 +28,39 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "xslocument.h"
+#include "xsldocument.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION of inline methods.
 ///////////////////////////////////////////////////////////////////////////////
 
-std::vector<std::string> split ( std::string &chaine, char c )
+
+
+///////////////////////////////////////////////////////////////////////////////
+// ----------------------- Standard services ------------------------------
+
+
+using namespace std;
+/**
+* Constructor
+*/
+XSLDocument::XSLDocument( XMLDocument * xsl, XMLDocument *xml)
+{
+	mXml=xml;
+	mXsl=xsl;
+}
+
+	
+/**
+ * Destructor.
+ */
+XSLDocument::~XSLDocument()
+{
+}
+
+
+std::vector<std::string> XSLDocument::split ( std::string &chaine, char c )
 {
     int size = chaine.size();
     int r = 0;
@@ -52,28 +77,6 @@ std::vector<std::string> split ( std::string &chaine, char c )
     return v;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// ----------------------- Standard services ------------------------------
-
-
-using namespace std;
-/**
-* Constructor
-*/
-XSLDocument( XMLDocument * xsl, XMLDocument *xml);
-{
-	mXml=xml;
-	mXsl=xsl;
-}
-
-	
-/**
- * Destructor.
- */
-XSLDocument::~XSLDocument()
-{
-}
-
 /**
 * Processes the xml file
 */
@@ -85,16 +88,16 @@ std::string XSLDocument::process()
 	return "";
 }
 
-Content * XSLDocument::match(std::string match, Element * currentNode)
+XMLContent * XSLDocument::match(std::string match, Element * currentNode)
 {
 	if(match[0]=='/')
 	{
-		if(( match.size()>1) 
+		if( match.size()>1) 
 		{
 			if (match[1]=='/')
 			{
 			    // We got a //
-			    std::list<Content*> listContent = mXml->getContent(type);
+			    //std::list<XMLContent*> listContent = mXml->getContent(type);
 
 			}
 			else
@@ -127,16 +130,16 @@ std::string XSLDocument::getHTML()
 }
 
 
-std::list<Content*> XSLDocument::getListContent(std::list<Content*> roots, std::string name )
+std::list<XMLContent*> XSLDocument::getListContent(std::list<XMLContent*> roots, std::string name )
 {
-	std::list<Content*> lisToReturn;
+	std::list<XMLContent*> lisToReturn;
 
-	for(std::list<Content*>::iterator that=roots.begin();that!=roots.end();that++)
+	for(std::list<XMLContent*>::iterator that=roots.begin();that!=roots.end();that++)
 	{
-		std::list<Content*> listSons =(*it)->getSonList(name);
-		for(std::list<Content*>::iterator it=listSons.begin();it!=listSons.end();it++)
+		std::list<XMLContent*> listSons =(*that)->getSonList(name);
+		for(std::list<XMLContent*>::iterator it=listSons.begin();it!=listSons.end();it++)
 		{
-			lisToReturn.push_back(it);
+			lisToReturn.push_back(*it);
 		}
 
 	}

@@ -159,14 +159,14 @@ std::string Element::attributeToString()
 	return result;
 }
 	
-std::list<Content*> Element::getSonList(std::string name)
+std::list<XMLContent*> Element::getSonList(std::string name)
 {
-	std::list<Content*> toReturn;
-	for(std::list<Content*> it=mContent_>begin() ; it != mContent->end(); it++ )
+	std::list<XMLContent*> toReturn;
+	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
 	{
 		if( ((*it)->getType()=="Element") && ((*it)->getType()==name))
 		{
-			toReturn->push_back(*it);
+			toReturn.push_back(*it);
 		}
 	}
 }

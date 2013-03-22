@@ -66,10 +66,11 @@ std::string XMLContent::getType()
 	return "error";
 }
 
-std::list<Content*> XMLContent::getSonList(std::string name)
+std::list<XMLContent*> XMLContent::getSonList(std::string name)
 {
 	throw 2;
-	return NULL;
+	std::list<XMLContent*> michaelCaffart;
+	return michaelCaffart;
 
 }
 

@@ -39,11 +39,12 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include <iostream>
-#include <iostream>
-#include "element.h"
-#include "xmlattribute.h"
-#include "misc.h"
+#include <string>
+#include <xml/element.h>
+#include <xml/xmlattribute.h>
+#include <xml/xmldocument.h>
+#include <xml/misc.h>
+#include <vector>
 //////////////////////////////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////////////////////////////
@@ -80,7 +81,7 @@
 	/**
 	* You should call process before getting the xml (This method avoids reprocessing the file)
 	*/
-	std:string getHTML();
+	std::string getHTML();
 	// ------------------------- Protected Datas ------------------------------
   protected:
   	XMLDocument * mXsl;
@@ -89,6 +90,10 @@
     //--------------------------- Protected attributes---------------------------
 
   protected:
+  	std::vector<std::string> split ( std::string &chaine, char c );
+  	XMLContent * match(std::string match, Element * currentNode);
+  	std::list<XMLContent*> getListContent(std::list<XMLContent*> roots, std::string name );
+
 };
 
 // 

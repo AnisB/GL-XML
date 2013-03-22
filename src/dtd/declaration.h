@@ -59,6 +59,8 @@ public:
 	Declaration(std::map<int, DTDContent> aMapContent);
 	~Declaration();
 	void printDTD();
+	std::string getName();
+	std::string createRegex();
 
   protected:
 	std::map<int, DTDContent> mapContent;

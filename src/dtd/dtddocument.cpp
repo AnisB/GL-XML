@@ -79,7 +79,7 @@ std::map<std::string, std::string> DTDDocument::generateRegex()
 		regexMap[name] = regex;
 	}
 	
-	for()
+	return regexMap;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

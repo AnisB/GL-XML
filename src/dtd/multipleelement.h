@@ -56,7 +56,8 @@ class MultipleElement : public DTDContent
 public:
 	MultipleElement(bool isChoice, Declaration::Card card);
 	virtual ~MultipleElement();
-	void setCard();
+	void setCard(Declaration::Card card);
+	Declaration::Card getCard(Declaration::Card card);
 	//void addElement();
 	//void addMultipleElement(MultipleElement multipleElement);
 

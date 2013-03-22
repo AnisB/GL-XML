@@ -79,6 +79,20 @@ void PCData::printXML()
 	std::cout<<mValue;
 }
 
+std::string PCData::getType()
+{
+	return "PCDATA";
+}
+
+
+std::list<XMLContent*> PCData::getSonList(std::string name)
+{
+	throw 3;
+	std::list<XMLContent*> emptyList;
+	return emptyList;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

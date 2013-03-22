@@ -66,6 +66,22 @@ void DTDDocument::displayAsDTDFormat()
 		(*it)->printDTD();
 	}
 }
+
+std::map<std::string, std::string>*  DTDDocument::generateRegex()
+{
+	std::map<std::string, std::string> * regexMap = new std::map<std::string, std::string>;
+	std::list<MotherContent*>::iterator it;
+	
+	for( it = mContents->begin(); it != mContents->end(); it++ )
+	{
+		//std::string name = it->getName();
+		//std::string regex = it->createRegex();
+		//regexMap[name] = regex;
+	}
+	return NULL;
+	//return regexMap;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

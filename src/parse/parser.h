@@ -17,83 +17,70 @@
 #pragma once
 
 /**
-* @file XSLDocument
+* @file Parser
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module XSLDocument.cpp
+* Header file for module Parser.cpp
 *
 */
 
-#if defined(XSLDocument_RECURSES)
-#error Recursive header files inclusion detected in XSLDocument.h
-#else // defined(XSLDocument_RECURSES)
+#if defined(Parser_RECURSES)
+#error Recursive header files inclusion detected in Parser.h
+#else // defined(Parser_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define XSLDocument_RECURSES
+#define Parser_RECURSES
 
-#if !defined XSLDocument_H
+#if !defined Parser_H
 /** Prevents repeated inclusion of headers. */
-#define XSLDocument_H
+#define Parser_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include <string>
-#include <xml/element.h>
-#include <xml/xmlattribute.h>
+#include <iostream>
+#include <stdio.h>
+#include <list>
+
 #include <xml/xmldocument.h>
-#include <xml/misc.h>
-#include <vector>
 //////////////////////////////////////////////////////////////////////////////
 
+
   /////////////////////////////////////////////////////////////////////////////
-  // class XSLDocument
+  // class Parser
   /**
-* Description of class XSLDocument <p>
+* Description of class Parser <p>
 */
 
 
-	class XSLDocument
+	class Parser
 	{
 	// ----------------------- Standard services ------------------------------
 
 	public:
 	/**
-	* Constructor
+	* Definition de la méthode
+	* @param *nom parametre* *description parametre*
 	*/
-	XSLDocument( XMLDocument * xsl, XMLDocument *xml);
-	
 
+	Parser();
+	~Parser();
+	// ----------------------- Other services ------------------------------
+	static XMLDocument * parseXML(std::string fileName);
+	//static DTDDocument * parseDTD(std::string fileName);
+	public:
 	/**
 	* Definition de la méthode
 	* @param *nom parametre* *description parametre*
 	*/
-	~XSLDocument();
-	// ----------------------- Other services ------------------------------
 
-	public:
-	/**
-	* Displays the node as an xml node
-	*/
-	std::string process();
-
-	/**
-	* You should call process before getting the xml (This method avoids reprocessing the file)
-	*/
-	std::string getHTML();
 	// ------------------------- Protected Datas ------------------------------
   protected:
-  	XMLDocument * mXsl;
-	XMLDocument * mXml;
 
     //--------------------------- Protected attributes---------------------------
 
   protected:
-  	std::vector<std::string> split ( std::string &chaine, char c );
-  	XMLContent * match(std::string match, Element * currentNode);
-  	std::list<XMLContent*> getListContent(std::list<XMLContent*> roots, std::string name );
-
 };
 
 // 

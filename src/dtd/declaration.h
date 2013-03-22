@@ -61,6 +61,8 @@ public:
 	Declaration(std::string name, std::list<std::pair<int, DTDContent> > type);
 	~Declaration();
 	void printDTD();
+	std::string getName();
+	std::string createRegex();
 
   protected:
 	std::list<std::pair<int, DTDContent> > mType;

@@ -105,6 +105,72 @@ void Element::printXML()
 	}
 
 }
+
+
+std::string Element::childToString()
+{
+	std::string result = "";
+	std::list<XMLContent*>::iterator it = mContent->begin();
+	if( it == mContent-> end() )
+	{
+		return result;
+	}
+	else
+	{
+		result += (*it)->getType();
+		it++;
+	
+		for( ; it != mContent->end(); it++ )
+		{
+			result += " " + (*it)->getType();
+		}
+	}
+	return result;
+}
+
+std::string Element::getType()
+{
+	if( mType1.compare("") == 0)
+	{
+		return mType2;
+	}
+	return mType1 + ":" + mType2;
+}
+
+
+std::string Element::attributeToString()
+{
+	std::string result = "";
+	std::list<XMLAttribute*>::iterator it = mAttList->begin();
+	if( it == mAttList-> end() )
+	{
+		return result;
+	}
+	else
+	{
+		result += (*it)->getType();
+		it++;
+	
+		for( ; it != mAttList->end(); it++ )
+		{
+			result += " " + (*it)->getType();
+		}
+	}
+	return result;
+}
+	
+std::list<XMLContent*> Element::getSonList(std::string name)
+{
+	std::list<XMLContent*> toReturn;
+	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
+	{
+		if( ((*it)->getType()=="Element") && ((*it)->getType()==name))
+		{
+			toReturn.push_back(*it);
+		}
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline functimyCameraons //
 

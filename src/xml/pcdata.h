@@ -42,6 +42,7 @@
 #include "xmlcontent.h"
 #include <list>
 #include <iostream>
+#include <string>
 //////////////////////////////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////////////////////////////
@@ -93,6 +94,11 @@
 	* Affiche sur la sortie standard le noeud
 	*/
 	void printXML();
+	
+	std::string getType();
+
+	virtual std::list<XMLContent*>getSonList(std::string name);
+
 
     //--------------------------- Protected attributes---------------------------
 	protected:

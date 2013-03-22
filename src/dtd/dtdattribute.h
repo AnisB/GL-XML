@@ -88,6 +88,9 @@ public:
 	UniqueElement * getElement();
 
 	void printDTD();
+	
+	std::string getName();
+	std::string createRegex();
 
 protected:
 	std::list<CData*>* m_datas;

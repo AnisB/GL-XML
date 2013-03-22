@@ -15,25 +15,29 @@
  **/
 
 /**
- * @file XMLContent.cpp
+ * file Parser.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
- * @date 15/03/2013
+ * date 
  *
- * Header file for module XMLContent.cpp
+ * Source file for module Parser
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
- #include "xmlcontent.h"
+#include <parse/parser.h>
+#include <string>
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION of inline methods.
 ///////////////////////////////////////////////////////////////////////////////
-
+extern FILE * xmlin;
+extern FILE * dtdin;
+int xmlparse(std::string **, XMLDocument**);
+int dtdparse();
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
 
@@ -42,36 +46,42 @@
 /**
  * Constructor
  */
-XMLContent::XMLContent ( )
+Parser::Parser ( )
 {
 }
 
 /**
  * Destructor.
  */
-XMLContent::~XMLContent( )
+Parser::~Parser( )
 {
   //Nothing to do
 }
 
 
-void XMLContent::printXML()
-{
-	std::cout<<"Error"<<std::endl;
-}
 
-std::string XMLContent::getType()
-{
-	throw 1;
-	return "error";
-}
 
-std::list<XMLContent*> XMLContent::getSonList(std::string name)
+XMLDocument * Parser::parseXML(std::string fileName)
 {
-	throw 2;
-	std::list<XMLContent*> emptyList;
-	return emptyList;
+	FILE * file;
+	file = fopen(fileName.c_str(), "r");
+	if(!file) {
+		throw 1;
+	}
+	std::cout << "Parsing XML file : " << fileName << std::endl;
+	std::string * nomdtd;
+	XMLDocument* xmlDoc;
+	xmlin = file;
+	xmlparse(&nomdtd, &xmlDoc);
+	fclose(file);
+	return xmlDoc;
+	
+
 }
+//DTDDocument * Parser::parseDTD(std::string fileName)
+//{
+
+//} 
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

@@ -28,12 +28,14 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "xslocument.h"
+#include "xsldocument.h"
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION of inline methods.
 ///////////////////////////////////////////////////////////////////////////////
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
@@ -43,15 +45,10 @@ using namespace std;
 /**
 * Constructor
 */
-XSLDocument( XMLDocument * xsl, XMLDocument *xml);
+XSLDocument::XSLDocument( XMLDocument * xsl, XMLDocument *xml)
 {
-	mHeader = new Header();
-	mHeader->copy(aHead);
-	mDec = new Declaration();
-	mDec->copy(aDec);
-	mMiscList = alist;
-	mRoot=root;
-	mStyleSheet=stylesheet;
+	mXml=xml;
+	mXsl=xsl;
 }
 
 	
@@ -62,27 +59,94 @@ XSLDocument::~XSLDocument()
 {
 }
 
-/**
-* Displays the node as an xml node
-*/
-void XSLDocument::displayAsXMLFormat()
+
+std::vector<std::string> XSLDocument::split ( std::string &chaine, char c )
 {
-	//std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
-
-	mHeader->printXML();
-	mDec->printXML();
-	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)
+    int size = chaine.size();
+    int r = 0;
+    vector<std::string> v;
+    for (int i = 0; i < size; i++)
+    {
+	if (chaine[i] == c)
 	{
-		(*it)->printXML();
+	    v.push_back(chaine.substr(r, i - r));
+	    r = i + 1;
 	}
-
-	for(std::list<Element*>::iterator it=mStyleSheet->begin();it!=mStyleSheet->end();it++)
-	{
-		(*it)->printXML();
-	}
-
-	mRoot->printXML();
+    }
+    v.push_back(chaine.substr(r, size - r));
+    return v;
 }
+
+/**
+* Processes the xml file
+*/
+std::string XSLDocument::process()
+{
+	std::string htmlFile="<!DOCTYPE html>";
+	Element * root= mXml->getRoot();
+	
+	return "";
+}
+
+XMLContent * XSLDocument::match(std::string match, Element * currentNode)
+{
+	if(match[0]=='/')
+	{
+		if( match.size()>1) 
+		{
+			if (match[1]=='/')
+			{
+			    // We got a //
+			    //std::list<XMLContent*> listContent = mXml->getContent(type);
+
+			}
+			else
+			{
+			    // We got a / and some text after
+				std::vector<std::string> table = split(match,'/');
+			    Element * root = mXml->getRoot();
+
+			}
+		}
+		else
+		{
+			return mXml->getRoot();
+		}
+	}
+	else
+	{
+
+	}
+}
+
+
+
+/**
+* Returns the HTML file
+*/
+std::string XSLDocument::getHTML()
+{
+	return "";
+}
+
+
+std::list<XMLContent*> XSLDocument::getListContent(std::list<XMLContent*> roots, std::string name )
+{
+	std::list<XMLContent*> lisToReturn;
+
+	for(std::list<XMLContent*>::iterator that=roots.begin();that!=roots.end();that++)
+	{
+		std::list<XMLContent*> listSons =(*that)->getSonList(name);
+		for(std::list<XMLContent*>::iterator it=listSons.begin();it!=listSons.end();it++)
+		{
+			lisToReturn.push_back(*it);
+		}
+
+	}
+	return lisToReturn;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

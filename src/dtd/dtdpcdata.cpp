@@ -15,12 +15,12 @@
 **/
 
 /**
-* @file pcdata.cpp
+* @file DTDPCData.cpp
 * @author Florent Weillaert
 *
 * @date 15/03/2013
 *
-* source file for module PCData
+* source file for module DTDPCData
 *
 */
  
@@ -31,7 +31,7 @@
  
 #include <string>
 
-#include "pcdata.h"
+#include "dtdpcdata.h"
 
 using namespace std;
 
@@ -45,14 +45,14 @@ using namespace std;
 /**
 * Constructor
 */
-PCData::PCData(std::string content) : DTDContent(), m_content(content)
+DTDPCData::DTDPCData(std::string content) : DTDContent(), m_content(content)
 {
 }
 
 /**
 * Destructor.
 */
-PCData::~PCData()
+DTDPCData::~DTDPCData()
 {
 }
 
@@ -61,14 +61,14 @@ PCData::~PCData()
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline setContent
-void PCData::setContent(string content)
+void DTDPCData::setContent(string content)
 {
 	m_content = content;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline getContent
-string PCData::getContent()
+string DTDPCData::getContent()
 {
 	return m_content;
 }

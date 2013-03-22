@@ -39,7 +39,9 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <list>
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -66,8 +68,10 @@
 	*/
 	virtual ~XMLContent();
 
-
+	virtual std::string getType();
 	virtual void printXML();
+
+	virtual std::list<XMLContent*> getSonList(std::string name);
 	// ----------------------- Other services ------------------------------
 
 	public:

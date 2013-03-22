@@ -111,5 +111,15 @@ void DTDAttribute::printDTD()
 	std::cout<<std::endl<<">"<<std::endl;
 }
 
+
+
+std::string DTDAttribute::getName()
+{
+	
+}
+std::string DTDAttribute::createRegex()
+{
+	
+}
 //
 ///////////////////////////////////////////////////////////////////////////////

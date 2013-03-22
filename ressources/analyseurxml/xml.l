@@ -90,6 +90,8 @@ data		([^<\n&]|\n[^<&]|\n{esc}|{esc})+
 pcdata		[^<]+
 comment		{inf}"!--"([^-]|"-"[^-])*"--"{sup}
 chaine		\"([^"&]|{esc})*\"|\'([^'&]|{esc})*\'
+		/*xmlversion   {esp}?"<?xml"{esp}"version="{chaine}{esp}"encoding="{chaine}"?>"{nl}?*/
+xmlversion   {esp}?"<?xml"
 doctype     {esp}?"<!DOCTYPE"{esp}
 infspecial {esp}?"<?"
 supspecial "?>"{nl}?
@@ -104,6 +106,7 @@ supspecial "?>"{nl}?
 %%
 
 <INITIAL>{esp}		{/* skip */}
+<INITIAL>{xmlversion} {return XMLVERSION;}
 <INITIAL>{doctype} {return DOCTYPE;}
 <INITIAL>"/"		{return SLASH;}
 <INITIAL>"="		{return EGAL;}

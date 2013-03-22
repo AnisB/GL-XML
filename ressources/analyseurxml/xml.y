@@ -25,12 +25,12 @@ int xmllex(void);
    std::list<XMLContent*> *lcnt;
    XMLContent * cnt;
    std::list<XMLAttribute*> * latt;
-   Header * head;
+   Header * header;
 }
 
 %token EGAL SLASH SUP SUPSPECIAL DOCTYPE
 %token <s> ENCODING VALEUR COMMENT NOM ENNOM DONNEES
-%token <en> OBALISEEN OBALISE OBALISESPECIALE FBALISE FBALISEEN
+%token <en> OBALISEEN OBALISE OBALISESPECIALE FBALISE FBALISEEN XMLVERSION
 %type <s> nom
 %type <elt> element
 %type <msc> misc 
@@ -39,21 +39,21 @@ int xmllex(void);
 %type <latt> attributs_opt
 %type <lelt> feuilles_style_opt
 %type <lcnt> contenu_opt vide_ou_contenu vide_ou_contenu_en ferme_contenu_et_fin ferme_contenu_et_fin_en
-%type <head> header_opt
+%type <header> header_opt
 
 %parse-param{ string** nom_dtd }
 %parse-param { XMLDocument** doc}
 %%
 
 document
- : header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($1,$2,$3,$4,$5); delete $2;}
+	: header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($1,$2,$3,$4,$5); delete $2;}
  ;
 
 header_opt
- : OBALISESPECIALE attributs_opt SUPSPECIAL {$$=new Header(); $$->mName=$1->second; $$->mAttList=$2;$$->mExists=true;}
- | /*vide*/ {$$ =new Header();$$->mName="Laule"; $$->mAttList=new std::list<XMLAttribute*>;$$->mExists=false;}
- ;
-
+	: XMLVERSION attributs_opt SUPSPECIAL {$$ = new Header(); $$->mName = "xml"; $$->mAttList=$2; $$->mExists=true;}
+ | /*vide*/ {$$ = new Header(); $$->mName = "xml"; $$->mAttList=new std::list<XMLAttribute*>; $$->mExists=false;}
+		 ;
+ 
 nom
  : NOM {$$ = $1;}
  | ENNOM {$$ = $1;}
@@ -85,6 +85,7 @@ declaration
 element
  : OBALISE attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3);}
  | OBALISEEN attributs_opt vide_ou_contenu_en  {$$ = new Element($1->first,$1->second,$2,$3);}
+ | OBALISESPECIALE attributs_opt SUPSPECIAL {$$ = new Element($1->first,$1->second,$2,new std::list<XMLContent*>);}
  ;
 
 attributs_opt
@@ -104,7 +105,6 @@ vide_ou_contenu_en
 
 ferme_contenu_et_fin
  : SUP contenu_opt FBALISE {$$=$2;}
- | SUP contenu_opt FBALISEEN {$$=$2;}
  ;
 
 ferme_contenu_et_fin_en

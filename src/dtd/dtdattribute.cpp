@@ -46,7 +46,7 @@ using namespace std;
 /**
 * Constructor
 */
-DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherContent(), m_element(element), m_datas(datas)
+DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherContent(), mElement(element), m_datas(datas)
 {
 }
 
@@ -64,7 +64,7 @@ DTDAttribute::~DTDAttribute()
 // Implementation of inline setElement
 void DTDAttribute::setElement(UniqueElement* element)
 {
-	m_element = element;
+	mElement = element;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -98,12 +98,12 @@ list<CData*> * DTDAttribute::getData()
 // Implementation of inline getElement
 UniqueElement * DTDAttribute::getElement()
 {
-	return m_element;
+	return mElement;
 }
 
 void DTDAttribute::printDTD()
 {
-	std::cout<<"<!ATTLIST "<<element.getContent();
+	std::cout<<"<!ATTLIST "<<mElement->getContent();
 	for(std::list<CData*>::iterator it=m_datas->begin();it!=m_datas->end();it++)
 	{
 		std::cout<<std::endl<<(*it)->getContent()<<" CDATA #IMPLIED";

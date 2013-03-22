@@ -58,6 +58,7 @@ public:
 
 	DTDDocument(std::list<MotherContent*>* listContent);
 	~DTDDocument();
+	void displayAsDTDFormat();
 	
 
 

@@ -91,7 +91,7 @@ public:
 
 protected:
 	std::list<CData*>* m_datas;
-	UniqueElement* m_element;
+	UniqueElement* mElement;
 };
 
 // 

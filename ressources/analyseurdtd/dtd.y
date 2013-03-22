@@ -1,4 +1,4 @@
-%{
+ %{
 
 using namespace std;
 #include <cstring>
@@ -12,8 +12,8 @@ int dtdlex(void);
 
 %}
 
-%union { 
-   char *s; 
+%union {
+   char *s;
    std::list<MotherContent*>* lmc;
    DTDDocument* ddtd;
    
@@ -28,32 +28,44 @@ int dtdlex(void);
 
 document: dtd_list_opt
 {
-	$$=new DTDDocument($1);
+$$=new DTDDocument($1);
 }
 ;
 
 dtd_list_opt
-: dtd_list_opt ATTLIST NOM att_definition_opt SUP 
+: dtd_list_opt ATTLIST NOM att_definition_opt SUP
 {
-	$$=$1;
-	$$->push_back(new DTDAttribute(new UniqueElement($3), $4));
+$$=$1;
+$$->push_back(new DTDAttribute(new UniqueElement($3), $4));
 }
-| dtd_list_opt ELEMENT NOM content SUP 
+| dtd_list_opt ELEMENT NOM content SUP
 {
-	$$=$1;
-	$$->push_back(new Declaration($3, $4));
+$$=$1;
+$$->push_back(new Declaration($3, $4));
 }
-| /* vide */ 
+| /* vide */
 {
-	$$=new std::list<MotherContent*>;
+$$=new std::list<MotherContent*>;
 }
 ;
 
 content
 : EMPTY
+{
+
+}
 | ANY
+{
+
+}
 | mixed
+{
+
+}
 | children
+{
+
+}
 ;
 
 mixed
@@ -146,7 +158,7 @@ int main(int argc, char **argv)
 
   err = dtdparse();
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
-        else  printf("Parse ended with success\n", err);
+        else printf("Parse ended with success\n", err);
   return 0;
 }
 int dtdwrap(void)
@@ -158,4 +170,3 @@ void dtderror(char *msg)
 {
   fprintf(stderr, "%s\n", msg);
 }
-

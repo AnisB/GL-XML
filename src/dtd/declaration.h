@@ -59,7 +59,7 @@ public:
 	
 	Declaration(std::string name, std::list<std::pair<int, std::list<DTDContent> > > type);
 	~Declaration();
-	printDTD();
+	void printDTD();
 
   protected:
 	std::list<std::pair<int, std::list<DTDContent> > > mType;

@@ -22,6 +22,7 @@ SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # Check Mandatory Dependencies
 # -----------------------------------------------------------------------------
 INCLUDE(${CMAKE_MODULE_PATH}/CheckDependencies.cmake)
+INCLUDE(${CMAKE_MODULE_PATH}/macro.cmake)
 
 set(IncDir "${PROJECT_SOURCE_DIR}/src; ${IncDir}; ")
 include_directories( ${IncDir})

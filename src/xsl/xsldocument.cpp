@@ -1,3 +1,4 @@
+
 /**
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -15,25 +16,20 @@
  **/
 
 /**
- * @file dtddocument.cpp
+ * file XSLDocument.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
- * @date date
+ * date 
  *
- * Source file for module dtddocument
+ * Source file for module XSLDocument
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include <iostream>
-#include <list>
-
-#include "dtddocument.h"
+#include "xslocument.h"
 //////////////////////////////////////////////////////////////////////////////
-
-using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION of inline methods.
@@ -43,28 +39,49 @@ using namespace std;
 // ----------------------- Standard services ------------------------------
 
 
-
+using namespace std;
 /**
- * Constructor
- */
-DTDDocument::DTDDocument(std::list<MotherContent*>* listContent) : mContents(listContent)
+* Constructor
+*/
+XSLDocument( XMLDocument * xsl, XMLDocument *xml);
 {
+	mHeader = new Header();
+	mHeader->copy(aHead);
+	mDec = new Declaration();
+	mDec->copy(aDec);
+	mMiscList = alist;
+	mRoot=root;
+	mStyleSheet=stylesheet;
 }
 
+	
 /**
  * Destructor.
  */
-DTDDocument::~DTDDocument( )
+XSLDocument::~XSLDocument()
 {
-  //Nothing to do
 }
 
-void DocumentDTD::displayAsDTDFormat()
+/**
+* Displays the node as an xml node
+*/
+void XSLDocument::displayAsXMLFormat()
 {
-	for(std::list<MotherContent*>::iterator it=mContents->begin();it!=mContents->end();it++)
+	//std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
+
+	mHeader->printXML();
+	mDec->printXML();
+	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)
 	{
-		(*it)->printDTD();
+		(*it)->printXML();
 	}
+
+	for(std::list<Element*>::iterator it=mStyleSheet->begin();it!=mStyleSheet->end();it++)
+	{
+		(*it)->printXML();
+	}
+
+	mRoot->printXML();
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

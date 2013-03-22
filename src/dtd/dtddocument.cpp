@@ -59,7 +59,7 @@ DTDDocument::~DTDDocument( )
   //Nothing to do
 }
 
-void DocumentDTD::displayAsDTDFormat()
+void DTDDocument::displayAsDTDFormat()
 {
 	for(std::list<MotherContent*>::iterator it=mContents->begin();it!=mContents->end();it++)
 	{

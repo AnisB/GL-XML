@@ -62,7 +62,7 @@ public:
 	~DTDDocument();
 	void displayAsDTDFormat();
 	
-	std::map<std::string, std::string> generateRegex():
+	std::map<std::string, std::string> generateRegex();
 
 protected:
 

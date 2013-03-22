@@ -45,7 +45,7 @@ using namespace std;
 /**
  * Constructor
  */
-Declaration::Declaration (string name, list<pair<Card, list<DTDContent> > > type) : MotherContent(), mName(name), mType(type)
+Declaration::Declaration (std::string name/*, std::list</*std::pair<Card, DTDContent> > type*/) : MotherContent(), mName(name)//,mType(type)
 {
 }
 

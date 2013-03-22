@@ -43,133 +43,165 @@
 /**
  * Constructor
  */
-Element::Element(std::string aType1,std::string aType2, std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>* aXMLContent)
-{
-	mType1=aType1;
-	mType2=aType2;
-	mContent=aXMLContent;
-	mAttList=anAttList;
-}
+ Element::Element(std::string aType1,std::string aType2, std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>* aXMLContent)
+ {
+ 	mType1=aType1;
+ 	mType2=aType2;
+ 	mContent=aXMLContent;
+ 	mAttList=anAttList;
+ 	mIsSpecial=false;
+ }
 
+
+ Element::Element(std::string aType1,std::string aType2, std::list<XMLAttribute*> * anAttList,bool isSpecial)
+ {
+ 	mType1=aType1;
+ 	mType2=aType2;
+ 	mAttList=anAttList;
+ 	mIsSpecial=true;
+ }
 /**
  * Destructor.
  */
 
-Element::~Element()
-{
-	mContent->clear();
-	delete mContent;
-}
+ Element::~Element()
+ {
+ 	mContent->clear();
+ 	delete mContent;
+ }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
-void Element::setContents(std::list<XMLContent*> * aContent)
-{
-	mContent=aContent;
-}
+ void Element::setContents(std::list<XMLContent*> * aContent)
+ {
+ 	mContent=aContent;
+ }
 
-void Element::addContent(XMLContent * aXMLContent)
-{
-	mContent->push_back(aXMLContent);
-}
+ void Element::addContent(XMLContent * aXMLContent)
+ {
+ 	mContent->push_back(aXMLContent);
+ }
 
-void Element::printXML()
-{
-	if (mType1!="")
-	{
-		std::cout<<"<"<<mType1<<":"<<mType2;
-	}
-	else
-	{
-		std::cout<<"<"<<mType2;
+ void Element::printXML()
+ {
+ 	if (mType1!="")
+ 	{
+ 		if (!mIsSpecial)
+ 		{
+ 			std::cout<<"<"<<mType1<<":"<<mType2;
+ 		}
+ 		else
+ 		{
+ 			std::cout<<"<?"<<mType1<<":"<<mType2;
+ 		}
+ 	}
+ 	else
+ 	{
+ 		if (mIsSpecial)
+ 		{
+ 			std::cout<<"<?"<<mType2;
+ 		}
+ 		else
+ 		{
+ 			std::cout<<"<"<<mType2;
+ 		}
 
-	}
-	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
-	{
-		(*it)->printXML();
-	}
-	std::cout<<">";
-	
-	for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
-	{
-		(*it)->printXML();
-	}
-	if (mType1!="")
-	{
-	std::cout<<"</"<<mType1<<":"<<mType2<<">"<<std::endl;
-	}
-	else
-	{
-	std::cout<<"</"<<mType2<<">"<<std::endl;
+ 	}
+ 	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+ 	{
+ 		(*it)->printXML();
+ 	}
 
-	}
+ 	if (mIsSpecial)
+ 	{
+ 		std::cout<<"?>";;
+ 	}
+ 	else
+ 	{
+ 		std::cout<<">";;
 
-}
+ 		
+ 		for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
+ 		{
+ 			(*it)->printXML();
+ 		}
+ 		if (mType1!="")
+ 		{
+ 			std::cout<<"</"<<mType1<<":"<<mType2<<">"<<std::endl;
+ 		}
+ 		else
+ 		{
+ 			std::cout<<"</"<<mType2<<">"<<std::endl;
 
+ 		}
+ 	}
 
-std::string Element::childToString()
-{
-	std::string result = "";
-	std::list<XMLContent*>::iterator it = mContent->begin();
-	if( it == mContent-> end() )
-	{
-		return result;
-	}
-	else
-	{
-		result += (*it)->getType();
-		it++;
-	
-		for( ; it != mContent->end(); it++ )
-		{
-			result += " " + (*it)->getType();
-		}
-	}
-	return result;
-}
-
-std::string Element::getType()
-{
-	if( mType1.compare("") == 0)
-	{
-		return mType2;
-	}
-	return mType1 + ":" + mType2;
-}
+ }
 
 
-std::string Element::attributeToString()
-{
-	std::string result = "";
-	std::list<XMLAttribute*>::iterator it = mAttList->begin();
-	if( it == mAttList-> end() )
-	{
-		return result;
-	}
-	else
-	{
-		result += (*it)->getType();
-		it++;
-	
-		for( ; it != mAttList->end(); it++ )
-		{
-			result += " " + (*it)->getType();
-		}
-	}
-	return result;
-}
-	
-std::list<XMLContent*> Element::getSonList(std::string name)
-{
-	std::list<XMLContent*> toReturn;
-	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
-	{
-		if( ((*it)->getType()=="Element") && ((*it)->getType()==name))
-		{
-			toReturn.push_back(*it);
-		}
-	}
-}
+ std::string Element::childToString()
+ {
+ 	std::string result = "";
+ 	std::list<XMLContent*>::iterator it = mContent->begin();
+ 	if( it == mContent-> end() )
+ 	{
+ 		return result;
+ 	}
+ 	else
+ 	{
+ 		result += (*it)->getType();
+ 		it++;
+ 		
+ 		for( ; it != mContent->end(); it++ )
+ 		{
+ 			result += " " + (*it)->getType();
+ 		}
+ 	}
+ 	return result;
+ }
+
+ std::string Element::getType()
+ {
+ 	if( mType1.compare("") == 0)
+ 	{
+ 		return mType2;
+ 	}
+ 	return mType1 + ":" + mType2;
+ }
+
+
+ std::string Element::attributeToString()
+ {
+ 	std::string result = "";
+ 	std::list<XMLAttribute*>::iterator it = mAttList->begin();
+ 	if( it == mAttList-> end() )
+ 	{
+ 		return result;
+ 	}
+ 	else
+ 	{
+ 		result += (*it)->getType();
+ 		it++;
+ 		
+ 		for( ; it != mAttList->end(); it++ )
+ 		{
+ 			result += " " + (*it)->getType();
+ 		}
+ 	}
+ 	return result;
+ }
+ 
+ std::list<XMLContent*> Element::getSonList(std::string name)
+ {
+ 	std::list<XMLContent*> toReturn;
+ 	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
+ 	{
+ 		if( ((*it)->getType()=="Element") && ((*it)->getType()==name))
+ 		{
+ 			toReturn.push_back(*it);
+ 		}
+ 	}
+ }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline functimyCameraons //

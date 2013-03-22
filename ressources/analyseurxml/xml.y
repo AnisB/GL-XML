@@ -85,7 +85,7 @@ declaration
 element
  : OBALISE attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3);}
  | OBALISEEN attributs_opt vide_ou_contenu_en  {$$ = new Element($1->first,$1->second,$2,$3);}
- | OBALISESPECIALE attributs_opt SUPSPECIAL {$$ = new Element($1->first,$1->second,$2,new std::list<XMLContent*>);}
+ | OBALISESPECIALE attributs_opt SUPSPECIAL {$$ = new Element($1->first,$1->second,$2,true);}
  ;
 
 attributs_opt

@@ -65,6 +65,12 @@ public:
 	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>  * aXMLContent);
 
 	/**
+	* Definition de la méthode
+	* @param *nom parametre* *description parametre*
+	*/
+	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,bool isSpecial);
+
+	/**
 	* Destructor
 	*/
 	virtual ~Element();
@@ -92,6 +98,7 @@ public:
 protected:
 	std::list<XMLContent*> * mContent;
 	std::list<XMLAttribute*> * mAttList;
+	bool mIsSpecial;
 
 
     //--------------------------- Protected attributes---------------------------

@@ -56,12 +56,14 @@ public:
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	Declaration(std::map<int, DTDContent> aMapContent);
+	
+	Declaration(std::string name, std::list<std::pair<int, std::list<DTDContent> > > type);
 	~Declaration();
 	printDTD();
 
   protected:
-	std::map<int, DTDContent> mapContent;
+	std::list<std::pair<int, std::list<DTDContent> > > mType;
+	std::string mName;
 };
 // 
 ///////////////////////////////////////////////////////////////////////////////

@@ -40,14 +40,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
 
-
+using namespace std;
 
 /**
  * Constructor
  */
-Declaration::Declaration (std::map<int, DTDContent>  aMapContent) : MotherContent()
+Declaration::Declaration (string name, list<pair<int, list<DTDContent> > > type) : MotherContent(), mName(name), mType(type)
 {
-	mapContent = aMapContent;
 }
 
 /**

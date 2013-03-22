@@ -4,6 +4,7 @@ using namespace std;
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include "common.h"
 
 
 void dtderror(char *msg);
@@ -20,6 +21,8 @@ int dtdlex(void);
 	MultipleElement mix;
 	DTDContent cont;
 	Declaration::Card card;
+	CData cd;
+	list<CData*>* lcd;
    
 }
 
@@ -36,6 +39,9 @@ int dtdlex(void);
 %type <mix> choices
 %type <mix> choice
 %type <mix> seq
+%type <mix> seqs_opt
+%type <cd> attribut
+%type <lcd> att_definition_opt
 %%
 
 document: dtd_list_opt
@@ -203,36 +209,20 @@ seqs_opt
 
 att_definition_opt
 : att_definition_opt attribut
+{
+	$$->push_back(attribut);
+}
 | /* vide */
+{
+	$$=new list<CData*>;
+}
 ;
 
 attribut
-: NOM att_type defaut_declaration
-;
-
-att_type
-: CDATA
-| TOKENTYPE
-| type_enumere
-;
-
-type_enumere
-: OUVREPAR liste_enum_plus FERMEPAR
-;
-
-liste_enum_plus
-: liste_enum BARRE NOM
-;
-
-liste_enum
-: NOM
-| liste_enum BARRE NOM
-;
-
-defaut_declaration
-: DECLARATION
-| VALEUR
-| FIXED VALEUR
+: NOM CDATA DECLARATION
+{
+	$$ = new CData($1);
+}
 ;
 
 %%
@@ -248,6 +238,7 @@ int main(int argc, char **argv)
         else printf("Parse ended with success\n", err);
   return 0;
 }
+
 int dtdwrap(void)
 {
   return 1;

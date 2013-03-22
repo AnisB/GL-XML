@@ -42,7 +42,7 @@
 /**
  * Constructor
  */
-MultipleElement::MultipleElement ( )
+MultipleElement::MultipleElement(bool isChoice, Declaration::Card card) : DTDContent(), mIsChoice(isChoice), mCard(card)
 {
 }
 
@@ -51,7 +51,16 @@ MultipleElement::MultipleElement ( )
  */
 MultipleElement::~MultipleElement( )
 {
-  //Nothing to do
+}
+
+void MultipleElement::setCard(Declaration::Card card)
+{
+	mCard = card;
+}
+
+Declaration::Card MultipleElement::getCard(Declaration::Card card)
+{
+	return mCard;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

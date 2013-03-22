@@ -78,11 +78,11 @@ content
 }
 | mixed
 {
-	$$->addElement($1);
+	$$->addMultipleElement($1);
 }
 | children
 {
-	$$->addElement($1);
+	$$->addMultipleElement($1);
 }
 ;
 
@@ -90,7 +90,7 @@ mixed
 : OUVREPAR PCDATA pipes FERMEPAR AST
 {
 	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement($3, Declaration::AST);
+	$$->addMultipleElement($3, Declaration::AST);
 }
 | OUVREPAR PCDATA FERMEPAR AST
 {

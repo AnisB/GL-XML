@@ -56,18 +56,21 @@ public:
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	Declaration(std::map<int, DTDContent> aMapContent);
+	enum Card{PTINT, AST, PLUS, NONE};
+	
+	Declaration(std::string name, std::list<std::pair<Card, DTDContent> > type);
 	~Declaration();
 	void printDTD();
+	void addElement();
 	std::string getName();
 	std::string createRegex();
 
   protected:
-	std::map<int, DTDContent> mapContent;
+	std::list<std::pair<int, DTDContent> > mType;
+	std::string mName;
 };
 // 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 #endif
 #endif

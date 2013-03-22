@@ -118,6 +118,7 @@ std::string Element::childToString()
 	else
 	{
 		result += (*it)->getType();
+		it++;
 	
 		for( ; it != mContent->end(); it++ )
 		{
@@ -129,6 +130,10 @@ std::string Element::childToString()
 
 std::string Element::getType()
 {
+	if( mType1.compare("") == 0)
+	{
+		return mType2;
+	}
 	return mType1 + ":" + mType2;
 }
 
@@ -143,6 +148,7 @@ std::string Element::attributeToString()
 	else
 	{
 		result += (*it)->getType();
+		it++;
 	
 		for( ; it != mAttList->end(); it++ )
 		{

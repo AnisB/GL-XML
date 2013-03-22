@@ -76,6 +76,10 @@ public:
 	std::string childToString();
 	std::string attributeToString();
 	std::string getType();
+	inline std::list<XMLContent*> * getContent()
+	{
+		return mContent;
+	}
 	
 public:
 	/**

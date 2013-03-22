@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
-#include <xmldocument>
+#include <xml/xmldocument.h>
 
 using namespace std;
 

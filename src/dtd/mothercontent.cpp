@@ -42,22 +42,33 @@
 /**
  * Constructor
  */
-MotherContent::MotherContent ()
-{
-}
+ MotherContent::MotherContent ()
+ {
+ }
 
 /**
  * Destructor.
  */
-MotherContent::~MotherContent()
-{
+ MotherContent::~MotherContent()
+ {
   //Nothing to do
-}
+ }
 
-void MotherContent::printDTD()
-{
+ void MotherContent::printDTD()
+ {
 	//should not pass here
-}
+ }
+
+
+
+ std::string MotherContent::getName()
+ {
+ 	
+ }
+ std::string MotherContent::createRegex()
+ {
+ 	
+ }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

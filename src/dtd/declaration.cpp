@@ -63,6 +63,15 @@ void Declaration::printDTD()
 	//iterateur sur map et toute la merde à compléter TT
 }
 
+	std::string Declaration::getName()
+	{
+
+	}
+	std::string Declaration::createRegex()
+	{
+		
+	}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

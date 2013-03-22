@@ -69,9 +69,14 @@ std::string XMLContent::getType()
 std::list<XMLContent*> XMLContent::getSonList(std::string name)
 {
 	throw 2;
+<<<<<<< HEAD
 	std::list<XMLContent*> michaelCaffart;
 	return michaelCaffart;
 
+=======
+	std::list<XMLContent*> emptyList;
+	return emptyList;
+>>>>>>> 0e842d4a85d252491a50e8da71f25e0335d1d597
 }
 
 ///////////////////////////////////////////////////////////////////////////////

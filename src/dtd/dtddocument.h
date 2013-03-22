@@ -42,6 +42,8 @@
 //////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <list>
+#include <string>
+#include <map>
 
 #include "declaration.h"
 #include "dtdattribute.h"
@@ -60,7 +62,7 @@ public:
 	~DTDDocument();
 	void displayAsDTDFormat();
 	
-
+	std::map<std::string, std::string> generateRegex():
 
 protected:
 

@@ -89,12 +89,12 @@ mixed
 | OUVREPAR PCDATA FERMEPAR AST
 {
 	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement(new PCData(), Declaration::AST);
+	$$->addElement(new DTDPCData(), Declaration::AST);
 }
 | OUVREPAR PCDATA FERMEPAR
 {
 	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement(new PCData(), Declaration::NONE);
+	$$->addElement(new DTDPCData(), Declaration::NONE);
 }
 ;
 
@@ -106,7 +106,7 @@ pipes
 | BARRE NOM
 {
 	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement(new PCData());
+	$$->addElement(new DTDPCData());
 	$$->addElement(new Element($2));
 }
 ;

@@ -45,7 +45,7 @@ using namespace std;
 /**
  * Constructor
  */
-Declaration::Declaration (string name, list<pair<int, list<DTDContent> > > type) : MotherContent(), mName(name), mType(type)
+Declaration::Declaration (string name, list<pair<Card, list<DTDContent> > > type) : MotherContent(), mName(name), mType(type)
 {
 }
 
@@ -62,14 +62,20 @@ void Declaration::printDTD()
 	//iterateur sur map et toute la merde à compléter TT
 }
 
-	std::string Declaration::getName()
-	{
+void Declaration::addElement()
+{
+	//a faire
+}
 
-	}
-	std::string Declaration::createRegex()
-	{
-		
-	}
+std::string Declaration::getName()
+{
+
+}
+
+std::string Declaration::createRegex()
+{
+	
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

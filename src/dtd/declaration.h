@@ -58,9 +58,10 @@ public:
 	*/
 	enum Card{PTINT, AST, PLUS, NONE};
 	
-	Declaration(std::string name, std::list<std::pair<int, DTDContent> > type);
+	Declaration(std::string name, std::list<std::pair<Card, DTDContent> > type);
 	~Declaration();
 	void printDTD();
+	void addElement();
 	std::string getName();
 	std::string createRegex();
 

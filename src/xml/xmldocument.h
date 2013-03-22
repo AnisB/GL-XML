@@ -127,6 +127,11 @@ typedef struct THeader
 	*/
 	void displayAsXMLFormat();
 
+	Element * getRoot()
+	{
+		return mRoot;
+	}
+
 	// ------------------------- Protected Datas ------------------------------
   protected:
   	std::string mName;

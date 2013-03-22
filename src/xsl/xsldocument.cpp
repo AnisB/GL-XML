@@ -45,13 +45,8 @@ using namespace std;
 */
 XSLDocument( XMLDocument * xsl, XMLDocument *xml);
 {
-	mHeader = new Header();
-	mHeader->copy(aHead);
-	mDec = new Declaration();
-	mDec->copy(aDec);
-	mMiscList = alist;
-	mRoot=root;
-	mStyleSheet=stylesheet;
+	mXml=xml;
+	mXsl=xsl;
 }
 
 	
@@ -63,26 +58,26 @@ XSLDocument::~XSLDocument()
 }
 
 /**
-* Displays the node as an xml node
+* Processes the xml file
 */
-void XSLDocument::displayAsXMLFormat()
+std::string XSLDocument::process()
 {
-	//std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
-
-	mHeader->printXML();
-	mDec->printXML();
-	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)
-	{
-		(*it)->printXML();
-	}
-
-	for(std::list<Element*>::iterator it=mStyleSheet->begin();it!=mStyleSheet->end();it++)
-	{
-		(*it)->printXML();
-	}
-
-	mRoot->printXML();
+	std::string htmlFile="<!DOCTYPE html>";
+	Element * root= mXml->getRoot();
+	
+	return "";
 }
+
+
+/**
+* Returns the HTML file
+*/
+std::string XSLDocument::getHTML()
+{
+	return "";
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

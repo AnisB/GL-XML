@@ -40,8 +40,10 @@
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 //////////////////////////////////////////////////////////////////////////////
+#include <list>
 
 #include "dtdcontent.h"
+#include "declaration.h"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -52,8 +54,16 @@ class MultipleElement : public DTDContent
 {
 // ----------------------- Standard services ------------------------------
 public:
-	MultipleElement();
+	MultipleElement(bool isChoice, Declaration::Card card);
 	virtual ~MultipleElement();
+	void setCard();
+	//void addElement();
+	//void addMultipleElement(MultipleElement multipleElement);
+
+private: 
+	bool mIsChoice;
+	Declaration::Card mCard;
+	std::list<DTDContent*> mListContent;
 };
 
 // 

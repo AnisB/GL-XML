@@ -4,7 +4,25 @@ using namespace std;
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
-#include <common.h>
+
+//#include "common.h"
+//probleme avec common, je suis fatigué alors je copie colle ici
+#include <list>
+#include <utility>
+#include <string>
+#include <iostream>
+#include <dtd/cdata.h>
+#include <dtd/dtddocument.h>
+#include <dtd/uniqueelement.h>
+#include <dtd/multipleelement.h>
+#include <dtd/dtdattribute.h>
+#include <dtd/dtdpcdata.h>
+#include <dtd/mothercontent.h>
+#include <dtd/declaration.h>
+#include <dtd/any.h>
+#include <dtd/empty.h>
+#include <dtd/dtdcontent.h>
+//fin du copier coller salle de common.h
 
 using namespace std;
 

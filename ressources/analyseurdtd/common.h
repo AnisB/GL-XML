@@ -4,6 +4,7 @@
 #include <list>
 #include <utility>
 #include <string>
+#include <iostream>
 #include <dtd/cdata.h>
 #include <dtd/dtddocument.h>
 #include <dtd/uniqueelement.h>

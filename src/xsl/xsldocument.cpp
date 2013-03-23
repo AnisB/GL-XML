@@ -229,7 +229,10 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 	else if(node->getType()=="xsl:value-of")
 	{
 		std::list<XMLContent*> otherList;
+
+
 		std::string pathToDisplay=(*node)["select"];
+		std::cout<<"On rencontre un value of"<<pathToDisplay<<endl;
 		if(pathToDisplay==".")
 		{
 			otherList=theList;
@@ -239,12 +242,16 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 			std::vector<std::string> table = split(pathToDisplay,'/');
 
 			otherList=theList;
-			for(int i=0;i!=table.size();i++)
+			for(int i=1;i!=table.size();i++)
 			{
 				otherList=getListContent(otherList,table[i]);
 			}
 		}
+		for(std::list<XMLContent*>::iterator it=theList.begin();it!=theList.end();it++)
+		{
 
+			std::cout<<"On a"<<(*it)->getType();
+		}
 
 		for(std::list<XMLContent*>::iterator that=otherList.begin();that!=otherList.end();that++)
 		{
@@ -274,7 +281,7 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 
 			for(std::list<XMLContent*>::iterator that=theList.begin();that!=theList.end();that++)
 			{
-					applyTemplateHandle(*that);
+				applyTemplateHandle(*that);
 			}
 		}
 	}

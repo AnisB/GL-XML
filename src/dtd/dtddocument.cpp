@@ -74,9 +74,9 @@ std::map<std::string, std::string>*  DTDDocument::generateRegex()
 	for( it = mContents->begin(); it != mContents->end(); it++ )
 	{
 		std::string name = (*it)->getName();
-		cout << name << " : ";
+		// cout << name << " : ";
 		std::string regex = (*it)->createRegex();
-		cout << regex << endl;
+		// cout << regex << endl;
 		(*regexMap)[name] = regex;
 	}
 	return regexMap;

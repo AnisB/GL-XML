@@ -83,7 +83,9 @@
 	// ----------------------- Other services ------------------------------
 
 	virtual std::string operator[](std::string aname)
-	{}
+	{
+		return "";
+	}
 
 	public:
 	/**

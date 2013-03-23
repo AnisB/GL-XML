@@ -32,7 +32,4 @@
 		</html>
 	</xsl:template>
 
-	<xsl:template match="/lol/fish">
-	</xsl:template>
-
 </xsl:stylesheet> 

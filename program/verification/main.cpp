@@ -26,6 +26,7 @@ int main(int argc, char ** argv)
 	FILE * file;
 	file = fopen(argv[1], "r");
 	if(!file) {
+		throw 1;
 		return -1;
 	}
 	cout << "Parsing XML file : " << argv[1] << endl;
@@ -45,6 +46,7 @@ int main(int argc, char ** argv)
 	FILE * dtdFile;
 	dtdFile = fopen(nomdtd->data(), "r");
 	if(!dtdFile) {
+		throw 1;
 		return -1;
 	}
 	cout << "Parsing DTD file : " << *nomdtd << endl;
@@ -55,9 +57,9 @@ int main(int argc, char ** argv)
 	
 	map<string,string>* regex_map = dtdDoc->generateRegex();
 	
-	cout << endl << endl << endl;
-	
-	recursiveCheck(node, regex_map);
+	// cout << endl << endl << endl;
+	cout<<"Before recursive"<<endl;
+	cout<<"Result "<<recursiveCheck(node, regex_map)<<endl;
 	
 	return 0;
 } 
@@ -70,26 +72,30 @@ bool recursiveCheck(Element * node, map<string,string>* regex_map)
 	string childs = node->childToString();
 	string attributes = node->attributeToString();
 	string type = node->getType();
+	if((*regex_map).find("E"+type)==(*regex_map).end())
+	{
+		return false;
+	}
 	boost::regex attributeRegex((*regex_map)["A"+type]);
 	boost::regex elementRegex((*regex_map)["E"+type]);
 	if( !boost::regex_match(attributes, attributeRegex) )
 	{
-		cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
+		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
 		return false;
 	}
 	else
 	{
-		cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
+		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
 	}
 	
 	if( !boost::regex_match(childs, elementRegex) )
 	{
-		cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
+		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
 		return false;
 	}
 	else
 	{
-		cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
+		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
 	}
 	
 	for( it = node->getContent()->begin() ; it != node->getContent()->end(); it++)

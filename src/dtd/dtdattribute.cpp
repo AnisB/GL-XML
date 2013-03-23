@@ -124,22 +124,14 @@ std::string DTDAttribute::createRegex()
 	
 	if(it != m_datas->end())
 	{
-		regex+=(*it)->getContent() + "\"[^\"]*\"";
+		regex+='(' + (*it)->getContent() + "\"[^\"]*\"" + ")?";
 		it++;
 	}
 	for( ; it != m_datas->end(); it++ )
 	{
-		regex+="\\s" + (*it)->getContent() + "\"[^\"]*\"";
+		regex+= "(\\s"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";	// every attribute is #implied
 	}
-	
-	mElement->getContent();
-	switch(mElement->getCard())
-	{
-		case Declaration::DTD_AST: regex+="*"; break;
-		case Declaration::DTD_PLUS: regex+="+"; break;
-		case Declaration::DTD_PTINT: regex+="+"; break;
-		default: break;
-	}
+	cout << regex << endl;
 	
 	return regex;
 }

@@ -76,7 +76,7 @@ string DTDPCData::getContent()
 //
 /////////////////////////////////////////////////////////////////////////////// 
 
-void DTDPCData printDTD()
+void DTDPCData::printDTD()
 {
 	cout << "#PCDATA";
 }

@@ -69,7 +69,7 @@ typedef struct TDeclaration
 		this->mValue =aDec->mValue;
 		this->mExists=aDec->mExists;
 	}	
-} Declaration;
+} XmlDeclaration;
 
 typedef struct THeader
 {
@@ -111,7 +111,7 @@ typedef struct THeader
 	/**
 	* Constructor
 	*/
-	XMLDocument( Header * aHead, Declaration * aDec, std::list<Element*>  * stylesheet, Element* root, std::list<Misc*> * alist);
+	XMLDocument( Header * aHead, XmlDeclaration * aDec, std::list<Element*>  * stylesheet, Element* root, std::list<Misc*> * alist);
 	
 
 	/**
@@ -139,7 +139,7 @@ typedef struct THeader
 	std::list<Element*>* mStyleSheet;
 	std::list<XMLAttribute*>* mAttributes;
 	std::list<Misc*> * mMiscList;
-	Declaration * mDec;
+	XmlDeclaration * mDec;
 	Header * mHeader;
 
     //--------------------------- Protected attributes---------------------------

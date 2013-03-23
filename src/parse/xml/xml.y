@@ -19,7 +19,7 @@ int xmllex(void);
    Misc * msc;
    std::string * stringMachin;
    std::list<Misc*> * lstmsc;
-   Declaration * dec;
+   XmlDeclaration * dec;
    Element * elt;
    std::list<Element*> * lelt;
    std::list<XMLContent*> *lcnt;
@@ -70,7 +70,7 @@ int xmllex(void);
 
  declarations
 	: declaration {$$=$1;}
- | /*vide*/ {$$= new Declaration();$$->mExists=false;}
+ | /*vide*/ {$$= new XmlDeclaration();$$->mExists=false;}
  ;
  
  feuilles_style_opt
@@ -79,7 +79,7 @@ int xmllex(void);
  ;
 
  declaration
-	: DOCTYPE NOM NOM VALEUR SUP {$$ = new Declaration(); $$->mName1=$2;$$->mName2=$3;$$->mValue=$4;$$->mExists=true;}
+	: DOCTYPE NOM NOM VALEUR SUP {$$ = new XmlDeclaration(); $$->mName1=$2;$$->mName2=$3;$$->mValue=$4;$$->mExists=true;}
  ;
 
  element

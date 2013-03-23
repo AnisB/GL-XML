@@ -43,11 +43,11 @@ using namespace std;
 /**
 * Constructor
 */
-XMLDocument::XMLDocument( Header * aHead, Declaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
+XMLDocument::XMLDocument( Header * aHead, XmlDeclaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
 {
 	mHeader = new Header();
 	mHeader->copy(aHead);
-	mDec = new Declaration();
+	mDec = new XmlDeclaration();
 	mDec->copy(aDec);
 	mMiscList = alist;
 	mRoot=root;

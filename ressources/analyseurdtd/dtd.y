@@ -217,7 +217,7 @@ att_definition_opt
 }
 | /* vide */
 {
-	$$=new list<CData*>;
+	$$=new std::list<CData*>;
 }
 ;
 

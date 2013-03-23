@@ -216,30 +216,30 @@
  	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
  	{ 		
  		std::list<XMLContent*> result= (*it)->getAllContent(name);
-		for(std::list<XMLContent*>::iterator it=result.begin();it!=result.end();it++)
-		{
-			toReturn.push_back(*it);
-		}
+ 		for(std::list<XMLContent*>::iterator it=result.begin();it!=result.end();it++)
+ 		{
+ 			toReturn.push_back(*it);
+ 		}
  	}
  	return toReturn;
  }
 
 
-std::string Element::operator[](std::string attname)
-{
-     for(std::list<XMLAttribute*>::iterator it=mAttList->begin();it!=mAttList->end();it++)
-     {
-     	if ((*it)->getType()==attname)
-     	{
-     		return(*it)->getValue();
-     	}
-     }
-     return "";
-}
+ std::string Element::operator[](std::string attname)
+ {
+ 	for(std::list<XMLAttribute*>::iterator it=mAttList->begin();it!=mAttList->end();it++)
+ 	{
+ 		if ((*it)->getType()==attname)
+ 		{
+ 			return(*it)->getValue();
+ 		}
+ 	}
+ 	return "";
+ }
  std::string Element::getOpen()
  {
  	std::string toReturn;
- 	 if (mType1!="")
+ 	if (mType1!="")
  	{
  		if (!mIsSpecial)
  		{
@@ -280,8 +280,19 @@ std::string Element::operator[](std::string attname)
  }
  std::string Element::getClose()
  {
+ 	std::string toReturn;
+ 	if (mType1!="")
+ 	{
+ 		toReturn+="</"+mType1+":"+mType2+">";
+ 	}
+ 	else
+ 	{
+ 		toReturn+="</"+mType2+">";
 
- }
+ 	}
+ 	return toReturn;
+ 
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline functimyCameraons //

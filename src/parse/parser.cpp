@@ -68,7 +68,7 @@ XMLDocument * Parser::parseXML(std::string fileName)
 	if(!file) {
 		throw 1;
 	}
-	std::cout << "Parsing XML file : " << fileName << std::endl;
+	// std::cout << "Parsing XML file : " << fileName << std::endl;
 	std::string * nomdtd;
 	XMLDocument* xmlDoc;
 	xmlin = file;

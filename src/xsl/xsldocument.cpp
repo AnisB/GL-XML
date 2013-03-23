@@ -82,21 +82,42 @@ XSLDocument::XSLDocument( XMLDocument * xsl, XMLDocument *xml)
 */
 std::string XSLDocument::process()
 {
-	mXsl->displayAsXMLFormat();
+
+	std::list<XMLContent *> theListToHandle;
+	std::list<XMLContent *> * theHandlers;
 	std::string htmlFile="<!DOCTYPE html>";
+	std::cout<<"<!DOCTYPE html>"<<std::endl;
 	Element * root= mXml->getRoot();
 	std::list<XMLContent*>::iterator it = mXsl->getRoot()->getContent()->begin();
 	for(;it!=mXsl->getRoot()->getContent()->end();it++)
 	{
-		cout<<"in"<<endl;
+
 		if(((*it)->getType()=="xsl:template"))
 		{	
-			std::list<XMLContent*> listToHandle = match((**it)["match"],root);
-			cout<<*it<<endl;
-			handleTemplate(*it,listToHandle);
+			theListToHandle= match((**it)["match"],root);
+			theHandlers=(*it)->getContent();
+			// for(list<XMLContent*>::iterator that = (*it)->getContent()->begin();that!=(*it)->getContent()->end();that++)
+			// {
+			// 	handleTemplate(*that,listToHandle,false);
+			// }
+			
 		}
-		cout<<"out"<<endl;
-		
+		break;		
+	}
+
+	for(;it!=mXsl->getRoot()->getContent()->end();it++)
+	{
+		if(((*it)->getType()=="xsl:template"))
+		{	
+			std::string matchString =(**it)["match"];
+			// std::cout<<"Adding "<<matchString<<endl;
+			templates[matchString]=(*it);
+		}		
+	}
+
+	for(list<XMLContent*>::iterator that = theHandlers->begin();that!=theHandlers->end();that++)
+	{
+		handleTemplate(*that,theListToHandle,false);
 	}
 	return htmlFile;
 }
@@ -175,31 +196,175 @@ std::list<XMLContent*> XSLDocument::getListContent(std::list<XMLContent*> roots,
 }
 
 
-std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*>  theList)
+std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*>  theList, bool shouldHT)
 {
-	std::cout<<"hi"<<endl;
+	// std::cout<<"I am handeling a template "<<node->getType()<<endl;
 	std::string toReturn="";
 	if(node->getType()=="xsl:for-each")
 	{
+		std::string pathToDisplay=(*node)["select"];
+		std::vector<std::string> table = split(pathToDisplay,'/');
+		std::list<XMLContent*> otherList;
+		otherList=theList;
+		for(int i=1;i!=table.size();i++)
+		{
+			otherList=getListContent(otherList,table[i]);
+		}
+		for(std::list<XMLContent*>::iterator that=otherList.begin();that!=otherList.end();that++)
+		{
+			for(std::list<XMLContent*>::iterator itis=node->getContent()->begin();itis!=node->getContent()->end();itis++)
+			{
+				std::list<XMLContent*> togive;
+				togive.push_back(*that);
+				handleTemplate((*itis),togive,shouldHT);
+			}
+		}
+	}
+	else if(node->getType()=="xsl:value-of")
+	{
+		std::string pathToDisplay=(*node)["select"];
+		std::vector<std::string> table = split(pathToDisplay,'/');
+		std::list<XMLContent*> otherList;
+		otherList=theList;
+		for(int i=0;i!=table.size();i++)
+		{
+			otherList=getListContent(otherList,table[i]);
+		}
+
+		for(std::list<XMLContent*>::iterator that=otherList.begin();that!=otherList.end();that++)
+		{
+			(*that)->printXML();
+		}
+	}
+	else if(node->getType()=="xsl:apply-templates")
+	{
+		// std::cout<<"I got an apply template "<<node->getType()<<endl;
+		for(std::list<XMLContent*>::iterator that=theList.begin();that!=theList.end();that++)
+		{
+			//std::cout<<"Looking if there is a template for "<<(*that)->getType()<<endl;
+			applyTemplateHandle(*that);
+			// std::map<string,XMLContent*>::iterator his=templates.find((*that)->getType());
+			// if(his!= templates.end())
+			// {
+			// 	std::list<XMLContent*> otherList;
+			// 	otherList.push_back(*that);
+			// 	handleTemplate(his->second,otherList,true);
+			// }
+			// else
+			// {
+			// 	std::cout<<(*that)->getOpen();
+			// 	toReturn+=((*that)->getOpen());
+			// 	if((*that)->getContent()!=NULL)
+			// 	{
+			// 		for(std::list<XMLContent*>::iterator whom=(*that)->getContent()->begin();whom!=(*that)->getContent()->end();whom++)
+			// 		{
+			// 			//handleTemplate(node,theList,true);
+			// 			applyTemplateHandle(*whom);
+
+			// 		}
+			// 	}
+			// 	std::cout<<(*that)->getClose();
+			// 	toReturn+=((*that)->getClose());
+			// }
+		}
 
 	}
 	else
 	{
-		std::cout<<"hi2"<<node->getOpen()<<node->getContent()<<endl;
+		// std::cout<<"here"<<endl;
+		std::cout<<node->getOpen()<<endl;;
 		toReturn+=(node->getOpen());
+		// if (!shouldHT)
+		// {
 
-		for(std::list<XMLContent*>::iterator that=node->getContent()->begin();that!=node->getContent()->end();that++)
+		if((node->getContent()!=NULL) && (node->getContent()->size()>0))
 		{
-			cout<<"lol"<<endl;
-		}
-		std::cout<<"after"<<endl;
-		toReturn+=(node->getClose());
+			// std::cout<<"got sons"<<(*node->getContent()->begin())<<endl;
 
+			for(std::list<XMLContent*>::iterator that=node->getContent()->begin();that!=node->getContent()->end();that++)
+			{
+				// std::cout<<"Handeling sons"<<endl;
+				handleTemplate((*that),theList,shouldHT);
+			}
+		}
+		// }
+		// else
+		// {
+			// if(node->getContent()!=NULL)
+			// {
+			// 	for(std::list<XMLContent*>::iterator that=node->getContent()->begin();that!=node->getContent()->end();that++)
+			// 	{
+			// 		std::cout<<"Looking if there is a template for "<<(*that)->getType()<<endl;
+			// 		std::map<string,XMLContent*>::iterator his=templates.find((*that)->getType());
+			// 		if(his!= templates.end())
+			// 		{
+			// 			std::list<XMLContent*> otherList;
+			// 			otherList.push_back(*that);
+			// 			handleTemplate(his->second,otherList,true);
+			// 		}
+			// 		else
+			// 		{
+			// 			std::cout<<(*that)->getOpen();
+			// 			toReturn+=((*that)->getOpen());
+			// 			if((*that)->getContent()!=NULL)
+			// 			{
+			// 				for(std::list<XMLContent*>::iterator whom=(*that)->getContent()->begin();whom!=(*that)->getContent()->end();whom++)
+			// 				{
+			// 					handleTemplate((*whom),theList,true);
+			// 				}
+			// 			}
+			// 			std::cout<<(*that)->getClose();
+			// 			toReturn+=((*that)->getClose());
+			// 		}
+			// 	}
+			// }
+		// if(node->getContent()!=NULL)
+		// {
+		// 	for(std::list<XMLContent*>::iterator that=node->getContent()->begin();that!=node->getContent()->end();that++)
+		// 	{
+		// 		handleTemplate((*that),theList,shouldHT);
+		// 	}
+		// }
+		// }
+		std::cout<<node->getClose()<<endl;
+		toReturn+=(node->getClose());
 	}
 	return toReturn;
 }
 
+std::string XSLDocument::applyTemplateHandle(XMLContent * node)
+{
+	// std::cout<<"Looking if there is a template for "<<(node)->getType()<<endl;
+	std::map<string,XMLContent*>::iterator his=templates.find((node)->getType());
+	if(his!= templates.end())
+	{
+		// std::cout<<"There is "<<(node)->getType()<<endl;
 
+		std::list<XMLContent*> * otherList= node->getContent();
+		XMLContent * pointer =his->second;
+		for(std::list<XMLContent*>::iterator that=pointer->getContent()->begin();that!=pointer->getContent()->end();that++)
+		{
+			handleTemplate(*that,*otherList,true);
+		}
+	}
+	else
+	{
+		// std::cout<<"There isn't "<<std::endl;
+
+		std::cout<<node->getOpen();
+		if(node->getContent()!=NULL)
+		{
+			// std::cout<<"Content isn't nil"<<std::endl;
+			for(std::list<XMLContent*>::iterator that=node->getContent()->begin();that!=node->getContent()->end();that++)
+			{
+				applyTemplateHandle(*that);
+			}
+		}
+		std::cout<<node->getClose();
+
+	}
+	return "";
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

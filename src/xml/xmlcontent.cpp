@@ -77,9 +77,15 @@
  	return emptyList;
  }
  std::string XMLContent::getOpen()
- {}
+ {
+ 	std::string empty;
+ 	return empty;
+ }
  std::string XMLContent::getClose()
- {}
+ {
+ 	std::string empty;
+ 	return empty;
+ }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

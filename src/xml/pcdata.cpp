@@ -97,7 +97,8 @@ std::list<XMLContent*> PCData::getSonList(std::string name)
  }
  std::string PCData::getClose()
  {
- 	return "";
+ 	std::string empty;
+ 	return empty;
  }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

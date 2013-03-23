@@ -144,12 +144,12 @@ pipes
 children
 : choice cardinalite_opt
 {
-	$$ = $1
+	$$ = $1;
 	$$->setCard($2);
 }
 | seq cardinalite_opt //une sequence n'a pas de cardinalité. Laisser ?
 {
-	$$ = $1
+	$$ = $1;
 	$$->setCard($2);
 }
 | NOM cardinalite_opt

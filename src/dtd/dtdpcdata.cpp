@@ -61,16 +61,8 @@ DTDPCData::~DTDPCData()
 
 ///////////////////////////////////////////////////////////////////////////////
 // Implementation of inline setContent
-void DTDPCData::setContent(string content)
+void DTDPCData::setContent()
 {
-	m_content = content;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline getContent
-string DTDPCData::getContent()
-{
-	return m_content;
 }
 
 //

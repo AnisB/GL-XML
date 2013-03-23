@@ -37,8 +37,7 @@ int dtdlex(void);
 	std::list<MotherContent*>* lmc;
 	DTDDocument* ddtd;
 	MultipleElement* mix;
-	DTDContent* cont;
-	Declaration::Card* card;
+	Declaration::Card card;
 	CData* cd;
 	list<CData*>* lcd;
 	DTDContent* dtdc;
@@ -74,7 +73,7 @@ dtd_list_opt
 : dtd_list_opt ATTLIST NOM att_definition_opt SUP
 {
 	$$=$1;
-	$$->push_back(new DTDAttribute(new UniqueElement($3), $4));
+	$$->push_back(new DTDAttribute(new UniqueElement($3, Declaration::DTD_NONE), $4));
 }
 | dtd_list_opt ELEMENT NOM content SUP
 {
@@ -190,7 +189,8 @@ cp
 choice
 : OUVREPAR cp choices FERMEPAR
 {
-	$$=$2;
+	$$=new MultipleElement(true, Declaration::DTD_NONE);
+	$$->addMultipleElement($2);
 	$$->addMultipleElement($3);
 }
 ;
@@ -198,13 +198,12 @@ choice
 choices
 : choices BARRE cp
 {
-	$$->addMultipleElement($1);
-	$$->addMultipleElement($3);
+	$$->addElement($3);
 }
 | BARRE cp
 {
 	$$ = new MultipleElement(true, Declaration::DTD_NONE);
-	$$->addMultipleElement($2);
+	$$->addElement($2);
 }
 ;
 

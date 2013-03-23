@@ -48,30 +48,15 @@
 class DTDPCData : public DTDContent
 {
 public:
-	DTDPCData(std::string content);
+	DTDPCData();
 	virtual ~DTDPCData();
-	
-	/**
-	* remplacer le contenu du DTDPCData
-	* @param content le contenu
-	*/
-	void setContent(std::string content);
 
-	/**
-	* recuperer le contenu de DTDPCData
-	* @return le contenu
-	*/
-	std::string getContent();
 	
 	/**
 	* Ecrire sous forme de DTD
 	*/
 	void printDTD();
 
-	
-
-protected:
-	std::string m_content;
 };
 
 // 

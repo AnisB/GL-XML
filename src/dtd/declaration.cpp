@@ -60,7 +60,7 @@ Declaration::~Declaration( )
 void Declaration::printDTD()
 {
 	cout<<"<!ELEMENT "<<mName<<" ";
-	for(list<DTDContent*>::iterator it==mType->begin();it!=mType->end();it++)
+	for(list<DTDContent*>::iterator it=mType->begin();it!=mType->end();it++)
 	{
 		(*it)->printDTD();
 	}

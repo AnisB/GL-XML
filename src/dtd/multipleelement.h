@@ -61,7 +61,7 @@ public:
 	Declaration::Card getCard(Declaration::Card card);
 	void addElement(DTDContent* content);
 	void addMultipleElement(MultipleElement* multipleElement);
-	std::list<DTDContent> getListContent();
+	list<DTDContent*>* getListContent();
 	
 	/**
 	* Ecrire sous forme de DTD

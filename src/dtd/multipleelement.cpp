@@ -70,8 +70,8 @@ void MultipleElement::addElement(DTDContent* content)
 
 void MultipleElement::addMultipleElement(MultipleElement* multipleElement)
 {
-	list<DTDContent*>* lElems = multipleElement->getListContent();
-	mListContent->insert(mListContent.end(), lElems.begin(), lElems.end());
+	list<DTDContent*> lElems = multipleElement->getListContent();
+	mListContent->insert(mListContent->end(), lElems.begin(), lElems.end());
 }
 
 list<DTDContent*>* MultipleElement::getListContent()

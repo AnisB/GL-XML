@@ -78,15 +78,15 @@ void UniqueElement::setCard(Declaration::Card card)
 void UniqueElement::printDTD()
 {
 	cout << m_content;
-	if(m_card=Declaration::DTD_AST)
+	if(m_card==Declaration::DTD_AST)
 	{
 		cout << "*";
 	}
-	else if(m_card=Declaration::DTD_PTINT)
+	else if(m_card==Declaration::DTD_PTINT)
 	{
 		cout << "?";
 	}
-	else if(m_card=Declaration::DTD_PLUS)
+	else if(m_card==Declaration::DTD_PLUS)
 	{
 		cout << "+";
 	}

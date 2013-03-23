@@ -44,6 +44,7 @@ using namespace std;
  */
 MultipleElement::MultipleElement(bool isChoice, Declaration::Card card) : DTDContent(), mIsChoice(isChoice), mCard(card)
 {
+	mListContent = new list<DTDContent*>;
 }
 
 /**
@@ -68,6 +69,11 @@ void MultipleElement::addElement(DTDContent* content)
 	mListContent->push_back(content);
 }
 
+void MultipleElement::addElementReverse(DTDContent* content)
+{
+	mListContent->push_front(content);
+}
+
 void MultipleElement::addMultipleElement(MultipleElement* multipleElement)
 {
 	list<DTDContent*>* lElems = multipleElement->getListContent();
@@ -83,18 +89,23 @@ void MultipleElement::printDTD()
 {
 	cout << "(";
 	std::list<DTDContent*>::iterator ite=mListContent->begin();
-	ite++;
-	for(std::list<DTDContent*>::iterator it=ite;it!=mListContent->end();it++)
+	if( ite != mListContent->end() )
 	{
-		if(mIsChoice)
+		(*ite)->printDTD();
+		ite++;
+	
+		for(std::list<DTDContent*>::iterator it=ite;it!=mListContent->end();it++)
 		{
-			cout << " | ";
+			if(mIsChoice)
+			{
+				cout << " | ";
+			}
+			else
+			{
+				cout << ", ";
+			}
+			(*it)->printDTD();
 		}
-		else
-		{
-			cout << ", ";
-		}
-		(*it)->printDTD();
 	}
 	cout << ")";
 	if(mCard==Declaration::DTD_AST)

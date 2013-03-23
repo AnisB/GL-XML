@@ -54,6 +54,10 @@ DTDContent::~DTDContent()
   //Nothing to do
 }
 
+void DTDContent::printDTD()
+{
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

@@ -17,12 +17,12 @@ int dtdlex(void);
 	char *s;
 	std::list<MotherContent*>* lmc;
 	DTDDocument* ddtd;
-	Declaration decl;
 	MultipleElement mix;
 	DTDContent cont;
 	Declaration::Card card;
 	CData cd;
 	list<CData*>* lcd;
+	DTDContent* dtdc;
    
 }
 
@@ -31,11 +31,11 @@ int dtdlex(void);
 
 %type <lmc> dtd_list_opt
 %type <ddtd> document
-%type <decl> content
+%type <mix> content
 %type <mix> mixed
 %type <mix> pipes
 %type <card> cardinalite_opt
-%type <mix> cp
+%type <dtdc> cp
 %type <mix> choices
 %type <mix> choice
 %type <mix> seq
@@ -70,44 +70,46 @@ dtd_list_opt
 content
 : EMPTY
 {
+	$$=new MultipleElement(false, Declaration::NONE);	
 	$$->addElement(new Empty());
 }
 | ANY
 {
+	$$=new MultipleElement(false, Declaration::NONE);	
 	$$->addElement(new Any());
 }
 | mixed
 {
-	$$->addMultipleElement($1);
+	$$=$1;
 }
 | children
 {
-	$$->addMultipleElement($1);
+	$$=$1;
 }
 ;
 
 mixed
 : OUVREPAR PCDATA pipes FERMEPAR AST
 {
-	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addMultipleElement($3, Declaration::AST);
+	$$ = new MultipleElement(true, Declaration::AST);
+	$$->addMultipleElement($3);
 }
 | OUVREPAR PCDATA FERMEPAR AST
 {
-	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement(new DTDPCData(), Declaration::AST);
+	$$ = new MultipleElement(true, Declaration::AST);
+	$$->addElement(new DTDPCData());
 }
 | OUVREPAR PCDATA FERMEPAR
 {
 	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement(new DTDPCData(), Declaration::NONE);
+	$$->addElement(new DTDPCData());
 }
 ;
 
 pipes
 : pipes BARRE NOM
 {
-	$$->addElement(new Element($3), Declaration::NONE);
+	$$->addElement(new Element($3, Declaration::NONE));
 }
 | BARRE NOM
 {
@@ -120,18 +122,18 @@ pipes
 children
 : choice cardinalite_opt
 {
-	$$ = new MultipleElement(true, $2);
-	$$->addMultipleElement($1);
+	$$ = $1
+	$$->setCard($2);
 }
-| seq cardinalite_opt
+| seq cardinalite_opt //une sequence n'a pas de cardinalité. Laisser ?
 {
-	$$ = new MultipleElement(false, $2);
-	$$->addMultipleElement($1);
+	$$ = $1
+	$$->setCard($2);
 }
 | NOM cardinalite_opt
 {
 	$$ = new MultipleElement(false, $2);
-	$$->addElement($1, $2);
+	$$->addElement($1);
 }
 ;
 
@@ -157,8 +159,7 @@ cardinalite_opt
 cp
 : NOM cardinalite_opt
 {
-	$$ = new MultipleElement(true, Declaration::NONE);
-	$$->addElement($1, $2);
+	$$ = new UniqueElement($1, $2);
 }
 | children
 {
@@ -169,7 +170,7 @@ cp
 choice
 : OUVREPAR cp choices FERMEPAR
 {
-	$$->addMultipleElement($2);
+	$$=$2;
 	$$->addMultipleElement($3);
 }
 ;
@@ -182,7 +183,8 @@ choices
 }
 | BARRE cp
 {
-	$$ = new MultipleElement(true, $2);
+	$$ = new MultipleElement(true, Declaration::NONE);
+	$$->addMultipleElement($2);
 }
 ;
 
@@ -198,8 +200,8 @@ seq
 seqs_opt
 : seqs_opt VIRGULE cp
 {
-	$$->addMultipleElement($1);
-	$$->addMultipleElement($3);
+	//$$->addElement($1);
+	$$->addElement($3);
 }
 | /*vide*/
 {
@@ -230,12 +232,16 @@ attribut
 int main(int argc, char **argv)
 {
   int err;
+  //string *result;
+  //DTDDocument * dc;
 
   yydebug = 1; // pour désactiver l'affichage de l'exécution du parser LALR, commenter cette ligne
 
-  err = dtdparse();
+  err = dtdparse(/*&result, &dc*/);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
         else printf("Parse ended with success\n", err);
+		
+  //dc->displayAsDTDFormat();
   return 0;
 }
 

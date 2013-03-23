@@ -37,7 +37,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
 
-
+using namespace std;
 
 /**
  * Constructor
@@ -62,6 +62,55 @@ Declaration::Card MultipleElement::getCard(Declaration::Card card)
 {
 	return mCard;
 }
+
+void MultipleElement::addElement(DTDContent* content)
+{
+	mListContent->push_back(content);
+}
+
+void MultipleElement::addMultipleElement(MultipleElement multipleElement)
+{
+	list<DTDContent*>* lElems = multipleElement.getListContent();
+	mListContent->insert(mListContent.end(), lElems.begin(), lElems.end());
+}
+
+list<DTDContent*>* getListContent()
+{
+	return mListContent;
+}
+
+void MultipleElement::printDTD()
+{
+	cout << "(";
+	std::list<DTDContent*>::iterator ite=mListContent->begin();
+	ite++;
+	for(std::list<DTDContent*>::iterator it=ite;it!=mListContent->end();it++)
+	{
+		if(isChoice)
+		{
+			cout << " | ";
+		}
+		else
+		{
+			cout << ", ";
+		}
+		(*it)->printDTD();
+	}
+	cout << ")";
+	if(mCard==Declaration::AST)
+	{
+		cout << "*";
+	}
+	else if(mCard==Declaration::PLUS)
+	{
+		cout << "+";
+	}
+	else if(mCard==Declaration::PTINT)
+	{
+		cout << "?";
+	}
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

@@ -41,7 +41,9 @@
 // Inclusions
 //////////////////////////////////////////////////////////////////////////////
 #include "dtdcontent.h"
+#include "declaration.h"
 #include <string>
+#include <iostream>
 /////////////////////////////////////////////////////////////////////////////
 // class UniqueElement
 
@@ -50,7 +52,7 @@ class UniqueElement : public DTDContent
 // ----------------------- Standard services ------------------------------
 
 public:
-	UniqueElement(std::string content);
+	UniqueElement(std::string content, Declaration::Card card);
 	virtual ~UniqueElement();
 	
 	/**
@@ -64,11 +66,29 @@ public:
 	* @return le contenu
 	*/
 	std::string getContent();
+	
+	/**
+	* recuperer la cardinalité
+	* @return la cardinalité
+	*/
+	Declaration::Card getCard();
+	
+	/**
+	* remplacer la cardinalité
+	* @param card la nouvelle cardinalité
+	*/
+	void setCard(Declaration::Card card);
+	
+	/**
+	* Ecrire sous forme de DTD
+	*/
+	void printDTD();
 
 	
 
 protected:
 	std::string m_content;
+	Declaration::Card m_card;
 
 };
 

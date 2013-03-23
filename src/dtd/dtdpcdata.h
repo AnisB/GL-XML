@@ -62,6 +62,11 @@ public:
 	* @return le contenu
 	*/
 	std::string getContent();
+	
+	/**
+	* Ecrire sous forme de DTD
+	*/
+	void printDTD();
 
 	
 

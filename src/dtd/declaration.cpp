@@ -45,7 +45,7 @@ using namespace std;
 /**
  * Constructor
  */
-Declaration::Declaration (std::string name/*, std::list</*std::pair<Card, DTDContent> > type*/) : MotherContent(), mName(name)//,mType(type)
+Declaration::Declaration (string name, list<DTDContent*> type) : MotherContent(), mName(name),mType(type)
 {
 }
 
@@ -59,7 +59,12 @@ Declaration::~Declaration( )
 
 void Declaration::printDTD()
 {
-	//iterateur sur map et toute la merde à compléter TT
+	cout<<"<!ELEMENT "<<mName<<" ";
+	for(list<DTDContent*>::iterator it==mType->begin();it!=mType->end();it++)
+	{
+		(*it)->printDTD();
+	}
+	cout<<">"<<endl;
 }
 
 void Declaration::addElement()

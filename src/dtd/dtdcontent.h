@@ -54,6 +54,7 @@ public:
 // ----------------------- Standard services ------------------------------
 	DTDContent();
 	virtual ~DTDContent();
+	virtual void printDTD();
 };
 
 // 

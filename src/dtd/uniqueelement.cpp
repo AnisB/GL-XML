@@ -37,12 +37,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
 
-
+using namespace std;
 
 /**
  * Constructor
  */
-UniqueElement::UniqueElement (std::string content) : DTDContent(), m_content(content)
+UniqueElement::UniqueElement (std::string content, Declaration::Card card) : DTDContent(), m_content(content), m_card(card)
 {
 }
 
@@ -62,6 +62,34 @@ void UniqueElement::setContent(std::string content)
 std::string UniqueElement::getContent()
 {
 	return m_content;
+}
+
+	
+Declaration::Card UniqueElement::getCard()
+{
+	return m_card;
+}
+
+void UniqueElement::setCard(Declaration::Card card)
+{
+	m_card=card;
+}
+
+void UniqueElement::printDTD()
+{
+	cout << m_content;
+	if(m_card=Declaration::AST)
+	{
+		cout << "*";
+	}
+	else if(m_card=Declaration::PTINT)
+	{
+		cout << "?";
+	}
+	else if(m_card=Declaration::PLUS)
+	{
+		cout << "+";
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////

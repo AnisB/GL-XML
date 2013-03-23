@@ -106,7 +106,7 @@ void DTDAttribute::printDTD()
 	std::cout<<"<!ATTLIST "<<mElement->getContent();
 	for(std::list<CData*>::iterator it=m_datas->begin();it!=m_datas->end();it++)
 	{
-		std::cout<<std::endl<<(*it)->getContent()<<" CDATA #IMPLIED";
+		std::cout<<std::endl << "        "<< (*it)->getContent()<<" CDATA #IMPLIED";
 	}
 	std::cout<<std::endl<<">"<<std::endl;
 }

@@ -41,6 +41,7 @@
 // Inclusions
 //////////////////////////////////////////////////////////////////////////////
 #include <list>
+#include <iostream>
 
 #include "dtdcontent.h"
 #include "declaration.h"
@@ -58,13 +59,19 @@ public:
 	virtual ~MultipleElement();
 	void setCard(Declaration::Card card);
 	Declaration::Card getCard(Declaration::Card card);
-	//void addElement();
-	//void addMultipleElement(MultipleElement multipleElement);
+	void addElement(DTDContent* content);
+	void addMultipleElement(MultipleElement multipleElement);
+	std::list<DTDContent> getListContent();
+	
+	/**
+	* Ecrire sous forme de DTD
+	*/
+	void printDTD();
 
 private: 
 	bool mIsChoice;
 	Declaration::Card mCard;
-	std::list<DTDContent*> mListContent;
+	std::list<DTDContent*>* mListContent;
 };
 
 // 

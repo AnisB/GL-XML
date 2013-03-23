@@ -1,4 +1,4 @@
- %{
+%{
 
 #include <cstring>
 #include <cstdio>
@@ -243,7 +243,7 @@ int dtdwrap(void)
   return 1;
 }
 
-void dtderror(char *msg)
+void dtderror(DTDDocument** doc, char *msg)
 {
   fprintf(stderr, "%s\n", msg);
 }

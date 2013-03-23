@@ -1,13 +1,12 @@
- %{
+%{
 
-using namespace std;
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
 
-//#include "common.h"
+#include "common.h"
 //probleme avec common, je suis fatigué alors je copie colle ici
-#include <list>
+/*#include <list>
 #include <utility>
 #include <string>
 #include <iostream>
@@ -21,12 +20,13 @@ using namespace std;
 #include <dtd/declaration.h>
 #include <dtd/any.h>
 #include <dtd/empty.h>
-#include <dtd/dtdcontent.h>
+#include <dtd/dtdcontent.h>*/
+#include "dtd.tab.h"
 //fin du copier coller salle de common.h
 
 using namespace std;
 
-void dtderror(char *msg);
+void dtderror(DTDDocument** doc, char *msg);
 int dtdwrap(void);
 int dtdlex(void);
 
@@ -39,7 +39,7 @@ int dtdlex(void);
 	MultipleElement* mix;
 	Declaration::Card card;
 	CData* cd;
-	list<CData*>* lcd;
+	std::list<CData*>* lcd;
 	DTDContent* dtdc;
    
 }
@@ -61,11 +61,13 @@ int dtdlex(void);
 %type <mix> seqs_opt
 %type <cd> attribut
 %type <lcd> att_definition_opt
+
+%parse-param { DTDDocument** doc}
 %%
 
 document: dtd_list_opt
 {
-	$$=new DTDDocument($1);
+	*doc=new DTDDocument($1);
 }
 ;
 
@@ -254,12 +256,11 @@ attribut
 int main(int argc, char **argv)
 {
   int err;
-  //string *result;
-  //DTDDocument * dc;
+  DTDDocument * dc;
 
   yydebug = 1; // pour désactiver l'affichage de l'exécution du parser LALR, commenter cette ligne
 
-  err = dtdparse(/*&result, &dc*/);
+  err = dtdparse(&dc);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
         else printf("Parse ended with success\n", err);
 		
@@ -272,7 +273,7 @@ int dtdwrap(void)
   return 1;
 }
 
-void dtderror(char *msg)
+void dtderror(DTDDocument** doc, char *msg)
 {
   fprintf(stderr, "%s\n", msg);
 }

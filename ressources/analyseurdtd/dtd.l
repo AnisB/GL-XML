@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+#include "common.h"
 #include "dtd.tab.h"
 
 static char* skipSpace(char *s) {

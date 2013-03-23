@@ -42,6 +42,7 @@
 //////////////////////////////////////////////////////////////////////////////
 #include <list>
 #include <iostream>
+#include <string>
 #include "dtdcontent.h"
 #include "mothercontent.h"
 
@@ -56,7 +57,7 @@ public:
 	* Definition de la classe
 	* @param *nom parametre* *description parametre*
 	*/
-	enum Card{PTINT, AST, PLUS, NONE};
+	enum Card{DTD_PTINT, DTD_AST, DTD_PLUS, DTD_NONE};
 	
 	Declaration(std::string name, std::list<DTDContent*>* type);
 	~Declaration();

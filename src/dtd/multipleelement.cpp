@@ -97,15 +97,15 @@ void MultipleElement::printDTD()
 		(*it)->printDTD();
 	}
 	cout << ")";
-	if(mCard==Declaration::AST)
+	if(mCard==Declaration::DTD_AST)
 	{
 		cout << "*";
 	}
-	else if(mCard==Declaration::PLUS)
+	else if(mCard==Declaration::DTD_PLUS)
 	{
 		cout << "+";
 	}
-	else if(mCard==Declaration::PTINT)
+	else if(mCard==Declaration::DTD_PTINT)
 	{
 		cout << "?";
 	}

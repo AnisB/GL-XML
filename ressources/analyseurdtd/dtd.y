@@ -90,12 +90,12 @@ dtd_list_opt
 content
 : EMPTY
 {
-	$$=new MultipleElement(false, Declaration::NONE);	
+	$$=new MultipleElement(false, Declaration::DTD_NONE);	
 	$$->addElement(new Empty());
 }
 | ANY
 {
-	$$=new MultipleElement(false, Declaration::NONE);	
+	$$=new MultipleElement(false, Declaration::DTD_NONE);	
 	$$->addElement(new Any());
 }
 | mixed
@@ -111,17 +111,17 @@ content
 mixed
 : OUVREPAR PCDATA pipes FERMEPAR AST
 {
-	$$ = new MultipleElement(true, Declaration::AST);
+	$$ = new MultipleElement(true, Declaration::DTD_AST);
 	$$->addMultipleElement($3);
 }
 | OUVREPAR PCDATA FERMEPAR AST
 {
-	$$ = new MultipleElement(true, Declaration::AST);
+	$$ = new MultipleElement(true, Declaration::DTD_AST);
 	$$->addElement(new DTDPCData());
 }
 | OUVREPAR PCDATA FERMEPAR
 {
-	$$ = new MultipleElement(true, Declaration::NONE);
+	$$ = new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addElement(new DTDPCData());
 }
 ;
@@ -129,11 +129,11 @@ mixed
 pipes
 : pipes BARRE NOM
 {
-	$$->addElement(new Element($3, Declaration::NONE));
+	$$->addElement(new Element($3, Declaration::DTD_NONE));
 }
 | BARRE NOM
 {
-	$$ = new MultipleElement(true, Declaration::NONE);
+	$$ = new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addElement(new DTDPCData());
 	$$->addElement(new Element($2));
 }
@@ -160,19 +160,19 @@ children
 cardinalite_opt
 : PTINT
 {
-	$$=Declaration::PTINT;
+	$$=Declaration::DTD_PTINT;
 }
 | AST
 {
-	$$=Declaration::AST;
+	$$=Declaration::DTD_AST;
 }
 | PLUS
 {
-	$$=Declaration::PLUS;
+	$$=Declaration::DTD_PLUS;
 }
 | /*vide*/
 {
-	$$=Declaration::NONE;
+	$$=Declaration::DTD_NONE;
 }
 ;
 
@@ -203,7 +203,7 @@ choices
 }
 | BARRE cp
 {
-	$$ = new MultipleElement(true, Declaration::NONE);
+	$$ = new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addMultipleElement($2);
 }
 ;
@@ -211,7 +211,7 @@ choices
 seq
 : OUVREPAR cp seqs_opt FERMEPAR
 {
-	$$ = new MultipleElement(false, Declaration::NONE);
+	$$ = new MultipleElement(false, Declaration::DTD_NONE);
 	$$->addMultipleElement($2);
 	$$->addMultipleElement($3);
 }
@@ -225,7 +225,7 @@ seqs_opt
 }
 | /*vide*/
 {
-	$$ = new MultipleElement(false, Declaration::NONE);
+	$$ = new MultipleElement(false, Declaration::DTD_NONE);
 }
 ;
 

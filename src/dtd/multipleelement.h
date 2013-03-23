@@ -60,6 +60,7 @@ public:
 	void setCard(Declaration::Card card);
 	Declaration::Card getCard(Declaration::Card card);
 	void addElement(DTDContent* content);
+	void addElementReverse(DTDContent* content);
 	void addMultipleElement(MultipleElement* multipleElement);
 	std::list<DTDContent*>* getListContent();
 	

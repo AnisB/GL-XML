@@ -60,7 +60,7 @@ Declaration::~Declaration( )
 void Declaration::printDTD()
 {
 	cout<<"<!ELEMENT "<<mName<<" ";
-	type->printDTD();
+	mType->printDTD();
 	cout<<">"<<endl;
 }
 

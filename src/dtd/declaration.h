@@ -58,7 +58,7 @@ public:
 	*/
 	enum Card{PTINT, AST, PLUS, NONE};
 	
-	Declaration(std::string name, std::list<DTDContent*> type);
+	Declaration(std::string name, std::list<DTDContent*>* type);
 	~Declaration();
 	void printDTD();
 	void addElement();
@@ -66,7 +66,7 @@ public:
 	std::string createRegex();
 
   protected:
-	std::list<DTDContent*> mType;
+	std::list<DTDContent*>* mType;
 	std::string mName;
 };
 // 

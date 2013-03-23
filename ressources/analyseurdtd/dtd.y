@@ -49,7 +49,7 @@ int dtdlex(void);
 
 %type <lmc> dtd_list_opt
 %type <ddtd> document
-%type <mix> content
+%type <dtdc> content
 %type <mix> children
 %type <mix> mixed
 %type <mix> pipes

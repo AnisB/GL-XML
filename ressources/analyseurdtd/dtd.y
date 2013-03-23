@@ -32,6 +32,7 @@ int dtdlex(void);
 %type <lmc> dtd_list_opt
 %type <ddtd> document
 %type <mix> content
+%type <mix> children
 %type <mix> mixed
 %type <mix> pipes
 %type <card> cardinalite_opt

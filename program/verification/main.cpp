@@ -8,12 +8,14 @@
 #include <xml/element.h>
 #include <xml/xmlcontent.h>
 
+#include <dtd/dtddocument.h>
+
 using namespace std;
 
 extern FILE * xmlin;
 int xmlparse(string **, XMLDocument**);
 extern FILE * dtdin;
-int dtdparse();
+int dtdparse(DTDDocument** doc);
 bool recursiveCheck(Element * node);
 
 
@@ -37,7 +39,7 @@ int main(int argc, char ** argv)
 	
 	
 	
-	/*cout << "DTD file : " << *nomdtd << endl;
+	cout << "DTD file : " << *nomdtd << endl;
 	FILE * dtdFile;
 	dtdFile = fopen(nomdtd->data(), "r");
 	if(!dtdFile) {
@@ -45,8 +47,9 @@ int main(int argc, char ** argv)
 	}
 	cout << "Parsing DTD file : " << *nomdtd << endl;
 	dtdin = dtdFile;
-	dtdparse();
-	fclose(dtdFile);*/
+	DTDDocument* dtdDoc;
+	dtdparse(&dtdDoc);
+	fclose(dtdFile);
 	
 	
 	

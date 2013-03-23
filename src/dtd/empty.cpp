@@ -54,7 +54,7 @@ Empty::~Empty( )
   //Nothing to do
 }
 
-Empty::printDTD()
+void Empty::printDTD()
 {
 	cout << "EMPTY";
 }

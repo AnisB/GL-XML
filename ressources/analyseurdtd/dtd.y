@@ -155,7 +155,7 @@ children
 | NOM cardinalite_opt
 {
 	$$ = new MultipleElement(false, $2);
-	$$->addElement($1);
+	$$->addElement(new UniqueElement($1,Declaration::DTD_NONE));
 }
 ;
 

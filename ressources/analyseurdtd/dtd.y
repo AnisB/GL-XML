@@ -36,10 +36,10 @@ int dtdlex(void);
 	char *s;
 	std::list<MotherContent*>* lmc;
 	DTDDocument* ddtd;
-	MultipleElement mix;
-	DTDContent cont;
-	Declaration::Card card;
-	CData cd;
+	MultipleElement* mix;
+	DTDContent* cont;
+	Declaration::Card* card;
+	CData* cd;
 	list<CData*>* lcd;
 	DTDContent* dtdc;
    

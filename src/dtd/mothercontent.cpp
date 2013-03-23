@@ -63,11 +63,11 @@
 
  std::string MotherContent::getName()
  {
- 	
+ 	return "";
  }
  std::string MotherContent::createRegex()
  {
- 	
+ 	return "";
  }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

@@ -131,6 +131,11 @@ typedef struct THeader
 	{
 		return mRoot;
 	}
+	
+	XmlDeclaration * getDeclaration()
+	{
+	    return mDec;
+	}
 
 	// ------------------------- Protected Datas ------------------------------
   protected:

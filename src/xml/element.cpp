@@ -181,11 +181,13 @@
  	else
  	{
  		result += (*it)->getType();
+		result += '"' + (*it)->getValue() + '"';
  		it++;
  		
  		for( ; it != mAttList->end(); it++ )
  		{
  			result += " " + (*it)->getType();
+			result += '"' + (*it)->getValue() + '"';
  		}
  	}
  	return result;

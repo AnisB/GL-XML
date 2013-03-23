@@ -71,15 +71,15 @@ std::map<std::string, std::string>*  DTDDocument::generateRegex()
 {
 	std::map<std::string, std::string> * regexMap = new std::map<std::string, std::string>;
 	std::list<MotherContent*>::iterator it;
-	
 	for( it = mContents->begin(); it != mContents->end(); it++ )
 	{
-		//std::string name = it->getName();
-		//std::string regex = it->createRegex();
-		//regexMap[name] = regex;
+		std::string name = (*it)->getName();
+		cout << name << " : ";
+		std::string regex = (*it)->createRegex();
+		cout << regex << endl;
+		(*regexMap)[name] = regex;
 	}
-	return NULL;
-	//return regexMap;
+	return regexMap;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

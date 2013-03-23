@@ -115,11 +115,25 @@ void DTDAttribute::printDTD()
 
 std::string DTDAttribute::getName()
 {
-	
+	return "A" + mElement->getContent();
 }
 std::string DTDAttribute::createRegex()
 {
+	std::string regex = "";
+	std::list<CData*>::iterator it = m_datas->begin();
 	
+	if(it != m_datas->end())
+	{
+		regex+='(' + (*it)->getContent() + "\"[^\"]*\"" + ")?";
+		it++;
+	}
+	for( ; it != m_datas->end(); it++ )
+	{
+		regex+= "(\\s"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";	// every attribute is #implied
+	}
+	cout << regex << endl;
+	
+	return regex;
 }
 //
 ///////////////////////////////////////////////////////////////////////////////

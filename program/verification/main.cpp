@@ -10,13 +10,15 @@
 
 #include <dtd/dtddocument.h>
 
+#include <boost/regex.hpp>
+
 using namespace std;
 
 extern FILE * xmlin;
 int xmlparse(string **, XMLDocument**);
 extern FILE * dtdin;
 int dtdparse(DTDDocument** doc);
-bool recursiveCheck(Element * node);
+bool recursiveCheck(Element * node, map<string,string>*);
 
 
 int main(int argc, char ** argv)
@@ -27,15 +29,15 @@ int main(int argc, char ** argv)
 		return -1;
 	}
 	cout << "Parsing XML file : " << argv[1] << endl;
-	string * nomdtd;
+	string * nomdtd = new string;
 	XMLDocument* xmlDoc;
 	xmlin = file;
 	xmlparse(&nomdtd, &xmlDoc);
+	*nomdtd = xmlDoc->getDeclaration()->mValue;
 	fclose(file);
 	
 	Element * node = xmlDoc->getRoot();
 	
-	recursiveCheck(node);
 	
 	
 	
@@ -51,23 +53,40 @@ int main(int argc, char ** argv)
 	dtdparse(&dtdDoc);
 	fclose(dtdFile);
 	
+	map<string,string>* regex_map = dtdDoc->generateRegex();
 	
+	cout << endl << endl << endl;
+	
+	recursiveCheck(node, regex_map);
 	
 	return 0;
 } 
 
 
-bool recursiveCheck(Element * node)
+bool recursiveCheck(Element * node, map<string,string>* regex_map)
 {
 	list<XMLContent*>::iterator it;
 	
-	cout << node->childToString() << endl;
-	cout << node->attributeToString() << endl;
+	string childs = node->childToString();
+	string attributes = node->attributeToString();
+	string type = node->getType();
+	boost::regex attributeRegex((*regex_map)["A"+type]);
+	if( !boost::regex_match(attributes, attributeRegex) )
+	{
+		cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
+		return false;
+	}
+	else
+	{
+		cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
+	}
 	
 	for( it = node->getContent()->begin() ; it != node->getContent()->end(); it++)
 	{
 		if( (*it)->getType().compare("PCDATA") !=  0)
-			recursiveCheck((Element*)*it);
+		{
+			if( !recursiveCheck((Element*)*it, regex_map) ) return false;
+		}
 	}
 	
 	

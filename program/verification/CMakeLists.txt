@@ -27,5 +27,7 @@ file(
 	${PROJECT_SOURCE_DIR}/src/dtd/* 
     )
 
+
 add_executable(verification main.cpp ${PROJECT_BINARY_DIR}/program/verification/xml.tab.c ${PROJECT_BINARY_DIR}/program/verification/lex.xml.c 
 ${PROJECT_BINARY_DIR}/program/verification/lex.dtd.c ${PROJECT_BINARY_DIR}/program/verification/dtd.tab.c ${Source_File})
+target_link_libraries (verification boost_regex)

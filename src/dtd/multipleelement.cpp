@@ -68,13 +68,13 @@ void MultipleElement::addElement(DTDContent* content)
 	mListContent->push_back(content);
 }
 
-void MultipleElement::addMultipleElement(MultipleElement multipleElement)
+void MultipleElement::addMultipleElement(MultipleElement* multipleElement)
 {
-	list<DTDContent*>* lElems = multipleElement.getListContent();
+	list<DTDContent*>* lElems = multipleElement->getListContent();
 	mListContent->insert(mListContent.end(), lElems.begin(), lElems.end());
 }
 
-list<DTDContent*>* getListContent()
+list<DTDContent*>* MultipleElement::getListContent()
 {
 	return mListContent;
 }
@@ -86,7 +86,7 @@ void MultipleElement::printDTD()
 	ite++;
 	for(std::list<DTDContent*>::iterator it=ite;it!=mListContent->end();it++)
 	{
-		if(isChoice)
+		if(mIsChoice)
 		{
 			cout << " | ";
 		}

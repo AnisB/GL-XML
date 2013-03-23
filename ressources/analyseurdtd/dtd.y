@@ -5,24 +5,7 @@
 #include <cstdlib>
 
 #include "common.h"
-//probleme avec common, je suis fatigué alors je copie colle ici
-/*#include <list>
-#include <utility>
-#include <string>
-#include <iostream>
-#include <dtd/cdata.h>
-#include <dtd/dtddocument.h>
-#include <dtd/uniqueelement.h>
-#include <dtd/multipleelement.h>
-#include <dtd/dtdattribute.h>
-#include <dtd/dtdpcdata.h>
-#include <dtd/mothercontent.h>
-#include <dtd/declaration.h>
-#include <dtd/any.h>
-#include <dtd/empty.h>
-#include <dtd/dtdcontent.h>*/
 #include "dtd.tab.h"
-//fin du copier coller salle de common.h
 
 using namespace std;
 
@@ -154,11 +137,11 @@ children
 	$$ = $1;
 	$$->setCard($2);
 }
-| NOM cardinalite_opt
+/*| NOM cardinalite_opt
 {
 	$$ = new MultipleElement(false, $2);
 	$$->addElement(new UniqueElement($1,Declaration::DTD_NONE));
-}
+}*/
 ;
 
 cardinalite_opt
@@ -215,16 +198,18 @@ choices
 seq
 : OUVREPAR cp seqs_opt FERMEPAR
 {
-	$$ = new MultipleElement(false, Declaration::DTD_NONE);
-	$$->addElement($2);
-	$$->addMultipleElement($3);
+	//$$ = new MultipleElement(false, Declaration::DTD_NONE);
+	$$=$3;
+	$$->addElementReverse($2);
+	//$$->addMultipleElement($3);
 }
 ;
 
 seqs_opt
 : seqs_opt VIRGULE cp
 {
-	//$$->addElement($1);
+	$$=$1;
+	//$$->addMultipleElement($1);
 	$$->addElement($3);
 }
 | /*vide*/
@@ -264,7 +249,7 @@ int main(int argc, char **argv)
   if (err != 0) printf("Parse ended with %d error(s)\n", err);
         else printf("Parse ended with success\n", err);
 		
-  //dc->displayAsDTDFormat();
+  dc->displayAsDTDFormat();
   return 0;
 }
 

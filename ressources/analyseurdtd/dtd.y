@@ -89,13 +89,15 @@ dtd_list_opt
 content
 : EMPTY
 {
-	$$=new MultipleElement(false, Declaration::DTD_NONE);	
-	$$->addElement(new Empty());
+	MultipleElement* me = new MultipleElement(false, Declaration::DTD_NONE);	
+	me->addElement(new Empty());
+	$$=me;
 }
 | ANY
 {
-	$$=new MultipleElement(false, Declaration::DTD_NONE);	
-	$$->addElement(new Any());
+	MultipleElement* me = new MultipleElement(false, Declaration::DTD_NONE);	
+	me->addElement(new Any());
+	$$=me;
 }
 | mixed
 {
@@ -128,13 +130,13 @@ mixed
 pipes
 : pipes BARRE NOM
 {
-	$$->addElement(new Element($3, Declaration::DTD_NONE));
+	$$->addElement(new UniqueElement($3, Declaration::DTD_NONE));
 }
 | BARRE NOM
 {
 	$$ = new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addElement(new DTDPCData());
-	$$->addElement(new Element($2));
+	$$->addElement(new UniqueElement($2));
 }
 ;
 

@@ -91,8 +91,10 @@
 
   protected:
   	std::vector<std::string> split ( std::string &chaine, char c );
-  	XMLContent * match(std::string match, Element * currentNode);
+  	std::list<XMLContent*> match(std::string match, Element * currentNode);
   	std::list<XMLContent*> getListContent(std::list<XMLContent*> roots, std::string name );
+  	std::string handleTemplate(XMLContent * node, std::list<XMLContent*>  theList);
+
 
 };
 

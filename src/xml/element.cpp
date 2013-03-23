@@ -114,11 +114,11 @@
 
  	if (mIsSpecial)
  	{
- 		std::cout<<"?>";;
+ 		std::cout<<"?>";
  	}
  	else
  	{
- 		std::cout<<">";;
+ 		std::cout<<">";
 
  		
  		for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
@@ -162,11 +162,11 @@
 
  std::string Element::getType()
  {
- 	if( mType1.compare("") == 0)
+ 	if( mType1=="")
  	{
- 		return mType2;
+ 		return (mType2);
  	}
- 	return mType1 + ":" + mType2;
+ 	return (mType1 + ":" + mType2);
  }
 
 
@@ -196,11 +196,91 @@
  	std::list<XMLContent*> toReturn;
  	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
  	{
- 		if( ((*it)->getType()=="Element") && ((*it)->getType()==name))
+ 		if(((*it)->getType()==name))
  		{
  			toReturn.push_back(*it);
  		}
  	}
+ 	return toReturn;
+ }
+
+
+ std::list<XMLContent*> Element::getAllContent(std::string name)
+ {
+ 	std::list<XMLContent*> toReturn;
+ 	if (getType()==name)
+ 	{
+ 		toReturn.push_back(this);
+ 	}
+
+ 	for(std::list<XMLContent*>::iterator it=mContent->begin() ; it != mContent->end(); it++ )
+ 	{ 		
+ 		std::list<XMLContent*> result= (*it)->getAllContent(name);
+		for(std::list<XMLContent*>::iterator it=result.begin();it!=result.end();it++)
+		{
+			toReturn.push_back(*it);
+		}
+ 	}
+ 	return toReturn;
+ }
+
+
+std::string Element::operator[](std::string attname)
+{
+     for(std::list<XMLAttribute*>::iterator it=mAttList->begin();it!=mAttList->end();it++)
+     {
+     	if ((*it)->getType()==attname)
+     	{
+     		return(*it)->getValue();
+     	}
+     }
+     return "";
+}
+ std::string Element::getOpen()
+ {
+ 	std::string toReturn;
+ 	 if (mType1!="")
+ 	{
+ 		if (!mIsSpecial)
+ 		{
+ 			toReturn+=("<"+mType1+":"+mType2);
+ 		}
+ 		else
+ 		{
+ 			toReturn+=("<?"+mType1+":"+mType2);
+ 		}
+ 	}
+ 	else
+ 	{
+ 		if (mIsSpecial)
+ 		{
+ 			toReturn+=("<?"+mType2);
+ 		}
+ 		else
+ 		{
+ 			toReturn+=("<"+mType2);
+ 		}
+
+ 	}
+ 	// for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+ 	// {
+ 	// 	(*it)->printXML();
+ 	// }
+
+ 	if (mIsSpecial)
+ 	{
+ 		toReturn+=("?>");
+ 	}
+ 	else
+ 	{
+ 		toReturn+=(">");
+ 	}
+ 	return toReturn;
+
+ }
+ std::string Element::getClose()
+ {
+
  }
 
 ///////////////////////////////////////////////////////////////////////////////

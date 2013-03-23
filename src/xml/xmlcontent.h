@@ -72,7 +72,18 @@
 	virtual void printXML();
 
 	virtual std::list<XMLContent*> getSonList(std::string name);
+	virtual std::list<XMLContent*> getAllContent(std::string name);
+	virtual std::string getOpen();
+	virtual std::string getClose();
+	virtual inline std::list<XMLContent*> * getContent()
+	{
+		return NULL;
+	} 
+
 	// ----------------------- Other services ------------------------------
+
+	virtual std::string operator[](std::string aname)
+	{}
 
 	public:
 	/**

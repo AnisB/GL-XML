@@ -122,6 +122,40 @@ void MultipleElement::printDTD()
 	}
 }
 
+std::string MultipleElement::createRegex()
+{
+	std::string regex = "";
+	std::list<DTDContent*>::iterator it = mListContent->begin();
+	if( it != mListContent->end() )
+	{
+		regex+="(";
+		for( ; it != mListContent->end(); it++ )
+		{
+			regex+=(*it)->createRegex();
+			/*regex+="(" + (*it)->createRegex();
+			regex+="\\s?";
+			regex+=")";*/
+			if( mIsChoice )
+			{
+				regex += "?";
+			}
+		}
+		
+		regex+=")";
+		
+		switch(mCard)
+		{
+			case Declaration::DTD_PTINT: regex+="?"; break;
+			case Declaration::DTD_AST: regex+="*"; break;
+			case Declaration::DTD_PLUS: regex+="+"; break;
+			default: break;
+		}
+	}
+	
+    return regex;
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :

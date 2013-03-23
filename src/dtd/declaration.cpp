@@ -71,12 +71,12 @@ void Declaration::addElement()
 
 std::string Declaration::getName()
 {
-	return ""; // TODO
+	return "E"+mName;
 }
 
 std::string Declaration::createRegex()
 {
-	return ""; // TODO
+	return mType->createRegex();
 }
 
 ///////////////////////////////////////////////////////////////////////////////

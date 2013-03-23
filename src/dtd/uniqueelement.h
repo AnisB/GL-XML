@@ -83,6 +83,8 @@ public:
 	* Ecrire sous forme de DTD
 	*/
 	void printDTD();
+	
+	std::string createRegex();
 
 	
 

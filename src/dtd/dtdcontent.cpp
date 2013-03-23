@@ -58,6 +58,12 @@ void DTDContent::printDTD()
 {
 }
 
+std::string DTDContent::createRegex()
+{
+	return "";
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

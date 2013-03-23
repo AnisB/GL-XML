@@ -71,6 +71,7 @@ bool recursiveCheck(Element * node, map<string,string>* regex_map)
 	string attributes = node->attributeToString();
 	string type = node->getType();
 	boost::regex attributeRegex((*regex_map)["A"+type]);
+	boost::regex elementRegex((*regex_map)["E"+type]);
 	if( !boost::regex_match(attributes, attributeRegex) )
 	{
 		cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
@@ -79,6 +80,16 @@ bool recursiveCheck(Element * node, map<string,string>* regex_map)
 	else
 	{
 		cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
+	}
+	
+	if( !boost::regex_match(childs, elementRegex) )
+	{
+		cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
+		return false;
+	}
+	else
+	{
+		cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
 	}
 	
 	for( it = node->getContent()->begin() ; it != node->getContent()->end(); it++)

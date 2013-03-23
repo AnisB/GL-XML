@@ -60,6 +60,12 @@ void Any::printDTD()
 	cout << "ANY";
 }
 
+std::string Any::createRegex()
+{
+    return ".*";
+}
+
+
 
 
 // //

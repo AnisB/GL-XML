@@ -78,6 +78,7 @@ dtd_list_opt
 | dtd_list_opt ELEMENT NOM content SUP
 {
 	$$=$1;
+	list<DTDContent*>* l = new list<DTDContent*>;
 	$$->push_back(new Declaration($3, $4));
 }
 | /* vide */

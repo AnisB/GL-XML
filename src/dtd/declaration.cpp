@@ -45,7 +45,7 @@ using namespace std;
 /**
  * Constructor
  */
-Declaration::Declaration (string name, list<DTDContent*>* type) : MotherContent(), mName(name),mType(type)
+Declaration::Declaration (string name, DTDContent* type) : MotherContent(), mName(name),mType(type)
 {
 }
 
@@ -60,10 +60,7 @@ Declaration::~Declaration( )
 void Declaration::printDTD()
 {
 	cout<<"<!ELEMENT "<<mName<<" ";
-	for(list<DTDContent*>::iterator it=mType->begin();it!=mType->end();it++)
-	{
-		(*it)->printDTD();
-	}
+	type->printDTD();
 	cout<<">"<<endl;
 }
 

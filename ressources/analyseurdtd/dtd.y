@@ -4,8 +4,9 @@ using namespace std;
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
-#include "common.h"
+#include <common.h>
 
+using namespace std;
 
 void dtderror(char *msg);
 int dtdwrap(void);

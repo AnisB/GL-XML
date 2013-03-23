@@ -137,7 +137,7 @@ pipes
 {
 	$$ = new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addElement(new DTDPCData());
-	$$->addElement(new UniqueElement($2));
+	$$->addElement(new UniqueElement($2, Declaration::DTD_NONE));
 }
 ;
 
@@ -155,7 +155,7 @@ children
 | NOM cardinalite_opt
 {
 	$$ = new MultipleElement(false, $2);
-	$$->addElement($1);
+	$$->addElement($1, Declaration::DTD_NONE);
 }
 ;
 
@@ -234,7 +234,7 @@ seqs_opt
 att_definition_opt
 : att_definition_opt attribut
 {
-	$$->push_back(attribut);
+	$$->push_back($2);
 }
 | /* vide */
 {

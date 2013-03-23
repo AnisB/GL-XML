@@ -326,7 +326,6 @@ std::string XSLDocument::applyTemplateHandle(XMLContent * node)
 	{
 
 		std::cout<<node->getOpen();
-		std::cout<<node->getContent()->size()<<std::endl;
 
 		if(node->getContent()!=NULL)
 		{

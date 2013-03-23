@@ -18,7 +18,7 @@ ${PROJECT_BINARY_DIR}/program/verification/xml.tab.c
 "-Pxml"
 ${PROJECT_SOURCE_DIR}/src/xml/ )
 
-include_directories(${PROJECT_SOURCE_DIR}/src/xml/ ${PROJECT_SOURCE_DIR}/src/dtd/)
+include_directories(${PROJECT_SOURCE_DIR}/src/xml/ ${PROJECT_SOURCE_DIR}/src/dtd/ ${PROJECT_SOURCE_DIR}/src/parse/*)
 
 file(
 	GLOB_RECURSE 
@@ -30,4 +30,4 @@ file(
 
 add_executable(verification main.cpp ${PROJECT_BINARY_DIR}/program/verification/xml.tab.c ${PROJECT_BINARY_DIR}/program/verification/lex.xml.c 
 ${PROJECT_BINARY_DIR}/program/verification/lex.dtd.c ${PROJECT_BINARY_DIR}/program/verification/dtd.tab.c ${Source_File})
-target_link_libraries (verification boost_regex)
+target_link_libraries (verification ${Boost_REGEX_LIBRARY})

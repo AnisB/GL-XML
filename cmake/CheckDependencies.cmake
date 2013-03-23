@@ -9,7 +9,7 @@ set(Boost_USE_STATIC_LIBS   ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_FOUND FALSE)
-FIND_PACKAGE(Boost 1.33.1 REQUIRED COMPONENTS program_options system)
+FIND_PACKAGE(Boost 1.33.1 REQUIRED COMPONENTS program_options system regex)
 if ( Boost_FOUND )
   message(STATUS "Boost and boost components found.")
   SET(IncDir ${IncDir} ${Boost_INCLUDE_DIRS})
@@ -17,8 +17,9 @@ if ( Boost_FOUND )
   SET(Libs ${Libs} 
      ${Boost_LIBRAIRIES}  
      ${Boost_PROGRAM_OPTIONS_LIBRARY}
-     ${Boost_SYSTEM_LIBRARY})
-   SET(XmlProcesserLib ${Boost_INCLUDE_DIRS})
+     ${Boost_SYSTEM_LIBRARY}
+ ${Boost_REGEX_LIBRARY})
+   SET(XmlProcesserLib ${Boost_PROGRAM_OPTIONS_LIBRARY})
 endif( Boost_FOUND )
 
 find_package(BISON)

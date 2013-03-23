@@ -6,7 +6,6 @@
 
 #include "common.h"
 #include "dtd.tab.h"
-
 using namespace std;
 
 void dtderror(DTDDocument** doc, char *msg);

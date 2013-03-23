@@ -214,7 +214,7 @@ seq
 : OUVREPAR cp seqs_opt FERMEPAR
 {
 	$$ = new MultipleElement(false, Declaration::DTD_NONE);
-	$$->addMultipleElement($2);
+	$$->addElement($2);
 	$$->addMultipleElement($3);
 }
 ;

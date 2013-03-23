@@ -155,7 +155,7 @@ children
 | NOM cardinalite_opt
 {
 	$$ = new MultipleElement(false, $2);
-	$$->addElement($1, Declaration::DTD_NONE);
+	$$->addElement($1);
 }
 ;
 
@@ -193,7 +193,7 @@ choice
 : OUVREPAR cp choices FERMEPAR
 {
 	$$=new MultipleElement(true, Declaration::DTD_NONE);
-	$$->addMultipleElement($2);
+	$$->addElement($2);
 	$$->addMultipleElement($3);
 }
 ;

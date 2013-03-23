@@ -67,6 +67,8 @@
 	std::string getType();
 	std::string getValue();
 
+	std::string toString();
+
   protected:
 	// ------------------------- Protected Datas ------------------------------
 	std::string mName;

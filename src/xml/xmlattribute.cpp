@@ -71,6 +71,13 @@ std::string XMLAttribute::getValue()
 {
 	return mValue;
 }
+std::string XMLAttribute::toString()
+{
+	std::string toReturn =(" "+mName+"=\""+mValue+"\"");
+	return toReturn;
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

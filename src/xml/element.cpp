@@ -262,10 +262,10 @@
  		}
 
  	}
- 	// for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
- 	// {
- 	// 	(*it)->printXML();
- 	// }
+ 	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+ 	{
+ 		toReturn += (*it)->toString();
+ 	}
 
  	if (mIsSpecial)
  	{

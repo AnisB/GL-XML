@@ -92,6 +92,21 @@ void UniqueElement::printDTD()
 	}
 }
 
+string UniqueElement::createRegex()
+{
+    std::string regex = "(" + m_content;
+	regex+="\\s?)";
+	switch(m_card)
+	{
+		case Declaration::DTD_PTINT: regex+="?"; break;
+		case Declaration::DTD_AST: regex+="*"; break;
+		case Declaration::DTD_PLUS: regex+="+"; break;
+		default: break;
+	}
+	return regex;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

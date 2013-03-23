@@ -59,6 +59,12 @@ void Empty::printDTD()
 	cout << "EMPTY";
 }
 
+std::string Empty::createRegex()
+{
+    return "$";
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

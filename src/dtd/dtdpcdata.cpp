@@ -60,5 +60,11 @@ void DTDPCData::printDTD()
 {
 	cout << "#PCDATA";
 }
+
+std::string DTDPCData::createRegex()
+{
+    return "PCDATA";
+}
+
 //
 /////////////////////////////////////////////////////////////////////////////// 

@@ -55,7 +55,7 @@ Any::~Any( )
   //Nothing to do
 }
 
-Any::printDTD()
+void Any::printDTD()
 {
 	cout << "ANY";
 }

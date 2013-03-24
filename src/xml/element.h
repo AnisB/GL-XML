@@ -80,24 +80,24 @@ public:
 	void addContent(XMLContent * aXMLContent);
 	void printXML();
 	/**
-	 * Returns a string containing all the child of the element separated by spaces
-	 * Example : element1 element2
+	 * Renvoie une chaîne de caractères contenant tous les fils de l'élément séparés par un espace
+	 * Exemple : element1 element2
 	 * 
-	 * @return the string
+	 * @return la chaîne de caractère
 	 */
 	std::string childToString();
 	/**
-	 * Returns a string containing all the attributes of the element and their content.
-	 * The content is writen between quotes and each attribute is separated by a space.
-	 * Example : attribute1"hello" attribute2"hi"
+	 * Renvoie une chaîne de caractères contenant tous les attributs de l'élément et leur contenu.
+	 * Le contenu est écrit entre guillemets et tous les attributs sont séparés par un espace.
+	 * Exemple : attribute1"hello" attribute2"hi"
 	 * 
-	 * @return the string
+	 * @return la chaîne de caractère
 	 */
 	std::string attributeToString();
 	/**
-	 * Returns the type (and eventually the namespace) of the content
+	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
 	 * 
-	 * @return the string describing the type
+	 * @return la chaîne de caractère décrivant le type
 	 */
 	std::string getType();
 	virtual std::list<XMLContent*> getSonList(std::string name);

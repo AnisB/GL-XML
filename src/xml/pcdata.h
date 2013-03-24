@@ -98,9 +98,9 @@ public:
 	void printXML();
 	
 	/**
-	 * Returns the type (and eventually the namespace) of the content
+	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
 	 * 
-	 * @return the string describing the type
+	 * @return la chaîne de caractère décrivant le type
 	 */
 	std::string getType();
 

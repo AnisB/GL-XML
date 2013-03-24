@@ -64,16 +64,18 @@
 	~XMLAttribute();
 
 	void printXML();
+	
 	/**
-	 * Returns the type (and eventually the namespace) of the content
+	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
 	 * 
-	 * @return the string describing the type
+	 * @return la chaîne de caractère décrivant le typent le type
 	 */
 	std::string getType();
+	
 	/**
-	 * Returns the value contained by the attribute
+	 * Renvoie la valeur stockée dans le contenu
 	 * 
-	 * @return the string representation of the value
+	 * @return la chaîne de caractère décrivant la valeur
 	 */
 	std::string getValue();
 

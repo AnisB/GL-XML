@@ -56,6 +56,11 @@ public:
 	virtual ~Empty();
 	
 	void printDTD();
+	/**
+	 * Genère une expression régulière pour un contenu "Empty"
+	 * 
+	 * @return l'expression régulière
+	 */
 	std::string createRegex();
 };
 // 

@@ -127,11 +127,21 @@ typedef struct THeader
 	*/
 	void displayAsXMLFormat();
 
+	/**
+	 * Returns a pointer the root element of the XML document
+	 * 
+	 * @return a pointer to the root element
+	 */
 	Element * getRoot()
 	{
 		return mRoot;
 	}
-	
+	/**
+	 * 
+	 * Returns a pointer the declaration of the XML document
+	 * 
+	 * @return a pointer to the declaration
+	 */
 	XmlDeclaration * getDeclaration()
 	{
 	    return mDec;

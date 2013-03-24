@@ -57,7 +57,17 @@ public:
 	MotherContent();
 	virtual ~MotherContent();
 	virtual void printDTD();
+	/**
+	 * Renvoie le nom du contenu
+	 * 
+	 * @return le nom
+	 */
 	virtual std::string getName();
+	/**
+	 * Genère une expression régulière basée sur le contenu
+	 * 
+	 * @return l'expression régulière
+	 */
 	virtual std::string createRegex();
 };
 

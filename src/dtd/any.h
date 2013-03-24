@@ -56,6 +56,11 @@ public:
 	* Ecrire sous forme de DTD
 	*/
 	void printDTD();
+	/**
+	 * Genère une expression régulière pour un contenu "Any"
+	 * 
+	 * @return l'expression régulière
+	 */
 	std::string createRegex();
 };
 // 

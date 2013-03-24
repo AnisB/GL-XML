@@ -79,8 +79,26 @@ public:
 	void setContents(std::list<XMLContent*> * aXMLContent);
 	void addContent(XMLContent * aXMLContent);
 	void printXML();
+	/**
+	 * Returns a string containing all the child of the element separated by spaces
+	 * Example : element1 element2
+	 * 
+	 * @return the string
+	 */
 	std::string childToString();
+	/**
+	 * Returns a string containing all the attributes of the element and their content.
+	 * The content is writen between quotes and each attribute is separated by a space.
+	 * Example : attribute1"hello" attribute2"hi"
+	 * 
+	 * @return the string
+	 */
 	std::string attributeToString();
+	/**
+	 * Returns the type (and eventually the namespace) of the content
+	 * 
+	 * @return the string describing the type
+	 */
 	std::string getType();
 	virtual std::list<XMLContent*> getSonList(std::string name);
 	virtual std::list<XMLContent*> getAllContent(std::string name);

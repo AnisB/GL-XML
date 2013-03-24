@@ -62,6 +62,13 @@ public:
 	~DTDDocument();
 	void displayAsDTDFormat();
 	
+	/**
+	 * Genère une map de noms de contenus (éléments ou attributs) vers les expressions
+	 * régulières correspondantes. Les noms des éléments sont précédés du préfixe "E", ceux des
+	 * attributs du préfixe "A".
+	 * 
+	 * @return un pointeur sur la map
+	 */
 	std::map<std::string, std::string> * generateRegex();
 
 protected:

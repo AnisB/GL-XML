@@ -15,29 +15,34 @@
  **/
 
 /**
- * file Parser.cpp
+ * file Checker.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
  * date 
  *
- * Source file for module Parser
+ * Source file for module Checker
  *
  */
 
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include <parse/parser.h>
+#include <parse/checker.h>
 #include <string>
+#include <xml/element.h>
+#include <xml/xmlcontent.h>
+
+
+#include <boost/regex.hpp>
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION of inline methods.
 ///////////////////////////////////////////////////////////////////////////////
-extern FILE * xmlin;
-extern FILE * dtdin;
-int xmlparse(std::string **, XMLDocument**);
-int dtdparse(DTDDocument**);
+ extern FILE * xmlin;
+ extern FILE * dtdin;
+ int xmlparse(std::string **, XMLDocument**);
+ int dtdparse();
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -48,53 +53,70 @@ using namespace std;
 /**
  * Constructor
  */
-Parser::Parser ( )
-{
-}
+ Checker::Checker ( )
+ {
+ }
 
 /**
  * Destructor.
  */
-Parser::~Parser( )
-{
+ Checker::~Checker( )
+ {
   //Nothing to do
-}
+ }
 
 
 
 
-std::pair<std::string*,XMLDocument *> Parser::parseXML(std::string fileName)
-{
-	FILE * file;
-	file = fopen(fileName.c_str(), "r");
-	if(!file) {
-		throw 1;
-	}
-	// std::cout << "Parsing XML file : " << fileName << std::endl;
-	std::string * nomdtd;
-	XMLDocument* xmlDoc;
-	xmlin = file;
-	xmlparse(&nomdtd, &xmlDoc);
-	fclose(file);
-	return make_pair(nomdtd,xmlDoc);
-	
+ bool Checker::check(XMLDocument * xml, DTDDocument * dtd)
+ {
+ 	return recursiveCheck(xml->getRoot(),dtd->generateRegex());
+ }
 
-}
-DTDDocument * Parser::parseDTD(std::string fileName)
-{
-	FILE * dtdFile;
-	dtdFile = fopen(fileName.c_str(), "r");
-	if(!dtdFile) {
-		throw 1;
-	}
-	// cout << "Parsing DTD file : " << fileName << endl;
-	dtdin = dtdFile;
-	DTDDocument* dtdDoc;
-	dtdparse(&dtdDoc);
-	fclose(dtdFile);
-	return dtdDoc;
-} 
+ bool Checker::recursiveCheck(Element * node, std::map<string,string>* regex_map)
+ {
+ 	list<XMLContent*>::iterator it;
 
+ 	string childs = node->childToString();
+ 	string attributes = node->attributeToString();
+ 	string type = node->getType();
+ 	if((*regex_map).find("E"+type)==(*regex_map).end())
+ 	{
+ 		return false;
+ 	}
+ 	boost::regex attributeRegex((*regex_map)["A"+type]);
+ 	boost::regex elementRegex((*regex_map)["E"+type]);
+ 	if( !boost::regex_match(attributes, attributeRegex) )
+ 	{
+		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
+ 		return false;
+ 	}
+ 	else
+ 	{
+		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
+ 	}
+
+ 	if( !boost::regex_match(childs, elementRegex) )
+ 	{
+		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
+ 		return false;
+ 	}
+ 	else
+ 	{
+		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
+ 	}
+
+ 	for( it = node->getContent()->begin() ; it != node->getContent()->end(); it++)
+ 	{
+ 		if( (*it)->getType().compare("PCDATA") !=  0)
+ 		{
+ 			if( !recursiveCheck((Element*)*it, regex_map) ) return false;
+ 		}
+ 	}
+
+
+ 	return true;
+ }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

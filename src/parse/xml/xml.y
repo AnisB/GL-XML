@@ -79,7 +79,7 @@ int xmllex(void);
  ;
 
  declaration
-	: DOCTYPE NOM NOM VALEUR SUP {$$ = new XmlDeclaration(); $$->mName1=$2;$$->mName2=$3;$$->mValue=$4;$$->mExists=true;}
+	: DOCTYPE NOM NOM VALEUR SUP {$$ = new XmlDeclaration(); $$->mName1=$2;$$->mName2=$3;$$->mValue=$4;$$->mExists=true;*nom_dtd=new std::string($4);}
  ;
 
  element

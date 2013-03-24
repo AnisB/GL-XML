@@ -82,7 +82,7 @@ esp		[ \t\r\n]+
 inf		{esp}?"<"
 sup		">"{nl}?{esp}?
 debutnom	[A-Za-z\200-\377_]
-caracnom	[A-Za-z\200-\377_0-9.-]
+caracnom	[A-Za-z0-9\200-\377_.-]
 esc		"&#"[0-9]+";"|"&#x"[0-9a-fA-F]+";"
 nom		{debutnom}{caracnom}*
 ennom		{debutnom}{caracnom}*":"{debutnom}{caracnom}*

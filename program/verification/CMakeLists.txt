@@ -25,6 +25,7 @@ file(
 	Source_File
 	${PROJECT_SOURCE_DIR}/src/xml/* 
 	${PROJECT_SOURCE_DIR}/src/dtd/* 
+	${PROJECT_SOURCE_DIR}/src/parse/* 
     )
 
 

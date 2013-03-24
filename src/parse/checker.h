@@ -17,43 +17,46 @@
 #pragma once
 
 /**
-* @file Element
+* @file Checker
 * @author Anis Benyoub
 * INSTITUTION
 *
 * @date date
 *
-* Header file for module Element.cpp
+* Header file for module Checker.cpp
 *
 */
 
-#if defined(Element_RECURSES)
-#error Recursive header files inclusion detected in Element.h
-#else // defined(Element_RECURSES)
+#if defined(Checker_RECURSES)
+#error Recursive header files inclusion detected in Checker.h
+#else // defined(Checker_RECURSES)
 /** Prevents recursive inclusion of headers. */
-#define Element_RECURSES
+#define Checker_RECURSES
 
-#if !defined Element_H
+#if !defined Checker_H
 /** Prevents repeated inclusion of headers. */
-#define Element_H
+#define Checker_H
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-#include "xmlcontent.h"
-#include <list>
-#include <string>
-#include "xmlattribute.h"
+#include <iostream>
+#include <stdio.h>
+#include <map>
+
+#include <dtd/dtddocument.h>
+#include <xml/xmldocument.h>
+
 //////////////////////////////////////////////////////////////////////////////
 
 
   /////////////////////////////////////////////////////////////////////////////
-  // class Element
+  // class Checker
   /**
-* Description of class Element <p>
+* Description of class Checker <p>
 */
 
 
-class Element : public XMLContent
+class Checker
 {
 	// ----------------------- Standard services ------------------------------
 
@@ -62,40 +65,12 @@ public:
 	* Definition de la méthode
 	* @param *nom parametre* *description parametre*
 	*/
-	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>  * aXMLContent);
 
-	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
-	*/
-	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,bool isSpecial);
-
-	/**
-	* Destructor
-	*/
-	virtual ~Element();
-
+	Checker();
+	~Checker();
 	// ----------------------- Other services ------------------------------
-	void setContents(std::list<XMLContent*> * aXMLContent);
-	void addContent(XMLContent * aXMLContent);
-	void printXML();
-	std::string childToString();
-	std::string attributeToString();
-	std::string getType();
-	virtual std::list<XMLContent*> getSonList(std::string name);
-	virtual std::list<XMLContent*> getAllContent(std::string name);
-	inline std::list<XMLContent*> * getContent()
-	{
-		if (mContent==NULL)
-		{
-			throw 1;
-		}
-		return mContent;
-	}
-
-	std::string operator[](std::string aname);
-	virtual std::string getOpen();
-	virtual std::string getClose(); 
+	static bool check(XMLDocument * xml, DTDDocument * dtd);
+	static bool recursiveCheck(Element * node, std::map<std::string,std::string>* regex_map);
 
 public:
 	/**
@@ -105,16 +80,10 @@ public:
 
 	// ------------------------- Protected Datas ------------------------------
 protected:
-	std::list<XMLContent*> * mContent;
-	std::list<XMLAttribute*> * mAttList;
-	bool mIsSpecial;
-
 
     //--------------------------- Protected attributes---------------------------
 
 protected:
-	std::string mType1;	//namespace
-	std::string mType2;	//actual type
 };
 
 // 

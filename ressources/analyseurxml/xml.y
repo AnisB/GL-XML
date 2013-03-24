@@ -83,7 +83,7 @@ declaration
  ;
 
 element
- : OBALISE attributs_opt vide_ou_contenu  {$$ = new Element($1->first,$1->second,$2,$3);}
+ : OBALISE attributs_opt vide_ou_contenu  {std::cout<<$1->first<<$1->second<<std::endl;$$ = new Element($1->first,$1->second,$2,$3);}
  | OBALISEEN attributs_opt vide_ou_contenu_en  {$$ = new Element($1->first,$1->second,$2,$3);}
  | OBALISESPECIALE attributs_opt SUPSPECIAL {$$ = new Element($1->first,$1->second,$2,true);}
  ;
@@ -126,7 +126,7 @@ int main(int argc, char **argv)
   int err;
   string *result;
   XMLDocument * dc;
-  yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
+  //yydebug = 1; // pour enlever l'affichage de l'éxécution du parser, commenter cette ligne
 
   err=xmlparse(&result,&dc);
   if (err != 0) printf("Parse ended with %d error(s)\n", err);

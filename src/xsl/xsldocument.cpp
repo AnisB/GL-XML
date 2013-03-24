@@ -117,7 +117,7 @@ std::string XSLDocument::process()
 
 	for(list<XMLContent*>::iterator that = theHandlers->begin();that!=theHandlers->end();that++)
 	{
-		handleTemplate(*that,theListToHandle,false);
+		handleTemplate(*that,theListToHandle);
 	}
 	return htmlFile;
 }
@@ -159,8 +159,12 @@ std::list<XMLContent*> XSLDocument::match(std::string match, Element * root)
 		}
 		else
 		{
-			listeToReturn.push_back(root);
-			return listeToReturn;
+			std::list<XMLContent*> * temp = new std::list<XMLContent*>;
+			temp->push_back(root);
+			XMLContent * lolil = new Element("","root",new std::list<XMLAttribute*>, temp);
+			std::list<XMLContent*> temp2 ;
+			temp2.push_back(lolil);		
+			return temp2;
 		}
 	}
 	else if (match[0]=='.')
@@ -202,7 +206,7 @@ std::list<XMLContent*> XSLDocument::getListContent(std::list<XMLContent*> roots,
 }
 
 
-std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*>  theList, bool shouldHT)
+std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*>  theList)
 {
 	// std::cout<<"I am handeling a template "<<node->getType()<<endl;
 	std::string toReturn="";
@@ -212,7 +216,7 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 		std::vector<std::string> table = split(pathToDisplay,'/');
 		std::list<XMLContent*> otherList;
 		otherList=theList;
-		for(int i=1;i!=table.size();i++)
+		for(int i=0;i!=table.size();i++)
 		{
 			otherList=getListContent(otherList,table[i]);
 		}
@@ -222,7 +226,7 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 			{
 				std::list<XMLContent*> togive;
 				togive.push_back(*that);
-				handleTemplate((*itis),togive,shouldHT);
+				handleTemplate((*itis),togive);
 			}
 		}
 	}
@@ -232,7 +236,7 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 
 
 		std::string pathToDisplay=(*node)["select"];
-		// std::cout<<"On rencontre un value of"<<pathToDisplay<<endl;
+		// std::cout<<"On rencontre un value of "<<pathToDisplay<<endl;
 		if(pathToDisplay==".")
 		{
 			otherList=theList;
@@ -247,9 +251,9 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 				otherList=getListContent(otherList,table[i]);
 			}
 		}
+		// std::cout<<"Les fils sont"<<endl;
 		for(std::list<XMLContent*>::iterator it=theList.begin();it!=theList.end();it++)
 		{
-
 			// std::cout<<"On a"<<(*it)->getType();
 		}
 
@@ -300,7 +304,7 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 			for(std::list<XMLContent*>::iterator that=node->getContent()->begin();that!=node->getContent()->end();that++)
 			{
 				// std::cout<<"Handeling sons"<<endl;
-				handleTemplate((*that),theList,shouldHT);
+				handleTemplate((*that),theList);
 			}
 		}
 		std::cout<<node->getClose()<<endl;
@@ -326,7 +330,7 @@ std::string XSLDocument::applyTemplateHandle(XMLContent * node)
 		for(std::list<XMLContent*>::iterator that=pointer->getContent()->begin();that!=pointer->getContent()->end();that++)
 		{
 			// std::cout<<"Giving child of "<<node->getType()<<"to "<<(*that)->getType()<<endl;
-			handleTemplate((*that),*otherList,true);
+			handleTemplate((*that),*otherList);
 		}
 	}
 	else

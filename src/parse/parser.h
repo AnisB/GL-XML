@@ -44,6 +44,7 @@
 #include <list>
 
 #include <xml/xmldocument.h>
+#include <dtd/dtddocument.h>
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -67,8 +68,8 @@
 	Parser();
 	~Parser();
 	// ----------------------- Other services ------------------------------
-	static XMLDocument * parseXML(std::string fileName);
-	//static DTDDocument * parseDTD(std::string fileName);
+	static std::pair<std::string*,XMLDocument *> parseXML(std::string fileName);
+	static DTDDocument * parseDTD(std::string fileName);
 	public:
 	/**
 	* Definition de la méthode

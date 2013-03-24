@@ -95,7 +95,7 @@
   	std::vector<std::string> split ( std::string &chaine, char c );
   	std::list<XMLContent*> match(std::string match, Element * currentNode);
   	std::list<XMLContent*> getListContent(std::list<XMLContent*> roots, std::string name );
-  	std::string handleTemplate(XMLContent * node, std::list<XMLContent*>  theList, bool shouldHT);
+  	std::string handleTemplate(XMLContent * node, std::list<XMLContent*>  theList);
   	std::string applyTemplateHandle(XMLContent * node);
 };
 

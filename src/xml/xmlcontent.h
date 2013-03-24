@@ -68,6 +68,11 @@
 	*/
 	virtual ~XMLContent();
 
+	/**
+	 * Returns the type (and eventually the namespace) of the content
+	 * 
+	 * @return the string describing the type
+	 */
 	virtual std::string getType();
 	virtual void printXML();
 

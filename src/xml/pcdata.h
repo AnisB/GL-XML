@@ -86,8 +86,10 @@ public:
 	void setValue(std::string value);
 
 	/**
-	* Definition de getVlaue
-	*/
+	 * Returns the value stored in the PCDATA
+	 * 
+	 * @return the value
+	 */
 	std::string getValue();
 
 	/**
@@ -95,6 +97,11 @@ public:
 	*/
 	void printXML();
 	
+	/**
+	 * Returns the type (and eventually the namespace) of the content
+	 * 
+	 * @return the string describing the type
+	 */
 	std::string getType();
 
 	virtual std::list<XMLContent*>getSonList(std::string name);

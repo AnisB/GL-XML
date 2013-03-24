@@ -49,9 +49,11 @@
   /////////////////////////////////////////////////////////////////////////////
   // class Element
   /**
-* Description of class Element <p>
-*/
+   * Description of class 'Element' <p>
+   * 
+   * @brief Structure an XML node
 
+   */
 
 class Element : public XMLContent
 {
@@ -59,14 +61,22 @@ class Element : public XMLContent
 
 public:
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Constructor.
+	*
+	* @param aType1: espace de nom du noeud XML
+	* @param aType2: nom du noeud XML
+	* @param anAttList: Liste des attributs
+	* @param aXMLContent: Liste des sous elements(Noeud, PCDatan Commentaires)
 	*/
 	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>  * aXMLContent);
 
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Constructor.
+	*
+	* @param aType1: espace de nom du noeud XML
+	* @param aType2: nom du noeud XML
+	* @param anAttList: Liste des attributs
+	* @param isSpecial: Flag qui dit si c'est un stylesheet
 	*/
 	Element(std::string aType1, std::string aType2,std::list<XMLAttribute*> * anAttList,bool isSpecial);
 
@@ -76,15 +86,11 @@ public:
 	virtual ~Element();
 
 	// ----------------------- Other services ------------------------------
-	void setContents(std::list<XMLContent*> * aXMLContent);
-	void addContent(XMLContent * aXMLContent);
-	void printXML();
 	/**
-	 * Returns a string containing all the child of the element separated by spaces
-	 * Example : element1 element2
-	 * 
-	 * @return the string
-	 */
+	* Methode qui affiche sur la sortie standard le noeud et recursivement ses fils
+	*/
+	void printXML();
+
 	std::string childToString();
 	/**
 	 * Returns a string containing all the attributes of the element and their content.
@@ -106,7 +112,7 @@ public:
 	{
 		if (mContent==NULL)
 		{
-			throw 1;
+			throw NILL_CONTENT;
 		}
 		return mContent;
 	}

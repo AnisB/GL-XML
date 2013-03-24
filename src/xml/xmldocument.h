@@ -40,10 +40,9 @@
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 #include <iostream>
-#include <iostream>
-#include "element.h"
-#include "xmlattribute.h"
-#include "misc.h"
+#include <xml/element.h>
+#include <xml/xmlattribute.h>
+#include <xml/misc.h>
 //////////////////////////////////////////////////////////////////////////////
 
 typedef struct TDeclaration

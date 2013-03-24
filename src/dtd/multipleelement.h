@@ -55,24 +55,62 @@ class MultipleElement : public DTDContent
 {
 // ----------------------- Standard services ------------------------------
 public:
+	/**
+	 * Constructeur
+	 * @param isChoice cet ensemble d'élément est-il un choix (true) ou une séquence (false) 
+	 * @param card la cardinalité de cet ensemble d'éléments
+	 */
 	MultipleElement(bool isChoice, Declaration::Card card);
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~MultipleElement();
+	
+	/**
+	 * Attribuer une nouvelle cardinalité à ce groupe d'élément
+	 * @param card la nouvelle cardinalité
+	 */
 	void setCard(Declaration::Card card);
+	
+	/**
+	 * Récupérer la cardinalité actuelle de ce groupe d'élément
+	 * @return la cardinalité
+	 */	
 	Declaration::Card getCard(Declaration::Card card);
+	
+	/**
+	 * ajouter un nouveau contenu à la fin de ce groupe d'éléments
+	 * @param content le contenu à ajouter
+	 */
 	void addElement(DTDContent* content);
+	
+	/**
+	 * ajouter un nouveau contenu au début de ce groupe d'éléments
+	 * @param content le contenu à ajouter
+	 */
 	void addElementReverse(DTDContent* content);
+	
+	/**
+	 * ajouter un par un tous les éléments d'un autre MultipleElement dans ce groupe d'éléments
+	 * @param multipleElement l'ensemble d'élément duquel on veut rajouter les éléments
+	 */
 	void addMultipleElement(MultipleElement* multipleElement);
+	
+	/**
+	 * récupérer les éléments contenus dans cet ensemble d'élément
+	 * @return la liste de contenu
+	 */
 	std::list<DTDContent*>* getListContent();
 	
 	/**
-	* Ecrire sous forme de DTD
-	*/
+	 * Ecrire sur la sortie standard le groupe d'élément au format DTD
+	 */
 	void printDTD();
+	
 	/**
-	 * GenÃ¨re une expression rÃ©guliÃ¨re correspondant Ã  l'ensemble des Ã©lÃ©ments contenu
-	 * dans cet Ã©lÃ©ment multiple
-	 * 
-	 * @return l'expression rÃ©guliÃ¨re
+	 * Créer une expression régulière correspondant à ce groupe d'élément
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 

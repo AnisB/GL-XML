@@ -57,22 +57,31 @@ class DTDDocument
 // ----------------------- Standard services ------------------------------
 
 public:
-
+	/**
+	 * Constructeur
+	 */
 	DTDDocument(std::list<MotherContent*>* listContent);
+	
+	/**
+	 * Destructeur
+	 */
 	~DTDDocument();
+	
+	/**
+	 * Ecrire sur la sortie standard ce document au format DTD
+	 */
 	void displayAsDTDFormat();
 	
 	/**
-	 * GenÃ¨re une map de noms de contenus (Ã©lÃ©ments ou attributs) vers les expressions
-	 * rÃ©guliÃ¨res correspondantes. Les noms des Ã©lÃ©ments sont prÃ©cÃ©dÃ©s du prÃ©fixe "E", ceux des
-	 * attributs du prÃ©fixe "A".
+	 * Genère une map de noms de contenus (éléments ou attributs) vers les expressions
+	 * régulières correspondantes. Les noms des éléments sont précédés du préfixe "E", ceux des
+	 * attributs du préfixe "A".
 	 * 
 	 * @return un pointeur sur la map
 	 */
 	std::map<std::string, std::string> * generateRegex();
 
 protected:
-
 	std::list<MotherContent*>* mContents;	
 };
 // 

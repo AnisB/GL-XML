@@ -48,18 +48,25 @@
 class DTDPCData : public DTDContent
 {
 public:
+	/**
+	 * Constructeur
+	 */
 	DTDPCData();
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~DTDPCData();
 
 	
 	/**
-	* Ecrire sous forme de DTD
-	*/
+	 * Ecrire sur la sortie standard cet élément PCDATA au format DTD
+	 */
 	void printDTD();
+
 	/**
-	 * GenÃ¨re une expression rÃ©guliÃ¨re pour un Ã©lÃ©ment PCDATA
-	 * 
-	 * @return l'expression rÃ©guliÃ¨re
+	 * Génère une expression régulière pour un élément PCDATA
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 

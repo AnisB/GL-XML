@@ -45,20 +45,25 @@ using namespace std;
 
 
 /**
- * Constructor
+ * Implémentation du constructeur de DTDDocument
  */
 DTDDocument::DTDDocument(std::list<MotherContent*>* listContent) : mContents(listContent)
 {
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de DTDDocument
  */
 DTDDocument::~DTDDocument( )
 {
   //Nothing to do
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode displayAsDTDFormat de DTDDocument
+ */
 void DTDDocument::displayAsDTDFormat()
 {
 	for(std::list<MotherContent*>::iterator it=mContents->begin();it!=mContents->end();it++)
@@ -67,28 +72,23 @@ void DTDDocument::displayAsDTDFormat()
 	}
 }
 
+/**
+ * Implémentation de la méthode generateRegex de DTDDocument
+ */
 std::map<std::string, std::string>*  DTDDocument::generateRegex()
 {
 	std::map<std::string, std::string> * regexMap = new std::map<std::string, std::string>;
 	std::list<MotherContent*>::iterator it;
+	// parcours de l'ensemble des dÃ©finitions du fichier
 	for( it = mContents->begin(); it != mContents->end(); it++ )
 	{
 		std::string name = (*it)->getName();
-		// cout << name << " : ";
 		std::string regex = (*it)->createRegex();
-		// cout << regex << endl;
 		(*regexMap)[name] = regex;
+		// ajout dans la map de la regex liÃ©e au nom du contenu (Ã©lÃ©ment ou attribut)
 	}
 	return regexMap;
 }
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

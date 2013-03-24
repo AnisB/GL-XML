@@ -54,19 +54,30 @@ class MotherContent
 {
 public:
 // ----------------------- Standard services ------------------------------
-	MotherContent();
-	virtual ~MotherContent();
-	virtual void printDTD();
 	/**
-	 * Renvoie le nom du contenu
-	 * 
+	 * Constructeur
+	 */
+	MotherContent();
+	
+	/**
+	 * Destructeur
+	 */
+	virtual ~MotherContent();
+	
+	/**
+	 * Ecrire sur la sortie standard le contenu au format DTD
+	 */
+	virtual void printDTD();
+	
+	/**
+	 * Récupérer le nom de ce contenu
 	 * @return le nom
 	 */
 	virtual std::string getName();
+	
 	/**
-	 * GenÃ¨re une expression rÃ©guliÃ¨re basÃ©e sur le contenu
-	 * 
-	 * @return l'expression rÃ©guliÃ¨re
+	 * Créer une expression régulière pour ce contenu
+	 * @return l'expression régulière
 	 */
 	virtual std::string createRegex();
 };

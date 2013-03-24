@@ -39,8 +39,9 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-//////////////////////////////////////////////////////////////////////////////
 #include <string>
+//////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////
 // class DTDContent
 /**
@@ -52,13 +53,23 @@ class DTDContent
 {
 public:
 // ----------------------- Standard services ------------------------------
+	/**
+	 * Constructeur
+	 */
 	DTDContent();
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~DTDContent();
+	
+	/**
+	 * Ecrire sur la sortie standard le contenu au format DTD
+	 */
 	virtual void printDTD();
 	/**
-	 * GenÃ¨re une expression rÃ©guliÃ¨re basÃ©e sur le contenu
-	 * 
-	 * @return l'expression rÃ©guliÃ¨re
+	 * Genère une expression régulière basée sur le contenu
+	 * @return l'expression régulière
 	 */
     virtual std::string createRegex();
 };

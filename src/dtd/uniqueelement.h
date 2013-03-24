@@ -39,11 +39,12 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-//////////////////////////////////////////////////////////////////////////////
 #include "dtdcontent.h"
 #include "declaration.h"
 #include <string>
 #include <iostream>
+//////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////
 // class UniqueElement
 
@@ -52,40 +53,48 @@ class UniqueElement : public DTDContent
 // ----------------------- Standard services ------------------------------
 
 public:
+	/**
+	 * Constructeur
+	 *
+	 */
 	UniqueElement(std::string content, Declaration::Card card);
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~UniqueElement();
 	
 	/**
-	* remplacer le contenu du CData
-	* @param content le contenu
-	*/
+	 * remplacer le contenu du CData
+	 * @param content le contenu
+	 */
 	void setContent(std::string content);
 
 	/**
-	* recuperer le contenu de CData
-	* @return le contenu
-	*/
+	 * recuperer le contenu de CData
+	 * @return le contenu
+	 */
 	std::string getContent();
 	
 	/**
-	* recuperer la cardinalité
-	* @return la cardinalité
-	*/
+	 * recuperer la cardinalité
+	 * @return la cardinalité
+	 */
 	Declaration::Card getCard();
 	
 	/**
-	* remplacer la cardinalité
-	* @param card la nouvelle cardinalité
-	*/
+	 * remplacer la cardinalité
+	 * @param card la nouvelle cardinalité
+	 */
 	void setCard(Declaration::Card card);
 	
 	/**
-	* Ecrire sous forme de DTD
-	*/
+	 * Ecrire sur la sortie standard au format DTD l'élément
+	 */
 	void printDTD();
+
 	/**
 	 * Genère une expression régulière pour un élément unique
-	 * 
 	 * @return l'expression régulière
 	 */
 	std::string createRegex();

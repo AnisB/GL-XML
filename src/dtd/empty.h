@@ -52,14 +52,24 @@ class Empty : public DTDContent
 {
 // ----------------------- Standard services ------------------------------
 public:
+	/**
+	 * Constructeur
+	 */
 	Empty();
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~Empty();
 	
-	void printDTD();
 	/**
-	 * GenÃ¨re une expression rÃ©guliÃ¨re pour un contenu "Empty"
-	 * 
-	 * @return l'expression rÃ©guliÃ¨re
+	 * Ecrire sur la sortie standard cet élément EMPTY au format DTD
+	 */
+	void printDTD();
+	
+	/**
+	 * Créer une expression régulière pour cet élément EMPTY
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 };

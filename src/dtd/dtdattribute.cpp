@@ -44,15 +44,15 @@ using namespace std;
 // ----------------------- Standard services ------------------------------
 
 /**
-* Constructor
-*/
+ * Implémentation du constructeur de DTDAttribute
+ */
 DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherContent(), mElement(element), m_datas(datas)
 {
 }
 
 /**
-* Destructor.
-*/
+ * Implémentation du destructeur de DTDAttribute
+ */
 DTDAttribute::~DTDAttribute()
 {
 }
@@ -60,22 +60,25 @@ DTDAttribute::~DTDAttribute()
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline setElement
+/**
+ * Implémentation de la méthode setElement de DTDAttribute
+ */
 void DTDAttribute::setElement(UniqueElement* element)
 {
 	mElement = element;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline setData
+/**
+ * Implémentation de la méthode setData de DTDAttribute
+ */
 void DTDAttribute::setData(std::list<CData*>* datas)
 {
 	m_datas = datas;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline addData
+/**
+ * Implémentation de la méthode addData de DTDAttribute
+ */
 bool DTDAttribute::addData(CData* data)
 {
 	bool isNotNull=false;
@@ -87,20 +90,25 @@ bool DTDAttribute::addData(CData* data)
 	return isNotNull;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline getData
+/**
+ * Implémentation de la méthode getData de DTDAttribute
+ */
 list<CData*> * DTDAttribute::getData()
 {
 	return m_datas;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline getElement
+/**
+ * Implémentation de la méthode getElement de DTDAttribute
+ */
 UniqueElement * DTDAttribute::getElement()
 {
 	return mElement;
 }
 
+/**
+ * Implémentation de la méthode printDTD de DTDAttribute
+ */
 void DTDAttribute::printDTD()
 {
 	std::cout<<"<!ATTLIST "<<mElement->getContent();
@@ -111,12 +119,17 @@ void DTDAttribute::printDTD()
 	std::cout<<std::endl<<">"<<std::endl;
 }
 
-
-
+/**
+ * Implémentation de la méthode getName de DTDAttribute
+ */
 std::string DTDAttribute::getName()
 {
 	return "A" + mElement->getContent();
 }
+
+/**
+ * Implémentation de la méthode createRegex de DTDAttribute
+ */
 std::string DTDAttribute::createRegex()
 {
 	std::string regex = "";
@@ -124,16 +137,22 @@ std::string DTDAttribute::createRegex()
 	
 	if(it != m_datas->end())
 	{
+		// tous les attributs sont #IMPLIED : la regex est de la forme (...)?
+		// on cherche une chaÃ®ne de caractÃ¨re de la forme <attribut"valeur">
+		// la regex est donc de la forme (attribut"[^"])?, <valeur> pouvant prendre n'importe quel
+		// type de caractÃ¨re hormis "
 		regex+='(' + (*it)->getContent() + "\"[^\"]*\"" + ")?";
 		it++;
 	}
 	for( ; it != m_datas->end(); it++ )
 	{
-		regex+= "(\\s?"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";	// every attribute is #implied
+		// on rajoute un espace facultatif (on n'est pas garanti d'avoir un attribut avant
+		// car ils sont facultatifs) avant chacune des attributs
+		regex+= "(\\s?"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";
 	}
-	// cout << regex << endl;
 	
 	return regex;
 }
+
 //
 ///////////////////////////////////////////////////////////////////////////////

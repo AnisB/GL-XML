@@ -72,15 +72,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
- void Element::setContents(std::list<XMLContent*> * aContent)
- {
- 	mContent=aContent;
- }
-
- void Element::addContent(XMLContent * aXMLContent)
- {
- 	mContent->push_back(aXMLContent);
- }
 
  void Element::printXML()
  {

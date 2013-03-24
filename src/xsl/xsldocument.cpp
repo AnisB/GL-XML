@@ -87,8 +87,8 @@ std::string XSLDocument::process()
 	std::list<XMLContent *> theListToHandle;
 	std::list<XMLContent *> * theHandlers;
 	std::string parseResult="<!DOCTYPE html>";
-	// std::cout<<"<!DOCTYPE html>";
 	Element * root= mXml->getRoot();
+
 	std::list<XMLContent*>::iterator it = mXsl->getRoot()->getContent()->begin();
 	for(;it!=mXsl->getRoot()->getContent()->end();it++)
 	{
@@ -161,9 +161,9 @@ std::list<XMLContent*> XSLDocument::match(std::string match, Element * root)
 		{
 			std::list<XMLContent*> * temp = new std::list<XMLContent*>;
 			temp->push_back(root);
-			XMLContent * lolil = new Element("","root",new std::list<XMLAttribute*>, temp);
+			XMLContent * rootnode = new Element("","root",new std::list<XMLAttribute*>, temp);
 			std::list<XMLContent*> temp2 ;
-			temp2.push_back(lolil);		
+			temp2.push_back(rootnode);		
 			return temp2;
 		}
 	}
@@ -175,7 +175,7 @@ std::list<XMLContent*> XSLDocument::match(std::string match, Element * root)
 	}
 	else
 	{
-			
+		
 		throw NO_MATCH_PARAMETER;
 	}
 }
@@ -199,7 +199,7 @@ std::list<XMLContent*> XSLDocument::getListContent(std::list<XMLContent*> roots,
 		std::list<XMLContent*> listSons =(*that)->getSonList(name);
 		for(std::list<XMLContent*>::iterator it=listSons.begin();it!=listSons.end();it++)
 		{
-			lisToReturn.push_back(*it);
+				lisToReturn.push_back(*it);
 		}
 	}
 	return lisToReturn;

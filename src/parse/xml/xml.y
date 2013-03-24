@@ -70,7 +70,7 @@ int xmllex(void);
 
  declarations
 	: declaration {$$=$1;}
- | /*vide*/ {$$= new XmlDeclaration();$$->mExists=false;}
+ | /*vide*/ {$$= new XmlDeclaration();$$->mExists=false;*nom_dtd=NULL;}
  ;
  
  feuilles_style_opt

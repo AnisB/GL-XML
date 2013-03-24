@@ -71,6 +71,8 @@ public:
 	// ----------------------- Other services ------------------------------
 	static bool check(XMLDocument * xml, DTDDocument * dtd);
 	static bool recursiveCheck(Element * node, std::map<std::string,std::string>* regex_map);
+	static bool checkXsl(XMLDocument * xml, DTDDocument * dtd);
+	static bool recursiveCheckXsl(Element * node, std::map<std::string,std::string>* regex_map);
 
 public:
 	/**

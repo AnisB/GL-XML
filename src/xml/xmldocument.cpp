@@ -67,8 +67,6 @@ XMLDocument::~XMLDocument()
 */
 void XMLDocument::displayAsXMLFormat()
 {
-	//std::cout<<"<?xml encoding=\"utf-8\" version=\"1.0\">\n";
-
 	mHeader->printXML();
 	mDec->printXML();
 	for(std::list<Misc*>::iterator it=mMiscList->begin();it!=mMiscList->end();it++)

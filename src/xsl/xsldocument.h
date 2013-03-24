@@ -82,12 +82,13 @@
 	/**
 	* You should call process before getting the xml (This method avoids reprocessing the file)
 	*/
-	std::string getHTML();
+	std::string getParse();
 	// ------------------------- Protected Datas ------------------------------
   protected:
   	XMLDocument * mXsl;
 	XMLDocument * mXml;
 	std::map<std::string,XMLContent *> templates;
+	std::string mParse;
 
     //--------------------------- Protected attributes---------------------------
 

@@ -1,0 +1,17 @@
+<!ELEMENT xsl:value-of ANY>
+<!ATTLIST xsl:value-of select CDATA #REQUIRED>
+
+<!ELEMENT xsl:for-each ANY>
+<!ATTLIST xsl:for-each select CDATA #REQUIRED>
+
+
+<!ELEMENT xsl:stylesheet ANY>
+<!ATTLIST xsl:stylesheet
+  version CDATA #IMPLIED
+  xmlns:xsl CDATA #IMPLIED>
+
+<!ELEMENT xsl:template ANY>
+<!ATTLIST xsl:template match CDATA #REQUIRED>
+
+<!ELEMENT xsl:apply-template ANY>
+<!ATTLIST xsl:apply-template select CDATA #REQUIRED>

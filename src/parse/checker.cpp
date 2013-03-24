@@ -43,7 +43,7 @@
  extern FILE * dtdin;
  int xmlparse(std::string **, XMLDocument**);
  int dtdparse();
-using namespace std;
+ using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
@@ -88,35 +88,97 @@ using namespace std;
  	boost::regex elementRegex((*regex_map)["E"+type]);
  	if( !boost::regex_match(attributes, attributeRegex) )
  	{
-		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
+ 		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
  		return false;
  	}
  	else
  	{
-		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
+ 		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
  	}
 
  	if( !boost::regex_match(childs, elementRegex) )
  	{
-		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
+ 		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
  		return false;
  	}
  	else
  	{
-		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
+ 		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
  	}
 
  	for( it = node->getContent()->begin() ; it != node->getContent()->end(); it++)
  	{
  		if( (*it)->getType().compare("PCDATA") !=  0)
  		{
- 			if( !recursiveCheck((Element*)*it, regex_map) ) return false;
+ 			if( !recursiveCheck((Element*)*it, regex_map) )
+ 			{
+ 				return false;
+ 			} 
  		}
  	}
 
 
  	return true;
  }
+
+
+
+
+
+ bool Checker::checkXsl(XMLDocument * xml, DTDDocument * dtd)
+ {
+ 	return recursiveCheckXsl(xml->getRoot(),dtd->generateRegex());
+ }
+
+ bool Checker::recursiveCheckXsl(Element * node, std::map<string,string>* regex_map)
+ {
+ 	list<XMLContent*>::iterator it;
+
+ 	string childs = node->childToString();
+ 	string attributes = node->attributeToString();
+ 	string type = node->getType();
+ 	if((*regex_map).find("E"+type)==(*regex_map).end())
+ 	{
+ 		return false;
+ 	}
+
+ 	boost::regex attributeRegex((*regex_map)["A"+type]);
+ 	boost::regex elementRegex((*regex_map)["E"+type]);
+ 	if( !boost::regex_match(attributes, attributeRegex) )
+ 	{
+ 		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do not match" << endl;
+ 		return false;
+ 	}
+ 	else
+ 	{
+ 		// cout << attributes << " and " <<  (*regex_map)["A"+type] << " do match" << endl;
+ 	}
+
+ 	if( !boost::regex_match(childs, elementRegex) )
+ 	{
+ 		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do not match" << endl;
+ 		return false;
+ 	}
+ 	else
+ 	{
+ 		// cout << childs << " and " <<  (*regex_map)["E"+type] << " do match" << endl;
+ 	}
+
+ 	for( it = node->getContent()->begin() ; it != node->getContent()->end(); it++)
+ 	{
+ 		if( (*it)->getType().compare("PCDATA") !=  0)
+ 		{
+ 			if( !recursiveCheck((Element*)*it, regex_map) )
+ 			{
+ 				return false;
+ 			} 
+ 		}
+ 	}
+
+
+ 	return true;
+ }
+
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 

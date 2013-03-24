@@ -70,7 +70,7 @@ misc
 
 declarations
   : declaration {$$=$1;}
- | /*vide*/ {$$= new XmlDeclaration();$$->mExists=false;}
+ | /*vide*/ {$$= new XmlDeclaration();$$->mExists=false;*nom_dtd=NULL;}
  ;
  
 feuilles_style_opt
@@ -79,7 +79,7 @@ feuilles_style_opt
  ;
 
 declaration
-  : DOCTYPE NOM NOM VALEUR SUP {$$ = new XmlDeclaration(); $$->mName1=$2;$$->mName2=$3;$$->mValue=$4;$$->mExists=true;}
+  : DOCTYPE NOM NOM VALEUR SUP {$$ = new XmlDeclaration(); $$->mName1=$2;$$->mName2=$3;$$->mValue=$4;$$->mExists=true;*nom_dtd=new std::string($4);}
  ;
 
 element

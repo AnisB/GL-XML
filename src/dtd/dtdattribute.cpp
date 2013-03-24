@@ -131,7 +131,7 @@ std::string DTDAttribute::createRegex()
 	{
 		regex+= "(\\s"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";	// every attribute is #implied
 	}
-	cout << regex << endl;
+	// cout << regex << endl;
 	
 	return regex;
 }

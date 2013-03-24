@@ -19,7 +19,7 @@ if ( Boost_FOUND )
      ${Boost_PROGRAM_OPTIONS_LIBRARY}
      ${Boost_SYSTEM_LIBRARY}
  ${Boost_REGEX_LIBRARY})
-   SET(XmlProcesserLib ${Boost_PROGRAM_OPTIONS_LIBRARY})
+   SET(XmlProcesserLib ${Boost_LIBRAIRIES}  )
 endif( Boost_FOUND )
 
 find_package(BISON)

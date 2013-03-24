@@ -1,121 +1,66 @@
-// Copyright Vladimir Prus 2002-2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/* Shows how to use both command line and config file. */
-
 #include <boost/program_options.hpp>
+#include <parse/parser.h>
+#include <parse/checker.h>
 namespace po = boost::program_options;
 
-
-#include <iostream>
-#include <fstream>
 #include <iterator>
 using namespace std;
-
-// A helper function to simplify the main part.
-template<class T>
-ostream& operator<<(ostream& os, const vector<T>& v)
-{
-    copy(v.begin(), v.end(), ostream_iterator<T>(os, " ")); 
-    return os;
-}
-
 
 int main(int ac, char* av[])
 {
     try {
-        int opt;
-        string config_file;
-    
-        // Declare a group of options that will be 
-        // allowed only on command line
-        po::options_description generic("Generic options");
-        generic.add_options()
-            ("version,v", "print version string")
-            ("help", "produce help message")
-            ("config,c", po::value<string>(&config_file)->default_value("multiple_sources.cfg"),
-                  "name of a file of a configuration.")
-            ;
-    
-        // Declare a group of options that will be 
-        // allowed both on command line and in
-        // config file
-        po::options_description config("Configuration");
-        config.add_options()
-            ("optimization", po::value<int>(&opt)->default_value(10), 
-                  "optimization level")
-            ("include-path,I", 
-                 po::value< vector<string> >()->composing(), 
-                 "include path")
-            ;
 
-        // Hidden options, will be allowed both on command line and
-        // in config file, but will not be shown to the user.
-        po::options_description hidden("Hidden options");
-        hidden.add_options()
-            ("input-file", po::value< vector<string> >(), "input file")
-            ;
+        po::options_description desc("Options");
+        desc.add_options()
+        ("help", "produce  the help message")
+        ("xml", po::value< vector<string> >(), "--xml <filename> [<filename>]* [--ckxml], The Xml files you want to analyse ")
+        ("ckxml", "--ckxml, Check XML: If you want to check that it respects it's DTD")
+        ("xsl", po::value<string>(), "--xsl <filename> -mop <filename> [<filename>]*, The xsl file you want to use")
+        ("ckxsl", "--ckxsl, Check XSL; If you want to check that it respects it's standard xsl DTD")
+        ("mop",po::value< vector<string> >(), "--mop <filename> [<filename>]*, Mandatory if you introduced an xsl file, you should specify a file name for each input")
+        ;
 
-        
-        po::options_description cmdline_options;
-        cmdline_options.add(generic).add(config).add(hidden);
-
-        po::options_description config_file_options;
-        config_file_options.add(config).add(hidden);
-
-        po::options_description visible("Allowed options");
-        visible.add(generic).add(config);
-        
-        po::positional_options_description p;
-        p.add("input-file", -1);
-        
-        po::variables_map vm;
-        store(po::command_line_parser(ac, av).
-              options(cmdline_options).positional(p).run(), vm);
-        notify(vm);
-        
-        ifstream ifs(config_file.c_str());
-        if (!ifs)
-        {
-            cout << "can not open config file: " << config_file << "\n";
-            return 0;
-        }
-        else
-        {
-            store(parse_config_file(ifs, config_file_options), vm);
-            notify(vm);
-        }
-    
+        po::variables_map vm;        
+        po::store(po::parse_command_line(ac, av, desc), vm);
+        po::notify(vm);    
         if (vm.count("help")) {
-            cout << visible << "\n";
-            return 0;
+            cout << desc << "\n";
+            return 1;
         }
-
-        if (vm.count("version")) {
-            cout << "Multiple sources example, version 1.0\n";
-            return 0;
-        }
-
-        if (vm.count("include-path"))
+        if (vm.count("xml")) 
         {
-            cout << "Include paths are: " 
-                 << vm["include-path"].as< vector<string> >() << "\n";
-        }
-
-        if (vm.count("input-file"))
-        {
+            // std::vector<string>::iterator it= (vm["xml"].as<vector<string> >());
             cout << "Input files are: " 
-                 << vm["input-file"].as< vector<string> >() << "\n";
-        }
+            << (vm["xml"].as< vector<string> >())[0] << "\n";
+            std::string xmlNameFile=(vm["xml"].as< vector<string> >())[0] ;
+            std::pair<string*,XMLDocument*> xmlparseResult;
+            try
+            {
+                xmlparseResult = Parser::parseXML(xmlNameFile);
+            }
+            catch(int e)
+            {
+                cout<<"Error while parsing, it could mean file not found or it's not respecting the xml grammar"<<endl;
+            }
+            if (vm.count("ckxml")) 
+            {
+                DTDDocument* dtdparseResult = Parser::parseDTD(*(xmlparseResult.first)); 
+                if(Checker::check(xmlparseResult.second,dtdparseResult))
+                    std::cout<<"The file "<<xmlNameFile<<" is correctly constructed"<<endl;
+                else
+                    std::cout<<"The file "<<xmlNameFile<<" isn't correctly constructed"<<endl;;
 
-        cout << "Optimization level is " << opt << "\n";                
+
+            }
+        }
     }
-    catch(exception& e)
-    {
-        cout << e.what() << "\n";
+    catch(exception& e) {
+        cerr << "error: " << e.what() << "\n";
         return 1;
-    }    
+    }
+    catch(...) {
+        cerr << "Exception of unknown type!\n";
+    }
+
     return 0;
 }

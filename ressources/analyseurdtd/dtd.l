@@ -38,7 +38,8 @@ echap		   "&#"[0-9]+";"|"&#x"[0-9a-fA-F]+";"
 debutnom	   [A-Za-z\200-\377_]
 caracnom	   [A-Za-z\200-\377_0-9.-]
 tokentype   "ID"|"IDREF"|"IDREFS"|"ENTITY"|"ENTITIES"|"NMTOKEN"|"NMTOKENS"
-nom		   {debutnom}{caracnom}*
+nom      {debutnom}{caracnom}*
+ennom		   {debutnom}{caracnom}*:{debutnom}{caracnom}*
 comment     {inf}"!--"([^-]|"-"[^-])*"--"{sup}
 chaine      \"([^"&]|{echap})*\"|\'([^'&]|{echap})*\'
 element     {inf}"!ELEMENT"{esp}
@@ -50,8 +51,9 @@ cdata       "CDATA"{esp}?
 ptint       "?"
 ast         "*"
 plus        "+"
-empty       "EMPTY"
-any         "ANY"
+empty       "EMPTY"{esp}?
+any         "ANY"{esp}?
+
 
 %s DEDANS
 
@@ -82,6 +84,7 @@ any         "ANY"
 <DEDANS>{chaine}             { stringreturn(VALEUR); }
 <DEDANS>{tokentype}{esp}?    { stringreturn(TOKENTYPE); }
 <DEDANS>{nom}{esp}?          { stringreturn(NOM); }
+<DEDANS>{ennom}{esp}?          { stringreturn(NOM); }
 {comment}		              { /* les commentaires sont ignorés */ }
 
 .			{fprintf(stderr, "!ERROR(%c)\n", *yytext);}

@@ -88,8 +88,17 @@ public:
 	UniqueElement * getElement();
 
 	void printDTD();
-	
+	/**
+	 * Renvoie le nom de l'attribut précédé du préfixe "A"
+	 * 
+	 * @return le nom
+	 */
 	std::string getName();
+	/**
+	 * Genère une expression régulière basée sur l'attribut
+	 * 
+	 * @return l'expression régulière
+	 */
 	std::string createRegex();
 
 protected:

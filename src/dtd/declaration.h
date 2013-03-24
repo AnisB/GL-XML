@@ -63,7 +63,17 @@ public:
 	~Declaration();
 	void printDTD();
 	void addElement();
+	/**
+	 * Renvoie le nom de l'élément précédé du préfixe "E"
+	 * 
+	 * @return le nom
+	 */
 	std::string getName();
+	/**
+	 * Genère une expression régulière basée sur l'élément
+	 * 
+	 * @return l'expression régulière
+	 */
 	std::string createRegex();
 
   protected:

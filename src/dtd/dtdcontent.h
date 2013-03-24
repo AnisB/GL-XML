@@ -55,6 +55,11 @@ public:
 	DTDContent();
 	virtual ~DTDContent();
 	virtual void printDTD();
+	/**
+	 * Genère une expression régulière basée sur le contenu
+	 * 
+	 * @return l'expression régulière
+	 */
     virtual std::string createRegex();
 };
 

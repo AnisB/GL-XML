@@ -12,6 +12,7 @@
 <!ELEMENT h3 ANY>
 <!ELEMENT h4 ANY>
 <!ELEMENT tr ANY>
+<!ELEMENT span ANY>
 <!ELEMENT td ANY>
 <!ELEMENT table ANY>
 <!ELEMENT a ANY>
@@ -33,6 +34,11 @@
 	style CDATA #IMPLIED
 >
 <!ATTLIST h2
+	class CDATA #IMPLIED
+	style CDATA #IMPLIED
+>
+<!ELEMENT span ANY>
+<!ATTLIST span
 	class CDATA #IMPLIED
 	style CDATA #IMPLIED
 >
@@ -98,5 +104,5 @@
 <!ELEMENT xsl:template ANY>
 <!ATTLIST xsl:template match CDATA #REQUIRED>
 
-<!ELEMENT xsl:apply-template ANY>
-<!ATTLIST xsl:apply-template select CDATA #REQUIRED>
+<!ELEMENT xsl:apply-templates ANY>
+<!ATTLIST xsl:apply-templates select CDATA #REQUIRED>

@@ -3,7 +3,7 @@
 
 	<xsl:template match="/">
 		<html >
-			<head class="" style= "" xml:lang=""></head>
+			<head dir="" lang= "" xml:lang=""></head>
 			<body class="" style= "">
 				<h2 class="" style= "">My CD Collection</h2>
 				<table ><tr><td>Title</td><td>Artist</td></tr>
@@ -21,12 +21,12 @@
 </xsl:template>
 
 <xsl:template match="title">
-	<td><span class=""  style="color:#ff0000">
+	<td><span class="" style="color:#ff0000">
 	<xsl:value-of select="."/></span></td>
 </xsl:template>
 
 <xsl:template match="artist">
-	<td><span  class=""  style="color:#00ff00">
+	<td><span  class="" style="color:#00ff00">
 		<xsl:value-of select="."/></span></td>
 	</xsl:template>
 

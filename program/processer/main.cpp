@@ -120,7 +120,7 @@ int main(int ac, char* av[])
                     }
 
 
-                    if(Checker::checkXsl(xslparseResult.second,dtdparseResult))
+                    if(Checker::check(xslparseResult.second,dtdparseResult))
                     {
                         std::cout<<"The file "<<vm["xsl"].as<string>()<<" is correctly constructed"<<endl;
                     }

@@ -109,8 +109,8 @@ public:
 	void printDTD();
 	
 	/**
-	 * Créer un regex pour ce groupe d'élément
-	 * @return le regex
+	 * Créer une expression régulière correspondant à ce groupe d'élément
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 

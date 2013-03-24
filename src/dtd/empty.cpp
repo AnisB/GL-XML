@@ -69,6 +69,7 @@ void Empty::printDTD()
  */
 std::string Empty::createRegex()
 {
+	// on s'assure que la contrainte vide est réalisée en testant la fin de chaîne
     return "$";
 }
 

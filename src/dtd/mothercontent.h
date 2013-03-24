@@ -76,8 +76,8 @@ public:
 	virtual std::string getName();
 	
 	/**
-	 * Créer un regex pour ce contenu
-	 * @return le regex
+	 * Créer une expression régulière pour ce contenu
+	 * @return l'expression régulière
 	 */
 	virtual std::string createRegex();
 };

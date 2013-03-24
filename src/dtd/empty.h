@@ -68,8 +68,8 @@ public:
 	void printDTD();
 	
 	/**
-	 * Créer un regex pour cet élément EMPTY
-	 * @return le regex
+	 * Créer une expression régulière pour cet élément EMPTY
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 };

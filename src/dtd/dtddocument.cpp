@@ -79,13 +79,13 @@ std::map<std::string, std::string>*  DTDDocument::generateRegex()
 {
 	std::map<std::string, std::string> * regexMap = new std::map<std::string, std::string>;
 	std::list<MotherContent*>::iterator it;
+	// parcours de l'ensemble des définitions du fichier
 	for( it = mContents->begin(); it != mContents->end(); it++ )
 	{
 		std::string name = (*it)->getName();
-		// cout << name << " : ";
 		std::string regex = (*it)->createRegex();
-		// cout << regex << endl;
 		(*regexMap)[name] = regex;
+		// ajout dans la map de la regex liée au nom du contenu (élément ou attribut)
 	}
 	return regexMap;
 }

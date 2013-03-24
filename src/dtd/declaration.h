@@ -71,14 +71,14 @@ public:
 	void printDTD();
 
 	/**
-	 * Récupérer le nom de cet élément
-	 * @return le nom de cet élément
+	 * Renvoie le nom de l'élément précédé du préfixe "E"
+	 * @return le nom
 	 */
 	std::string getName();
 	
 	/**
-	 * Créer un regex pour cet élément
-	 * @return le regex
+	 * Genère une expression régulière basée sur l'élément
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 

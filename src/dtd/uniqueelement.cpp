@@ -114,6 +114,9 @@ void UniqueElement::printDTD()
  */
 string UniqueElement::createRegex()
 {
+	// on veut une regex de la forme (contenu\s?)card
+	// c'est-à-dire le nom de l'élément suivi d'un espace (sauf si c'est le dernier élément)
+	// qui peut se répéter plusieurs fois selon sa cardinalité
     std::string regex = "(" + m_content;
 	regex+="\\s?)";
 	switch(m_card)

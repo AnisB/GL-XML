@@ -64,10 +64,10 @@ public:
 	 * Ecrire sur la sortie standard cet élément ANY au format DTD
 	 */
 	void printDTD();
-	
+
 	/**
-	 * Créer un regex pour cet élément ANY
-	 * @return le regex
+	 * Genère une expression régulière pour un contenu "Any"
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 };

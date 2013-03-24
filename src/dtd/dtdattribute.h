@@ -39,13 +39,12 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-//////////////////////////////////////////////////////////////////////////////
-
 #include <list>
 
 #include "cdata.h"
 #include "uniqueelement.h"
 #include "mothercontent.h"
+//////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////
 // class DTDAttribute
@@ -100,16 +99,16 @@ public:
 	 * Ecrire la liste d'attributs sur la sortie standard au format DTD
 	 */
 	void printDTD();
-	
+
 	/**
-	 * Récupérer le nom de cette liste d'attribut
+	 * Renvoie le nom de l'attribut précédé du préfixe "A"
 	 * @return le nom
 	 */
 	std::string getName();
 	
 	/**
-	 * Créer un regex pour cette liste d'attribut
-	 * @return le regex
+	 * Genère une expression régulière basée sur l'attribut
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 

@@ -67,7 +67,12 @@
  	* Destructor
 	*/
 	virtual ~XMLContent();
-
+	
+	/**
+	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
+	 * 
+	 * @return la chaîne de caractère décrivant le type
+	 */
 	virtual std::string getType();
 	virtual void printXML();
 

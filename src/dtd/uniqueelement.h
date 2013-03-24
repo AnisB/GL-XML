@@ -39,11 +39,12 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-//////////////////////////////////////////////////////////////////////////////
 #include "dtdcontent.h"
 #include "declaration.h"
 #include <string>
 #include <iostream>
+//////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////
 // class UniqueElement
 
@@ -91,10 +92,10 @@ public:
 	 * Ecrire sur la sortie standard au format DTD l'élément
 	 */
 	void printDTD();
-	
+
 	/**
-	 * Créer un regex représentant cet élément
-	 * @return le regex créé
+	 * Genère une expression régulière pour un élément unique
+	 * @return l'expression régulière
 	 */
 	std::string createRegex();
 

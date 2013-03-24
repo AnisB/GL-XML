@@ -56,24 +56,33 @@
 class DTDAttribute : public MotherContent
 {
 public:
+	/**
+	 * Constructeur
+	 */
 	DTDAttribute(UniqueElement* element, std::list<CData*>* datas);
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~DTDAttribute();
 
 	/**
-	* remplacer l'élément de l'attribut
-	* @param element le nouvel élément
-	*/
+	 * remplacer l'élément de l'attribut
+	 * @param element le nouvel élément
+	 */
 	void setElement(UniqueElement* element);
+	
 	/**
-	* remplacer la liste de données par une nouvelle liste
-	* @param datas les nouvelles données
-	*/
+	 * remplacer la liste de données par une nouvelle liste
+	 * @param datas les nouvelles données
+	 */
 	void setData(std::list<CData*>* datas);
+	
 	/**
-	* ajouter une donnée à la liste de données de l'attribut
-	* @param data la donnée à ajouter
-	* @return true si la donnée à bien été ajoutée et false sinon
-	*/
+	 * ajouter une donnée à la liste de données de l'attribut
+	 * @param data la donnée à ajouter
+ 	 * @return true si la donnée à bien été ajoutée et false sinon
+	 */
 	bool addData(CData* data);
 	
 	/**
@@ -82,14 +91,26 @@ public:
 	*/
 	std::list<CData*> * getData();
 	/**
-	* Récupérer l'élément que contient l'attribut considéré
-	* @return l'élément de l'attribut
-	*/
+	 * Récupérer l'élément que contient l'attribut considéré
+	 * @return l'élément de l'attribut
+	 */
 	UniqueElement * getElement();
 
+	/**
+	 * Ecrire la liste d'attributs sur la sortie standard au format DTD
+	 */
 	void printDTD();
 	
+	/**
+	 * Récupérer le nom de cette liste d'attribut
+	 * @return le nom
+	 */
 	std::string getName();
+	
+	/**
+	 * Créer un regex pour cette liste d'attribut
+	 * @return le regex
+	 */
 	std::string createRegex();
 
 protected:

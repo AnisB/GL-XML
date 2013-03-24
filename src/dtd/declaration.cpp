@@ -43,20 +43,25 @@
 using namespace std;
 
 /**
- * Constructor
+ * Implémentation du constructeur de Declaration
  */
 Declaration::Declaration (string name, DTDContent* type) : MotherContent(), mName(name),mType(type)
 {
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de Declaration
  */
 Declaration::~Declaration( )
 {
   //Nothing to do
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode getName de Declaration
+ */
 void Declaration::printDTD()
 {
 	cout<<"<!ELEMENT "<<mName<<" ";
@@ -64,28 +69,21 @@ void Declaration::printDTD()
 	cout<<">"<<endl;
 }
 
-void Declaration::addElement()
-{
-	//a faire
-}
-
+/**
+ * Implémentation de la méthode getName de Declaration
+ */
 std::string Declaration::getName()
 {
 	return "E"+mName;
 }
 
+/**
+ * Implémentation de la méthode getName de Declaration
+ */
 std::string Declaration::createRegex()
 {
 	return mType->createRegex();
 }
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

@@ -40,7 +40,7 @@
 using namespace std;
 
 /**
- * Constructor
+ * Implémentation du constructeur de MultipleElement
  */
 MultipleElement::MultipleElement(bool isChoice, Declaration::Card card) : DTDContent(), mIsChoice(isChoice), mCard(card)
 {
@@ -48,43 +48,66 @@ MultipleElement::MultipleElement(bool isChoice, Declaration::Card card) : DTDCon
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de MultipleElement
  */
 MultipleElement::~MultipleElement( )
 {
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode setCard de MultipleElement
+ */
 void MultipleElement::setCard(Declaration::Card card)
 {
 	mCard = card;
 }
 
+/**
+ * Implémentation de la méthode getCard de MultipleElement
+ */
 Declaration::Card MultipleElement::getCard(Declaration::Card card)
 {
 	return mCard;
 }
 
+/**
+ * Implémentation de la méthode addElement de MultipleElement
+ */
 void MultipleElement::addElement(DTDContent* content)
 {
 	mListContent->push_back(content);
 }
 
+/**
+ * Implémentation de la méthode addElementReverse de MultipleElement
+ */
 void MultipleElement::addElementReverse(DTDContent* content)
 {
 	mListContent->push_front(content);
 }
 
+/**
+ * Implémentation de la méthode addMultipleElement de MultipleElement
+ */
 void MultipleElement::addMultipleElement(MultipleElement* multipleElement)
 {
 	list<DTDContent*>* lElems = multipleElement->getListContent();
 	mListContent->insert(mListContent->end(), lElems->begin(), lElems->end());
 }
 
+/**
+ * Implémentation de la méthode getListContent de MultipleElement
+ */
 list<DTDContent*>* MultipleElement::getListContent()
 {
 	return mListContent;
 }
 
+/**
+ * Implémentation de la méthode printDTD de MultipleElement
+ */
 void MultipleElement::printDTD()
 {
 	cout << "(";
@@ -122,6 +145,9 @@ void MultipleElement::printDTD()
 	}
 }
 
+/**
+ * Implémentation de la méthode createRegex de MultipleElement
+ */
 std::string MultipleElement::createRegex()
 {
 	std::string regex = "";
@@ -154,16 +180,6 @@ std::string MultipleElement::createRegex()
 	
     return regex;
 }
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

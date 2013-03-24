@@ -41,32 +41,36 @@
 using namespace std;
 
 /**
- * Constructor
+ * Implémentation du constructeur de Any
  */
 Any::Any ( )
 {
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de Any
  */
 Any::~Any( )
 {
   //Nothing to do
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode printDTD de Any
+ */
 void Any::printDTD()
 {
 	cout << "ANY";
 }
 
+/**
+ * Implémentation de la méthode createRegex de Any
+ */
 std::string Any::createRegex()
 {
     return ".*";
 }
-
-
-
-
 // //
 ///////////////////////////////////////////////////////////////////////////////

@@ -52,9 +52,25 @@ class DTDContent
 {
 public:
 // ----------------------- Standard services ------------------------------
+	/**
+	 * Constructeur
+	 */
 	DTDContent();
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~DTDContent();
+	
+	/**
+	 * Ecrire sur la sortie standard le contenu au format DTD
+	 */
 	virtual void printDTD();
+	
+    /**
+	 * Créer un regex pour ce contenu
+	 * @return le regex
+	 */
     virtual std::string createRegex();
 };
 

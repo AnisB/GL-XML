@@ -40,42 +40,45 @@
 
 
 /**
- * Constructor
+ * Implémentation du constructeur de MotherContent
  */
- MotherContent::MotherContent ()
+ MotherContent::MotherContent()
  {
  }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de MotherContent
  */
  MotherContent::~MotherContent()
  {
   //Nothing to do
  }
 
- void MotherContent::printDTD()
- {
-	//should not pass here
- }
-
-
-
- std::string MotherContent::getName()
- {
- 	return "";
- }
- std::string MotherContent::createRegex()
- {
- 	return "";
- }
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
+/**
+ * Implémentation de la méthode printDTD de MotherContent
+ */
+void MotherContent::printDTD()
+{
+	//should not pass here
+}
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
+/**
+ * Implémentation de la méthode getName de MotherContent
+ */
+std::string MotherContent::getName()
+{
+	return "";
+}
 
-
+/**
+ * Implementation de la méthode createRegex de MotherContent
+ */
+std::string MotherContent::createRegex()
+{
+	return "";
+}
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

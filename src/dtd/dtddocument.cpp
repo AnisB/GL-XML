@@ -45,20 +45,25 @@ using namespace std;
 
 
 /**
- * Constructor
+ * Implémentation du constructeur de DTDDocument
  */
 DTDDocument::DTDDocument(std::list<MotherContent*>* listContent) : mContents(listContent)
 {
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de DTDDocument
  */
 DTDDocument::~DTDDocument( )
 {
   //Nothing to do
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode displayAsDTDFormat de DTDDocument
+ */
 void DTDDocument::displayAsDTDFormat()
 {
 	for(std::list<MotherContent*>::iterator it=mContents->begin();it!=mContents->end();it++)
@@ -67,6 +72,9 @@ void DTDDocument::displayAsDTDFormat()
 	}
 }
 
+/**
+ * Implémentation de la méthode generateRegex de DTDDocument
+ */
 std::map<std::string, std::string>*  DTDDocument::generateRegex()
 {
 	std::map<std::string, std::string> * regexMap = new std::map<std::string, std::string>;
@@ -81,14 +89,6 @@ std::map<std::string, std::string>*  DTDDocument::generateRegex()
 	}
 	return regexMap;
 }
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

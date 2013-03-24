@@ -39,32 +39,38 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-//////////////////////////////////////////////////////////////////////////////
-
 #include <iostream>
+//////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////
 // class CData
 class CData
 {
 public:
+	/**
+	 * Constructeur
+	 * @param content le contenu de cette chaine de caractere
+	 */
 	CData(std::string content);
+	
+	/**
+	 * Destructeur
+	 */
 	virtual ~CData();
 	
 	/**
-	* remplacer le contenu du CData
-	* @param content le contenu
-	*/
+	 * remplacer le contenu du CData
+	 * @param content le contenu
+	 */
 	void setContent(std::string content);
 
 	/**
-	* recuperer le contenu de CData
-	* @return le contenu
-	*/
+	 * recuperer le contenu de CData
+	 * @return le contenu
+	 */
 	std::string getContent();
 
 	
-
 protected:
 	std::string m_content;
 };

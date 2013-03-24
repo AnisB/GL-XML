@@ -53,17 +53,33 @@ class Declaration : public MotherContent
 // ----------------------- Standard services ------------------------------
 
 public:
-	/**
-	* Definition de la classe
-	* @param *nom parametre* *description parametre*
-	*/
 	enum Card{DTD_PTINT, DTD_AST, DTD_PLUS, DTD_NONE};
 	
+	/**
+	 * Constructeur
+	 */
 	Declaration(std::string name, DTDContent* type);
+	
+	/**
+	 * Destructeur
+	 */
 	~Declaration();
+	
+	/**
+	 * Ecrire cet élément sur la sortie standard au format DTD
+	 */
 	void printDTD();
-	void addElement();
+
+	/**
+	 * Récupérer le nom de cet élément
+	 * @return le nom de cet élément
+	 */
 	std::string getName();
+	
+	/**
+	 * Créer un regex pour cet élément
+	 * @return le regex
+	 */
 	std::string createRegex();
 
   protected:

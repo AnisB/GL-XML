@@ -40,37 +40,36 @@
 
 
 /**
- * Constructor
+ * Implémentation du constructeur de DTDContent
  */
 DTDContent::DTDContent ()
 {
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de DTDContent
  */
 DTDContent::~DTDContent()
 {
   //Nothing to do
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la fonction printDTD de DTDContent
+ */
 void DTDContent::printDTD()
 {
 }
 
+/**
+ * Implémentation de la fonction createRegex de DTDContent
+ */
 std::string DTDContent::createRegex()
 {
 	return "";
 }
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

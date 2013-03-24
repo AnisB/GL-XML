@@ -40,38 +40,37 @@
 using namespace std;
 
 /**
- * Constructor
+ * Implémentation du constructeur de Empty
  */
 Empty::Empty ( )
 {
 }
 
 /**
- * Destructor.
+ * Implémentation du destructeur de Empty
  */
 Empty::~Empty( )
 {
   //Nothing to do
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode printDTD de Empty
+ */
 void Empty::printDTD()
 {
 	cout << "EMPTY";
 }
 
+/**
+ * Implementation de la méthode createRegex de Empty
+ */
 std::string Empty::createRegex()
 {
     return "$";
 }
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

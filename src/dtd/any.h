@@ -39,9 +39,9 @@
 
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
-//////////////////////////////////////////////////////////////////////////////
 #include "dtdcontent.h"
 #include <iostream>
+//////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////
 // class Any
@@ -50,17 +50,29 @@ class Any: public DTDContent
 {
 // ----------------------- Standard services ------------------------------
 public:
-	Any();
-	virtual ~Any();
 	/**
-	* Ecrire sous forme de DTD
-	*/
+	 * Constructeur
+	 */
+	Any();
+	
+	/**
+	 * Destructeur
+	 */
+	virtual ~Any();
+	
+	/**
+	 * Ecrire sur la sortie standard cet élément ANY au format DTD
+	 */
 	void printDTD();
+	
+	/**
+	 * Créer un regex pour cet élément ANY
+	 * @return le regex
+	 */
 	std::string createRegex();
 };
 // 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 #endif
 #endif

@@ -43,24 +43,32 @@ using namespace std;
 // ----------------------- Standard services ------------------------------
 
 /**
-* Constructor
-*/
+ * Implémentation du constructeur de DTDPCData
+ */
 DTDPCData::DTDPCData() : DTDContent()
 {
 }
 
 /**
-* Destructor.
-*/
+ * Implémentation du destructeur de DTDPCData
+ */
 DTDPCData::~DTDPCData()
 {
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
+/**
+ * Implémentation de la méthode printDTD de DTDPCData
+ */
 void DTDPCData::printDTD()
 {
 	cout << "#PCDATA";
 }
 
+/**
+ * Implémentation de la méthode createRegex de DTDPCData
+ */
 std::string DTDPCData::createRegex()
 {
     return "PCDATA";

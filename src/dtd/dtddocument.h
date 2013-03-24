@@ -57,15 +57,28 @@ class DTDDocument
 // ----------------------- Standard services ------------------------------
 
 public:
-
+	/**
+	 * Constructeur
+	 */
 	DTDDocument(std::list<MotherContent*>* listContent);
+	
+	/**
+	 * Destructeur
+	 */
 	~DTDDocument();
+	
+	/**
+	 * Ecrire sur la sortie standard ce document au format DTD
+	 */
 	void displayAsDTDFormat();
 	
+	/**
+	 * générer les regex pour les contenus de ce document
+	 * @return les regex
+	 */
 	std::map<std::string, std::string> * generateRegex();
 
 protected:
-
 	std::list<MotherContent*>* mContents;	
 };
 // 

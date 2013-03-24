@@ -40,7 +40,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Inclusions
 #include <iostream>
-#include <string>
 #include <list>
 //////////////////////////////////////////////////////////////////////////////
 
@@ -48,58 +47,91 @@
   /////////////////////////////////////////////////////////////////////////////
   // class XMLContent
   /**
-* Description of class XMLContent <p>
-*/
+   * Description of class 'XMLContent' <p>
+   * 
+   * @brief La repr&eacute;sentation d'un contenu de l'arbre xml
 
+   */
 
-	class XMLContent
-	{
+   class XMLContent
+   {
 	// ----------------------- Standard services ------------------------------
 
-	public:
+   public:
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Constructor.
 	*/
 	XMLContent();
 
 	/**
  	* Destructor
 	*/
-	virtual ~XMLContent();
-	
+ 	virtual ~XMLContent();
+
+
+
+	// ----------------------- Other services ------------------------------
 	/**
-	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
+	 * Renvoie le type (et &eacute;ventuellement l'espace de nom) du contenu
 	 * 
-	 * @return la chaîne de caractère décrivant le type
-	 */
-	virtual std::string getType();
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	*/
+	 virtual std::string getType();
+
+	/**
+	* Affiche sur la sortie standard le noeud
+	*/
 	virtual void printXML();
 
+
+	/**
+	* Renvoie sur en strin l'element ("" dans ce cas car classe abstraite)
+	* @return la chaine de caract&egrave;re
+	*/	
+	virtual std::string toString();
+
+	/**
+	* Renvoie une liste vide
+	* @return empty list
+	*/
 	virtual std::list<XMLContent*> getSonList(std::string name);
+
+	/**
+	* Renvoie une liste vide
+	* @return empty list
+	*/
 	virtual std::list<XMLContent*> getAllContent(std::string name);
+
+	/**
+	* Renvoie ""
+	* @return ""
+	*/
 	virtual std::string getOpen();
+	/**
+	* Renvoie ""
+	* @return ""
+	*/	
 	virtual std::string getClose();
+
+	/**
+	* Renvoie NULL
+	* @return NULL
+	*/
 	virtual inline std::list<XMLContent*> * getContent()
 	{
 		return NULL;
 	} 
-
-	// ----------------------- Other services ------------------------------
+	/**
+	* Surcharge de l'operateur []
+	* return ""
+	*/
 
 	virtual std::string operator[](std::string aname)
 	{
 		return "";
 	}
-
-	public:
-	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
-	*/
-
 	// ------------------------- Protected Datas ------------------------------
-  protected:
+protected:
 
 };
 

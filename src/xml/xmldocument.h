@@ -61,6 +61,18 @@ typedef struct TDeclaration
 		}
 	}
 
+	std::string toString()
+	{
+		if (mExists)
+		{
+			std::string toReturn="<!DOCTYPE "+mName1+" "+mName2+" \""+mValue+"\" >";
+
+		}
+		else
+		{
+			return "";
+		}
+	}
 	void copy(struct TDeclaration * aDec)
 	{
 		this->mName1 = aDec->mName1;
@@ -80,13 +92,28 @@ typedef struct THeader
 	{
 		if (mExists)
 		{
-	        std::cout<<"<?xml"; 
-	        for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
-	        {
-	        	(*it)->printXML();
-	        }
-	        std::cout<<">"<<std::endl;
+			std::cout<<"<?xml"; 
+			for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+			{
+				(*it)->printXML();
+			}
+			std::cout<<">"<<std::endl;
 		}
+	}
+
+	std::string toString()
+	{
+		if (mExists)
+		{
+			std::string toReturn="<?xml"; 
+			for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+			{
+				toReturn+=(*it)->toString();
+			}
+			toReturn+=">";
+			return toReturn;
+		}
+		return "";
 	}
 	void copy(struct THeader * aHeader)
 	{
@@ -95,70 +122,76 @@ typedef struct THeader
 		this->mExists=aHeader->mExists;
 	}
 } Header;
+
   /////////////////////////////////////////////////////////////////////////////
   // class XMLDocument
   /**
-* Description of class XMLDocument <p>
-*/
+   * Description of class 'XMLDocument' <p>
+   * 
+   * @brief L'objet qui repr&eacute;sente un document xml
+   */
 
 
-	class XMLDocument
-	{
+
+class XMLDocument
+{
 	// ----------------------- Standard services ------------------------------
 
-	public:
+public:
 	/**
 	* Constructor
+	* @param aHead pointeur sur le Header
+	* @param aDec pointeur sur la d&eacute;claration
+	* @param styleshett liste de stylesheets
+	* @param root l'element root
+	* @param alist liste des commentaires
 	*/
 	XMLDocument( Header * aHead, XmlDeclaration * aDec, std::list<Element*>  * stylesheet, Element* root, std::list<Misc*> * alist);
 	
 
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Destructor.
 	*/
 	~XMLDocument();
 	// ----------------------- Other services ------------------------------
 
-	public:
+public:
 	/**
 	* Displays the node as an xml node
 	*/
 	void displayAsXMLFormat();
 
 	/**
-	 * Renvoie un pointeur sur l'élément racine du document XML
+	 * Renvoie un pointeur sur l'&eacute;l&eacute;ment racine du document XML
 	 * 
-	 * @return une pointeur sur l'élément racine
+	 * @return une pointeur sur l'&eacute;l&eacute;ment racine
 	 */
-	Element * getRoot()
-	{
-		return mRoot;
-	}
+	 Element * getRoot()
+	 {
+	 	return mRoot;
+	 }
+
+
 	/**
-	 * Renvoie un pointeur sur la déclaration du document XML
+	 * Renvoie un pointeur sur la d&eacute;claration du document XML
 	 * 
-	 * @return un pointeur sur la déclaration
+	 * @return un pointeur sur la d&eacute;claration
 	 */
-	XmlDeclaration * getDeclaration()
-	{
-	    return mDec;
-	}
+	 XmlDeclaration * getDeclaration()
+	 {
+	 	return mDec;
+	 }
 
-	// ------------------------- Protected Datas ------------------------------
-  protected:
-  	std::string mName;
-	Element * mRoot;
-	std::list<Element*>* mStyleSheet;
-	std::list<XMLAttribute*>* mAttributes;
-	std::list<Misc*> * mMiscList;
-	XmlDeclaration * mDec;
-	Header * mHeader;
-
-    //--------------------------- Protected attributes---------------------------
-
-  protected:
-};
+	// ------------------------- Protected attributes ------------------------------
+	protected:
+		std::string mName;
+		Element * mRoot;
+		std::list<Element*>* mStyleSheet;
+		std::list<XMLAttribute*>* mAttributes;
+		std::list<Misc*> * mMiscList;
+		XmlDeclaration * mDec;
+		Header * mHeader;
+	};
 
 // 
 ///////////////////////////////////////////////////////////////////////////////

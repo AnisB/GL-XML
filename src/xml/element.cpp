@@ -1,24 +1,7 @@
 /**
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- **/
-
-/**
  * file Element.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
- * date 
  *
  * Source file for module Element
  *
@@ -45,6 +28,7 @@
  */
  Element::Element(std::string aType1,std::string aType2, std::list<XMLAttribute*> * anAttList,std::list<XMLContent*>* aXMLContent)
  {
+ 	// Copie des attributs
  	mType1=aType1;
  	mType2=aType2;
  	mContent=aXMLContent;
@@ -52,9 +36,12 @@
  	mIsSpecial=false;
  }
 
-
+/**
+ * Constructor
+ */
  Element::Element(std::string aType1,std::string aType2, std::list<XMLAttribute*> * anAttList,bool isSpecial)
  {
+ 	// Copie des attributs
  	mType1=aType1;
  	mType2=aType2;
  	mAttList=anAttList;
@@ -66,7 +53,23 @@
 
  Element::~Element()
  {
+
+ 	// D&eacute;truit les contenus fils
+ 	for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
+ 	{
+ 		delete *it;
+ 	}
+ 	// D&eacute;truit les attributs
+ 	 for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+ 	{
+ 		delete *it;
+ 	}
+ 	// Vidage de la liste des pointeurs
  	mContent->clear();
+ 	mAttList->clear();
+
+ 	// Supression des listes
+ 	delete mAttList; 
  	delete mContent;
  }
 
@@ -128,7 +131,62 @@
  	}
 
  }
+ std::string Element::toString()
+ {
+ 	std::string toReturn;
+ 	if (mType1!="")
+ 	{
+ 		if (!mIsSpecial)
+ 		{
+ 			toReturn+="<"+mType1+":"+mType2;
+ 		}
+ 		else
+ 		{
+ 			toReturn+="<?"+mType1+":"+mType2;
+ 		}
+ 	}
+ 	else
+ 	{
+ 		if (mIsSpecial)
+ 		{
+ 			toReturn+="<?"+mType2;
+ 		}
+ 		else
+ 		{
+ 			toReturn+="<"+mType2;
+ 		}
 
+ 	}
+ 	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+ 	{
+ 		toReturn+=(*it)->toString();
+ 	}
+
+ 	if (mIsSpecial)
+ 	{
+ 		toReturn+="?>";
+ 	}
+ 	else
+ 	{
+ 		toReturn+=">";
+
+ 		
+ 		for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
+ 		{
+ 			toReturn+=(*it)->toString();
+ 		}
+ 		if (mType1!="")
+ 		{
+ 			toReturn+="</"+mType1+":"+mType2+">";
+ 		}
+ 		else
+ 		{
+ 			toReturn+="</"+mType2+">";
+
+ 		}
+ 	}
+
+ }
 
  std::string Element::childToString()
  {
@@ -287,10 +345,4 @@
  
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
-
-// //
 ///////////////////////////////////////////////////////////////////////////////

@@ -68,7 +68,7 @@ public:
 	virtual ~MultipleElement();
 	
 	/**
-	 * Attribuer une nouvelle cardinalité à ce groupe d'élément
+	 * Attribuer une nouvelle cardinalité &agrave; ce groupe d'élément
 	 * @param card la nouvelle cardinalité
 	 */
 	void setCard(Declaration::Card card);
@@ -80,14 +80,14 @@ public:
 	Declaration::Card getCard(Declaration::Card card);
 	
 	/**
-	 * ajouter un nouveau contenu à la fin de ce groupe d'éléments
-	 * @param content le contenu à ajouter
+	 * ajouter un nouveau contenu &agrave; la fin de ce groupe d'éléments
+	 * @param content le contenu &agrave; ajouter
 	 */
 	void addElement(DTDContent* content);
 	
 	/**
 	 * ajouter un nouveau contenu au début de ce groupe d'éléments
-	 * @param content le contenu à ajouter
+	 * @param content le contenu &agrave; ajouter
 	 */
 	void addElementReverse(DTDContent* content);
 	
@@ -109,7 +109,7 @@ public:
 	void printDTD();
 	
 	/**
-	 * Créer une expression régulière correspondant à ce groupe d'élément
+	 * Créer une expression régulière correspondant &agrave; ce groupe d'élément
 	 * @return l'expression régulière
 	 */
 	std::string createRegex();

@@ -19,11 +19,10 @@
 /**
 * @file Misc
 * @author Anis Benyoub
-* INSTITUTION
+* INSA Lyon
 *
-* @date date
 *
-* Header file for module Misc.cpp
+* Header file for module Misc
 *
 */
 
@@ -41,15 +40,18 @@
 // Inclusions
 #include <iostream>
 #include <list>
-#include "xmlcontent.h"
+#include <xml/xmlcontent.h>
 //////////////////////////////////////////////////////////////////////////////
 
 
   /////////////////////////////////////////////////////////////////////////////
   // class Misc
   /**
-* Description of class Misc <p>
-*/
+   * Description of class 'Misc' <p>
+   * 
+   * @brief La repr&eacute;sentation d'un commentaire dans l'arbre xml
+
+   */
 
 
 	class Misc :public  XMLContent
@@ -58,30 +60,39 @@
 
 	public:
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Constructor
+	* @param aComment : The comment content
 	*/
-	Misc(std::string acomment);
+	Misc(std::string aComment);
 	
 	/**
 	* Destructor
 	*/
 	~Misc();
 	// ----------------------- Other services ------------------------------
-
+	/**
+	* Methode qui affiche sur la sortie standard le commentaire
+	*/
 	void printXML();
 
-	virtual std::string getOpen();
-	virtual std::string getClose(); 
-	public:
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Methode qui affiche renvoie sous la forme de chaine de carat&egrave;res le commentaire
 	*/
+	std::string toString();
+
+	/**
+	* Renvoie le commentaire
+	*/
+	virtual std::string getOpen();
+
+	/**
+	* Renvoie une chaine vide
+	*/
+	virtual std::string getClose(); 
+
     //--------------------------- Protected attributes---------------------------
   protected:
-	std::string mValue;
-	std::list<Misc> *miscs;	
+	std::string mValue; // The value
 };
 
 // 

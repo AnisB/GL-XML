@@ -1,21 +1,5 @@
 
 /**
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- **/
-
-/**
  * file XMLDocument.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
  *
@@ -28,7 +12,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "xmldocument.h"
+#include <xml/xmldocument.h>
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -39,7 +23,7 @@
 // ----------------------- Standard services ------------------------------
 
 
-using namespace std;
+ using namespace std;
 /**
 * Constructor
 */
@@ -54,14 +38,17 @@ XMLDocument::XMLDocument( Header * aHead, XmlDeclaration * aDec, std::list<Eleme
 	mStyleSheet=stylesheet;
 }
 
-	
+
 /**
  * Destructor.
  */
-XMLDocument::~XMLDocument()
-{
-}
+ XMLDocument::~XMLDocument()
+ {
+ }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
 /**
 * Displays the node as an xml node
 */
@@ -81,14 +68,6 @@ void XMLDocument::displayAsXMLFormat()
 
 	mRoot->printXML();
 }
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
 
 
 // //

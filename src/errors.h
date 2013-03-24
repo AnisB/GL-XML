@@ -45,6 +45,7 @@
 
 #define NO_MATCH_PARAMETER 1
 #define NILL_CONTENT 2
+#define FILE_NOT_FOUND 3
 ////////////////////////////////////////////////////
 
 

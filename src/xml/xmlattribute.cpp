@@ -1,18 +1,4 @@
-/**
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- **/
+
 
 /**
  * @file XMLAttribute.cpp
@@ -27,7 +13,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //Includes
-#include "xmlattribute.h"
+#include <xml/xmlattribute.h>
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -44,6 +30,7 @@
  */
 XMLAttribute::XMLAttribute(std::string aname, std::string avalue)
 {
+	// Copie des attributs
 	mName = aname;
 	mValue = avalue;
 }
@@ -57,34 +44,34 @@ XMLAttribute::~XMLAttribute( )
 }
 
 
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Interface - public :
 void XMLAttribute::printXML()
 {
 	std::cout<<" "<<mName<<"=\""<<mValue<<"\"";
 }
+
 
 std::string XMLAttribute::getType()
 {
 	return mName;
 }
 
+
 std::string XMLAttribute::getValue()
 {
 	return mValue;
 }
+
+
 std::string XMLAttribute::toString()
 {
 	std::string toReturn =(" "+mName+"=\""+mValue+"\"");
 	return toReturn;
 
 }
-
-///////////////////////////////////////////////////////////////////////////////
-// Interface - public :
-
-///////////////////////////////////////////////////////////////////////////////
-// Implementation of inline functimyCameraons //
-
-
 
 // //
 ///////////////////////////////////////////////////////////////////////////////

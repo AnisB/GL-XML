@@ -7,7 +7,7 @@
 #include <list>
 using namespace std;
 
-// ces trois fonctions devront changer de nom dans le cas où l'otion -p est utilisée
+// ces trois fonctions devront changer de nom dans le cas où l'otion -p est utilis&eacute;e
 int xmlwrap(void);
 void xmlerror(string** nom_dtd, XMLDocument ** doc, char *msg);
 int xmllex(void);
@@ -45,8 +45,8 @@ int xmllex(void);
 %parse-param { XMLDocument** doc}
 %%
 
-		document
-	: header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($1,$2,$3,$4,$5); delete $2;}
+document
+	: header_opt declarations feuilles_style_opt element misc_seq_opt {*doc= new XMLDocument($1,$2,$3,$4,$5); delete $1;delete $2;}
  ;
 
  header_opt

@@ -21,7 +21,6 @@
 * @author Anis Benyoub
 * INSTITUTION INSA Lyon
 *
-* @date date
 *
 * Header file for module PCData.cpp
 *
@@ -48,32 +47,34 @@
   /////////////////////////////////////////////////////////////////////////////
   // class PCData
   /**
-* Description of class PCData <p>
-*/
+   * Description of class 'PCData' <p>
+   * 
+   * @brief La repr&eacute;sentation d'un champ de texte dans l'xml
 
+   */
 
-class PCData : public XMLContent
-{
+   class PCData : public XMLContent
+   {
 	// ----------------------- Standard services ------------------------------
 
-public:
+   public:
 	/**
 	* Constructor
-	* @param aValue string object 
+	* @param aValue la valeur de la chaine de carat&egrave;re 
 	*/
 	PCData(std::string aValue);
 
 
 	/**
 	* Constructor
-	* @param aValue string object 
+	* @param aValue laValeur de la chaine de caract&egrave;re
 	*/
 	PCData(char * aValue);
 
 
 	/**
 	* Destructor
-	* @param *nom parametre* *description parametre*
+	* @param aValue laValeur de la chaine de caract&egrave;re
 	*/
 	virtual ~PCData();
 
@@ -88,29 +89,42 @@ public:
 	/**
 	 * Returns the value stored in the PCDATA
 	 * 
-	 * @return the value
+	 * @return the value of the PCData
 	 */
-	std::string getValue();
+	 std::string getValue();
 
 	/**
 	* Affiche sur la sortie standard le noeud
 	*/
 	void printXML();
-	
-	/**
-	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
-	 * 
-	 * @return la chaîne de caractère décrivant le type
-	 */
-	std::string getType();
 
-	virtual std::list<XMLContent*>getSonList(std::string name);
+	/**
+	* Renvoie sous la chaine
+	* @return the value of the PCData
+	*/
+	std::string toString();
+
+	/**
+	 * Renvoie le type (et &eacute;ventuellement l'espace de nom) du contenu
+	 * 
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	 */
+	 std::string getType();
+
+	/**
+	* Renvoie la chaine de caract&egrave;re
+	*/
 	virtual std::string getOpen();
+
+	/**
+	* Renvoie une chaine vide
+	*/
 	virtual std::string getClose(); 
 
+
     //--------------------------- Protected attributes---------------------------
-protected:
-	std::string mValue;
+	protected:
+		std::string mValue; // La valeur de la chaine
 
 	// 
 	///////////////////////////////////////////////////////////////////////////////

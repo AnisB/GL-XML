@@ -19,9 +19,8 @@
 /**
 * @file Element
 * @author Anis Benyoub
-* INSTITUTION
+* INSA Lyon
 *
-* @date date
 *
 * Header file for module Element.cpp
 *
@@ -88,29 +87,63 @@ public:
 
 	// ----------------------- Other services ------------------------------
 	/**
-<<<<<<< HEAD
-	* Methode qui affiche sur la sortie standard le noeud et recursivement ses fils
+	* Methode qui affiche sur la sortie standard le noeud et recursivement ses fils sous le format xml
 	*/
 	void printXML();
 
-
-	std::string childToString();
 	/**
-	 * Renvoie une chaîne de caractères contenant tous les attributs de l'élément et leur contenu.
-	 * Le contenu est écrit entre guillemets et tous les attributs sont séparés par un espace.
+	* Methode qui affiche renvoie sous la forme de chaine de carat&egrave;res  le noeud et recursivement ses fils
+	*/
+	std::string toString();
+
+	/**
+	 * Renvoie une chaîne de caract&egrave;res contenant tous les enfants de l'&eacute;l&eacute;ment et leur contenu.
+	 * Le contenu est &eacute;crit entre guillemets et tous les attributs sont s&eacute;par&eacute;s par un espace.
+	 * Exemple : door son
+	 * 
+	 * @return la chaîne de caract&egrave;re
+	 */
+	std::string childToString();
+
+	/**
+	 * Renvoie une chaîne de caract&egrave;res contenant tous les attributs de l'&eacute;l&eacute;ment et leur contenu.
+	 * Le contenu est &eacute;crit entre guillemets et tous les attributs sont s&eacute;par&eacute;s par un espace.
 	 * Exemple : attribute1"hello" attribute2"hi"
 	 * 
-	 * @return la chaîne de caractère
+	 * @return la chaîne de caract&egrave;re
 	 */
 	std::string attributeToString();
+
+
 	/**
-	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
+	 * Renvoie le type (et &eacute;ventuellement l'espace de nom) du contenu
 	 * 
-	 * @return la chaîne de caractère décrivant le type
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
 	 */
 	std::string getType();
+
+	/**
+	 * Renvoie la liste des contenu child d'un noeud d'un type donn&eacute;
+	 * 
+	 * @param name: Le Type &agrave; chercher
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	 */	
 	virtual std::list<XMLContent*> getSonList(std::string name);
+
+	/**
+	 * Renvoie la liste des contenu child d'un noeud d'un type donn&eacute; et ce de mani&egrave;re r&eacute;cursive
+	 * 
+	 * @param name: Le Type &agrave; chercher
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	 */	
 	virtual std::list<XMLContent*> getAllContent(std::string name);
+
+
+	/**
+	 * Renvoie la liste des contenu child d'un noeud 
+	 * 
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	 */	
 	inline std::list<XMLContent*> * getContent()
 	{
 		if (mContent==NULL)
@@ -120,15 +153,29 @@ public:
 		return mContent;
 	}
 
+	/**
+	 * Surcharge le l'operateur [] pour acceder &agrave; un attribut
+	 * 
+	 * @param aname: L'attribut &agrave; chercher
+	 * @return "" si l'attribut n'existe pas, ou la valeur de l'attribut
+	 */	
 	std::string operator[](std::string aname);
+
+	/**
+	 * Renvoie en chaine de carat&egrave;re la balise d'ouverture
+	 *
+	 * @return la balise d'ouverture en string
+	 */
 	virtual std::string getOpen();
+
+	/**
+	 * Renvoie en chaine de carat&egrave;re la balise de fermeture
+	 *
+	 * @return la balise d'ouverture en string, si c'est xsl:styleshett on renvoie ""
+	 */
 	virtual std::string getClose(); 
 
 public:
-	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
-	*/
 
 	// ------------------------- Protected Datas ------------------------------
 protected:

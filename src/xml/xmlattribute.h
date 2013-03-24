@@ -47,8 +47,11 @@
   /////////////////////////////////////////////////////////////////////////////
   // class XMLAttribute
   /**
-* Description of class XMLAttribute <p>
-*/
+   * Description of class 'XMLAttribute' <p>
+   * 
+   * @brief La repr&eacute;sentation d'un attribut dans l'arbre xml
+
+   */
 
 
 	class XMLAttribute
@@ -57,34 +60,47 @@
 
 	public:
 	/**
-	* Definition de la classe
-	* @param *nom parametre* *description parametre*
+	* Constructor.
+	* @param name: Le nom de l'attribut
+	* @param avalue: la valeur de l'attribut
 	*/
 	XMLAttribute(std::string aname, std::string avalue);
+
+	/**
+	* Destructor.
+	*/
 	~XMLAttribute();
 
+
+	/**
+	* Affiche sur la sortie standard l'attribut
+	*/
 	void printXML();
 	
 	/**
-	 * Renvoie le type (et éventuellement l'espace de nom) du contenu
+	 * Renvoie le type (et &eacute;ventuellement l'espace de nom) du contenu
 	 * 
-	 * @return la chaîne de caractère décrivant le typent le type
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le typent le type
 	 */
 	std::string getType();
 	
 	/**
-	 * Renvoie la valeur stockée dans le contenu
+	 * Renvoie la valeur stock&eacute;e dans le contenu
 	 * 
-	 * @return la chaîne de caractère décrivant la valeur
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant la valeur
 	 */
 	std::string getValue();
 
+	/**
+	* Renvoie sous forme string l'attribut
+	* @return <nom de l'attribut> = "<valeur>"
+	*/	
 	std::string toString();
 
   protected:
 	// ------------------------- Protected Datas ------------------------------
-	std::string mName;
-	std::string mValue;	
+	std::string mName; // Le nom de l'attribut
+	std::string mValue;	 // La valeur
 
 // 
 ///////////////////////////////////////////////////////////////////////////////

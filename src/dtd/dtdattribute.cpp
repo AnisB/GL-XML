@@ -124,14 +124,19 @@ std::string DTDAttribute::createRegex()
 	
 	if(it != m_datas->end())
 	{
+		// tous les attributs sont #IMPLIED : la regex est de la forme (...)?
+		// on cherche une chaîne de caractère de la forme <attribut"valeur">
+		// la regex est donc de la forme (attribut"[^"])?, <valeur> pouvant prendre n'importe quel
+		// type de caractère hormis "
 		regex+='(' + (*it)->getContent() + "\"[^\"]*\"" + ")?";
 		it++;
 	}
 	for( ; it != m_datas->end(); it++ )
 	{
-		regex+= "(\\s?"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";	// every attribute is #implied
+		// on rajoute un espace facultatif (on n'est pas garanti d'avoir un attribut avant
+		// car ils sont facultatifs) avant chacune des attributs
+		regex+= "(\\s?"+ (*it)->getContent() + "\"[^\"]*\"" + ")?";
 	}
-	// cout << regex << endl;
 	
 	return regex;
 }

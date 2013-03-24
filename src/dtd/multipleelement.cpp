@@ -126,15 +126,15 @@ std::string MultipleElement::createRegex()
 {
 	std::string regex = "";
 	std::list<DTDContent*>::iterator it = mListContent->begin();
+	// parcours de l'ensemble des contenus
 	if( it != mListContent->end() )
 	{
 		regex+="(";
 		for( ; it != mListContent->end(); it++ )
 		{
+			// concaténation des regex des contenus de l'élément
 			regex+=(*it)->createRegex();
-			/*regex+="(" + (*it)->createRegex();
-			regex+="\\s?";
-			regex+=")";*/
+			// dans le cas d'un choix, et non d'une séquence, on précise que le contenu est facultatif
 			if( mIsChoice )
 			{
 				regex += "?";

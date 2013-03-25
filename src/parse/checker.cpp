@@ -74,6 +74,7 @@
  	bool result = recursiveCheck(xml->getRoot(),reg);
  	reg->clear();
  	delete reg;
+ 	return result;
  }
 
  bool Checker::recursiveCheck(Element * node, std::map<string,string>* regex_map)

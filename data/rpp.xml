@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="transformationhtml.xsl"?>
-<rapport>
-  <titre>R&#233;aliser un compilateur</titre>
-  <auteur>
-    <prenom> Nino </prenom>
-    <nom> Silverio </nom>
-  </auteur>
-</rapport>

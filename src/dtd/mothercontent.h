@@ -70,14 +70,14 @@ public:
 	virtual void printDTD();
 	
 	/**
-	 * Récupérer le nom de ce contenu
+	 * R&eacute;cup&eacute;rer le nom de ce contenu
 	 * @return le nom
 	 */
 	virtual std::string getName();
 	
 	/**
-	 * Créer une expression régulière pour ce contenu
-	 * @return l'expression régulière
+	 * Cr&eacute;er une expression r&eacute;guli&egrave;re pour ce contenu
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	virtual std::string createRegex();
 };

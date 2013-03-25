@@ -26,14 +26,14 @@
 using namespace std;
 
 /**
- * Implémentation du constructeur de Any
+ * Impl&eacute;mentation du constructeur de Any
  */
 Any::Any ( )
 {
 }
 
 /**
- * Implémentation du destructeur de Any
+ * Impl&eacute;mentation du destructeur de Any
  */
 Any::~Any( )
 {
@@ -43,7 +43,7 @@ Any::~Any( )
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode printDTD de Any
+ * Impl&eacute;mentation de la m&eacute;thode printDTD de Any
  */
 void Any::printDTD()
 {
@@ -51,7 +51,7 @@ void Any::printDTD()
 }
 
 /**
- * Implémentation de la méthode createRegex de Any
+ * Impl&eacute;mentation de la m&eacute;thode createRegex de Any
  */
 std::string Any::createRegex()
 {

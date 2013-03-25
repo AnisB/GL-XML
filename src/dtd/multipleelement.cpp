@@ -26,7 +26,7 @@
  using namespace std;
 
 /**
- * Implémentation du constructeur de MultipleElement
+ * Impl&eacute;mentation du constructeur de MultipleElement
  */
  MultipleElement::MultipleElement(bool isChoice, Declaration::Card card) : DTDContent(), mIsChoice(isChoice), mCard(card)
  {
@@ -34,7 +34,7 @@
  }
 
 /**
- * Implémentation du destructeur de MultipleElement
+ * Impl&eacute;mentation du destructeur de MultipleElement
  */
  MultipleElement::~MultipleElement( )
  {
@@ -52,7 +52,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode setCard de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode setCard de MultipleElement
  */
  void MultipleElement::setCard(Declaration::Card card)
  {
@@ -60,7 +60,7 @@
  }
 
 /**
- * Implémentation de la méthode getCard de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode getCard de MultipleElement
  */
  Declaration::Card MultipleElement::getCard(Declaration::Card card)
  {
@@ -68,7 +68,7 @@
  }
 
 /**
- * Implémentation de la méthode addElement de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode addElement de MultipleElement
  */
  void MultipleElement::addElement(DTDContent* content)
  {
@@ -76,7 +76,7 @@
  }
 
 /**
- * Implémentation de la méthode addElementReverse de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode addElementReverse de MultipleElement
  */
  void MultipleElement::addElementReverse(DTDContent* content)
  {
@@ -84,7 +84,7 @@
  }
 
 /**
- * Implémentation de la méthode addMultipleElement de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode addMultipleElement de MultipleElement
  */
  void MultipleElement::addMultipleElement(MultipleElement* multipleElement)
  {
@@ -94,7 +94,7 @@
  }
 
 /**
- * Implémentation de la méthode getListContent de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode getListContent de MultipleElement
  */
  list<DTDContent*>* MultipleElement::getListContent()
  {
@@ -102,7 +102,7 @@
  }
 
 /**
- * Implémentation de la méthode getListContent de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode getListContent de MultipleElement
  */
 void MultipleElement::nilListContent()
  {
@@ -110,7 +110,7 @@ void MultipleElement::nilListContent()
  }
 
 /**
- * Implémentation de la méthode printDTD de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode printDTD de MultipleElement
  */
  void MultipleElement::printDTD()
  {
@@ -150,7 +150,7 @@ else if(mCard==Declaration::DTD_PTINT)
 }
 
 /**
- * Implémentation de la méthode createRegex de MultipleElement
+ * Impl&eacute;mentation de la m&eacute;thode createRegex de MultipleElement
  */
  std::string MultipleElement::createRegex()
  {

@@ -27,14 +27,14 @@
 using namespace std;
 
 /**
- * Implémentation du constructeur de Declaration
+ * Impl&eacute;mentation du constructeur de Declaration
  */
 Declaration::Declaration (string name, DTDContent* type) : MotherContent(), mName(name),mType(type)
 {
 }
 
 /**
- * Implémentation du destructeur de Declaration
+ * Impl&eacute;mentation du destructeur de Declaration
  */
 Declaration::~Declaration( )
 {
@@ -44,7 +44,7 @@ Declaration::~Declaration( )
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode getName de Declaration
+ * Impl&eacute;mentation de la m&eacute;thode getName de Declaration
  */
 void Declaration::printDTD()
 {
@@ -54,7 +54,7 @@ void Declaration::printDTD()
 }
 
 /**
- * Implémentation de la méthode getName de Declaration
+ * Impl&eacute;mentation de la m&eacute;thode getName de Declaration
  */
 std::string Declaration::getName()
 {
@@ -62,7 +62,7 @@ std::string Declaration::getName()
 }
 
 /**
- * Implémentation de la méthode getName de Declaration
+ * Impl&eacute;mentation de la m&eacute;thode getName de Declaration
  */
 std::string Declaration::createRegex()
 {

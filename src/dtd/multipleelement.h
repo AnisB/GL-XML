@@ -57,8 +57,8 @@ class MultipleElement : public DTDContent
 public:
 	/**
 	 * Constructeur
-	 * @param isChoice cet ensemble d'élément est-il un choix (true) ou une séquence (false) 
-	 * @param card la cardinalité de cet ensemble d'éléments
+	 * @param isChoice cet ensemble d'&eacute;l&eacute;ment est-il un choix (true) ou une s&eacute;quence (false) 
+	 * @param card la cardinalit&eacute; de cet ensemble d'&eacute;l&eacute;ments
 	 */
 	MultipleElement(bool isChoice, Declaration::Card card);
 	
@@ -68,49 +68,49 @@ public:
 	virtual ~MultipleElement();
 	
 	/**
-	 * Attribuer une nouvelle cardinalité &agrave; ce groupe d'élément
-	 * @param card la nouvelle cardinalité
+	 * Attribuer une nouvelle cardinalit&eacute; &agrave; ce groupe d'&eacute;l&eacute;ment
+	 * @param card la nouvelle cardinalit&eacute;
 	 */
 	void setCard(Declaration::Card card);
 	
 	/**
-	 * Récupérer la cardinalité actuelle de ce groupe d'élément
-	 * @return la cardinalité
+	 * R&eacute;cup&eacute;rer la cardinalit&eacute; actuelle de ce groupe d'&eacute;l&eacute;ment
+	 * @return la cardinalit&eacute;
 	 */	
 	Declaration::Card getCard(Declaration::Card card);
 	
 	/**
-	 * ajouter un nouveau contenu &agrave; la fin de ce groupe d'éléments
+	 * ajouter un nouveau contenu &agrave; la fin de ce groupe d'&eacute;l&eacute;ments
 	 * @param content le contenu &agrave; ajouter
 	 */
 	void addElement(DTDContent* content);
 	
 	/**
-	 * ajouter un nouveau contenu au début de ce groupe d'éléments
+	 * ajouter un nouveau contenu au d&eacute;but de ce groupe d'&eacute;l&eacute;ments
 	 * @param content le contenu &agrave; ajouter
 	 */
 	void addElementReverse(DTDContent* content);
 	
 	/**
-	 * ajouter un par un tous les éléments d'un autre MultipleElement dans ce groupe d'éléments
-	 * @param multipleElement l'ensemble d'élément duquel on veut rajouter les éléments
+	 * ajouter un par un tous les &eacute;l&eacute;ments d'un autre MultipleElement dans ce groupe d'&eacute;l&eacute;ments
+	 * @param multipleElement l'ensemble d'&eacute;l&eacute;ment duquel on veut rajouter les &eacute;l&eacute;ments
 	 */
 	void addMultipleElement(MultipleElement* multipleElement);
 	
 	/**
-	 * récupérer les éléments contenus dans cet ensemble d'élément
+	 * r&eacute;cup&eacute;rer les &eacute;l&eacute;ments contenus dans cet ensemble d'&eacute;l&eacute;ment
 	 * @return la liste de contenu
 	 */
 	std::list<DTDContent*>* getListContent();
 	
 	/**
-	 * Ecrire sur la sortie standard le groupe d'élément au format DTD
+	 * Ecrire sur la sortie standard le groupe d'&eacute;l&eacute;ment au format DTD
 	 */
 	void printDTD();
 	
 	/**
-	 * Créer une expression régulière correspondant &agrave; ce groupe d'élément
-	 * @return l'expression régulière
+	 * Cr&eacute;er une expression r&eacute;guli&egrave;re correspondant &agrave; ce groupe d'&eacute;l&eacute;ment
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 

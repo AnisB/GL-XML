@@ -27,14 +27,14 @@ using namespace std;
 // ----------------------- Standard services ------------------------------
 
 /**
- * Implémentation du constructeur de CData
+ * Impl&eacute;mentation du constructeur de CData
  */
 CData::CData(std::string content) : mContent(content)
 {
 }
 
 /**
- * Implémentation du destructeur de CData
+ * Impl&eacute;mentation du destructeur de CData
  */
 CData::~CData()
 {
@@ -43,7 +43,7 @@ CData::~CData()
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode setContent de CData
+ * Impl&eacute;mentation de la m&eacute;thode setContent de CData
  */
 void CData::setContent(string content)
 {
@@ -51,7 +51,7 @@ void CData::setContent(string content)
 }
 
 /**
- * Implémentation de la méthode getContent de CData
+ * Impl&eacute;mentation de la m&eacute;thode getContent de CData
  */
 string CData::getContent()
 {

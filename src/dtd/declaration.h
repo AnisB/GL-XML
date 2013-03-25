@@ -66,19 +66,19 @@ public:
 	~Declaration();
 	
 	/**
-	 * Ecrire cet élément sur la sortie standard au format DTD
+	 * Ecrire cet &eacute;l&eacute;ment sur la sortie standard au format DTD
 	 */
 	void printDTD();
 
 	/**
-	 * Renvoie le nom de l'élément précédé du préfixe "E"
+	 * Renvoie le nom de l'&eacute;l&eacute;ment pr&eacute;c&eacute;d&eacute; du pr&eacute;fixe "E"
 	 * @return le nom
 	 */
 	std::string getName();
 	
 	/**
-	 * Genère une expression régulière basée sur l'élément
-	 * @return l'expression régulière
+	 * Gen&egrave;re une expression r&eacute;guli&egrave;re bas&eacute;e sur l'&eacute;l&eacute;ment
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 

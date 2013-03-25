@@ -26,14 +26,14 @@
 using namespace std;
 
 /**
- * Implémentation du constructeur de UniqueElement
+ * Impl&eacute;mentation du constructeur de UniqueElement
  */
 UniqueElement::UniqueElement (std::string content, Declaration::Card card) : DTDContent(), m_content(content), m_card(card)
 {
 }
 
 /**
- * Implémentation du destructeur de UniqueElement
+ * Impl&eacute;mentation du destructeur de UniqueElement
  */
 UniqueElement::~UniqueElement( )
 {
@@ -44,7 +44,7 @@ UniqueElement::~UniqueElement( )
 // Interface - public :
 
 /**
- * Implémentation de la fonction setContent de UniqueElement
+ * Impl&eacute;mentation de la fonction setContent de UniqueElement
  */
 void UniqueElement::setContent(std::string content)
 {
@@ -52,7 +52,7 @@ void UniqueElement::setContent(std::string content)
 }
 
 /**
- * Implémentation de la fonction getContent de UniqueElement
+ * Impl&eacute;mentation de la fonction getContent de UniqueElement
  */
 std::string UniqueElement::getContent()
 {
@@ -60,7 +60,7 @@ std::string UniqueElement::getContent()
 }
 
 /**
- * Implémentation de la fonction getCard de UniqueElement
+ * Impl&eacute;mentation de la fonction getCard de UniqueElement
  */
 Declaration::Card UniqueElement::getCard()
 {
@@ -68,7 +68,7 @@ Declaration::Card UniqueElement::getCard()
 }
 
 /**
- * Implémentation de la fonction setCard de UniqueElement
+ * Impl&eacute;mentation de la fonction setCard de UniqueElement
  */
 void UniqueElement::setCard(Declaration::Card card)
 {
@@ -76,7 +76,7 @@ void UniqueElement::setCard(Declaration::Card card)
 }
 
 /**
- * Implémentation de la fonction printDTD de UniqueElement
+ * Impl&eacute;mentation de la fonction printDTD de UniqueElement
  */
 void UniqueElement::printDTD()
 {
@@ -96,7 +96,7 @@ void UniqueElement::printDTD()
 }
 
 /**
- * Implémentation de la fonction createRegex de UniqueElement
+ * Impl&eacute;mentation de la fonction createRegex de UniqueElement
  */
 string UniqueElement::createRegex()
 {

@@ -68,8 +68,8 @@ public:
 	 */
 	virtual void printDTD();
 	/**
-	 * Genère une expression régulière basée sur le contenu
-	 * @return l'expression régulière
+	 * Gen&egrave;re une expression r&eacute;guli&egrave;re bas&eacute;e sur le contenu
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
     virtual std::string createRegex();
 };

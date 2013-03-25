@@ -26,14 +26,14 @@
 
 
 /**
- * Implémentation du constructeur de MotherContent
+ * Impl&eacute;mentation du constructeur de MotherContent
  */
  MotherContent::MotherContent()
  {
  }
 
 /**
- * Implémentation du destructeur de MotherContent
+ * Impl&eacute;mentation du destructeur de MotherContent
  */
  MotherContent::~MotherContent()
  {
@@ -43,7 +43,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode printDTD de MotherContent
+ * Impl&eacute;mentation de la m&eacute;thode printDTD de MotherContent
  */
 void MotherContent::printDTD()
 {
@@ -51,7 +51,7 @@ void MotherContent::printDTD()
 }
 
 /**
- * Implémentation de la méthode getName de MotherContent
+ * Impl&eacute;mentation de la m&eacute;thode getName de MotherContent
  */
 std::string MotherContent::getName()
 {
@@ -59,7 +59,7 @@ std::string MotherContent::getName()
 }
 
 /**
- * Implementation de la méthode createRegex de MotherContent
+ * Implementation de la m&eacute;thode createRegex de MotherContent
  */
 std::string MotherContent::createRegex()
 {

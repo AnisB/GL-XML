@@ -26,14 +26,14 @@
 using namespace std;
 
 /**
- * Implémentation du constructeur de Empty
+ * Impl&eacute;mentation du constructeur de Empty
  */
 Empty::Empty ( )
 {
 }
 
 /**
- * Implémentation du destructeur de Empty
+ * Impl&eacute;mentation du destructeur de Empty
  */
 Empty::~Empty( )
 {
@@ -43,7 +43,7 @@ Empty::~Empty( )
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode printDTD de Empty
+ * Impl&eacute;mentation de la m&eacute;thode printDTD de Empty
  */
 void Empty::printDTD()
 {
@@ -51,7 +51,7 @@ void Empty::printDTD()
 }
 
 /**
- * Implementation de la méthode createRegex de Empty
+ * Implementation de la m&eacute;thode createRegex de Empty
  */
 std::string Empty::createRegex()
 {

@@ -60,13 +60,13 @@ public:
 
 	
 	/**
-	 * Ecrire sur la sortie standard cet élément PCDATA au format DTD
+	 * Ecrire sur la sortie standard cet &eacute;l&eacute;ment PCDATA au format DTD
 	 */
 	void printDTD();
 
 	/**
-	 * Génère une expression régulière pour un élément PCDATA
-	 * @return l'expression régulière
+	 * G&eacute;n&egrave;re une expression r&eacute;guli&egrave;re pour un &eacute;l&eacute;ment PCDATA
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 

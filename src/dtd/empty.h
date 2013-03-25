@@ -63,13 +63,13 @@ public:
 	virtual ~Empty();
 	
 	/**
-	 * Ecrire sur la sortie standard cet élément EMPTY au format DTD
+	 * Ecrire sur la sortie standard cet &eacute;l&eacute;ment EMPTY au format DTD
 	 */
 	void printDTD();
 	
 	/**
-	 * Créer une expression régulière pour cet élément EMPTY
-	 * @return l'expression régulière
+	 * Cr&eacute;er une expression r&eacute;guli&egrave;re pour cet &eacute;l&eacute;ment EMPTY
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 };

@@ -76,25 +76,25 @@ public:
 	std::string getContent();
 	
 	/**
-	 * recuperer la cardinalité
-	 * @return la cardinalité
+	 * recuperer la cardinalit&eacute;
+	 * @return la cardinalit&eacute;
 	 */
 	Declaration::Card getCard();
 	
 	/**
-	 * remplacer la cardinalité
-	 * @param card la nouvelle cardinalité
+	 * remplacer la cardinalit&eacute;
+	 * @param card la nouvelle cardinalit&eacute;
 	 */
 	void setCard(Declaration::Card card);
 	
 	/**
-	 * Ecrire sur la sortie standard au format DTD l'élément
+	 * Ecrire sur la sortie standard au format DTD l'&eacute;l&eacute;ment
 	 */
 	void printDTD();
 
 	/**
-	 * Genère une expression régulière pour un élément unique
-	 * @return l'expression régulière
+	 * Gen&egrave;re une expression r&eacute;guli&egrave;re pour un &eacute;l&eacute;ment unique
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 

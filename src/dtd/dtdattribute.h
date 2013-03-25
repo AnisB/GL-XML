@@ -66,32 +66,32 @@ public:
 	virtual ~DTDAttribute();
 
 	/**
-	 * remplacer l'élément de l'attribut
-	 * @param element le nouvel élément
+	 * remplacer l'&eacute;l&eacute;ment de l'attribut
+	 * @param element le nouvel &eacute;l&eacute;ment
 	 */
 	void setElement(UniqueElement* element);
 	
 	/**
-	 * remplacer la liste de données par une nouvelle liste
-	 * @param datas les nouvelles données
+	 * remplacer la liste de donn&eacute;es par une nouvelle liste
+	 * @param datas les nouvelles donn&eacute;es
 	 */
 	void setData(std::list<CData*>* datas);
 	
 	/**
-	 * ajouter une donnée à la liste de données de l'attribut
-	 * @param data la donnée à ajouter
- 	 * @return true si la donnée à bien été ajoutée et false sinon
+	 * ajouter une donn&eacute;e &agrave; la liste de donn&eacute;es de l'attribut
+	 * @param data la donn&eacute;e &agrave; ajouter
+ 	 * @return true si la donn&eacute;e &agrave; bien &eacute;t&eacute; ajout&eacute;e et false sinon
 	 */
 	bool addData(CData* data);
 	
 	/**
-	* Récupérer les données contenues dans cet attribut
-	* @return datas les données de l'attribut
+	* R&eacute;cup&eacute;rer les donn&eacute;es contenues dans cet attribut
+	* @return datas les donn&eacute;es de l'attribut
 	*/
 	std::list<CData*> * getData();
 	/**
-	 * Récupérer l'élément que contient l'attribut considéré
-	 * @return l'élément de l'attribut
+	 * R&eacute;cup&eacute;rer l'&eacute;l&eacute;ment que contient l'attribut consid&eacute;r&eacute;
+	 * @return l'&eacute;l&eacute;ment de l'attribut
 	 */
 	UniqueElement * getElement();
 
@@ -101,14 +101,14 @@ public:
 	void printDTD();
 
 	/**
-	 * Renvoie le nom de l'attribut précédé du préfixe "A"
+	 * Renvoie le nom de l'attribut pr&eacute;c&eacute;d&eacute; du pr&eacute;fixe "A"
 	 * @return le nom
 	 */
 	std::string getName();
 	
 	/**
-	 * Genère une expression régulière basée sur l'attribut
-	 * @return l'expression régulière
+	 * Gen&egrave;re une expression r&eacute;guli&egrave;re bas&eacute;e sur l'attribut
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 

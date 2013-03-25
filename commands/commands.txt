@@ -1,0 +1,6 @@
+./processer --xml ../../../data/xmlxsl/sample1.xml --xml ../../../data/xmlxsl/sample1.xml --ckxml  --xsl ../../../data/xmlxsl/sample1.xsl --ckhtmlxsl --html sample1.html --html sample2.html
+
+
+./processer --xml ../../../data/xmlxsl/sample1.xml --xml ../../../data/xmlxsl/sample1.xml  --xsl ../../../data/xmlxsl/sample1.xsl --ckhtmlxsl --html sample1.html --html sample2.html
+
+./processer --xml ../../../data/xmlxsl/sample1.xml --xsl ../../../data/xmlxsl/sample1.xsl --ckhtmlxsl --html sample1.html

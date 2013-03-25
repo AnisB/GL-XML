@@ -30,7 +30,7 @@ using namespace std;
 // ----------------------- Standard services ------------------------------
 
 /**
- * Implémentation du constructeur de DTDAttribute
+ * Impl&eacute;mentation du constructeur de DTDAttribute
  */
 DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherContent(), mElement(element), m_datas(datas)
 {
@@ -38,7 +38,7 @@ DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherC
 }
 
 /**
- * Implémentation du destructeur de DTDAttribute
+ * Impl&eacute;mentation du destructeur de DTDAttribute
  */
 DTDAttribute::~DTDAttribute()
 {
@@ -56,7 +56,7 @@ DTDAttribute::~DTDAttribute()
 // Interface - public :
 
 /**
- * Implémentation de la méthode setElement de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode setElement de DTDAttribute
  */
 void DTDAttribute::setElement(UniqueElement* element)
 {
@@ -64,7 +64,7 @@ void DTDAttribute::setElement(UniqueElement* element)
 }
 
 /**
- * Implémentation de la méthode setData de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode setData de DTDAttribute
  */
 void DTDAttribute::setData(std::list<CData*>* datas)
 {
@@ -72,7 +72,7 @@ void DTDAttribute::setData(std::list<CData*>* datas)
 }
 
 /**
- * Implémentation de la méthode addData de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode addData de DTDAttribute
  */
 bool DTDAttribute::addData(CData* data)
 {
@@ -86,7 +86,7 @@ bool DTDAttribute::addData(CData* data)
 }
 
 /**
- * Implémentation de la méthode getData de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode getData de DTDAttribute
  */
 list<CData*> * DTDAttribute::getData()
 {
@@ -94,7 +94,7 @@ list<CData*> * DTDAttribute::getData()
 }
 
 /**
- * Implémentation de la méthode getElement de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode getElement de DTDAttribute
  */
 UniqueElement * DTDAttribute::getElement()
 {
@@ -102,7 +102,7 @@ UniqueElement * DTDAttribute::getElement()
 }
 
 /**
- * Implémentation de la méthode printDTD de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode printDTD de DTDAttribute
  */
 void DTDAttribute::printDTD()
 {
@@ -115,7 +115,7 @@ void DTDAttribute::printDTD()
 }
 
 /**
- * Implémentation de la méthode getName de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode getName de DTDAttribute
  */
 std::string DTDAttribute::getName()
 {
@@ -123,7 +123,7 @@ std::string DTDAttribute::getName()
 }
 
 /**
- * Implémentation de la méthode createRegex de DTDAttribute
+ * Impl&eacute;mentation de la m&eacute;thode createRegex de DTDAttribute
  */
 std::string DTDAttribute::createRegex()
 {

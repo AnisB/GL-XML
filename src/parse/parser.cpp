@@ -35,11 +35,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION of inline methods.
 ///////////////////////////////////////////////////////////////////////////////
-extern FILE * xmlin;
-extern FILE * dtdin;
-int xmlparse(std::string **, XMLDocument**);
-int dtdparse(DTDDocument**);
-using namespace std;
+ extern FILE * xmlin;
+ extern FILE * dtdin;
+ int xmlparse(std::string **, XMLDocument**);
+ int dtdparse(DTDDocument**);
+ using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
 // ----------------------- Standard services ------------------------------
@@ -49,52 +49,66 @@ using namespace std;
 /**
  * Constructor
  */
-Parser::Parser ( )
-{
-}
+ Parser::Parser ( )
+ {
+ }
 
 /**
  * Destructor.
  */
-Parser::~Parser( )
-{
+ Parser::~Parser( )
+ {
   //Nothing to do
-}
+ }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 
 
-std::pair<std::string*,XMLDocument *> Parser::parseXML(std::string fileName)
-{
-	FILE * file;
-	file = fopen(fileName.c_str(), "r");
-	if(!file) {
-		throw FILE_NOT_FOUND;
-	}
-	std::string * nomdtd;
-	XMLDocument* xmlDoc;
-	xmlin = file;
-	xmlparse(&nomdtd, &xmlDoc);
-	fclose(file);
-	return make_pair(nomdtd,xmlDoc);
-	
+ std::pair<std::string*,XMLDocument *> Parser::parseXML(std::string fileName)
+ {
+ 	FILE * file;
+ 	file = fopen(fileName.c_str(), "r");
+ 	if(!file) {
+ 		throw FILE_NOT_FOUND;
+ 	}
+ 	std::string * nomdtd;
+ 	XMLDocument* xmlDoc;
+ 	xmlin = file;
+ 	try
+ 	{
+ 		xmlparse(&nomdtd, &xmlDoc);
+ 	}
+ 	catch(int e)
+ 	{
+ 		std::cerr<<"Grammar error"<<std::endl;
+ 	}
+ 	fclose(file);
+ 	return make_pair(nomdtd,xmlDoc);
+ 	
 
-}
-DTDDocument * Parser::parseDTD(std::string fileName)
-{
-	FILE * dtdFile;
-	dtdFile = fopen(fileName.c_str(), "r");
-	if(!dtdFile) {
-		throw FILE_NOT_FOUND;
-	}
-	dtdin = dtdFile;
-	DTDDocument* dtdDoc;
-	dtdparse(&dtdDoc);
-	fclose(dtdFile);
-	return dtdDoc;
-} 
+ }
+ DTDDocument * Parser::parseDTD(std::string fileName)
+ {
+ 	FILE * dtdFile;
+ 	dtdFile = fopen(fileName.c_str(), "r");
+ 	if(!dtdFile) {
+ 		throw FILE_NOT_FOUND;
+ 	}
+ 	dtdin = dtdFile;
+ 	DTDDocument* dtdDoc;
+ 	try
+ 	{
+ 		dtdparse(&dtdDoc);
+ 	}
+ 	catch(int e)
+ 	{
+ 		std::cerr<<"Grammar error"<<std::endl;
+ 	}
+ 	fclose(dtdFile);
+ 	return dtdDoc;
+ } 
 
 
 ///////////////////////////////////////////////////////////////////////////////

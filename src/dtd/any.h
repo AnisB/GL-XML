@@ -61,13 +61,13 @@ public:
 	virtual ~Any();
 	
 	/**
-	 * Ecrire sur la sortie standard cet élément ANY au format DTD
+	 * Ecrire sur la sortie standard cet &eacute;l&eacute;ment ANY au format DTD
 	 */
 	void printDTD();
 
 	/**
-	 * Genère une expression régulière pour un contenu "Any"
-	 * @return l'expression régulière
+	 * Gen&egrave;re une expression r&eacute;guli&egrave;re pour un contenu "Any"
+	 * @return l'expression r&eacute;guli&egrave;re
 	 */
 	std::string createRegex();
 };

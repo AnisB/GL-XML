@@ -73,9 +73,9 @@ public:
 	void displayAsDTDFormat();
 	
 	/**
-	 * Genère une map de noms de contenus (éléments ou attributs) vers les expressions
-	 * régulières correspondantes. Les noms des éléments sont précédés du préfixe "E", ceux des
-	 * attributs du préfixe "A".
+	 * Gen&egrave;re une map de noms de contenus (&eacute;l&eacute;ments ou attributs) vers les expressions
+	 * r&eacute;guli&egrave;res correspondantes. Les noms des &eacute;l&eacute;ments sont pr&eacute;c&eacute;d&eacute;s du pr&eacute;fixe "E", ceux des
+	 * attributs du pr&eacute;fixe "A".
 	 * 
 	 * @return un pointeur sur la map
 	 */

@@ -25,14 +25,14 @@
 
 
 /**
- * Implémentation du constructeur de DTDContent
+ * Impl&eacute;mentation du constructeur de DTDContent
  */
 DTDContent::DTDContent ()
 {
 }
 
 /**
- * Implémentation du destructeur de DTDContent
+ * Impl&eacute;mentation du destructeur de DTDContent
  */
 DTDContent::~DTDContent()
 {
@@ -42,14 +42,14 @@ DTDContent::~DTDContent()
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la fonction printDTD de DTDContent
+ * Impl&eacute;mentation de la fonction printDTD de DTDContent
  */
 void DTDContent::printDTD()
 {
 }
 
 /**
- * Implémentation de la fonction createRegex de DTDContent
+ * Impl&eacute;mentation de la fonction createRegex de DTDContent
  */
 std::string DTDContent::createRegex()
 {

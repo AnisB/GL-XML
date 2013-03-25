@@ -28,14 +28,14 @@ using namespace std;
 // ----------------------- Standard services ------------------------------
 
 /**
- * Implémentation du constructeur de DTDPCData
+ * Impl&eacute;mentation du constructeur de DTDPCData
  */
 DTDPCData::DTDPCData() : DTDContent()
 {
 }
 
 /**
- * Implémentation du destructeur de DTDPCData
+ * Impl&eacute;mentation du destructeur de DTDPCData
  */
 DTDPCData::~DTDPCData()
 {
@@ -44,7 +44,7 @@ DTDPCData::~DTDPCData()
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode printDTD de DTDPCData
+ * Impl&eacute;mentation de la m&eacute;thode printDTD de DTDPCData
  */
 void DTDPCData::printDTD()
 {
@@ -52,7 +52,7 @@ void DTDPCData::printDTD()
 }
 
 /**
- * Implémentation de la méthode createRegex de DTDPCData
+ * Impl&eacute;mentation de la m&eacute;thode createRegex de DTDPCData
  */
 std::string DTDPCData::createRegex()
 {

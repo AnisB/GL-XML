@@ -30,14 +30,14 @@ using namespace std;
 
 
 /**
- * Implémentation du constructeur de DTDDocument
+ * Impl&eacute;mentation du constructeur de DTDDocument
  */
 DTDDocument::DTDDocument(std::list<MotherContent*>* listContent) : mContents(listContent)
 {
 }
 
 /**
- * Implémentation du destructeur de DTDDocument
+ * Impl&eacute;mentation du destructeur de DTDDocument
  */
 DTDDocument::~DTDDocument( )
 {
@@ -53,7 +53,7 @@ DTDDocument::~DTDDocument( )
 ///////////////////////////////////////////////////////////////////////////////
 // Interface - public :
 /**
- * Implémentation de la méthode displayAsDTDFormat de DTDDocument
+ * Impl&eacute;mentation de la m&eacute;thode displayAsDTDFormat de DTDDocument
  */
 void DTDDocument::displayAsDTDFormat()
 {
@@ -64,7 +64,7 @@ void DTDDocument::displayAsDTDFormat()
 }
 
 /**
- * Implémentation de la méthode generateRegex de DTDDocument
+ * Impl&eacute;mentation de la m&eacute;thode generateRegex de DTDDocument
  */
 std::map<std::string, std::string>*  DTDDocument::generateRegex()
 {

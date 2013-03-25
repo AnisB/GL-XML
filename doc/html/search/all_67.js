@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['generateregex',['generateRegex',['../classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c',1,'DTDDocument']]],
+  ['getallcontent',['getAllContent',['../classElement.html#a68592072d7b91cfc35e353ba4cc99c39',1,'Element::getAllContent()'],['../classXMLContent.html#a6dbfc46d5b8226d71fcb409fd34c8ecd',1,'XMLContent::getAllContent()']]],
+  ['getcard',['getCard',['../classMultipleElement.html#a48869abecdc528053b04da951c9af78e',1,'MultipleElement::getCard()'],['../classUniqueElement.html#a53aa157f7bda19c85d9292c113725223',1,'UniqueElement::getCard()']]],
+  ['getclose',['getClose',['../classElement.html#afadb7d02b31f45fca169b15778499998',1,'Element::getClose()'],['../classMisc.html#ac4e1898084fc8894e163b3ec61f9af7a',1,'Misc::getClose()'],['../classPCData.html#aff0e5374f3bc75bba23dc64c22a819fc',1,'PCData::getClose()'],['../classXMLContent.html#a3d0cf53e0e6d97c462e950759c9fa2ae',1,'XMLContent::getClose()']]],
+  ['getcontent',['getContent',['../classCData.html#a0dacc13335c32138803ba811ed99976f',1,'CData::getContent()'],['../classUniqueElement.html#a52015b8262c9ed64aeb41df908cf9017',1,'UniqueElement::getContent()'],['../classElement.html#ae1b447da761c106a06e577927ba19083',1,'Element::getContent()'],['../classXMLContent.html#afaa076a40c7b4ecee4f4957a7742c6af',1,'XMLContent::getContent()']]],
+  ['getdata',['getData',['../classDTDAttribute.html#a071c9703c952d63e22e0e890605f9a5b',1,'DTDAttribute']]],
+  ['getdeclaration',['getDeclaration',['../classXMLDocument.html#a0d3f3a741b2142c1f743fd329d9f16ce',1,'XMLDocument']]],
+  ['getelement',['getElement',['../classDTDAttribute.html#a7ceeba74ba4556d5b31cf7f867cb8cc9',1,'DTDAttribute']]],
+  ['getlistcontent',['getListContent',['../classMultipleElement.html#a7b3d2343b91ce9d47c38512876b77a44',1,'MultipleElement::getListContent()'],['../classXSLDocument.html#a78021d4c636ac94274698fe08d45a5f9',1,'XSLDocument::getListContent()']]],
+  ['getname',['getName',['../classDeclaration.html#a7c423a251eeda40271dba6598599d9f5',1,'Declaration::getName()'],['../classDTDAttribute.html#a8b564e1ee76a3804fcee8e934f5caabf',1,'DTDAttribute::getName()'],['../classMotherContent.html#a771731df1b7b1b5ff4f8f5975da13680',1,'MotherContent::getName()']]],
+  ['getopen',['getOpen',['../classElement.html#af7bd48b68a3dfda250d67603914e296e',1,'Element::getOpen()'],['../classMisc.html#a578972aeac493cb2004b1f6a9fa963b2',1,'Misc::getOpen()'],['../classPCData.html#a675f5498b6bc33b91e4e47ee27d738f1',1,'PCData::getOpen()'],['../classXMLContent.html#ae8b0603c5c5acf2cd9db792997690677',1,'XMLContent::getOpen()']]],
+  ['getparse',['getParse',['../classXSLDocument.html#afb4368038fc82af0a013d941c8a6a62d',1,'XSLDocument']]],
+  ['getroot',['getRoot',['../classXMLDocument.html#a9bb542f268cbbf4dbae9ddcc403a51bd',1,'XMLDocument']]],
+  ['getsonlist',['getSonList',['../classElement.html#a958856e3039430a3aeaa3276e7b4e30c',1,'Element::getSonList()'],['../classXMLContent.html#a6eab40320f1efb9530493d28eae502af',1,'XMLContent::getSonList()']]],
+  ['gettype',['getType',['../classElement.html#ac86c1995592e6f4a488a810b7e6dddf8',1,'Element::getType()'],['../classPCData.html#a311f9cb8fd5256db5fcf46ed60ead59d',1,'PCData::getType()'],['../classXMLAttribute.html#a3f38555c855ebf2bb636a3253775c1b3',1,'XMLAttribute::getType()'],['../classXMLContent.html#ad68411d18029793dd8506f58cfb262c7',1,'XMLContent::getType()']]],
+  ['getvalue',['getValue',['../classPCData.html#a4e633cf5633255d3bd5685d2933ef820',1,'PCData::getValue()'],['../classXMLAttribute.html#a9e6560142cdc3526be9fcff4ea5610f2',1,'XMLAttribute::getValue()']]]
+];

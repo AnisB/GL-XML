@@ -189,7 +189,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Constructeur</p>
-<p>Implémentation du constructeur de <a class="el" href="classDeclaration.html">Declaration</a> </p>
+<p>Impl&eacute;mentation du constructeur de <a class="el" href="classDeclaration.html">Declaration</a> </p>
 
 <p>Definition at line <a class="el" href="declaration_8cpp_source.html#l00032">32</a> of file <a class="el" href="declaration_8cpp_source.html">declaration.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                       : <a class="code" href="classMotherContent.html#a31abb9e594e4a97908064d3742070b80">MotherContent</a>(), <a class="code" href="classDeclaration.html#a0346c9c3c6f531ef644b96475fd07b43">mName</a>(name),<a class="code" href="classDeclaration.html#ada5e3a00b897acaadcd9db5cd6f81130">mType</a>(type)</div>
@@ -211,11 +211,13 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Destructeur</p>
-<p>Implémentation du destructeur de <a class="el" href="classDeclaration.html">Declaration</a> </p>
+<p>Impl&eacute;mentation du destructeur de <a class="el" href="classDeclaration.html">Declaration</a> </p>
 
 <p>Definition at line <a class="el" href="declaration_8cpp_source.html#l00039">39</a> of file <a class="el" href="declaration_8cpp_source.html">declaration.cpp</a>.</p>
+
+<p>References <a class="el" href="declaration_8h_source.html#l00086">mType</a>.</p>
 <div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">//Nothing to do</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classDeclaration.html#ada5e3a00b897acaadcd9db5cd6f81130">mType</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
@@ -241,9 +243,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Genère une expression régulière basée sur l'élément </p>
-<dl class="section return"><dt>Returns</dt><dd>l'expression régulière</dd></dl>
-<p>Implémentation de la méthode getName de <a class="el" href="classDeclaration.html">Declaration</a> </p>
+<p>Gen&egrave;re une expression r&eacute;guli&egrave;re bas&eacute;e sur l'&eacute;l&eacute;ment </p>
+<dl class="section return"><dt>Returns</dt><dd>l'expression r&eacute;guli&egrave;re</dd></dl>
+<p>Impl&eacute;mentation de la m&eacute;thode getName de <a class="el" href="classDeclaration.html">Declaration</a> </p>
 
 <p>Reimplemented from <a class="el" href="classMotherContent.html#aef32bdfec3120a58003bef50dd6be61c">MotherContent</a>.</p>
 
@@ -276,9 +278,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Renvoie le nom de l'élément précédé du préfixe "E" </p>
+<p>Renvoie le nom de l'&eacute;l&eacute;ment pr&eacute;c&eacute;d&eacute; du pr&eacute;fixe "E" </p>
 <dl class="section return"><dt>Returns</dt><dd>le nom</dd></dl>
-<p>Implémentation de la méthode getName de <a class="el" href="classDeclaration.html">Declaration</a> </p>
+<p>Impl&eacute;mentation de la m&eacute;thode getName de <a class="el" href="classDeclaration.html">Declaration</a> </p>
 
 <p>Reimplemented from <a class="el" href="classMotherContent.html#a771731df1b7b1b5ff4f8f5975da13680">MotherContent</a>.</p>
 
@@ -311,8 +313,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Ecrire cet élément sur la sortie standard au format DTD</p>
-<p>Implémentation de la méthode getName de <a class="el" href="classDeclaration.html">Declaration</a> </p>
+<p>Ecrire cet &eacute;l&eacute;ment sur la sortie standard au format DTD</p>
+<p>Impl&eacute;mentation de la m&eacute;thode getName de <a class="el" href="classDeclaration.html">Declaration</a> </p>
 
 <p>Reimplemented from <a class="el" href="classMotherContent.html#a2807369f471411032a5857d31eee21df">MotherContent</a>.</p>
 
@@ -372,7 +374,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="declaration_8h_source.html#l00086">86</a> of file <a class="el" href="declaration_8h_source.html">declaration.h</a>.</p>
 
-<p>Referenced by <a class="el" href="declaration_8cpp_source.html#l00067">createRegex()</a>, and <a class="el" href="declaration_8cpp_source.html#l00049">printDTD()</a>.</p>
+<p>Referenced by <a class="el" href="declaration_8cpp_source.html#l00067">createRegex()</a>, <a class="el" href="declaration_8cpp_source.html#l00049">printDTD()</a>, and <a class="el" href="declaration_8cpp_source.html#l00039">~Declaration()</a>.</p>
 
 </div>
 </div>
@@ -383,7 +385,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 00:38:10 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 08:10:00 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1-20130324
 </small></address>

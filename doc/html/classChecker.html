@@ -193,10 +193,14 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="checker_8cpp_source.html#l00071">71</a> of file <a class="el" href="checker_8cpp_source.html">checker.cpp</a>.</p>
 
-<p>References <a class="el" href="dtddocument_8cpp_source.html#l00063">DTDDocument::generateRegex()</a>, and <a class="el" href="xmldocument_8h_source.html#l00180">XMLDocument::getRoot()</a>.</p>
+<p>References <a class="el" href="dtddocument_8cpp_source.html#l00069">DTDDocument::generateRegex()</a>, and <a class="el" href="xmldocument_8h_source.html#l00178">XMLDocument::getRoot()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classChecker.html#a7acaca1443454051592fb64d9e06b8cf">recursiveCheck</a>(xml-&gt;<a class="code" href="classXMLDocument.html#a9bb542f268cbbf4dbae9ddcc403a51bd">getRoot</a>(),dtd-&gt;<a class="code" href="classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c">generateRegex</a>());</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::map&lt;string,string&gt;* reg=dtd-&gt;<a class="code" href="classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c">generateRegex</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">bool</span> result = <a class="code" href="classChecker.html#a7acaca1443454051592fb64d9e06b8cf">recursiveCheck</a>(xml-&gt;<a class="code" href="classXMLDocument.html#a9bb542f268cbbf4dbae9ddcc403a51bd">getRoot</a>(),reg);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        reg-&gt;clear();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">delete</span> reg;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -232,51 +236,51 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="checker_8cpp_source.html#l00076">76</a> of file <a class="el" href="checker_8cpp_source.html">checker.cpp</a>.</p>
+<p>Definition at line <a class="el" href="checker_8cpp_source.html#l00080">80</a> of file <a class="el" href="checker_8cpp_source.html">checker.cpp</a>.</p>
 
-<p>References <a class="el" href="element_8cpp_source.html#l00230">Element::attributeToString()</a>, <a class="el" href="element_8cpp_source.html#l00199">Element::childToString()</a>, <a class="el" href="element_8h_source.html#l00147">Element::getContent()</a>, <a class="el" href="element_8h_source.html#l00147">Element::getContent()</a>, and <a class="el" href="element_8cpp_source.html#l00220">Element::getType()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        list&lt;XMLContent*&gt;::iterator it;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">string</span> childs = node-&gt;<a class="code" href="classElement.html#a8bf8fb012b7c36b900ba8a376e92089e">childToString</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">string</span> attributes = node-&gt;<a class="code" href="classElement.html#a96c61e6e80b294a2ed0662746d569748">attributeToString</a>();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">string</span> type = node-&gt;<a class="code" href="classElement.html#ac86c1995592e6f4a488a810b7e6dddf8">getType</a>();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        boost::regex attributeRegex((*regex_map)[<span class="stringliteral">&quot;A&quot;</span>+type]);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        boost::regex elementRegex((*regex_map)[<span class="stringliteral">&quot;E&quot;</span>+type]);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span>( !boost::regex_match(attributes, attributeRegex) )</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="comment">// cout &lt;&lt; attributes &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;A&quot;+type] &lt;&lt; &quot; do not match&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="comment">// cout &lt;&lt; attributes &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;A&quot;+type] &lt;&lt; &quot; do match&quot; &lt;&lt; endl;</span></div>
+<p>References <a class="el" href="element_8cpp_source.html#l00231">Element::attributeToString()</a>, <a class="el" href="element_8cpp_source.html#l00200">Element::childToString()</a>, <a class="el" href="element_8h_source.html#l00147">Element::getContent()</a>, <a class="el" href="element_8h_source.html#l00147">Element::getContent()</a>, and <a class="el" href="element_8cpp_source.html#l00221">Element::getType()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        list&lt;XMLContent*&gt;::iterator it;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">string</span> childs = node-&gt;<a class="code" href="classElement.html#a8bf8fb012b7c36b900ba8a376e92089e">childToString</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">string</span> attributes = node-&gt;<a class="code" href="classElement.html#a96c61e6e80b294a2ed0662746d569748">attributeToString</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">string</span> type = node-&gt;<a class="code" href="classElement.html#ac86c1995592e6f4a488a810b7e6dddf8">getType</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        boost::regex attributeRegex((*regex_map)[<span class="stringliteral">&quot;A&quot;</span>+type]);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        boost::regex elementRegex((*regex_map)[<span class="stringliteral">&quot;E&quot;</span>+type]);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span>( !boost::regex_match(attributes, attributeRegex) )</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="comment">// cout &lt;&lt; attributes &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;A&quot;+type] &lt;&lt; &quot; do not match&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span>( !boost::regex_match(childs, elementRegex) )</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="comment">// cout &lt;&lt; childs &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;E&quot;+type] &lt;&lt; &quot; do not match&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="comment">// cout &lt;&lt; childs &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;E&quot;+type] &lt;&lt; &quot; do match&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="comment">// cout &lt;&lt; attributes &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;A&quot;+type] &lt;&lt; &quot; do match&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span>( !boost::regex_match(childs, elementRegex) )</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="comment">// cout &lt;&lt; childs &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;E&quot;+type] &lt;&lt; &quot; do not match&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">for</span>( it = node-&gt;<a class="code" href="classElement.html#ae1b447da761c106a06e577927ba19083">getContent</a>()-&gt;begin() ; it != node-&gt;<a class="code" href="classElement.html#ae1b447da761c106a06e577927ba19083">getContent</a>()-&gt;end(); it++)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">if</span>( (*it)-&gt;getType().compare(<span class="stringliteral">&quot;PCDATA&quot;</span>) !=  0)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        <span class="keywordflow">if</span>( !<a class="code" href="classChecker.html#a7acaca1443454051592fb64d9e06b8cf">recursiveCheck</a>((<a class="code" href="classElement.html" title="Structure an XML node.">Element</a>*)*it, regex_map) )</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                        {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        } </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="comment">// cout &lt;&lt; childs &lt;&lt; &quot; and &quot; &lt;&lt;  (*regex_map)[&quot;E&quot;+type] &lt;&lt; &quot; do match&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">for</span>( it = node-&gt;<a class="code" href="classElement.html#ae1b447da761c106a06e577927ba19083">getContent</a>()-&gt;begin() ; it != node-&gt;<a class="code" href="classElement.html#ae1b447da761c106a06e577927ba19083">getContent</a>()-&gt;end(); it++)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">if</span>( (*it)-&gt;getType().compare(<span class="stringliteral">&quot;PCDATA&quot;</span>) !=  0)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        <span class="keywordflow">if</span>( !<a class="code" href="classChecker.html#a7acaca1443454051592fb64d9e06b8cf">recursiveCheck</a>((<a class="code" href="classElement.html" title="Structure an XML node.">Element</a>*)*it, regex_map) )</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        } </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -287,7 +291,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 00:38:10 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 08:10:00 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1-20130324
 </small></address>

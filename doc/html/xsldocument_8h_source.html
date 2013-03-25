@@ -112,39 +112,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classXSLDocument.html#a95d08ad15c7847ae8c9efcfc80347c51">XSLDocument</a>( <a class="code" href="classXMLDocument.html" title="L&#39;objet qui représente un document xml.">XMLDocument</a> * xsl, <a class="code" href="classXMLDocument.html" title="L&#39;objet qui représente un document xml.">XMLDocument</a> *xml);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classXSLDocument.html#abed02363dda8aa93d5719e35f1862178">~XSLDocument</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">// ----------------------- Other services ------------------------------</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::string <a class="code" href="classXSLDocument.html#abc014b309525414b56a3071f660b74d9">process</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        std::string <a class="code" href="classXSLDocument.html#afb4368038fc82af0a013d941c8a6a62d">getParse</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// ------------------------- Protected Datas ------------------------------</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="classXSLDocument.html#a7b282184e0f37e51917d88ae3123077c">   88</a></span>&#160;        <a class="code" href="classXMLDocument.html" title="L&#39;objet qui représente un document xml.">XMLDocument</a> * <a class="code" href="classXSLDocument.html#a7b282184e0f37e51917d88ae3123077c">mXsl</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classXSLDocument.html#af6391fe31d858b008d2cc8b462b01d89">   89</a></span>&#160;        <a class="code" href="classXMLDocument.html" title="L&#39;objet qui représente un document xml.">XMLDocument</a> * <a class="code" href="classXSLDocument.html#af6391fe31d858b008d2cc8b462b01d89">mXml</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classXSLDocument.html#a86b2fb08741afb525370ed8c31e9d120">   90</a></span>&#160;        std::map&lt;std::string,XMLContent *&gt; <a class="code" href="classXSLDocument.html#a86b2fb08741afb525370ed8c31e9d120">templates</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="classXSLDocument.html#a53f236757579c0b47e0c449f3c565c48">   91</a></span>&#160;        std::string <a class="code" href="classXSLDocument.html#a53f236757579c0b47e0c449f3c565c48">mParse</a>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">//--------------------------- Protected attributes---------------------------</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        std::vector&lt;std::string&gt; <a class="code" href="classXSLDocument.html#afecbcf5536ef0d1cb40ddcb3f3d99c51">split</a> ( std::string &amp;chaine, <span class="keywordtype">char</span> c );</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::list&lt;XMLContent*&gt; <a class="code" href="classXSLDocument.html#a11a07e0bf5d51b5e13fc6381248c57be">match</a>(std::string <a class="code" href="classXSLDocument.html#a11a07e0bf5d51b5e13fc6381248c57be">match</a>, <a class="code" href="classElement.html" title="Structure an XML node.">Element</a> * currentNode);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::list&lt;XMLContent*&gt; <a class="code" href="classXSLDocument.html#a78021d4c636ac94274698fe08d45a5f9">getListContent</a>(std::list&lt;XMLContent*&gt; roots, std::string name );</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::string <a class="code" href="classXSLDocument.html#ad18c7fc3bf9908e0ced186498c20ebc8">handleTemplate</a>(<a class="code" href="classXMLContent.html" title="La représentation d&#39;un contenu de l&#39;arbre xml.">XMLContent</a> * node, std::list&lt;XMLContent*&gt;  theList);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        std::string <a class="code" href="classXSLDocument.html#a0e6dd4e941d4454a711835d27b906009">applyTemplateHandle</a>(<a class="code" href="classXMLContent.html" title="La représentation d&#39;un contenu de l&#39;arbre xml.">XMLContent</a> * node);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="classXSLDocument.html#abed02363dda8aa93d5719e35f1862178">~XSLDocument</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// ----------------------- Other services ------------------------------</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        std::string <a class="code" href="classXSLDocument.html#abc014b309525414b56a3071f660b74d9">process</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        std::string <a class="code" href="classXSLDocument.html#afb4368038fc82af0a013d941c8a6a62d">getParse</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// ------------------------- Protected Datas ------------------------------</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="classXSLDocument.html#a7b282184e0f37e51917d88ae3123077c">   87</a></span>&#160;        <a class="code" href="classXMLDocument.html" title="L&#39;objet qui représente un document xml.">XMLDocument</a> * <a class="code" href="classXSLDocument.html#a7b282184e0f37e51917d88ae3123077c">mXsl</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="classXSLDocument.html#af6391fe31d858b008d2cc8b462b01d89">   88</a></span>&#160;        <a class="code" href="classXMLDocument.html" title="L&#39;objet qui représente un document xml.">XMLDocument</a> * <a class="code" href="classXSLDocument.html#af6391fe31d858b008d2cc8b462b01d89">mXml</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classXSLDocument.html#a86b2fb08741afb525370ed8c31e9d120">   89</a></span>&#160;        std::map&lt;std::string,XMLContent *&gt; <a class="code" href="classXSLDocument.html#a86b2fb08741afb525370ed8c31e9d120">templates</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classXSLDocument.html#a53f236757579c0b47e0c449f3c565c48">   90</a></span>&#160;        std::string <a class="code" href="classXSLDocument.html#a53f236757579c0b47e0c449f3c565c48">mParse</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">//--------------------------- Protected attributes---------------------------</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        std::vector&lt;std::string&gt; <a class="code" href="classXSLDocument.html#afecbcf5536ef0d1cb40ddcb3f3d99c51">split</a> ( std::string &amp;chaine, <span class="keywordtype">char</span> c );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        std::list&lt;XMLContent*&gt; <a class="code" href="classXSLDocument.html#a11a07e0bf5d51b5e13fc6381248c57be">match</a>(std::string <a class="code" href="classXSLDocument.html#a11a07e0bf5d51b5e13fc6381248c57be">match</a>, <a class="code" href="classElement.html" title="Structure an XML node.">Element</a> * currentNode);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::list&lt;XMLContent*&gt; <a class="code" href="classXSLDocument.html#a78021d4c636ac94274698fe08d45a5f9">getListContent</a>(std::list&lt;XMLContent*&gt; roots, std::string name );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::string <a class="code" href="classXSLDocument.html#ad18c7fc3bf9908e0ced186498c20ebc8">handleTemplate</a>(<a class="code" href="classXMLContent.html" title="La représentation d&#39;un contenu de l&#39;arbre xml.">XMLContent</a> * node, std::list&lt;XMLContent*&gt;  theList);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::string <a class="code" href="classXSLDocument.html#a0e6dd4e941d4454a711835d27b906009">applyTemplateHandle</a>(<a class="code" href="classXMLContent.html" title="La représentation d&#39;un contenu de l&#39;arbre xml.">XMLContent</a> * node);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 00:38:10 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 08:10:00 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1-20130324
 </small></address>

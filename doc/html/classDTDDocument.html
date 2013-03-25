@@ -126,7 +126,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Constructeur</p>
-<p>Implémentation du constructeur de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
+<p>Impl&eacute;mentation du constructeur de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
 
 <p>Definition at line <a class="el" href="dtddocument_8cpp_source.html#l00035">35</a> of file <a class="el" href="dtddocument_8cpp_source.html">dtddocument.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                             : <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>(listContent)</div>
@@ -148,12 +148,20 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Destructeur</p>
-<p>Implémentation du destructeur de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
+<p>Impl&eacute;mentation du destructeur de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
 
 <p>Definition at line <a class="el" href="dtddocument_8cpp_source.html#l00042">42</a> of file <a class="el" href="dtddocument_8cpp_source.html">dtddocument.cpp</a>.</p>
+
+<p>References <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>, <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>, <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>, and <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>.</p>
 <div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">//Nothing to do</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">for</span>(std::list&lt;MotherContent*&gt;::iterator it=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin();it!=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end();     it++)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                std::cout&lt;&lt;<span class="stringliteral">&quot;One&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keyword">delete</span> *it;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;clear();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -171,17 +179,17 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Ecrire sur la sortie standard ce document au format DTD</p>
-<p>Implémentation de la méthode displayAsDTDFormat de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
+<p>Impl&eacute;mentation de la m&eacute;thode displayAsDTDFormat de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
 
-<p>Definition at line <a class="el" href="dtddocument_8cpp_source.html#l00052">52</a> of file <a class="el" href="dtddocument_8cpp_source.html">dtddocument.cpp</a>.</p>
+<p>Definition at line <a class="el" href="dtddocument_8cpp_source.html#l00058">58</a> of file <a class="el" href="dtddocument_8cpp_source.html">dtddocument.cpp</a>.</p>
 
 <p>References <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>, and <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">for</span>(std::list&lt;MotherContent*&gt;::iterator it=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin();it!=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end();it++)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                (*it)-&gt;printDTD();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">for</span>(std::list&lt;MotherContent*&gt;::iterator it=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin();it!=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end();it++)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                (*it)-&gt;printDTD();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -197,28 +205,28 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Genère une map de noms de contenus (éléments ou attributs) vers les expressions régulières correspondantes. Les noms des éléments sont précédés du préfixe "E", ceux des attributs du préfixe "A".</p>
+<p>Gen&egrave;re une map de noms de contenus (&eacute;l&eacute;ments ou attributs) vers les expressions r&eacute;guli&egrave;res correspondantes. Les noms des &eacute;l&eacute;ments sont pr&eacute;c&eacute;d&eacute;s du pr&eacute;fixe "E", ceux des attributs du pr&eacute;fixe "A".</p>
 <dl class="section return"><dt>Returns</dt><dd>un pointeur sur la map</dd></dl>
-<p>Implémentation de la méthode generateRegex de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
+<p>Impl&eacute;mentation de la m&eacute;thode generateRegex de <a class="el" href="classDTDDocument.html">DTDDocument</a> </p>
 
-<p>Definition at line <a class="el" href="dtddocument_8cpp_source.html#l00063">63</a> of file <a class="el" href="dtddocument_8cpp_source.html">dtddocument.cpp</a>.</p>
+<p>Definition at line <a class="el" href="dtddocument_8cpp_source.html#l00069">69</a> of file <a class="el" href="dtddocument_8cpp_source.html">dtddocument.cpp</a>.</p>
 
 <p>References <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>, and <a class="el" href="dtddocument_8h_source.html#l00085">mContents</a>.</p>
 
 <p>Referenced by <a class="el" href="checker_8cpp_source.html#l00071">Checker::check()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::map&lt;std::string, std::string&gt; * regexMap = <span class="keyword">new</span> std::map&lt;std::string, std::string&gt;;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::list&lt;MotherContent*&gt;::iterator it;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// parcours de l&#39;ensemble des dÃ©finitions du fichier</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">for</span>( it = <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin(); it != <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end(); it++ )</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::string name = (*it)-&gt;getName();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                std::string regex = (*it)-&gt;createRegex();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                (*regexMap)[name] = regex;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="comment">// ajout dans la map de la regex liÃ©e au nom du contenu (Ã©lÃ©ment ou attribut)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> regexMap;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::map&lt;std::string, std::string&gt; * regexMap = <span class="keyword">new</span> std::map&lt;std::string, std::string&gt;;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        std::list&lt;MotherContent*&gt;::iterator it;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// parcours de l&#39;ensemble des dÃ©finitions du fichier</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">for</span>( it = <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin(); it != <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end(); it++ )</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                std::string name = (*it)-&gt;getName();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                std::string regex = (*it)-&gt;createRegex();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                (*regexMap)[name] = regex;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="comment">// ajout dans la map de la regex liÃ©e au nom du contenu (Ã©lÃ©ment ou attribut)</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> regexMap;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,7 +251,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="dtddocument_8h_source.html#l00085">85</a> of file <a class="el" href="dtddocument_8h_source.html">dtddocument.h</a>.</p>
 
-<p>Referenced by <a class="el" href="dtddocument_8cpp_source.html#l00052">displayAsDTDFormat()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00052">displayAsDTDFormat()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00063">generateRegex()</a>, and <a class="el" href="dtddocument_8cpp_source.html#l00063">generateRegex()</a>.</p>
+<p>Referenced by <a class="el" href="dtddocument_8cpp_source.html#l00058">displayAsDTDFormat()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00058">displayAsDTDFormat()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00069">generateRegex()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00069">generateRegex()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00042">~DTDDocument()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00042">~DTDDocument()</a>, <a class="el" href="dtddocument_8cpp_source.html#l00042">~DTDDocument()</a>, and <a class="el" href="dtddocument_8cpp_source.html#l00042">~DTDDocument()</a>.</p>
 
 </div>
 </div>
@@ -254,7 +262,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 00:38:10 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 08:10:00 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1-20130324
 </small></address>

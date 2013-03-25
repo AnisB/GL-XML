@@ -102,38 +102,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classDTDDocument.html#a23e88fd7118d05e63ab9914f7599c50b">   42</a></span>&#160;<a class="code" href="classDTDDocument.html#a23e88fd7118d05e63ab9914f7599c50b">DTDDocument::~DTDDocument</a>( )</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">//Nothing to do</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// Interface - public :</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classDTDDocument.html#a2c120b640cdc0bcb109206d897401d16">   52</a></span>&#160;<span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="classDTDDocument.html#a2c120b640cdc0bcb109206d897401d16">DTDDocument::displayAsDTDFormat</a>()</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">for</span>(std::list&lt;MotherContent*&gt;::iterator it=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin();it!=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end();it++)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                (*it)-&gt;printDTD();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c">   63</a></span>&#160;std::map&lt;std::string, std::string&gt;*  <a class="code" href="classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c">DTDDocument::generateRegex</a>()</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::map&lt;std::string, std::string&gt; * regexMap = <span class="keyword">new</span> std::map&lt;std::string, std::string&gt;;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::list&lt;MotherContent*&gt;::iterator it;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// parcours de l&#39;ensemble des définitions du fichier</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">for</span>( it = <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin(); it != <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end(); it++ )</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::string name = (*it)-&gt;getName();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                std::string regex = (*it)-&gt;createRegex();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                (*regexMap)[name] = regex;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="comment">// ajout dans la map de la regex liée au nom du contenu (élément ou attribut)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> regexMap;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// //</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">for</span>(std::list&lt;MotherContent*&gt;::iterator it=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin();it!=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end();     it++)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                std::cout&lt;&lt;<span class="stringliteral">&quot;One&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keyword">delete</span> *it;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;clear();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// Interface - public :</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="classDTDDocument.html#a2c120b640cdc0bcb109206d897401d16">   58</a></span>&#160;<span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="classDTDDocument.html#a2c120b640cdc0bcb109206d897401d16">DTDDocument::displayAsDTDFormat</a>()</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">for</span>(std::list&lt;MotherContent*&gt;::iterator it=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin();it!=<a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end();it++)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                (*it)-&gt;printDTD();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c">   69</a></span>&#160;std::map&lt;std::string, std::string&gt;*  <a class="code" href="classDTDDocument.html#a65b154acce80dba9daad11dc62c2c26c">DTDDocument::generateRegex</a>()</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::map&lt;std::string, std::string&gt; * regexMap = <span class="keyword">new</span> std::map&lt;std::string, std::string&gt;;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        std::list&lt;MotherContent*&gt;::iterator it;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// parcours de l&#39;ensemble des définitions du fichier</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">for</span>( it = <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;begin(); it != <a class="code" href="classDTDDocument.html#a36737fcf44e6954ffbdb93e8574ed30e">mContents</a>-&gt;end(); it++ )</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                std::string name = (*it)-&gt;getName();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                std::string regex = (*it)-&gt;createRegex();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                (*regexMap)[name] = regex;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="comment">// ajout dans la map de la regex liée au nom du contenu (élément ou attribut)</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> regexMap;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// //</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 00:38:10 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 08:10:00 for PROCESSERXML by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1-20130324
 </small></address>

@@ -63,15 +63,13 @@ typedef struct TDeclaration
 
 	std::string toString()
 	{
+		std::string toReturn;
 		if (mExists)
 		{
-			std::string toReturn="<!DOCTYPE "+mName1+" "+mName2+" \""+mValue+"\" >";
+			toReturn="<!DOCTYPE "+mName1+" "+mName2+" \""+mValue+"\" >";
 
 		}
-		else
-		{
-			return "";
-		}
+		return toReturn;
 	}
 	void copy(struct TDeclaration * aDec)
 	{
@@ -118,8 +116,19 @@ typedef struct THeader
 	void copy(struct THeader * aHeader)
 	{
 		this->mName = aHeader->mName;
-		this->mAttList =aHeader->mAttList;
 		this->mExists=aHeader->mExists;
+		this->mAttList =aHeader->mAttList;
+		
+	}
+	~THeader()
+	{
+
+		for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+		{
+			delete (*it);
+		}
+		mAttList->clear();
+		delete mAttList;
 	}
 } Header;
 
@@ -133,11 +142,11 @@ typedef struct THeader
 
 
 
-class XMLDocument
-{
+   class XMLDocument
+   {
 	// ----------------------- Standard services ------------------------------
 
-public:
+   public:
 	/**
 	* Constructor
 	* @param aHead pointeur sur le Header
@@ -187,7 +196,6 @@ public:
 		std::string mName;
 		Element * mRoot;
 		std::list<Element*>* mStyleSheet;
-		std::list<XMLAttribute*>* mAttributes;
 		std::list<Misc*> * mMiscList;
 		XmlDeclaration * mDec;
 		Header * mHeader;

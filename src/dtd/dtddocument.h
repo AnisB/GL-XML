@@ -45,8 +45,8 @@
 #include <string>
 #include <map>
 
-#include "declaration.h"
-#include "dtdattribute.h"
+#include <dtd/declaration.h>
+#include <dtd/dtdattribute.h>
 
 /////////////////////////////////////////////////////////////////////////////
 // class DTDDocument

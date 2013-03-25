@@ -51,8 +51,8 @@
   /////////////////////////////////////////////////////////////////////////////
   // class XSLDocument
   /**
-* Description of class XSLDocument <p>
-*/
+  * Description of class XSLDocument <p>
+  */
 
 
 	class XSLDocument
@@ -67,15 +67,14 @@
 	
 
 	/**
-	* Definition de la méthode
-	* @param *nom parametre* *description parametre*
+	* Destructor
 	*/
 	~XSLDocument();
 	// ----------------------- Other services ------------------------------
 
 	public:
 	/**
-	* Displays the node as an xml node
+	* Runs the processer
 	*/
 	std::string process();
 

@@ -13,6 +13,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //Includes
 #include <xml/xmldocument.h>
+ #include <iostream>
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -29,10 +30,8 @@
 */
 XMLDocument::XMLDocument( Header * aHead, XmlDeclaration * aDec, std::list<Element*> *stylesheet, Element* root, std::list<Misc*> * alist)
 {
-	mHeader = new Header();
-	mHeader->copy(aHead);
-	mDec = new XmlDeclaration();
-	mDec->copy(aDec);
+	mHeader = aHead;
+	mDec = aDec;
 	mMiscList = alist;
 	mRoot=root;
 	mStyleSheet=stylesheet;
@@ -44,6 +43,27 @@ XMLDocument::XMLDocument( Header * aHead, XmlDeclaration * aDec, std::list<Eleme
  */
  XMLDocument::~XMLDocument()
  {
+ 	for(std::list<Element*>::iterator it=mStyleSheet->begin(); it!=mStyleSheet->end();it++)
+ 	{
+ 		delete *it;
+ 	}
+ 	mStyleSheet->clear();
+ 	delete mStyleSheet;
+
+ 	for(std::list<Misc*>::iterator it=mMiscList->begin(); it!=mMiscList->end();it++)
+ 	{
+ 		delete *it;
+ 	}
+ 	mMiscList->clear();
+ 	delete mMiscList;
+
+
+ 	delete mRoot;
+
+ 	delete mDec;
+
+ 	delete mHeader;
+
  }
 
 

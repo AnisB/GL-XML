@@ -281,7 +281,6 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 	}
 	else
 	{
-		// std::cout<<node->getOpen()<<endl;;
 		toReturn+=(node->getOpen());
 		if((node->getContent()!=NULL) && (node->getContent()->size()>0))
 		{
@@ -291,7 +290,6 @@ std::string XSLDocument::handleTemplate(XMLContent * node, std::list<XMLContent*
 				toReturn+=handleTemplate((*that),theList);
 			}
 		}
-		// std::cout<<node->getClose()<<endl;
 		toReturn+=(node->getClose());
 	}
 	return toReturn;

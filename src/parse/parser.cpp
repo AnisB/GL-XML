@@ -29,6 +29,7 @@
 //Includes
 #include <parse/parser.h>
 #include <string>
+#include <errors.h>
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -68,9 +69,8 @@ std::pair<std::string*,XMLDocument *> Parser::parseXML(std::string fileName)
 	FILE * file;
 	file = fopen(fileName.c_str(), "r");
 	if(!file) {
-		throw 1;
+		throw FILE_NOT_FOUND;
 	}
-	// std::cout << "Parsing XML file : " << fileName << std::endl;
 	std::string * nomdtd;
 	XMLDocument* xmlDoc;
 	xmlin = file;
@@ -85,9 +85,8 @@ DTDDocument * Parser::parseDTD(std::string fileName)
 	FILE * dtdFile;
 	dtdFile = fopen(fileName.c_str(), "r");
 	if(!dtdFile) {
-		throw 1;
+		throw FILE_NOT_FOUND;
 	}
-	// cout << "Parsing DTD file : " << fileName << endl;
 	dtdin = dtdFile;
 	DTDDocument* dtdDoc;
 	dtdparse(&dtdDoc);

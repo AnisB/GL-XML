@@ -1,18 +1,4 @@
-/**
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as
-* published by the Free Software Foundation, either version 3 of the
-* License, or (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>.
-*
-**/
+
 
 /**
 * @file dtdattribute.cpp
@@ -30,9 +16,9 @@
 
 #include <list>
 
-#include "dtdattribute.h"
-#include "uniqueelement.h"
-#include "cdata.h"
+#include <dtd/dtdattribute.h>
+#include <dtd/uniqueelement.h>
+#include <dtd/cdata.h>
 
 using namespace std;
 
@@ -48,6 +34,7 @@ using namespace std;
  */
 DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherContent(), mElement(element), m_datas(datas)
 {
+	//Nothing to do
 }
 
 /**
@@ -55,6 +42,14 @@ DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherC
  */
 DTDAttribute::~DTDAttribute()
 {
+	std::list<CData*>* m_datas;
+	for(std::list<CData*>::iterator it=m_datas->begin(); it!=m_datas->end(); it++)
+	{
+		delete *it;
+	}
+	m_datas->clear();
+	delete m_datas;
+	delete mElement;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

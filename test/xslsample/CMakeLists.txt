@@ -18,7 +18,7 @@ ${CMAKE_CURRENT_BINARY_DIR}/xml.tab.c
 "-Pxml"
 ${PROJECT_SOURCE_DIR}/src/xml/ )
 
-include_directories(${PROJECT_SOURCE_DIR}/src/xml/ ${PROJECT_SOURCE_DIR}/src/dtd/ ${PROJECT_SOURCE_DIR}/src/parse/*)
+include_directories(${PROJECT_SOURCE_DIR}/src/)
 
 file(
 	GLOB_RECURSE 

@@ -24,6 +24,9 @@ SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 INCLUDE(${CMAKE_MODULE_PATH}/CheckDependencies.cmake)
 INCLUDE(${CMAKE_MODULE_PATH}/macro.cmake)
 
+if (doc)
+	INCLUDE(${CMAKE_MODULE_PATH}/dox.cmake)
+endif(doc)
 set(IncDir "${PROJECT_SOURCE_DIR}/src; ${IncDir}; ")
 include_directories( ${IncDir})
 
@@ -32,6 +35,7 @@ include_directories( ${IncDir})
 # Add subdirectories
 #------------------------------------------------------------------------------
 add_subdirectory(src)
-add_subdirectory(test)
-add_subdirectory(ressources)
 add_subdirectory(program)
+if(test)
+	add_subdirectory(test)
+endif(test)

@@ -54,23 +54,31 @@
  Element::~Element()
  {
 
+ 	if(!mIsSpecial)
+ 	{
  	// D&eacute;truit les contenus fils
- 	for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
- 	{
- 		delete *it;
+ 		for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
+ 		{
+ 			delete *it;
+ 		}
+ 		mContent->clear();
+
+ 		delete mContent;
+
  	}
+
  	// D&eacute;truit les attributs
- 	 for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
+ 	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
  	{
  		delete *it;
  	}
+
  	// Vidage de la liste des pointeurs
- 	mContent->clear();
  	mAttList->clear();
 
  	// Supression des listes
  	delete mAttList; 
- 	delete mContent;
+
  }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -114,7 +122,7 @@
  	{
  		std::cout<<">";
 
- 		
+
  		for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
  		{
  			(*it)->printXML();
@@ -170,7 +178,7 @@
  	{
  		toReturn+=">";
 
- 		
+
  		for(std::list<XMLContent*>::iterator it= mContent->begin();it!= mContent->end();it++)
  		{
  			toReturn+=(*it)->toString();
@@ -185,6 +193,7 @@
 
  		}
  	}
+ 	return toReturn;
 
  }
 
@@ -200,7 +209,7 @@
  	{
  		result += (*it)->getType();
  		it++;
- 		
+
  		for( ; it != mContent->end(); it++ )
  		{
  			result += " " + (*it)->getType();
@@ -230,18 +239,18 @@
  	else
  	{
  		result += (*it)->getType();
-		result += '"' + (*it)->getValue() + '"';
+ 		result += '"' + (*it)->getValue() + '"';
  		it++;
- 		
+
  		for( ; it != mAttList->end(); it++ )
  		{
  			result += " " + (*it)->getType();
-			result += '"' + (*it)->getValue() + '"';
+ 			result += '"' + (*it)->getValue() + '"';
  		}
  	}
  	return result;
  }
- 
+
  std::list<XMLContent*> Element::getSonList(std::string name)
  {
  	std::list<XMLContent*> toReturn;
@@ -342,7 +351,7 @@
 
  	}
  	return toReturn;
- 
-}
+
+ }
 
 ///////////////////////////////////////////////////////////////////////////////

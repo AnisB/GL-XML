@@ -43,8 +43,8 @@
 #include <list>
 #include <iostream>
 
-#include "dtdcontent.h"
-#include "declaration.h"
+#include <dtd/dtdcontent.h>
+#include <dtd/declaration.h>
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -113,6 +113,12 @@ public:
 	 * @return l'expression régulière
 	 */
 	std::string createRegex();
+
+	/**
+	* Sets the content list to nill
+	*/
+	void nilListContent();
+
 
 private: 
 	bool mIsChoice;

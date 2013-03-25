@@ -43,8 +43,8 @@
 #include <list>
 #include <iostream>
 #include <string>
-#include "dtdcontent.h"
-#include "mothercontent.h"
+#include <dtd/dtdcontent.h>
+#include <dtd/mothercontent.h>
 
 /////////////////////////////////////////////////////////////////////////////
 // class Declaration

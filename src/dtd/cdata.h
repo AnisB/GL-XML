@@ -72,7 +72,7 @@ public:
 
 	
 protected:
-	std::string m_content;
+	std::string mContent;
 };
 
 // 

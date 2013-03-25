@@ -5,7 +5,11 @@
 	<xsl:template match="/">
 		<html>
 			<body>
-				<h2>Titre : <xsl:value-of select="rapport/titre"/></h2>
+				<h2>
+					Titre : 
+					<xsl:value-of select="rapport/titre"/>
+				</h2>
+				
 				<br/>
 				<h4>Auteur</h4>
 				<xsl:value-of select="rapport/auteur/prenom"/>

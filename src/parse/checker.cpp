@@ -70,7 +70,10 @@
 
  bool Checker::check(XMLDocument * xml, DTDDocument * dtd)
  {
- 	return recursiveCheck(xml->getRoot(),dtd->generateRegex());
+ 	std::map<string,string>* reg=dtd->generateRegex();
+ 	bool result = recursiveCheck(xml->getRoot(),reg);
+ 	reg->clear();
+ 	delete reg;
  }
 
  bool Checker::recursiveCheck(Element * node, std::map<string,string>* regex_map)

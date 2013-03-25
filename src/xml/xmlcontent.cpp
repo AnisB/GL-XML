@@ -29,6 +29,7 @@
  */
  XMLContent::XMLContent ( )
  {
+ 	//Nothing to do
  }
 
 /**

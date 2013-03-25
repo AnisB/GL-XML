@@ -58,12 +58,14 @@ dtd_list_opt
 {
 	$$=$1;
 	$$->push_back(new DTDAttribute(new UniqueElement($3, Declaration::DTD_NONE), $4));
+	delete $3;
+	delete $4;
 }
 | dtd_list_opt ELEMENT NOM content SUP
 {
 	$$=$1;
-	list<DTDContent*>* l = new list<DTDContent*>;
 	$$->push_back(new Declaration($3, $4));
+	delete $3;
 }
 | /* vide */
 {
@@ -99,6 +101,7 @@ mixed
 {
 	$$ = new MultipleElement(true, Declaration::DTD_AST);
 	$$->addMultipleElement($3);
+	delete $3;
 }
 | OUVREPAR PCDATA FERMEPAR AST
 {
@@ -115,13 +118,16 @@ mixed
 pipes
 : pipes BARRE NOM
 {
+	delete $1;
 	$$->addElement(new UniqueElement($3, Declaration::DTD_NONE));
+	delete $3;
 }
 | BARRE NOM
 {
 	$$ = new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addElement(new DTDPCData());
 	$$->addElement(new UniqueElement($2, Declaration::DTD_NONE));
+	delete $2;
 }
 ;
 
@@ -166,6 +172,7 @@ cp
 : NOM cardinalite_opt
 {
 	$$ = new UniqueElement($1, $2);
+	delete $1;
 }
 | children
 {
@@ -179,12 +186,15 @@ choice
 	$$=new MultipleElement(true, Declaration::DTD_NONE);
 	$$->addElement($2);
 	$$->addMultipleElement($3);
+	delete $3;
+
 }
 ;
 
 choices
 : choices BARRE cp
 {
+	$$=$1;
 	$$->addElement($3);
 }
 | BARRE cp
@@ -208,7 +218,6 @@ seqs_opt
 : seqs_opt VIRGULE cp
 {
 	$$=$1;
-	//$$->addMultipleElement($1);
 	$$->addElement($3);
 }
 | /*vide*/
@@ -220,6 +229,7 @@ seqs_opt
 att_definition_opt
 : att_definition_opt attribut
 {
+	$$=$1;
 	$$->push_back($2);
 }
 | /* vide */
@@ -232,6 +242,8 @@ attribut
 : NOM CDATA DECLARATION
 {
 	$$ = new CData($1);
+	delete $1;
+	delete $3;
 }
 ;
 

@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!ELEMENT texte (en-tete, corps)>
 <!ELEMENT en-tete (titre, auteur, couverture, info_traitements, lien+)>
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT auteur (#PCDATA)>
 <!ELEMENT lien (#PCDATA)>
-<!ATTLIST lien
-          langue CDATA #REQUIRED>
+<!ATTLIST lien langue CDATA #REQUIRED>
 <!ELEMENT couverture EMPTY>
 <!ATTLIST couverture
           chemin CDATA #REQUIRED>
@@ -27,5 +25,4 @@
 <!ELEMENT image EMPTY>
 <!ATTLIST image
           chemin CDATA #REQUIRED>
-
 

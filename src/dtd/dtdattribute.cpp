@@ -42,7 +42,6 @@ DTDAttribute::DTDAttribute(UniqueElement* element, list<CData*>* datas) :MotherC
  */
 DTDAttribute::~DTDAttribute()
 {
-	std::list<CData*>* m_datas;
 	for(std::list<CData*>::iterator it=m_datas->begin(); it!=m_datas->end(); it++)
 	{
 		delete *it;
@@ -106,10 +105,10 @@ UniqueElement * DTDAttribute::getElement()
  */
 void DTDAttribute::printDTD()
 {
-	std::cout<<"<!ATTLIST "<<mElement->getContent();
+	std::cout<<"<!ATTLIST "<<mElement->getContent()<<m_datas->size()<<std::endl;
 	for(std::list<CData*>::iterator it=m_datas->begin();it!=m_datas->end();it++)
 	{
-		std::cout<<std::endl << "        "<< (*it)->getContent()<<" CDATA #IMPLIED";
+		std::cout<< "        "<< (*it)->getContent()<<" CDATA #IMPLIED";
 	}
 	std::cout<<std::endl<<">"<<std::endl;
 }

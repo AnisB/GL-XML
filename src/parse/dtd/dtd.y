@@ -58,14 +58,13 @@ dtd_list_opt
 {
 	$$=$1;
 	$$->push_back(new DTDAttribute(new UniqueElement($3, Declaration::DTD_NONE), $4));
-	delete $3;
-	delete $4;
+	delete [] $3;
 }
 | dtd_list_opt ELEMENT NOM content SUP
 {
 	$$=$1;
 	$$->push_back(new Declaration($3, $4));
-	delete $3;
+	delete []$3;
 }
 | /* vide */
 {
@@ -118,7 +117,7 @@ mixed
 pipes
 : pipes BARRE NOM
 {
-	delete $1;
+	$$=$1;
 	$$->addElement(new UniqueElement($3, Declaration::DTD_NONE));
 	delete $3;
 }
@@ -134,11 +133,13 @@ pipes
 children
 : choice cardinalite_opt
 {
+	std::cout<<"la"<<endl;
 	$$ = $1;
 	$$->setCard($2);
 }
 | seq cardinalite_opt //une sequence n'a pas de cardinalité. Laisser ?
 {
+	std::cout<<"la2"<<endl;
 	$$ = $1;
 	$$->setCard($2);
 }

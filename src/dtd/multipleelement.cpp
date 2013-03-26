@@ -106,7 +106,7 @@
  */
 void MultipleElement::nilListContent()
  {
- 	 mListContent=NULL;
+ 	 delete mListContent;
  }
 
 /**

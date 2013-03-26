@@ -25,6 +25,8 @@ int main(int ac, char* av[])
         po::options_description desc("Options");
         desc.add_options()
         ("help", "produce  the help message")
+        ("grammarxml", po::value<string>(), "--grammarxml <filename> is the file you want to check (XML)")
+        ("grammardtd", po::value<string>(), "--grammarsts <filename> is the file you want to check (DTD)")
         ("xml", po::value< vector<string> >(), "--xml <filename> [<filename>]* [--ckxml], The Xml files you want to analyse ")
         ("ckxml", "--ckxml, Check XML: If you want to check that it respects it's DTD")
         ("xsl", po::value<string>(), "--xsl <filename> -html <filename> [<filename>]*, The xsl file you want to use")
@@ -37,6 +39,34 @@ int main(int ac, char* av[])
         po::notify(vm);    
         if (vm.count("help")) {
             cout << desc << "\n";
+            return 1;
+        }
+
+
+        if (vm.count("grammarxml")) {
+            try
+            {
+                std::pair<string*,XMLDocument*> xmlparseResult;
+                xmlparseResult = Parser::parseXML(vm["grammarxml"].as<string>());
+            }
+            catch(int e)
+            {
+                cout<<"Error while parsing this xml, it could mean file not found or it's not respecting the xml grammar"<<endl;
+                return -1;
+            }
+            return 1;
+        }
+        if (vm.count("grammardtd")) {
+            try
+            {
+                DTDDocument* dtdparseResult;
+                dtdparseResult = Parser::parseDTD(vm["grammardtd"].as<string>());
+            }
+            catch(int e)
+            {
+                cout<<"Error while parsing this dtd, it could mean file not found or it's not respecting the dtd grammar"<<endl;
+                return -1;
+            }
             return 1;
         }
         if (vm.count("xml")) 
@@ -76,7 +106,7 @@ int main(int ac, char* av[])
                     }
                     catch(int e)
                     {
-                        cout<<"Error while parsing dtd, it could mean file not found or it's not respecting the xml grammar"<<endl;
+                        cout<<"Error while parsing dtd, it could mean file not found or it's not respecting the dtd grammar"<<endl;
                         return -1;
                     }
 

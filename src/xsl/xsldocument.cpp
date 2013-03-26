@@ -116,6 +116,11 @@ std::string XSLDocument::process()
 	for(list<XMLContent*>::iterator that = theHandlers->begin();that!=theHandlers->end();that++)
 	{
 		parseResult+=handleTemplate(*that,theListToHandle);
+		if((*theListToHandle.begin())->getType()=="root")
+		{
+			(*it)->setNullContent();
+			delete (*theListToHandle.begin());
+		}
 	}
 
 	mParse=parseResult;

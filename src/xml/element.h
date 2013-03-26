@@ -154,6 +154,14 @@ public:
 	}
 
 	/**
+	 * Force a null la valeur des contenus
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	 */	
+	inline void setNullContent()
+	{
+		mContent=NULL;
+	}
+	/**
 	 * Surcharge le l'operateur [] pour acceder &agrave; un attribut
 	 * 
 	 * @param aname: L'attribut &agrave; chercher

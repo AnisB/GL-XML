@@ -89,7 +89,7 @@ ennom		{debutnom}{caracnom}*":"{debutnom}{caracnom}*
 data		([^<\n&]|\n[^<&]|\n{esc}|{esc})+
 pcdata		[^<]+
 comment		{inf}"!--"([^-]|"-"[^-])*"--"{sup}
-chaine		\"([^"&]|{esc})*\"|\'([^'&]|{esc})*\'
+chaine		\"([^"]|{esc})*\"|\'([^']|{esc})*\'
 xmlversion   {esp}?"<?xml"
 doctype     {esp}?"<!DOCTYPE"{esp}
 infspecial {esp}?"<?"

@@ -70,7 +70,7 @@
  	// D&eacute;truit les attributs
  	for(std::list<XMLAttribute*>::iterator it= mAttList->begin();it!= mAttList->end();it++)
  	{
- 		delete *it;
+ 		delete (*it);
  	}
 
  	// Vidage de la liste des pointeurs

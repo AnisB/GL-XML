@@ -70,6 +70,7 @@
 	// ----------------------- Other services ------------------------------
 	static std::pair<std::string*,XMLDocument *> parseXML(std::string fileName);
 	static DTDDocument * parseDTD(std::string fileName);
+	static void handler(int noSignal);
 	public:
 	/**
 	* Definition de la méthode

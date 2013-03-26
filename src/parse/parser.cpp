@@ -30,6 +30,8 @@
 #include <parse/parser.h>
 #include <string>
 #include <errors.h>
+#include <signal.h>
+
 //////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -41,8 +43,16 @@
  int dtdparse(DTDDocument**);
  using namespace std;
 
+ struct sigaction new_action, old_action;
+
 ///////////////////////////////////////////////////////////////////////////////
-// ----------------------- Standard services ------------------------------
+
+ void Parser::handler (int signum)
+ {
+ 	std::cerr<<"Grammar error"<<std::endl;
+ 	throw GRAMMAR_ERROR;
+
+ }
 
 
 
@@ -51,6 +61,7 @@
  */
  Parser::Parser ( )
  {
+
  }
 
 /**
@@ -68,6 +79,8 @@
 
  std::pair<std::string*,XMLDocument *> Parser::parseXML(std::string fileName)
  {
+ 	if (signal(SIGSEGV, Parser::handler) == SIG_ERR)
+ 		printf("\ncan't catch SIGINT\n");
  	FILE * file;
  	file = fopen(fileName.c_str(), "r");
  	if(!file) {
@@ -91,6 +104,8 @@
  }
  DTDDocument * Parser::parseDTD(std::string fileName)
  {
+ 	if (signal(SIGSEGV, Parser::handler) == SIG_ERR)
+ 		printf("\ncan't catch SIGINT\n");
  	FILE * dtdFile;
  	dtdFile = fopen(fileName.c_str(), "r");
  	if(!dtdFile) {

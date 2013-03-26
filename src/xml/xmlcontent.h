@@ -122,6 +122,13 @@
 		return NULL;
 	} 
 	/**
+	 * Force a null la valeur des contenus
+	 * @return la chaîne de caract&egrave;re d&eacute;crivant le type
+	 */	
+	 inline void setNullContent()
+	 {
+	 }
+	/**
 	* Surcharge de l'operateur []
 	* return ""
 	*/

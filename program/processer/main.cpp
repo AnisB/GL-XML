@@ -48,6 +48,7 @@ int main(int ac, char* av[])
             {
                 std::pair<string*,XMLDocument*> xmlparseResult;
                 xmlparseResult = Parser::parseXML(vm["grammarxml"].as<string>());
+                cout<<"File OK"<<endl;
             }
             catch(int e)
             {
@@ -61,6 +62,7 @@ int main(int ac, char* av[])
             {
                 DTDDocument* dtdparseResult;
                 dtdparseResult = Parser::parseDTD(vm["grammardtd"].as<string>());
+                cout<<"File OK"<<endl;
             }
             catch(int e)
             {

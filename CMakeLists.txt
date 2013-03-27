@@ -23,6 +23,7 @@ SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # -----------------------------------------------------------------------------
 INCLUDE(${CMAKE_MODULE_PATH}/CheckDependencies.cmake)
 INCLUDE(${CMAKE_MODULE_PATH}/macro.cmake)
+INCLUDE(${CMAKE_MODULE_PATH}/Common.cmake)
 
 if (doc)
 	INCLUDE(${CMAKE_MODULE_PATH}/dox.cmake)

@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------
 # Look for boost 
 # -----------------------------------------------------------------------------
-set(Boost_USE_STATIC_LIBS   ON)
+set(Boost_USE_STATIC_LIBS   OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_FOUND FALSE)
@@ -18,7 +18,7 @@ if ( Boost_FOUND )
      ${Boost_LIBRAIRIES}  
      ${Boost_PROGRAM_OPTIONS_LIBRARY}
  ${Boost_REGEX_LIBRARY})
-   SET(XmlProcesserLib      ${Boost_LIBRAIRIES}  
+   SET(XmlProcesserLib      ${Boost_REGEX_LIBRARY}  
      ${Boost_PROGRAM_OPTIONS_LIBRARY} )
 endif( Boost_FOUND )
 

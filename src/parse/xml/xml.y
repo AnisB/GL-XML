@@ -41,7 +41,7 @@ int xmllex(void);
 		%type <lcnt> contenu_opt vide_ou_contenu vide_ou_contenu_en ferme_contenu_et_fin ferme_contenu_et_fin_en
 		%type <header> header_opt
 
-		%parse-param{ string** nom_dtd }
+		%parse-param{ std::string** nom_dtd }
 %parse-param { XMLDocument** doc}
 %%
 

@@ -133,13 +133,11 @@ pipes
 children
 : choice cardinalite_opt
 {
-	std::cout<<"la"<<endl;
 	$$ = $1;
 	$$->setCard($2);
 }
 | seq cardinalite_opt //une sequence n'a pas de cardinalité. Laisser ?
 {
-	std::cout<<"la2"<<endl;
 	$$ = $1;
 	$$->setCard($2);
 }

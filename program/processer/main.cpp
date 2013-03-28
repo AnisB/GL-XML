@@ -190,7 +190,7 @@ int main(int ac, char* av[])
                     for(std::vector<std::pair<string*,XMLDocument*> >::iterator it =xmlFileList.begin(); it!=xmlFileList.end();it++)
                     {
                         if ((*it).first!=NULL)
-                             delete (*it)->first;
+                             delete (*it).first;
                         delete (*it).second;
                     }
                     return 0;

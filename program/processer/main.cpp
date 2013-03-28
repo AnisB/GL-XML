@@ -49,8 +49,8 @@ int main(int ac, char* av[])
                 std::pair<string*,XMLDocument*> xmlparseResult;
                 xmlparseResult = Parser::parseXML(vm["grammarxml"].as<string>());
                 if (xmlparseResult->first!=NULL)
-                    delete xmlparseResult->first;
-                delete xmlparseResult->second;
+                    delete xmlparseResult.first;
+                delete xmlparseResult.second;
                 cout<<"File OK"<<endl;
             }
             catch(int e)

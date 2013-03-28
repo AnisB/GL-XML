@@ -120,6 +120,7 @@ int main(int ac, char* av[])
                     {
                         std::cout<<"Warning: The file "<<vm["xml"].as< vector<string> >()[i]<<" isn't correctly constructed"<<endl;
                     }
+                    delete dtdparseResult;
                     i++;
                 }
 
@@ -160,6 +161,7 @@ int main(int ac, char* av[])
                     {
                         std::cout<<"Warning: The file "<<vm["xsl"].as<string>()<<" isn't correctly constructed"<<endl;
                     }
+                    delete dtdparseResult;
                 }
 
                 if (vm.count("html")) 

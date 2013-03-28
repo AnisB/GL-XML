@@ -48,6 +48,9 @@ int main(int ac, char* av[])
             {
                 std::pair<string*,XMLDocument*> xmlparseResult;
                 xmlparseResult = Parser::parseXML(vm["grammarxml"].as<string>());
+                if (xmlparseResult->first!=NULL)
+                    delete xmlparseResult->first;
+                delete xmlparseResult->second;
                 cout<<"File OK"<<endl;
             }
             catch(int e)
@@ -62,6 +65,7 @@ int main(int ac, char* av[])
             {
                 DTDDocument* dtdparseResult;
                 dtdparseResult = Parser::parseDTD(vm["grammardtd"].as<string>());
+                delete dtdparseResult;
                 cout<<"File OK"<<endl;
             }
             catch(int e)
@@ -182,7 +186,12 @@ int main(int ac, char* av[])
                         myfile.close();
                         std::cout<<"Note: The file "<<vm["html"].as< vector<string> >()[i].c_str()<<" was generated"<<endl;
                         i++;
-
+                    }
+                    for(std::vector<std::pair<string*,XMLDocument*> >::iterator it =xmlFileList.begin(); it!=xmlFileList.end();it++)
+                    {
+                        if ((*it)->first!=NULL)
+                             delete (*it)->first;
+                        delete (*it)->second;
                     }
                     return 0;
                 }

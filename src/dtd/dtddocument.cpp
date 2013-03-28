@@ -1,5 +1,4 @@
 
-
 /**
  * @file dtddocument.cpp
  * @author Anis Benyoub (\c benyoub.anis@gmail.com )
@@ -43,7 +42,6 @@ DTDDocument::~DTDDocument( )
 {
 	for(std::list<MotherContent*>::iterator it=mContents->begin();it!=mContents->end();	it++)
 	{
-		std::cout<<"One"<<endl;
 		delete *it;
 	}
 	mContents->clear();

@@ -187,13 +187,13 @@ int main(int ac, char* av[])
                         std::cout<<"Note: The file "<<vm["html"].as< vector<string> >()[i].c_str()<<" was generated"<<endl;
                         i++;
                     }
-                    for(std::vector<std::pair<string*,XMLDocument*> >::iterator it =xmlFileList.begin(); it!=xmlFileList.end();it++)
-                    {
-                        if ((*it).first!=NULL)
-                             delete (*it).first;
-                        if ((*it).second!=NULL)
-                        delete (*it).second;
-                    }
+ //                   for(std::vector<std::pair<string*,XMLDocument*> >::iterator it =xmlFileList.begin(); it!=xmlFileList.end();it++)
+//                    {
+//                        if ((*it).first!=NULL)
+//                             delete (*it).first;
+//                        if ((*it).second!=NULL)
+//                        delete (*it).second;
+//                    }
                     return 0;
                 }
             }

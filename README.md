@@ -15,7 +15,9 @@ Si Cmake non présent sur les machines, il faut telecharger les sources, faire .
 
 Puis ajouter un alias dans votre .bashrc
 
-alias='<rep>/bin/cmake'
+alias='${CMAKE_REPOSITORY_SOURCE}/bin/cmake'
+
+en remplacant par le chemin vers cmake
 
 
 Il faut executer la commande suivante dans la racine

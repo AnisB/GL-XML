@@ -191,6 +191,7 @@ int main(int ac, char* av[])
                     {
                         if ((*it).first!=NULL)
                              delete (*it).first;
+                        if ((*it.second!=NULL)
                         delete (*it).second;
                     }
                     return 0;

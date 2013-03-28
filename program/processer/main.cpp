@@ -48,7 +48,7 @@ int main(int ac, char* av[])
             {
                 std::pair<string*,XMLDocument*> xmlparseResult;
                 xmlparseResult = Parser::parseXML(vm["grammarxml"].as<string>());
-                if (xmlparseResult->first!=NULL)
+                if (xmlparseResult.first!=NULL)
                     delete xmlparseResult.first;
                 delete xmlparseResult.second;
                 cout<<"File OK"<<endl;
@@ -189,9 +189,9 @@ int main(int ac, char* av[])
                     }
                     for(std::vector<std::pair<string*,XMLDocument*> >::iterator it =xmlFileList.begin(); it!=xmlFileList.end();it++)
                     {
-                        if ((*it)->first!=NULL)
+                        if ((*it).first!=NULL)
                              delete (*it)->first;
-                        delete (*it)->second;
+                        delete (*it).second;
                     }
                     return 0;
                 }
